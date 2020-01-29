@@ -18,23 +18,23 @@ public class WelcomeTest {
 		printInfo('c');
 	}
 
-	public static void printInfo(String words) {
+	private static void printInfo(String words) {
 		System.out.println(words);
 	}
 
-	public static void printInfo(Double doubleNum) {
+	private static void printInfo(Double doubleNum) {
 		System.out.println(doubleNum);
 	}
 
-	public static void printInfo(float floatNum) {
+	private static void printInfo(float floatNum) {
 		System.out.println(floatNum);
 	}
 
-	public static void printInfo(boolean booleanOp) {
+	private static void printInfo(boolean booleanOp) {
 		System.out.println(booleanOp);
 	}
 
-	public static void printInfo(char charWord) {
+	private static void printInfo(char charWord) {
 		System.out.println(charWord);
 	}
 
