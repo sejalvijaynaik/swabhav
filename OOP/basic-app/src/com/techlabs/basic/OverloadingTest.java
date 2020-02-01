@@ -1,6 +1,6 @@
 package com.techlabs.basic;
 
-public class WelcomeTest {
+public class OverloadingTest {
 
 	public static void main(String[] args) {
 

@@ -1,46 +1,62 @@
 package com.techlabs.basic;
 
-import java.util.Scanner;
-
-public class WebsiteTest {
+public class UrlExtractionSubstringTest {
 
 	public static void main(String[] args) {
 
-		Scanner sc = new Scanner(System.in);
-
-		System.out.println("Enter the url");
-
-		String url = sc.nextLine();
+		String url = "www.swabhav.com/?name=sejal";
+	//	String url = "www.swabhav.com/?name=sejal&role=developer";
+	//	String url = "www.swabhav.com/?role=developer";
 
 		String companyName, name, role;
-
-		int dot1 = 0, dot2 = 0, equal1 = 0, equal2 = 0, and1 = 0;
-
+		int  companyNameStart = 0, companyNameEnd = 0, nameStart = 0, roleStart = 0;
+		int andIndex = 0, j=0, questionMarkIndex = 0;
+		int[] equalCount = new int[2];
+		
 		for (int i = 0; i < url.length(); i++) {
 
-			if (url.charAt(i) == '.') {
-				dot1 = dot2;
-				dot2 = i;
+			if(url.charAt(i) == '.') {
+				companyNameStart = companyNameEnd;
+				companyNameEnd = i;
 			}
 
-			if (url.charAt(i) == '=') {
-				equal1 = equal2;
-				equal2 = i;
+			else if (url.charAt(i) == '=') {
+				equalCount[j] = i;
+				j++;
 			}
-			if (url.charAt(i) == '&') {
-				and1 = i;
+			else if (url.charAt(i) == '&') {
+				andIndex = i;
+			}
+			else if (url.charAt(i) == '?') {
+				questionMarkIndex = i;
 			}
 		}
-
-		companyName = url.substring(dot1 + 1, dot2);
-		name = url.substring(equal1 + 1, and1);
-		role = url.substring(equal2 + 1, url.length());
-
-		System.out.println("Company Name :" + companyName);
-		System.out.println("Name :" + name);
-		System.out.println("Role :" + role);
 		
-		sc.close();
+		companyName = url.substring(companyNameStart + 1, companyNameEnd);
+		System.out.println("Company Name :" + companyName);
+		
+			if(equalCount[0] != 0 && equalCount[1] != 0)
+			{
+				nameStart = equalCount[0];
+				roleStart = equalCount[1];
+				
+				name = url.substring(equalCount[0] + 1, andIndex);
+				role = url.substring(equalCount[1] + 1);
+				
+				System.out.println("Name :" + name);
+				System.out.println("Role :" + role);
+			}
+			
+			else if(equalCount[0] != 0 && equalCount[1]==0) {
+				
+				if(url.substring(questionMarkIndex + 1, equalCount[0]).equals("name")){
+						name = url.substring(equalCount[0] + 1);
+						System.out.println("Name :" + name);
+					}
+					else if(url.substring(questionMarkIndex + 1, equalCount[0]).equals("role")){
+						role = url.substring(equalCount[0] + 1);
+						System.out.println("Role :" + role);
+					}
+			}
 	}
-
 }
