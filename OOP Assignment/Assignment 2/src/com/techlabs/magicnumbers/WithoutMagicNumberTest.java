@@ -7,53 +7,19 @@ public class WithoutMagicNumberTest {
 		double squareArea = side * side;
 		double rectangleArea = length * breadth;
 		double triangleArea = 2 * radius * Math.PI;
+		
+		String square = "square", triangle ="triangle", rectangle = "rectangle";
 
-		System.out.println("When 100 or above is an acceptable number :");
-		checkAcceptance100(squareArea, rectangleArea, triangleArea);
-		System.out.println();
-
-		System.out.println("When 50 or more is an acceptable number :");
-		checkAcceptance50(squareArea, rectangleArea, triangleArea);
-		System.out.println();
+		checkAcceptance(square, squareArea);
+		checkAcceptance(triangle, triangleArea);
+		checkAcceptance(rectangle, rectangleArea);
 	}
 
-	private static void checkAcceptance50(double squareArea, double rectangleArea, double triangleArea) {
-		if (squareArea >= 50) {
-			System.out.println("The area of square is " + squareArea + " which is acceptable");
+	private static void checkAcceptance(String shape, double area) {
+		if (area>=1 && area<=100) {
+			System.out.println("The area of " + shape + " is " + area + " which is acceptable");
 		} else {
-			System.out.println("The area of square is " + squareArea + " which is not acceptable");
-		}
-
-		if (rectangleArea >= 50) {
-			System.out.println("The area of rectangle is " + rectangleArea + " which is acceptable");
-		} else {
-			System.out.println("The area of rectangle is " + rectangleArea + " which is not acceptable");
-		}
-
-		if (triangleArea >= 50) {
-			System.out.println("The area of triangle is " + triangleArea + " which is acceptable");
-		} else {
-			System.out.println("The area of triangle is " + triangleArea + " which is not acceptable");
-		}
-	}
-
-	private static void checkAcceptance100(double squareArea, double rectangleArea, double triangleArea) {
-		if (squareArea >= 100) {
-			System.out.println("The area of square is " + squareArea + " which is acceptable");
-		} else {
-			System.out.println("The area of square is " + squareArea + " which is not acceptable");
-		}
-
-		if (rectangleArea >= 100) {
-			System.out.println("The area of rectangle is " + rectangleArea + " which is acceptable");
-		} else {
-			System.out.println("The area of rectangle is " + rectangleArea + " which is not acceptable");
-		}
-
-		if (triangleArea >= 100) {
-			System.out.println("The area of triangle is " + triangleArea + " which is acceptable");
-		} else {
-			System.out.println("The area of triangle is " + triangleArea + " which is not acceptable");
+			System.out.println("The area of " + shape + " is " + area + " which is not acceptable");
 		}
 	}
 }

@@ -3,19 +3,27 @@ package com.techlabs.passbyvalue;
 public class PassByValueTest {
 	public static void main(String[] args)
 	{
-		int number = 10;
-		System.out.println("The value of number before passing is :" + number);
+		int[] numbers = {10, 20, 30, 40};
 		
-		changeNumverValue(number);
+		System.out.println("Before modifying in main method");
+		for(int i=0; i<numbers.length;i++){
+			System.out.println(numbers[i]);
+		}
 		
-		System.out.println("The value of number after passing is :" + number);
-		System.out.println("The value of number does not change since only the value is passed and not the address of the number");
+		mutableArrayValues(numbers);
+		
+		System.out.println("After modifying in main method");
+		for(int i=0; i<numbers.length;i++){
+			System.out.println(numbers[i]);
+		}
 	}
 
-	private static void changeNumverValue(int number) {
+	private static void mutableArrayValues(int[] numbers) {
 		
-		number = number + 10;
-		System.out.println("The value of number after modifying inside the method is :" + number);
+		System.out.println("After modifying in mutableArrayValues method");
+		for(int i=0; i<numbers.length;i++) {
+			numbers[i] = 0;
+			System.out.println(numbers[i]);
+		}
 	}
-
 }

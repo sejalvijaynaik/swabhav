@@ -1,39 +1,28 @@
 package com.techlabs.magicnumbers;
 
 public class WithMagicNumberTest {
+	final static  int START_RANGE = 1;
+	final static  int END_RANGE = 100;
 	public static void main(String[] args) {
+		
 		int length = 10, breadth = 10, radius = 10, side = 10;
-
+		
 		double squareArea = side * side;
 		double rectangleArea = length * breadth;
 		double triangleArea = 2 * radius * Math.PI;
+		
+		String square = "square", triangle ="triangle", rectangle = "rectangle";
 
-		System.out.println("When 100 or above is an acceptable number :");
-		checkAcceptance(squareArea, rectangleArea, triangleArea, 100);
-		System.out.println();
-
-		System.out.println("When 50 or more is an acceptable number :");
-		checkAcceptance(squareArea, rectangleArea, triangleArea, 50);
-		System.out.println();
+		checkAcceptance(square, squareArea);
+		checkAcceptance(triangle, triangleArea);
+		checkAcceptance(rectangle, rectangleArea);
 	}
 
-	private static void checkAcceptance(double squareArea, double rectangleArea, double triangleArea, int checkNumber) {
-		if (squareArea >= checkNumber) {
-			System.out.println("The area of square is " + squareArea + " which is acceptable");
+	private static void checkAcceptance(String shape, double area) {
+		if (area>=START_RANGE && area<=END_RANGE) {
+			System.out.println("The area of " + shape + " is " + area + " which is acceptable");
 		} else {
-			System.out.println("The area of square is " + squareArea + " which is not acceptable");
-		}
-
-		if (rectangleArea >= checkNumber) {
-			System.out.println("The area of rectangle is " + rectangleArea + " which is acceptable");
-		} else {
-			System.out.println("The area of rectangle is " + rectangleArea + " which is not acceptable");
-		}
-
-		if (triangleArea >= checkNumber) {
-			System.out.println("The area of triangle is " + triangleArea + " which is acceptable");
-		} else {
-			System.out.println("The area of triangle is " + triangleArea + " which is not acceptable");
+			System.out.println("The area of " + shape + " is " + area + " which is not acceptable");
 		}
 	}
 }
