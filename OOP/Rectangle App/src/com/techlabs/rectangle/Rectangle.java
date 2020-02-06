@@ -43,11 +43,11 @@ public class Rectangle {
 	public void setColor(String color) {
 		this.color = color;
 		if (length >= 50) {
-			this.color = color.equalsIgnoreCase("red") ? "red"
-					: color.equalsIgnoreCase("yellow") ? "yellow" : color.equalsIgnoreCase("blue") ? "blue" : "black";
+			this.color = color.equalsIgnoreCase("red") ? this.color
+					: color.equalsIgnoreCase("yellow") ? this.color : color.equalsIgnoreCase("blue") ? this.color : "black";
 		} else {
-			this.color = color.equalsIgnoreCase("red") ? "red"
-					: color.equalsIgnoreCase("yellow") ? "yellow" : color.equalsIgnoreCase("blue") ? "blue" : "red";
+			this.color = color.equalsIgnoreCase("red") ? this.color
+					: color.equalsIgnoreCase("yellow") ? this.color : color.equalsIgnoreCase("blue") ? this.color : "red";
 		}
 	}
 
