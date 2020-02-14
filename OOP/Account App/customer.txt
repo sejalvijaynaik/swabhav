@@ -1,0 +1,64 @@
+The balance in the account1 after depositing is :2000.0
+------Account details------
+Account Number :1
+Account Name :null
+Balance :2000.0
+The balance in the account1 after withdrawing is :1400.0
+------Account details------
+Account Number :1
+Account Name :null
+Balance :1400.0
+The balance in the account2 after depositing is :1000.0
+------Account details------
+Account Number :2
+Account Name :null
+Balance :1000.0
+The balance in the account2 after withdrawing is :999.0
+------Account details------
+Account Number :2
+Account Name :null
+Balance :999.0
+------Account details------
+Account Number :3
+Account Name :null
+Balance :1400.0
+------Account details------
+Account Number :3
+Account Name :null
+Balance :999.0
+------Account details------
+Account Number :3
+Account Name :null
+Balance :1000.0
+The balance in the account1 after depositing is :2000.0
+------Account details------
+Account Number :1
+Account Name :null
+Balance :2000.0
+The balance in the account1 after withdrawing is :1400.0
+------Account details------
+Account Number :1
+Account Name :null
+Balance :1400.0
+The balance in the account2 after depositing is :1000.0
+------Account details------
+Account Number :2
+Account Name :null
+Balance :1000.0
+The balance in the account2 after withdrawing is :999.0
+------Account details------
+Account Number :2
+Account Name :null
+Balance :999.0
+------Account details------
+Account Number :3
+Account Name :null
+Balance :1400.0
+------Account details------
+Account Number :3
+Account Name :null
+Balance :999.0
+------Account details------
+Account Number :3
+Account Name :null
+Balance :1000.0

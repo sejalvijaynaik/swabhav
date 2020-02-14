@@ -7,7 +7,7 @@ public class RectangleTest {
 		
 		Rectangle small = new Rectangle();
 		
-		small.setLength(10);
+		small.setLength(0);
 		small.setBreadth(30);
 	 // small.setLength(-20);
 	//	small.setBreadth(102);
