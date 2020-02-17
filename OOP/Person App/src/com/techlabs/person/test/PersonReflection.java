@@ -20,9 +20,14 @@ public class PersonReflection {
 
 	public static void constructorInfo(Class class1) {
 
-		Constructor[] allConstructor = class1.getDeclaredConstructors();
-		for (int i = 0; i < allConstructor.length; i++) {
-			System.out.println("The constructor is :" + allConstructor);
+		Constructor[] allConstructors = class1.getDeclaredConstructors();
+		for (int i = 0; i < allConstructors.length; i++) {
+			System.out.println("The constructor is :" + allConstructors[i].getName());
+			Parameter parameter[] = allConstructors[i].getParameters();
+			for(int j=0; j<parameter.length; j++) {
+				System.out.println("Parameter type :" + parameter[j].getType());
+				System.out.println("Parameter name :" + parameter[j].getName());
+			}
 		}
 	}
 
