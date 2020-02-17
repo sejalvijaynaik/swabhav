@@ -1,12 +1,12 @@
 package com.techlabs.currentaccount;
 
-import com.techlabs.account.Account;
+import com.techlabs.account.AccountAbstarct;
 
-public class CurrentAccount extends Account {
+public class CurrentAccountAbstract extends AccountAbstarct {
 	
 	private static final double MINIMUM_BALANCE = -5000.0;
 
-	public CurrentAccount(int accNo, String accName, double balance) {
+	public CurrentAccountAbstract(int accNo, String accName, double balance) {
 		super(accNo, accName, balance);
 	}
 	

@@ -1,14 +1,14 @@
 package com.teclabs.account.test;
 
-import com.techlabs.account.Account;
-import com.techlabs.currentaccount.CurrentAccount;
-import com.techlabs.savingsaccount.SavingAccount;
+import com.techlabs.account.AccountAbstarct;
+import com.techlabs.currentaccount.CurrentAccountAbstract;
+import com.techlabs.savingsaccount.SavingAccountAbstract;
 
-public class AccountTest {
+public class AccountAbstractTest {
 	public static void main(String[] args) {
 
-		Account savingAccount = new SavingAccount(001, "savings", 500.0);
-		Account currentAccount = new CurrentAccount(002, "current", 500.0);
+		AccountAbstarct savingAccount = new SavingAccountAbstract(001, "savings", 500.0);
+		AccountAbstarct currentAccount = new CurrentAccountAbstract(002, "current", 500.0);
 		
 		printInfo(savingAccount);
 		printInfo(currentAccount);
@@ -27,7 +27,7 @@ public class AccountTest {
 		
 	}
 
-	public static void printInfo(Account account) {
+	public static void printInfo(AccountAbstarct account) {
 		
 		System.out.println("\n----Account Info----");
 		System.out.println("Account number :" + account.getAccNo());

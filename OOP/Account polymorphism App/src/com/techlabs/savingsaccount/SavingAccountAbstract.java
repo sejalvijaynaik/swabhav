@@ -1,12 +1,13 @@
 package com.techlabs.savingsaccount;
 
-import com.techlabs.account.Account;
+import com.techlabs.account.AccountAbstarct;
 
-public class SavingAccount extends Account {
+public class SavingAccountAbstract extends AccountAbstarct {
+	
 	
 	private static final double MINIMUM_BALANCE = 500.0;
 
-	public SavingAccount(int accNo, String accName, double balance) {
+	public SavingAccountAbstract(int accNo, String accName, double balance) {
 		super(accNo, accName, balance);
 	}
 
