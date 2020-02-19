@@ -1,4 +1,4 @@
-package com.techlabs.guitar;
+package com.techlabs.instrumentspec;
 
 public enum Type {
 	ACOUSTIC,

@@ -1,54 +1,30 @@
 package com.techlabs.guitarspec;
 
-import com.techlabs.guitar.Builder;
-import com.techlabs.guitar.Type;
-import com.techlabs.guitar.Wood;
+import com.techlabs.instrumentspec.Builder;
+import com.techlabs.instrumentspec.InstrumentSpec;
+import com.techlabs.instrumentspec.Type;
+import com.techlabs.instrumentspec.Wood;
 
-public class GuitarSpec {
-	private Builder builder;
-	private String model;
-	private Type type;
-	private Wood backWood;
-	private Wood topWood;
+public class GuitarSpec extends InstrumentSpec {
 	private int numStrings;
 	
 	public GuitarSpec(Builder builder, String model, Type type, Wood backWood, Wood topWood, int numStrings) {
-		super();
-		this.builder = builder;
-		this.model = model;
-		this.type = type;
-		this.backWood = backWood;
-		this.topWood = topWood;
+		super(builder, model, type, backWood, topWood);
 		this.numStrings = numStrings;
 	}
-	public Builder getBuilder() {
-		return builder;
-	}
-	public String getModel() {
-		return model;
-	}
-	public Type getType() {
-		return type;
-	}
-	public Wood getBackWood() {
-		return backWood;
-	}
-	public Wood getTopWood() {
-		return topWood;
-	}
-	public int numStrings() {
+	
+	public int getNumStrings() {
 		return numStrings;
 	}
-	public boolean matches(GuitarSpec otherSpec) {
-		if (builder != otherSpec.builder)
+
+	@Override
+	public boolean matches(InstrumentSpec otherSpec) {
+		if(!super.matches(otherSpec)) 
 			return false;
-		if (!(model.equalsIgnoreCase(otherSpec.model)))
-			return false;
-		if (type != otherSpec.type)
-			return false;
-		if (backWood != otherSpec.backWood)
-			return false;
-		if (topWood != otherSpec.topWood)
+		if(!(otherSpec instanceof GuitarSpec))
+				return false;
+		GuitarSpec guitarSpec =(GuitarSpec)otherSpec;
+		if(this.numStrings != guitarSpec.numStrings)
 			return false;
 		return true;
 	}
