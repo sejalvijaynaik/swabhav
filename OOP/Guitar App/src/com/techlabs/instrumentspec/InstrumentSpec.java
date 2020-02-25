@@ -1,52 +1,37 @@
- package com.techlabs.instrumentspec;
+package com.techlabs.instrumentspec;
 
-public abstract class InstrumentSpec {
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-	private Builder builder;
-	private String model;
-	private Type type;
-	private Wood backWood;
-	private Wood topWood;
+public class InstrumentSpec {
 
-	public InstrumentSpec(Builder builder, String model, Type type, Wood backWood, Wood topWood) {
-		this.builder = builder;
-		this.model = model;
-		this.type = type;
-		this.backWood = backWood;
-		this.topWood = topWood;
+	private Map properties;
+
+	public InstrumentSpec(Map properties) {
+		if (properties == null) {
+			this.properties = new HashMap();
+			return;
+		}
+		this.properties = new HashMap(properties);
 	}
 
-	public Builder getBuilder() {
-		return builder;
+	public Map getProperties() {
+		return properties;
 	}
-
-	public String getModel() {
-		return model;
-	}
-
-	public Type getType() {
-		return type;
-	}
-
-	public Wood getBackWood() {
-		return backWood;
-	}
-
-	public Wood getTopWood() {
-		return topWood;
+	
+	public Object getProperty(String propertyName) {
+		return properties.get(propertyName);
 	}
 
 	public boolean matches(InstrumentSpec otherSpec) {
-		if (builder != otherSpec.builder)
-			return false;
-		if (!(model.equalsIgnoreCase(otherSpec.model)))
-			return false;
-		if (type != otherSpec.type)
-			return false;
-		if (backWood != otherSpec.backWood)
-			return false;
-		if (topWood != otherSpec.topWood)
-			return false;
+		
+		for(Iterator i = otherSpec.getProperties().keySet().iterator(); i.hasNext();) {
+			String propertyName = (String)i.next();
+			if(!properties.get(propertyName).equals(otherSpec.getProperty(propertyName))) {
+				return false;
+			}
+		}
 		return true;
 	}
 }

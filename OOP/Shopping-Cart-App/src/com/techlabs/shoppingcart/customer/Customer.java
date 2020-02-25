@@ -14,7 +14,7 @@ public class Customer {
 		this.name = name;
 		this.orders = orders;
 		customerId = customerIdCount;
-		customerId++;
+		customerIdCount++;
 	}
 
 	public int getCustomerId() {

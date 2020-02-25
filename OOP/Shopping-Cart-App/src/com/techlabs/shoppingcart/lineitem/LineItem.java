@@ -4,17 +4,15 @@ import com.techlabs.shoppingcart.product.Product;
 
 public class LineItem {
 
-	private static int lineItemIdCount = 1;
 	private int lineItemId;
 	private int quantity = 0;
 	private double cartPrice = 0;
 	private Product product;
 
-	public LineItem(int quantity, Product product) {
+	public LineItem(int lineItemId, int quantity, Product product) {
 		this.product = product;
 		this.quantity = quantity;
-		lineItemId = lineItemIdCount;
-		lineItemIdCount++;
+		this.lineItemId = lineItemId;
 	}
 
 	public int getLineItemId() {

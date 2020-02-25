@@ -20,11 +20,11 @@ public class ShoppingCartTest {
 		String addSubtractOptionInString;
 		String quantityChangeInString;
 
-		LineItem lineItem1 = new LineItem(3, new Product(001, "Book", 120.0));
+		LineItem lineItem1 = new LineItem(1, 3, new Product(001, "Book", 120.0));
 		lineItem1.calculateCartPrice();
-		LineItem lineItem2 = new LineItem(2, new Product(002, "Shoes", 250.0));
+		LineItem lineItem2 = new LineItem(2, 2, new Product(002, "Shoes", 250.0));
 		lineItem2.calculateCartPrice();
-		LineItem lineItem3 = new LineItem(4, new Product(003, "Top", 300.0));
+		LineItem lineItem3 = new LineItem(3, 4, new Product(003, "Top", 300.0));
 		lineItem3.calculateCartPrice();
 
 		List<LineItem> lineItems1 = new ArrayList<LineItem>();
@@ -34,11 +34,11 @@ public class ShoppingCartTest {
 
 		Order order1 = new Order(lineItems1);
 
-		LineItem lineItem4 = new LineItem(2, new Product(004, "bag", 500.0));
+		LineItem lineItem4 = new LineItem(1, 2, new Product(004, "bag", 500.0));
 		lineItem4.calculateCartPrice();
-		LineItem lineItem5 = new LineItem(3, new Product(005, "pen", 5.0));
+		LineItem lineItem5 = new LineItem(2, 3, new Product(005, "pen", 5.0));
 		lineItem5.calculateCartPrice();
-		LineItem lineItem6 = new LineItem(3, new Product(006, "pant", 800.0));
+		LineItem lineItem6 = new LineItem(3, 3, new Product(006, "pant", 800.0));
 		lineItem6.calculateCartPrice();
 
 		List<LineItem> lineItems2 = new ArrayList<LineItem>();

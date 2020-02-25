@@ -2,15 +2,15 @@ package com.techlabs.instrument;
 
 import com.techlabs.instrumentspec.InstrumentSpec;
 
-public abstract class Instrument {
+public class Instrument {
 	private String serialNumber;
 	private double price;
-	private InstrumentSpec spec;
+	private InstrumentSpec instrumentSpec;
 
-	public Instrument(String serialNumber, double price, InstrumentSpec spec) {
+	public Instrument(String serialNumber, double price, InstrumentSpec instrumentSpec) {
 		this.serialNumber = serialNumber;
 		this.price = price;
-		this.spec = spec;
+		this.instrumentSpec = instrumentSpec;
 	}
 
 	public double getPrice() {
@@ -25,7 +25,7 @@ public abstract class Instrument {
 		return serialNumber;
 	}
 
-	public InstrumentSpec getSpec() {
-		return spec;
+	public InstrumentSpec getInstrumentSpec() {
+		return instrumentSpec;
 	}
 }
