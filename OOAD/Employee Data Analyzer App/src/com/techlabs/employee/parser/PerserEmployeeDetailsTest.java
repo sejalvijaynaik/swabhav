@@ -1,6 +1,10 @@
 package com.techlabs.employee.parser;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +19,7 @@ class PerserEmployeeDetailsTest {
 		ParserEmployeeDetails parserEmployeeDetails = new ParserEmployeeDetails(new LoadFromFile());
 		parserEmployeeDetails.parsingDetails();
 
-		Set<Employee> employees = parserEmployeeDetails.getEmployees();
+		List<Employee> employees = parserEmployeeDetails.getEmployees();
 
 		for (Employee tempEmployee : employees) {
 			System.out.print(tempEmployee.getEmployeeId() + " ");

@@ -1,9 +1,11 @@
 package com.techlabs.employee.parser;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import com.techlabs.employee.emplyeeclass.Employee;
 import com.techlabs.employee.loader.ILoadable;
@@ -11,12 +13,12 @@ import com.techlabs.employee.loader.ILoadable;
 public class ParserEmployeeDetails {
 
 	ILoadable iLoadable;
-	Set<Employee> employees;
+	List<Employee> employees;
 	List<String> lines;
 
 	public ParserEmployeeDetails(ILoadable iLoadable) {
 		this.iLoadable = iLoadable;
-		employees = new HashSet<Employee>();
+		employees = new ArrayList<Employee>();
 		lines = iLoadable.loadEmployeeDetails();
 	}
 
@@ -24,7 +26,7 @@ public class ParserEmployeeDetails {
 		return iLoadable;
 	}
 
-	public Set<Employee> getEmployees() {
+	public List<Employee> getEmployees() {
 		return employees;
 	}
 
@@ -45,6 +47,7 @@ public class ParserEmployeeDetails {
 			int departmentNumber = Integer.parseInt(splitString[7]);
 			Employee employee = new Employee(employeeId, employeeName, employeeDesignation, managerId, dateOfJoining,
 					salary, commission, departmentNumber);
+			
 			if(employees.contains(employee)) {
 				continue;
 			}

@@ -17,19 +17,19 @@ public class EmployeeOperations {
 
 	public void loadAndParseEmployees() {
 
+		ParserEmployeeDetails parserEmployeeDetails = new ParserEmployeeDetails(new LoadFromFile());
 		// ParserEmployeeDetails parserEmployeeDetails = new ParserEmployeeDetails(new
-		// LoadFromFile());
-		ParserEmployeeDetails parserEmployeeDetails = new ParserEmployeeDetails(new LoadFromUrl());
+		// LoadFromUrl());
 		parserEmployeeDetails.parsingDetails();
 
-		Set<Employee> employees = parserEmployeeDetails.getEmployees();
-		//diplayAllEmployeeDetails(employees);
-		//maxSalaryEmployee(employees);
-		employeeCountByDesignation(employees);
-		employeeCountByDepartment(employees);
+		List<Employee> employees = parserEmployeeDetails.getEmployees();
+		// diplayAllEmployeeDetails(employees);
+		// maxSalaryEmployee(employees);
+		//employeeCountByDesignation(employees);
+		 employeeCountByDepartment(employees);
 	}
 
-	public void diplayAllEmployeeDetails(Set<Employee> employees) {
+	public void diplayAllEmployeeDetails(List<Employee> employees) {
 
 		for (Iterator<Employee> i = employees.iterator(); i.hasNext();) {
 			displayEmployeeDetails(i.next());
@@ -50,64 +50,83 @@ public class EmployeeOperations {
 		System.out.println();
 	}
 
-	public void maxSalaryEmployee(Set<Employee> employees) {
+	public void maxSalaryEmployee(List<Employee> employees) {
 
 		double maxSalary = 0.0;
 		Employee employee = null;
 
-		for (Iterator<Employee> i = employees.iterator(); i.hasNext();) {
+		for (Employee tempEmployee : employees) {
 
-			if (i.next().getSalary() > maxSalary) {
-				maxSalary = i.next().getSalary();
-				employee = i.next();
+			if (tempEmployee.getSalary() > maxSalary) {
+				maxSalary = tempEmployee.getSalary();
+				employee = tempEmployee;
 			}
 		}
 		System.out.println("-----Employee with highest salary-----");
 		displayEmployeeDetails(employee);
 	}
 
-	public void employeeCountByDesignation(Set<Employee> employees) {
+	public void employeeCountByDesignation(List<Employee> employees) {
 
 		Map<String, Integer> designationCount = new HashMap<>();
+		Map<String, Double> maxSalaryCount = new HashMap<String, Double>();
 
 		for (Employee tempEmployee : employees) {
 			if (designationCount.containsKey(tempEmployee.getEmployeeDesignation())) {
 				designationCount.put(tempEmployee.getEmployeeDesignation(),
-						designationCount.get(tempEmployee.getEmployeeDesignation())+1);
-				
-			}
-			else {
+						designationCount.get(tempEmployee.getEmployeeDesignation()) + 1);
+				if (tempEmployee.getSalary() > maxSalaryCount.get(tempEmployee.getEmployeeDesignation())) {
+					maxSalaryCount.put(tempEmployee.getEmployeeDesignation(), tempEmployee.getSalary());
+				}
+
+			} else {
 				designationCount.put(tempEmployee.getEmployeeDesignation(), 1);
+				maxSalaryCount.put(tempEmployee.getEmployeeDesignation(), tempEmployee.getSalary());
 			}
 		}
-		
-		System.out.println("-----Employees Count by Designation-----");
-		
-		for(Map.Entry<String, Integer> entry : designationCount.entrySet()) {
-			System.out.println(entry.getKey() + " : " + entry.getValue());
+
+		System.out.println("-----Employees Count and highest salary by Designation-----");
+
+		for (Map.Entry<String, Integer> entry : designationCount.entrySet()) {
+			System.out.println(entry.getKey() + " Count : " + entry.getValue());
 		}
 		System.out.println();
+
+		for (Map.Entry<String, Double> entry : maxSalaryCount.entrySet()) {
+			System.out.println(entry.getKey() + " Highest salary : " + entry.getValue());
+		}
+
+		System.out.println();
 	}
-	
-	public void employeeCountByDepartment(Set<Employee> employees) {
-		
+
+	public void employeeCountByDepartment(List<Employee> employees) {
+
 		Map<Integer, Integer> departmentCount = new HashMap<>();
+		Map<Integer, Double> maxSalaryCount = new HashMap<>();
 
 		for (Employee tempEmployee : employees) {
 			if (departmentCount.containsKey(tempEmployee.getDepartmentNumber())) {
 				departmentCount.put(tempEmployee.getDepartmentNumber(),
-						departmentCount.get(tempEmployee.getDepartmentNumber())+1);
-				
-			}
-			else {
+						departmentCount.get(tempEmployee.getDepartmentNumber()) + 1);
+				if (tempEmployee.getSalary() > maxSalaryCount.get(tempEmployee.getDepartmentNumber())) {
+					maxSalaryCount.put(tempEmployee.getDepartmentNumber(), tempEmployee.getSalary());
+				}
+			} else {
 				departmentCount.put(tempEmployee.getDepartmentNumber(), 1);
+				maxSalaryCount.put(tempEmployee.getDepartmentNumber(), tempEmployee.getSalary());
+
 			}
 		}
-		
+
 		System.out.println("-----Employees Count by Department-----");
 
-		for(Map.Entry<Integer, Integer> entry : departmentCount.entrySet()) {
+		for (Map.Entry<Integer, Integer> entry : departmentCount.entrySet()) {
 			System.out.println(entry.getKey() + " : " + entry.getValue());
+		}
+		System.out.println();
+
+		for (Map.Entry<Integer, Double> entry : maxSalaryCount.entrySet()) {
+			System.out.println(entry.getKey() + " Highest salary : " + entry.getValue());
 		}
 		System.out.println();
 	}

@@ -55,4 +55,36 @@ public class Employee {
 		return departmentNumber;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		
+		Employee employee = (Employee)obj;
+		
+		if(this.employeeId != employee.employeeId) {
+			return false;
+		}
+		
+		if(!(this.employeeName.equalsIgnoreCase(employee.employeeName))) {
+			return false;
+		}
+		if(!(this.employeeDesignation.equalsIgnoreCase(employee.employeeDesignation))) {
+			return false;
+		}
+		if(!(this.managerId.equalsIgnoreCase(employee.managerId))) {
+			return false;
+		}
+		if(!(this.dateOfJoining.equalsIgnoreCase(employee.dateOfJoining))) {
+			return false;
+		}
+		if(this.salary != employee.salary) {
+			return false;
+		}
+		if(!(this.commission.equalsIgnoreCase(employee.commission))) {
+			return false;
+		}
+		if(this.departmentNumber != employee.departmentNumber) {
+			return false;
+		}
+		return true;
+	}
 }
