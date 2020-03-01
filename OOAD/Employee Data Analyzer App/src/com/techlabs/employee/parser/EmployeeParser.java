@@ -10,13 +10,13 @@ import java.util.TreeSet;
 import com.techlabs.employee.emplyeeclass.Employee;
 import com.techlabs.employee.loader.ILoadable;
 
-public class ParserEmployeeDetails {
+public class EmployeeParser implements IParseable {
 
 	ILoadable iLoadable;
 	List<Employee> employees;
 	List<String> lines;
 
-	public ParserEmployeeDetails(ILoadable iLoadable) {
+	public EmployeeParser(ILoadable iLoadable) {
 		this.iLoadable = iLoadable;
 		employees = new ArrayList<Employee>();
 		lines = iLoadable.loadEmployeeDetails();
@@ -26,10 +26,12 @@ public class ParserEmployeeDetails {
 		return iLoadable;
 	}
 
+	@Override
 	public List<Employee> getEmployees() {
 		return employees;
 	}
 
+	@Override
 	public void parsingDetails() {
 
 		String[] splitString = null;
@@ -47,8 +49,8 @@ public class ParserEmployeeDetails {
 			int departmentNumber = Integer.parseInt(splitString[7]);
 			Employee employee = new Employee(employeeId, employeeName, employeeDesignation, managerId, dateOfJoining,
 					salary, commission, departmentNumber);
-			
-			if(employees.contains(employee)) {
+
+			if (employees.contains(employee)) {
 				continue;
 			}
 			employees.add(employee);

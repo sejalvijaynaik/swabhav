@@ -16,7 +16,7 @@ class PerserEmployeeDetailsTest {
 	@Test
 	void test() {
 
-		ParserEmployeeDetails parserEmployeeDetails = new ParserEmployeeDetails(new LoadFromFile());
+		EmployeeParser parserEmployeeDetails = new EmployeeParser(new LoadFromFile());
 		parserEmployeeDetails.parsingDetails();
 
 		List<Employee> employees = parserEmployeeDetails.getEmployees();

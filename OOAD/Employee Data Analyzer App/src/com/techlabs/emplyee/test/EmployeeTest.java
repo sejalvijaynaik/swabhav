@@ -1,10 +1,10 @@
 package com.techlabs.emplyee.test;
 
-import com.techlabs.employee.display.EmployeeOperations;
+import com.techlabs.employee.display.EmployeeAnalyzer;
 
 public class EmployeeTest {
 	public static void main(String[] args) {
-		new EmployeeOperations().loadAndParseEmployees();
+		new EmployeeAnalyzer().AnalyzeEmployees();
 	}
 
 }
