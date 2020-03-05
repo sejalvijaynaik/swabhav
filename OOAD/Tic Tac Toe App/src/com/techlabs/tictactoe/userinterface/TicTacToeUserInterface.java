@@ -1,99 +1,99 @@
 package com.techlabs.tictactoe.userinterface;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-import com.techlabs.tictactoe.analyzer.TicTacToeAnalyzer;
-import com.techlabs.tictactoe.board.TicTacToeBoard;
+import com.techlabs.tictactoe.analyzer.ResultAnalyzer;
+import com.techlabs.tictactoe.board.Board;
+import com.techlabs.tictactoe.game.Game;
+import com.techlabs.tictactoe.gamestatus.GameStatus;
+import com.techlabs.tictactoe.mark.Mark;
+import com.techlabs.tictactoe.player.Player;
 
 public class TicTacToeUserInterface {
 
-	TicTacToeAnalyzer ticTacToeAnalyzer;
+	Game game;
 	Scanner input = new Scanner(System.in);
-	boolean cellTaken = false;
+	List<Player> players;
+	boolean addToken;
 
 	public TicTacToeUserInterface() {
-		ticTacToeAnalyzer = new TicTacToeAnalyzer(new TicTacToeBoard());
+
+		players = new ArrayList<Player>();
+		addToken = true;
 	}
 
-	public void UserPlay() {
+	public void playUI() {
 
-		System.out.println("Game starts");
-		display();
-		char xo = '*';
-		boolean boardFull;
+		System.out.println("Enter the size of the game");
+		int size = input.nextInt();
 
-		while (xo == '*') {
+		System.out.println("Enter player 1 id:");
+		int playerId = input.nextInt();
 
-			do {
-				if(cellTaken) {
-					System.out.println("Cell taken, enter some other row and column");
-				}
-				System.out.println("User 1 turn (X)");
-				xo = userInput('X');
-			} while (cellTaken);
-			
-			if (xo == 'X') {
-				System.out.println("User 1 wins!!!!!");
-				input.close();
-				return;
-			}
-			boardFull = ticTacToeAnalyzer.checkIfBoardFull();
-			if (boardFull) {
-				System.out.println("No one wins");
-				return;
-			}
+		System.out.println("Enter player 1 name :");
+		String playerName = input.next();
 
-			do {
-				if(cellTaken) {
-					System.out.println("Cell taken, enter some other row and column");
-				}
-				System.out.println("User 2 turn (O)");
-				xo = userInput('O');
-			} while (cellTaken);
+		Player player1 = new Player(playerId, playerName);
 
-			if (xo == 'O') {
-				System.out.println("User 2 wins!!!!!");
-				input.close();
-				return;
-			}
-			boardFull = ticTacToeAnalyzer.checkIfBoardFull();
-			if (boardFull) {
-				System.out.println("No one wins");
-				return;
-			}
-		}
-	}
+		System.out.println("Enter player 2 id:");
+		playerId = input.nextInt();
 
-	public char userInput(char userXO) {
-		char xo = '*';
-		int rowInput, columnInput;
-		String rowInputInString, columnInputInStirng;
+		System.out.println("Enter player 2 name :");
+		playerName = input.next();
 
-		System.out.println("Enter the row number");
-		rowInputInString = input.nextLine();
-		rowInput = Integer.parseInt(rowInputInString);
+		Player player2 = new Player(playerId, playerName);
 
-		System.out.println("Enter column number");
-		columnInputInStirng = input.nextLine();
-		columnInput = Integer.parseInt(columnInputInStirng);
+		players.add(player1);
+		players.add(player2);
 
-		cellTaken = ticTacToeAnalyzer.checkCellTaken(rowInput, columnInput);
-		if (cellTaken) {
-			return xo;
-		}
+		game = new Game(players, size);
 
-		ticTacToeAnalyzer.addXO(userXO, rowInput, columnInput);
-		xo = ticTacToeAnalyzer.checkStatus();
+		System.out.println("------------Game starts-------------");
 		display();
 
-		return xo;
+		while (game.getGameStatus() == GameStatus.INPROGRESS) {
+
+			for (int i = 0; i < 2; i++) {
+				do {
+					if (addToken == false) {
+						System.out.println("Cell taken, enter some other board number");
+						display();
+					}
+					System.out.println(
+							game.getPlayers().get(i).getName() + " play : " + game.getPlayers().get(i).getMark());
+					System.out.println("Enter the cell number to be marked");
+					int userCellNumberInput = input.nextInt();
+					
+					addToken = game.addXO(userCellNumberInput, game.getPlayers().get(i).getMark());
+					
+				} while (addToken == false);
+
+				display();
+				
+				if(game.getResultAnalyzer().checkStatus(game.getPlayers().get(i).getMark())) {
+					System.out.println(game.getPlayers().get(i).getName() + " WINS!!!");
+					game.setGameStatus(GameStatus.WIN);
+					input.close();
+					return;
+				}
+				
+				if (game.getBoard().checkIfBoardFull()) {
+					System.out.println("No one wins, its a draw");
+					game.setGameStatus(GameStatus.DRAW);
+					input.close();
+					return;
+				}
+			}
+		}
 	}
 
 	public void display() {
 
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
-				System.out.print(ticTacToeAnalyzer.getTicTacToeBoard().getBoardArray()[i][j] + " ");
+				System.out.print(game.getResultAnalyzer().getboard().getCells()[i][j].getMark() + " ");
 			}
 			System.out.println();
 		}

@@ -38,9 +38,21 @@ public class LineItem {
 	public void addQuantity(int addQuantity) {
 		this.quantity = this.quantity + addQuantity;
 	}
-	
+
 	public void subtractQuantity(int subtractQuantity) {
-		if(this.quantity - subtractQuantity >= 0)
-		this.quantity = this.quantity - subtractQuantity;
+		if (this.quantity - subtractQuantity >= 0)
+			this.quantity = this.quantity - subtractQuantity;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		LineItem lineItem = (LineItem)obj;
+		if(this.lineItemId != lineItem.lineItemId) {
+			return false;
+		}
+		if(!this.product.equals(lineItem.product)) {
+			return false;
+		}
+		return true;
 	}
 }
