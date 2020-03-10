@@ -16,7 +16,7 @@ public class ResultAnalyzer {
 	public Board getboard() {
 		return board;
 	}
-
+	
 	public void setMark(Mark mark) {
 		this.mark = mark;
 	}

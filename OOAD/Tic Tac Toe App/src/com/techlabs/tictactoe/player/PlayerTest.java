@@ -9,7 +9,7 @@ import com.techlabs.tictactoe.mark.Mark;
 class PlayerTest {
 
 	@Test
-	void test() {
+	void create_player_info() {
 
 		Player player1 = new Player(1, "lolo");
 		player1.setMark(Mark.X);
