@@ -1,26 +1,20 @@
-package com.techlabs.tictactoe.cell;
+package com.techlabs.tictactoe.tests;
 
 import org.junit.jupiter.api.Test;
 
+import com.techlabs.tictactoe.cell.Cell;
 import com.techlabs.tictactoe.mark.Mark;
 
 class CellTest {
 
 	int size = 3;
-	Cell cell = new Cell(0, 0);
+	Cell cell = new Cell();
 
 	@Test
 	void check_if_initially_blank() {
 		
 		System.out.println("initial marking:");
 		display_cells();
-	}
-
-	@Test
-	void chech_rows_and_column_numbers() {
-
-		System.out.println("Row number :" + cell.getRowNumber());
-		System.out.println("Column number :" + cell.getColumnNumber());
 	}
 
 	@Test

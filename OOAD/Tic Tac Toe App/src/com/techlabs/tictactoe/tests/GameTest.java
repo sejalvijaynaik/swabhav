@@ -1,4 +1,4 @@
-package com.techlabs.tictactoe.game;
+package com.techlabs.tictactoe.tests;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.techlabs.tictactoe.analyzer.ResultAnalyzerVariable;
+import com.techlabs.tictactoe.board.BoardVariable;
+import com.techlabs.tictactoe.game.GameVariable;
 import com.techlabs.tictactoe.gamestatus.GameStatus;
 import com.techlabs.tictactoe.mark.Mark;
 import com.techlabs.tictactoe.player.Player;
@@ -19,15 +22,24 @@ class GameTest {
 	
 	List<Player> players = new ArrayList<Player>();
 	
-	Game game;
+	GameVariable game;
 
 	@BeforeEach
 	void create_game_instance() {
 		
 		players.add(player1);
 		players.add(player2);
+		int size = 3;
+		BoardVariable board = new BoardVariable(size);
+		ResultAnalyzerVariable resultAnalyzer = new ResultAnalyzerVariable(board);
 		
-		game = new Game(players, size);
+		game = new GameVariable(players, board, resultAnalyzer);
+	}
+	
+	@Test
+	void check_initial_board() {
+		
+		System.out.println("Initial board :");
 	}
 	
 	@Test
@@ -77,7 +89,7 @@ class GameTest {
 	void display() {
 		for(int i = 0; i < game.getBoard().getSize(); i++) {
 			for(int j = 0; j < game.getBoard().getSize(); j++) {
-				System.out.print(game.getBoard().getCells()[i][j].getMark());
+				System.out.print(game.getBoard().getCells2DArray()[i][j].getMark());
 			}
 			System.out.println();
 		}

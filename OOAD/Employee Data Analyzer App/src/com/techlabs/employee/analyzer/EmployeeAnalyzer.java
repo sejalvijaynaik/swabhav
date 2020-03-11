@@ -1,4 +1,4 @@
-package com.techlabs.employee.display;
+package com.techlabs.employee.analyzer;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -15,40 +15,18 @@ import com.techlabs.employee.parser.EmployeeParser;
 
 public class EmployeeAnalyzer {
 
-	ILoadable iLoadable = new LoadFromFile();
-	// ILoadable iLoadable = new LoadFromUrl();
-	IParseable iParseable = new EmployeeParser(iLoadable);
-
-	public void AnalyzeEmployees() {
-
-		iParseable.parsingDetails();
-
-		List<Employee> employees = iParseable.getEmployees();
-		// diplayAllEmployeeDetails(employees);
-		// maxSalaryEmployee(employees);
-		employeeCountByDesignation(employees);
-		// employeeCountByDepartment(employees);
+	IParseable iParseable;
+	List<Employee> employees;
+	
+	public EmployeeAnalyzer(IParseable iParseable) {
+		this.iParseable = iParseable;
+		this.iParseable.parsingDetails();
+		employees = iParseable.getEmployees();
 	}
-
-	public void diplayAllEmployeeDetails(List<Employee> employees) {
-
-		for (Iterator<Employee> i = employees.iterator(); i.hasNext();) {
-			displayEmployeeDetails(i.next());
-		}
-	}
-
-	public void displayEmployeeDetails(Employee employee) {
-
-		System.out.println("-----Employee Details-----");
-		System.out.println("Employee Id :" + employee.getEmployeeId());
-		System.out.println("Employee Name :" + employee.getEmployeeName());
-		System.out.println("Employee designation :" + employee.getEmployeeDesignation());
-		System.out.println("Manager Id :" + employee.getManagerId());
-		System.out.println("Date of Joining :" + employee.getDateOfJoining());
-		System.out.println("Salary : " + employee.getSalary());
-		System.out.println("Commission :" + employee.getCommission());
-		System.out.println("Department Number :" + employee.getDepartmentNumber());
-		System.out.println();
+	
+	public List<Employee> getAllEmployees() {
+		
+		return employees;
 	}
 
 	public void maxSalaryEmployee(List<Employee> employees) {
@@ -64,10 +42,43 @@ public class EmployeeAnalyzer {
 			}
 		}
 		System.out.println("-----Employee with highest salary-----");
-		displayEmployeeDetails(employee);
+	}
+	
+	public Map<Integer, Integer> employeeCountByDepartment() {
+		
+		Map<Integer, Integer> departmentCount = new HashMap<Integer, Integer>();
+		
+		for (Employee tempEmployee : employees) {
+
+			if (departmentCount.containsKey(tempEmployee.getDepartmentNumber())) {
+				departmentCount.put(tempEmployee.getDepartmentNumber(),
+						departmentCount.get(tempEmployee.getDepartmentNumber()) + 1);
+
+			} else {
+				departmentCount.put(tempEmployee.getDepartmentNumber(), 1);
+			}
+		}
+		return departmentCount;
+	}
+	
+	public Map<String, Integer> employeeCountByDesignation() {
+		
+		Map<String, Integer> designationCount = new HashMap<String, Integer>();
+		
+		for (Employee tempEmployee : employees) {
+
+			if (designationCount.containsKey(tempEmployee.getEmployeeDesignation())) {
+				designationCount.put(tempEmployee.getEmployeeDesignation(),
+						designationCount.get(tempEmployee.getEmployeeDesignation()) + 1);
+
+			} else {
+				designationCount.put(tempEmployee.getEmployeeDesignation(), 1);
+			}
+		}
+		return designationCount;
 	}
 
-	public void employeeCountByDesignation(List<Employee> employees) {
+	public void employeeCountByDesignationByDepartment(List<Employee> employees) {
 
 		Map<Integer, Integer> departmentCount = new HashMap<Integer, Integer>();
 		for (Employee tempEmployee : employees) {

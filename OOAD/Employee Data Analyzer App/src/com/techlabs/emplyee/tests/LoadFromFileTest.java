@@ -1,4 +1,4 @@
-package com.techlabs.employee.loader;
+package com.techlabs.emplyee.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 

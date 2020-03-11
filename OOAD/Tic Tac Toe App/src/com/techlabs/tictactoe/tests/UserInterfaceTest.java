@@ -1,4 +1,4 @@
-package com.techlabs.tictactoe.userinterface;
+package com.techlabs.tictactoe.tests;
 
 import org.junit.jupiter.api.Test;
 

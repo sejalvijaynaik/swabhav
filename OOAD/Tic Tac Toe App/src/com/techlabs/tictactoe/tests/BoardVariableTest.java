@@ -1,33 +1,20 @@
-package com.techlabs.tictactoe.board;
+package com.techlabs.tictactoe.tests;
 
 import org.junit.jupiter.api.Test;
 
+import com.techlabs.tictactoe.board.BoardVariable;
+import com.techlabs.tictactoe.board.IBoardable;
 import com.techlabs.tictactoe.mark.Mark;
 
-class BoardTest {
+class BoardVariableTest {
 
 	int size = 4;
-	Board board = new Board(size);
+	IBoardable iBoardable = new BoardVariable(size);
 
 	@Test
 	void check_size_of_board() {
 
-		System.out.println("Board size :" + board.getSize());
-	}
-
-	@Test
-	void check_row_and_column_numbers_of_all_cells() {
-
-		System.out.println("Row and column numbers");
-		for (int i = 0; i < size; i++) {
-			for (int j = 0; j < size; j++) {
-
-				System.out.print(
-						board.getCells()[i][j].getRowNumber() + "" + board.getCells()[i][j].getColumnNumber() + " ");
-			}
-			System.out.println();
-
-		}
+		System.out.println("Board size :" + iBoardable.getSize());
 	}
 
 	@Test
@@ -46,7 +33,7 @@ class BoardTest {
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
 
-				board.getCells()[i][j].setMark(Mark.X);
+				iBoardable.getCells2DArray()[i][j].setMark(Mark.X);
 			}
 		}
 		display_board();
@@ -59,27 +46,27 @@ class BoardTest {
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
 
-				board.getCells()[i][j].setMark(Mark.O);
+				iBoardable.getCells2DArray()[i][j].setMark(Mark.O);
 			}
 		}
 		display_board();
 		
 		System.out.println("Checking board is full");
-		if(board.checkIfBoardFull()) {
+		if(iBoardable.checkIfBoardFull()) {
 			System.out.println("board is full");
 		}
-		else if (board.checkIfBoardFull() == false) {
+		else if (iBoardable.checkIfBoardFull() == false) {
 			System.out.println("board is not full");
 		}
 		
 		System.out.println("marking one cell as blank");
-		board.getCells()[0][0].setMark(Mark.BLANK); 
+		iBoardable.getCells2DArray()[0][0].setMark(Mark.BLANK); 
 		
 		System.out.println("Checking borad is full");
-		if(board.checkIfBoardFull()) {
+		if(iBoardable.checkIfBoardFull()) {
 			System.out.println("board is full");
 		}
-		else if (board.checkIfBoardFull() == false) {
+		else if (iBoardable.checkIfBoardFull() == false) {
 			System.out.println("board is not full");
 		}
 		
@@ -91,7 +78,7 @@ class BoardTest {
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
 
-				System.out.print(board.getCells()[i][j].getMark() + " ");
+				System.out.print(iBoardable.getCells2DArray()[i][j].getMark() + " ");
 			}
 			System.out.println();
 		}

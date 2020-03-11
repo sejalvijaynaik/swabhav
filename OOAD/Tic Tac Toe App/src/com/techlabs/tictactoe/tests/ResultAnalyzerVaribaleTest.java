@@ -1,21 +1,23 @@
-package com.techlabs.tictactoe.analyzer;
+package com.techlabs.tictactoe.tests;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import com.techlabs.tictactoe.board.Board;
+
+import com.techlabs.tictactoe.analyzer.ResultAnalyzerVariable;
+import com.techlabs.tictactoe.board.BoardVariable;
 import com.techlabs.tictactoe.mark.Mark;
 
-class ResultAnalyzerTest {
+class ResultAnalyzerVaribaleTest {
 
 	int size = 3;
-	ResultAnalyzer resultAnalyzer = new ResultAnalyzer(new Board(size));
+	ResultAnalyzerVariable resultAnalyzer = new ResultAnalyzerVariable(new BoardVariable(size));
 
 	@Test
 	void check_row_match() {
 
-		resultAnalyzer.getboard().getCells()[0][0].setMark(Mark.X);
-		resultAnalyzer.getboard().getCells()[0][1].setMark(Mark.X);
-		resultAnalyzer.getboard().getCells()[2][2].setMark(Mark.X);
+		resultAnalyzer.getboard().getCells2DArray()[0][0].setMark(Mark.X);
+		resultAnalyzer.getboard().getCells2DArray()[0][1].setMark(Mark.X);
+		resultAnalyzer.getboard().getCells2DArray()[2][2].setMark(Mark.X);
 
 		resultAnalyzer.setMark(Mark.X);
 		if (resultAnalyzer.checkRowsMatch()) {
@@ -29,9 +31,9 @@ class ResultAnalyzerTest {
 	@Test
 	void check_column_match() {
 
-		resultAnalyzer.getboard().getCells()[0][2].setMark(Mark.X);
-		resultAnalyzer.getboard().getCells()[1][2].setMark(Mark.X);
-		resultAnalyzer.getboard().getCells()[2][2].setMark(Mark.X);
+		resultAnalyzer.getboard().getCells2DArray()[0][2].setMark(Mark.X);
+		resultAnalyzer.getboard().getCells2DArray()[1][2].setMark(Mark.X);
+		resultAnalyzer.getboard().getCells2DArray()[2][2].setMark(Mark.X);
 
 		resultAnalyzer.setMark(Mark.X);
 		if (resultAnalyzer.checkColumnsMatch()) {
@@ -45,9 +47,9 @@ class ResultAnalyzerTest {
 	@Test
 	void check_diagonal_match() {
 
-		resultAnalyzer.getboard().getCells()[0][0].setMark(Mark.X);
-		resultAnalyzer.getboard().getCells()[1][1].setMark(Mark.X);
-		resultAnalyzer.getboard().getCells()[2][2].setMark(Mark.X);
+		resultAnalyzer.getboard().getCells2DArray()[0][0].setMark(Mark.X);
+		resultAnalyzer.getboard().getCells2DArray()[1][1].setMark(Mark.X);
+		resultAnalyzer.getboard().getCells2DArray()[2][2].setMark(Mark.X);
 
 		resultAnalyzer.setMark(Mark.X);
 		if (resultAnalyzer.checkDiagonalMatch()) {
@@ -61,9 +63,9 @@ class ResultAnalyzerTest {
 	@Test
 	void check_reverse_diagonal_match() {
 
-		resultAnalyzer.getboard().getCells()[0][2].setMark(Mark.X);
-		resultAnalyzer.getboard().getCells()[1][1].setMark(Mark.X);
-		resultAnalyzer.getboard().getCells()[2][0].setMark(Mark.X);
+		resultAnalyzer.getboard().getCells2DArray()[0][2].setMark(Mark.X);
+		resultAnalyzer.getboard().getCells2DArray()[1][1].setMark(Mark.X);
+		resultAnalyzer.getboard().getCells2DArray()[2][0].setMark(Mark.X);
 
 		resultAnalyzer.setMark(Mark.X);
 		if (resultAnalyzer.checkReverseDiagonalMatch()) {
@@ -80,7 +82,7 @@ class ResultAnalyzerTest {
 		for (int i = 0; i < resultAnalyzer.getboard().getSize(); i++) {
 			for (int j = 0; j < resultAnalyzer.getboard().getSize(); j++) {
 
-				System.out.print(resultAnalyzer.getboard().getCells()[i][j].getMark() + " ");
+				System.out.print(resultAnalyzer.getboard().getCells2DArray()[i][j].getMark() + " ");
 			}
 			System.out.println();
 		}
