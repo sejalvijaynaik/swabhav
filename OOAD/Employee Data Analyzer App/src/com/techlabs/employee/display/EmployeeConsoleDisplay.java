@@ -8,6 +8,7 @@ import com.techlabs.employee.analyzer.EmployeeAnalyzer;
 import com.techlabs.employee.emplyeeclass.Employee;
 import com.techlabs.employee.loader.ILoadable;
 import com.techlabs.employee.loader.LoadFromFile;
+import com.techlabs.employee.loader.LoadFromUrl;
 import com.techlabs.employee.parser.EmployeeParser;
 import com.techlabs.employee.parser.IParseable;
 

@@ -3,12 +3,15 @@ package com.techlabs.tictactoe.game;
 import java.util.List;
 
 import com.techlabs.tictactoe.analyzer.IResultAnalyzable;
+import com.techlabs.tictactoe.analyzer.ResultAnalyzerVariable;
+import com.techlabs.tictactoe.board.BoardVariable;
 import com.techlabs.tictactoe.board.IBoardable;
 import com.techlabs.tictactoe.gamestatus.GameStatus;
 import com.techlabs.tictactoe.mark.Mark;
 import com.techlabs.tictactoe.player.Player;
 
-public class GameFixed3 implements IGameable {
+public class GameVariable implements IGameable{
+
 	private List<Player> players;
 	private IBoardable iBoardable;
 	private IResultAnalyzable iResultAnalyzable;
@@ -17,20 +20,19 @@ public class GameFixed3 implements IGameable {
 	Player currentPlayer;
 	Player nextPlayer;
 
-	public GameFixed3(List<Player> players, IBoardable iBoardable, IResultAnalyzable iResultAnalyzable) {
+	public boolean isAddToken() {
+		return addToken;
+	}
+
+	public GameVariable(List<Player> players, int size) {
 		this.players = players;
-		this.iBoardable = iBoardable;
-		this.iResultAnalyzable = iResultAnalyzable;
+		iBoardable = new BoardVariable(size);
+		iResultAnalyzable = new ResultAnalyzerVariable(iBoardable);
 		gameStatus = GameStatus.INPROGRESS;
 		this.players.get(0).setMark(Mark.X);
 		this.players.get(1).setMark(Mark.O);
 		currentPlayer = players.get(0);
 		nextPlayer = players.get(1);
-	}
-
-	@Override
-	public boolean isAddToken() {
-		return addToken;
 	}
 
 	@Override
@@ -62,10 +64,12 @@ public class GameFixed3 implements IGameable {
 	public void play(int boardNumber) {
 
 		Player tempPlayer;
+
 		addToken = addXO(boardNumber, currentPlayer.getMark());
 		if(addToken == false) {
 			return;
 		}
+
 		if (iResultAnalyzable.checkStatus(currentPlayer.getMark())) {
 			gameStatus = GameStatus.WIN;
 			return;
@@ -74,25 +78,26 @@ public class GameFixed3 implements IGameable {
 			gameStatus = GameStatus.DRAW;
 			return;
 		}
-
-		tempPlayer = currentPlayer;
+		tempPlayer =  currentPlayer;
 		currentPlayer = nextPlayer;
 		nextPlayer = tempPlayer;
-
 	}
 
 	@Override
 	public boolean addXO(int boardNumber, Mark mark) {
+
 		int cellCounter = 0;
 
 		for (int i = 0; i < iBoardable.getSize(); i++) {
-			cellCounter++;
-			if (cellCounter == boardNumber) {
-				if (iBoardable.getCells1DArray()[i].checkCellTaken()) {
-					return false;
+			for (int j = 0; j < iBoardable.getSize(); j++) {
+				cellCounter++;
+				if (cellCounter == boardNumber) {
+					if (iBoardable.getCells2DArray()[i][j].checkCellTaken()) {
+						return false;
+					}
+					iBoardable.getCells2DArray()[i][j].setMark(mark);
+					return true;
 				}
-				iBoardable.getCells1DArray()[i].setMark(mark);
-				return true;
 			}
 		}
 		return false;

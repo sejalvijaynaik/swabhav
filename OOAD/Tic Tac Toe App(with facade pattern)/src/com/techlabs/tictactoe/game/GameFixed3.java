@@ -3,6 +3,8 @@ package com.techlabs.tictactoe.game;
 import java.util.List;
 
 import com.techlabs.tictactoe.analyzer.IResultAnalyzable;
+import com.techlabs.tictactoe.analyzer.ResultAnalyzerFixed3;
+import com.techlabs.tictactoe.board.BoardFixed3;
 import com.techlabs.tictactoe.board.IBoardable;
 import com.techlabs.tictactoe.gamestatus.GameStatus;
 import com.techlabs.tictactoe.mark.Mark;
@@ -17,10 +19,10 @@ public class GameFixed3 implements IGameable {
 	Player currentPlayer;
 	Player nextPlayer;
 
-	public GameFixed3(List<Player> players, IBoardable iBoardable, IResultAnalyzable iResultAnalyzable) {
+	public GameFixed3(List<Player> players) {
 		this.players = players;
-		this.iBoardable = iBoardable;
-		this.iResultAnalyzable = iResultAnalyzable;
+		iBoardable = new BoardFixed3();
+		iResultAnalyzable = new ResultAnalyzerFixed3(iBoardable);
 		gameStatus = GameStatus.INPROGRESS;
 		this.players.get(0).setMark(Mark.X);
 		this.players.get(1).setMark(Mark.O);
@@ -63,9 +65,10 @@ public class GameFixed3 implements IGameable {
 
 		Player tempPlayer;
 		addToken = addXO(boardNumber, currentPlayer.getMark());
-		if(addToken == false) {
+		if (addToken == false) {
 			return;
 		}
+
 		if (iResultAnalyzable.checkStatus(currentPlayer.getMark())) {
 			gameStatus = GameStatus.WIN;
 			return;

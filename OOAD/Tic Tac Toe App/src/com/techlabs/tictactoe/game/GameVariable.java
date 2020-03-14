@@ -63,7 +63,9 @@ public class GameVariable implements IGameable{
 
 		Player tempPlayer;
 		addToken = addXO(boardNumber, currentPlayer.getMark());
-
+		if(addToken == false) {
+			return;
+		}
 		if (iResultAnalyzable.checkStatus(currentPlayer.getMark())) {
 			gameStatus = GameStatus.WIN;
 			return;

@@ -1,4 +1,4 @@
-package com.techlabs.tictactoe.userinterface;
+package com.techlabs.tictactoe.consoleinterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,14 +17,14 @@ import com.techlabs.tictactoe.gamestatus.GameStatus;
 import com.techlabs.tictactoe.mark.Mark;
 import com.techlabs.tictactoe.player.Player;
 
-public class TicTacToeUserInterface {
+public class TicTacToeConsoleInterface {
 
 	IGameable iGameable;
 	Scanner input = new Scanner(System.in);
 	List<Player> players;
 	boolean addToken;
 
-	public TicTacToeUserInterface() {
+	public TicTacToeConsoleInterface() {
 
 		players = new ArrayList<Player>();
 	}
@@ -34,34 +34,24 @@ public class TicTacToeUserInterface {
 		System.out.println("Enter the size of the game");
 		int size = input.nextInt();
 		
-		System.out.println("Enter player 1 id:");
-		int playerId = input.nextInt();
-
 		System.out.println("Enter player 1 name :");
 		String playerName = input.next();
 
-		Player player1 = new Player(playerId, playerName);
-
-		System.out.println("Enter player 2 id:");
-		playerId = input.nextInt();
+		Player player1 = new Player(playerName);
 
 		System.out.println("Enter player 2 name :");
 		playerName = input.next();
 
-		Player player2 = new Player(playerId, playerName);
+		Player player2 = new Player(playerName);
 
 		players.add(player1);
 		players.add(player2);
 		
 		if(size == 3) {
-			IBoardable iBoardable = new BoardFixed3();
-			IResultAnalyzable iResultAnalyzable = new ResultAnalyzerFixed3(iBoardable);
-			iGameable = new GameFixed3(players, iBoardable, iResultAnalyzable);
+			iGameable = new GameFixed3(players);
 		}
 		else {
-			IBoardable iBoardable = new BoardVariable(size);
-			IResultAnalyzable iResultAnalyzable = new ResultAnalyzerVariable(iBoardable);
-			iGameable = new GameVariable(players, iBoardable, iResultAnalyzable);
+			iGameable = new GameVariable(players, size);
 		}
 
 		System.out.println("------------Game starts-------------");
