@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>This is example</title>
+</head>
+
+<body>
+
+    <script>
+        /*function getData() {
+            return Math.random() * 10;
+        }
+        var r1 = getData();
+        console.log(r1);
+
+        function getDataAsync1(fn) {
+            var r = Math.random() * 100;
+            fn(r);
+        }
+        getDataAsync1(function (r) {
+            console.log("this", r);
+        });
+
+        function getDataAsync2(fn) {
+            setTimeout(function () {
+                var r = Math.random() * 100;
+                fn(r);
+            }, 0);
+        }
+        getDataAsync2(function (r) {
+            console.log(r);
+        })
+        console.log("End of Script");*/
+        ///////////////////////////////////////////////////////////////////////////////
+        function getData() {
+            return new Promise(function (resolve, reject) {
+                var r = Math.floor(Math.random() * 10);
+                if (r > 5) {
+                    resolve("Number is :" + r + " whose square is : " + r * r);
+                } else {
+                    reject("Number is " + r + " which is less than 5 ");
+                }
+            })
+        }
+        getData()
+            .then(function (result) {
+                console.log("In then: " + result);
+            })
+            .catch(function (e) {
+                console.log("In catch: " + e);
+            });
+        console.log("End of Script");
+    </script>  
+</body>
+
+</html>

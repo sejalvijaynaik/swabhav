@@ -1,0 +1,25 @@
+//console.log("" + 1 + 0);
+//console.log(typeof("" - 1 + 1));
+//console.log(Number(""));
+//console.log( true + false);
+//console.log(6 / "3");
+//console.log("2" * "3");
+//console.log(4 + 5 + "px");
+//console.log(Number("px"));
+//console.log("$" + 4 + 5);
+//console.log("4" - 2);
+//console.log("4px" - 2);
+//console.log(7 / 0);
+//console.log("  -9  " + 5);
+//console.log(Number(" -9 "));
+//console.log("  -9  " - 5);
+//console.log(null + 1);
+//console.log(Number(null));
+//console.log(undefined + 1);
+//console.log(Number(undefined));
+//console.log(" \t \n" - 2);
+//console.log(Number("\t"));
+//console.log(Number("\n"));
+
+var correctNumber = Math.floor(Math.random() * 50);
+console.log(correctNumber);

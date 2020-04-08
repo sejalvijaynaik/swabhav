@@ -16,13 +16,13 @@ public class AutomobileReflectionTest {
 		String className = (String) properties.get("factory");
 		
 		Class class1 = Class.forName(className);
-		
 		Object object = class1.newInstance();
 		
 		Method[] methods = class1.getMethods();
 		methods[0].invoke(object);
 		methods[1].invoke(object);
 		
+		
+		
 	}
-
 }
