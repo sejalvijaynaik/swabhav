@@ -1,33 +1,31 @@
-document.getElementById("startGameButton").addEventListener("click", startGame);
+$("#startGameButton").click(startGame);
 
 function startGame(){
-    var ballsArray = [];
+    var $ballsDiv = $("#balls");
+    $ballsDiv.empty();
+    var $ballsArray = [];
     var correctBall = Math.floor(Math.random() * 50);
     var attempts = 4;
     for(i = 0; i < 50; i++){
-        var ballSpan = document.createElement("SPAN");
-        ballSpan.className = "circle";
-        ballSpan.id = i;
-        ballsArray[i] = ballSpan;
-        document.getElementById("balls").appendChild(ballSpan);
-        ballSpan.addEventListener("click", ballColorChange);
+        $ballsDiv.append("<span id = " + i + " class = 'circle'></span>");
+        $ballsArray[i] = $("#" + i);
+        $("#" + i).click(ballColorChange);
     }
     
-    function ballColorChange(e){
+    function ballColorChange(){
         attempts = attempts - 1;
-        var targetBall = e.target;
-        if(targetBall.id == correctBall){
-            targetBall.style.background = "radial-gradient(circle at 30px 30px, powderblue, darkblue)";
+        if($(this).attr("id") == correctBall){
+            $(this).css("background", "radial-gradient(circle at 30px 30px, powderblue, darkblue)");
             endGame("Congratulations you won !!!!!");
         }
-        else if(targetBall.id > correctBall){
-            targetBall.style.background = "radial-gradient(circle at 30px 30px, palegreen, chartreuse)";
+        else if($(this).attr("id") > correctBall){
+            $(this).css("background", "radial-gradient(circle at 30px 30px, palegreen, chartreuse)");
         }
-        else if(targetBall.id < correctBall){
-            targetBall.style.background = "radial-gradient(circle at 30px 30px, lightsalmon, red)";
+        else if($(this).attr("id") < correctBall){
+            $(this).css("background", "radial-gradient(circle at 30px 30px, lightsalmon, red)");
         }
         if(attempts == 0){
-            ballsArray[correctBall].style.background = "radial-gradient(circle at 30px 30px, powderblue, darkblue)";
+            $ballsArray[correctBall].css("background", "radial-gradient(circle at 30px 30px, powderblue, darkblue)");
             endGame("You Lost !!!!!")
         }
     }

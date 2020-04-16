@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Binding</title>
+    <script src="../JQuery/jquery-3.4.1.js"></script>
+    
+       
+</head>
+<body>
+    
+    Your Text : <input id="textChange" type="text"><br><br>
+    Font - Size : <input id = "fontChange" type="number" min="1" max="50" value="15"><br><br>
+    BackGround - color : <input id="backgroundChange" type="text"><br><br>
+    ForeGround - color : <input id="foregroundChange" type="text">
+
+    <p id="display"><span></span></p>
+    
+    <script>
+        $(document).ready(function(){
+    
+            $("#textChange").on("input", function(){
+                $("#display span").text(($("#textChange").val()));
+            });
+
+            $("#fontChange").on("change", function(){
+                var fontSizeValue = $("#fontChange").val();
+                $("#display span").css("font-size", fontSizeValue + "px");
+            });
+
+            $("#backgroundChange").on("input", function(){
+                $("#display span").css("background-color", $("#backgroundChange").val());
+            });
+
+            $("#foregroundChange").on("input", function(){
+                $("#display span").css("color", $("#foregroundChange").val());
+            });
+
+        });
+
+       
+    
+	</script>
+</body>
+</html>

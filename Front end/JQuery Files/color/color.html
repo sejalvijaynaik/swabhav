@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Color</title>
+    <script src="../JQuery/jquery-3.4.1.js"></script>
+    <style>
+        h1{
+            font-size: 50px;
+        }
+    </style>
+    
+       
+</head>
+<body>
+    <select id="colors"></select>
+    <h1>Welcome</h1>
+
+    <script>
+        $('#colors').attr('options', "new Array()");
+        
+        options[$('#colors option').length] = new Option("RED", "#ff0000");
+        options[$('#colors option').length] = new Option("BLUE", "#0000ff");
+        alert($('#colors option').length);
+
+        $("#colors option").mouseover(function(){
+            alert("mdlwfm");
+        });
+
+	</script>
+</body>
+</html>

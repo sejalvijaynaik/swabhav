@@ -121,5 +121,6 @@ function CrossTask(e){
 function removeTaskFunction(e){
     var removeTaskButton = e.target;
     localStorage.removeItem(removeTaskButton.value);
+    localStorage.removeItem(removeTaskButton.value + "date");
     window.open("tasklist.html", "_self");
 }
