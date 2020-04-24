@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Json practice</title>
+    <script src="../JQuery/jquery-3.4.1.js"></script>
+    
+       
+</head>
+<body>
+    <p id="para"></p>
+
+    <script>
+
+        //var text = '[{"id": "96870b48-8375-42b0-9f53-514515f8b422","rollNo": 2,"name": "Sejal","age": 26,"email": "shikha@ymail.com","date": "dhddjdj","isMale": false}]';
+        var jsonObj = [
+    {
+        "id": "96870b48-8375-42b0-9f53-514515f8b422",
+        "rollNo": 2,
+        "name": "Sejal",
+        "age": 26,
+        "email": "shikha@ymail.com",
+        "date": "dhddjdj",
+        "isMale": false
+    }
+   ];
+        var text = JSON.stringify(jsonObj);
+        textActual = text.substring(1, text.length-1);
+        
+        var obj = JSON.parse(textActual);
+        $("#para").text(obj.age);
+        
+
+	</script>
+</body>
+</html>

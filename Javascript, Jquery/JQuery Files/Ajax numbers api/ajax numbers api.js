@@ -22,9 +22,9 @@ function showLists(){
 
                 $("#numbersTable tbody tr:last").append("<td>" + localStorage[a] + "</td>");
 
-                   var timeAgo = DateCalculate(localStorage[a + 'date']);
+                   //var timeAgo = DateCalculate(localStorage[a + 'date']);
             
-                $("#numbersTable tbody tr:last").append("<td>" + timeAgo + "</td>");
+                $("#numbersTable tbody tr:last").append("<td>" + moment(localStorage[a + 'date']).fromNow() + "</td>");
 
                 $("#numbersTable tbody tr:last").append("<td><button id = 'removeButton'>REMOVE</button></td>");
             
@@ -62,7 +62,7 @@ function removeEntry(e){
     window.open("ajax numbers api.html", "_self");
 }
 
-function DateCalculate(oldDateInString){
+/*function DateCalculate(oldDateInString){
     var datePrint;
     var oldDate = Date.parse(oldDateInString);
     var miliSecondsPassed = (new Date() - oldDate);
@@ -95,4 +95,4 @@ function DateCalculate(oldDateInString){
     var yearsPassed = Math.floor(monthsPassed/12);
     datePrint = yearsPassed + " years passed";
     return datePrint;
-}
+}*/
