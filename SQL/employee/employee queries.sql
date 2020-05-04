@@ -38,6 +38,11 @@ select avg(sal) from emp;
 --4)display sum,avg,count of employees--
 select deptno, count(*) as count, avg(sal) as average, sum(sal) as sum from emp group by deptno;
 
+--find out diff between group by and order by
+--is it necessary to use having clause with group by
+--order by sorts the data in asc or desc order??
+--what is the diff between left join and right
+
 --5)display the deptwise , headcount
 
 select dept.deptno, count(empno) as 'head count' from dept
@@ -62,6 +67,10 @@ select dept.deptno, count(empno) as head_count from dept
 left join emp
 on dept.DEPTNO = emp.DEPTNO where dept.deptno in (10, 20) group by dept.deptno) a
 where head_count > 2 order by a.deptno desc;
+
+select dept.deptno, count(empno) as head_count from dept
+left join emp
+on dept.DEPTNO = emp.DEPTNO where dept.deptno in (10, 20)  group by dept.deptno having head_count > 2 order by head_count desc;
 
 --9)display ename,deptname
 
