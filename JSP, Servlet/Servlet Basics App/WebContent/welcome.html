@@ -4,15 +4,10 @@
 </head>
 <body>
 
-<form method='get' action = 'welcome.jsp'>
+<form method='get' action = 'WelcomeServlet'>
 Enter your name:<input type = 'text' name = 'myName'>
 <input type="submit" value="Submit" name="submitName"/>
 </form>
-
-<%if(request.getParameter("myName")!=null){
-	out.println("hello " + request.getParameter("myName"));
-}
-%>
 </body>
 
 </html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+AngularJS Same Scope Variable in Multiple Controllers
+</title>
+<script src="../Angular JS files/angular.js"></script>
+<script type="text/javascript">
+var app = angular.module('angularscopeapp', []);
+app.controller('exampleController', function ($scope) {
+$scope.textVal = " ";
+});
+app.controller('helloController', function ($scope) {
+$scope.textVal = " ";
+});
+</script>
+</head>
+<body ng-app="angularscopeapp">
+<h2>AngularJS Same Scope Variable in Multiple Controllers</h2>
+<div ng-controller="exampleController">
+<label>Please enter something to show : </label><input ng-model="textVal">
+<span ng-bind="textVal"></span>
+</div>
+<div ng-controller="helloController">
+<label>Please enter something to show : </label><input ng-model="textVal">
+<span ng-bind="textVal"></span>
+</div>
+</body>
+</html>

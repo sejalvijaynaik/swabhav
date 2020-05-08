@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <title>
+        One way binding
+    </title>
+    <script src="../Angular JS files/angular.js"></script>
+</head>
+<body>
+    
+    <div ng-app="oneWayBindingApp">
+        <section ng-controller='bindingController'>
+            <p>{{student.roll}}</p>
+            <p>{{student.name}}</p>
+            <p>{{student.cgpa}}</p>
+        
+            <input type = "text" ng-model = 'student.roll'><br>
+            <input type = "text" ng-model = 'student.name'><br>
+            <input type = "text" ng-model = 'student.cgpa'><br>
+
+            <p>{{student.roll}}</p>
+            <p>{{student.name}}</p>
+            <p>{{student.cgpa}}</p>
+        </section>
+    </div>
+</body>
+</html>
+<script>
+    angular.module('oneWayBindingApp', [])
+            .controller('bindingController',function ($scope) {
+                $scope.student = {
+                    roll : 10,
+                    name : 'sejal',
+                    cgpa : 7.5
+                };
+            });
+</script>

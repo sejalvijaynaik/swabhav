@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<script src="../Angular JS files/angular.js"></script>
+<body ng-app="myApp">
+
+<div ng-controller="myCtrl">
+  <p>Click the button to run a function:</p>
+  <button ng-click="myFunc()">OK</button>
+  <p>The button has been clicked {{count}} times.</p>
+</div>
+
+<script>
+var myApp = angular.module('myApp', [])
+myApp.controller('myCtrl', function($scope) {
+    $scope.count = 0;
+    $scope.myFunc = function() {
+      $scope.count++;
+    };
+  });
+</script>
+</body>
+</html>

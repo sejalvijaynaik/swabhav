@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>
+        Task List Angular
+     </title>
+     <link rel="stylesheet" type="text/css" href="Task List.css">
+    <script src="../Angular JS files/angular.js"></script>
+</head>
+    
+<body ng-app = "taskListApp">
+    <div ng-controller = "taskListController">
+        <input type = "text" ng-model = "inputTask">
+        <button ng-click = "taskAdd()">Submit</button>
+        <table class = "tableDecorate">
+            <tr>
+               <th>Done</th>
+                <th>Task</th>
+            </tr>
+            <tr ng-repeat = "task in taskArray">
+                <td><input type = "checkbox" ng-model = "task.done" ng-click = "taskDone(task.done)"></td>
+                <td ng->{{task}}</td>
+            </tr>
+        </table>
+    </div>
+ 
+<script src = "Task List.js">
+</script>
+</body>
+    
+</html>
+    
+
+    
+   
+
+

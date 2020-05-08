@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <title>
+        Two way binding
+    </title>
+    <script src="../Angular JS files/angular.js"></script>
+</head>
+<body>
+    
+    <div ng-app="twoWayBindingApp">
+        
+            <input type = "text" ng-model = "student.roll"><br>
+            <input type = "text" ng-model = "student.name"><br>
+            <input type = "text" ng-model = "student.cgpa"><br>
+
+            <p>{{student.roll}}</p>
+            <p>{{student.name}}</p>
+            <p>{{student.cgpa}}</p>
+    
+    </div>
+</body>
+</html>
+<script>
+    /*angular.module('twoWayBindingApp', [])
+            .controller('bindingController',function ($scope) {
+                
+            });*/
+</script>

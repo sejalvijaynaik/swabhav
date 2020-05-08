@@ -1,0 +1,16 @@
+<!DOCTYPE html>  
+<html>  
+<script src="../Angular JS files/angular.js"></script>  
+<body>  
+<div ng-app="myApp" ng-controller="myCtrl">  
+<input ng-value="myVar">  
+</div>  
+<script>  
+var app = angular.module('myApp', []);  
+app.controller('myCtrl', function($scope) {  
+    $scope.myVar = "Welcome to JavaTpoint.";  
+});  
+</script>  
+<p>JavaTpoint is the best tutorial website and a solution of all technology. </p>  
+</body>  
+</html>  

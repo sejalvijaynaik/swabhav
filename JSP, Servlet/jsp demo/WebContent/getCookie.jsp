@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Cookie set</title>
+<title>Cookie get</title>
 </head>
 
 <% 

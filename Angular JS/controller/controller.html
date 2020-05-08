@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title>
+        Modules
+    </title>
+    <script src="../Angular JS files/angular.js"></script>
+</head>
+<body>
+    
+    <div ng-app="modA">
+            <h1>{{company}}</h1>
+        <section ng-controller='controllerA'>
+            <h1>{{msg}}</h1>
+            <h1>{{company}}</h1>
+        </section>
+        <section ng-controller='controllerB'>
+            <h1>{{msg}}</h1>
+            <h1>{{company}}</h1>
+        </section>
+        <section ng-controller='controllerC'>
+            <h1>{{msg}}</h1>
+            <h1>{{company}}</h1>
+        </section>
+
+    </div>
+</body>
+</html>
+<script>
+    angular.module('modA', ['modB', 'modC'])
+            .controller('controllerA',function ($rootScope,$scope) {
+                console.log("Inside Controller A");
+                $scope.msg="Welcome"
+                $rootScope.company="swabhav techlabs"
+            });
+    angular.module('modB', [])
+            .controller('controllerB',function ($rootScope,$scope) {
+                console.log("Inside Controller B");
+                $scope.msg="Controller B says Hello"
+            });
+
+    angular.module('modC', [])
+            .controller('controllerC',function ($rootScope,$scope) {
+                console.log("Inside Controller C");
+                $scope.msg="Controller C says Hello"
+            });
+
+</script>

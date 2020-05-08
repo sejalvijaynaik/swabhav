@@ -47,9 +47,9 @@ public class DisplayTimeFrame {
 				
 				PrintTimeWorker worker = new PrintTimeWorker();
 				Thread t1 = new Thread(worker);
-				//
+				//async
 				t1.start();
-				
+				//sync
 				t1.run();
 			}
 		});

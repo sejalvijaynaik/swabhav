@@ -8,10 +8,9 @@ public class PrintTimeWorker implements Runnable {
 
 	@Override
 	public void run() {
-		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-		Date date = new Date();
-		
 		while(true) {
+			DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+			Date date = new Date();
 			System.out.println(dateFormat.format(date));
 		}
 	}
