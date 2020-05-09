@@ -2,9 +2,7 @@ var app = angular.module("taskListApp", []);
 app.controller("taskListController", function($scope){
 
     $scope.taskArray = [];
-    /*$scope.textDecorate = {
-        "text-decoration" : "line-through"
-    };*/
+    
     $scope.taskAdd = function(){
         var task = {};
         task.taskDesc = $scope.inputTask;
@@ -14,8 +12,14 @@ app.controller("taskListController", function($scope){
         $scope.inputTask = '';
     };
     $scope.taskDone = function(item){
-        if(item == true){
-            
-        }
+       if(item.done == false){
+           item.done = true;
+       }
+       else if(item.done == true){
+           item.done = false;
+        }  
+    };
+    $scope.taskRemove = function(item){
+        $scope.taskArray.splice(item, 1);
     };
 });

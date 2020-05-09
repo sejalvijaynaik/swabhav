@@ -5,6 +5,11 @@
      </title>
      <link rel="stylesheet" type="text/css" href="Task List.css">
     <script src="../Angular JS files/angular.js"></script>
+    <style>
+        .line{
+            text-decoration: line-through;
+        }
+    </style>
 </head>
     
 <body ng-app = "taskListApp">
@@ -15,10 +20,12 @@
             <tr>
                <th>Done</th>
                 <th>Task</th>
+                <th>Remove</th>
             </tr>
             <tr ng-repeat = "task in taskArray">
-                <td><input type = "checkbox" ng-model = "task.done" ng-click = "taskDone(task.done)"></td>
-                <td ng->{{task}}</td>
+                <td><input type = "checkbox" ng-click = "taskDone(task)"></td>
+                <td ng-class = "{ 'line' : task.done === true }">{{task}}</td>
+                <td><button ng-click = "taskRemove($index)">Remove</button></td>
             </tr>
         </table>
     </div>

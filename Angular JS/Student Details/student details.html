@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <title>
+        Student Details
+    </title>
+    <link rel="stylesheet" type="text/css" href="stident.css">
+    <script src="../Angular JS files/angular.js"></script>
+</head>
+<body>
+    
+    <div ng-app="StudentDetailsApp">
+        <section ng-controller='studentDetailsController'>
+           <button ng-click = "load()">Load</button>
+           <button ng-click = "loadMany()">Load Many</button>
+           <table class = "tableDecorate">
+            <tr>
+               <th>id</th>
+                <th>name</th>
+                <th>Image</th>
+            </tr>
+            <tr>
+                <td>{{student.id}}</td>
+                <td>{{student.name}}</td>
+                <td><img ng-src="{{student.img}}"></img></td>
+            </tr>
+        </table>
+        <table class = "tableDecorate">
+            <tr>
+               <th>id</th>
+                <th>name</th>
+                <td>Image</td>
+            </tr>
+            <tr ng-repeat = "student in studentList">
+                <td>{{student.id}}</td>
+                <td>{{student.name}}</td>
+                <td><img ng-src="{{student.img}}"></img></td>
+            </tr>
+        </table>
+        </section>
+    </div>
+
+<script>
+    var app = angular.module("StudentDetailsApp", []);
+    app.controller("studentDetailsController", function($scope, $timeout){
+        $scope.clicked = false;
+        $scope.load = function(){
+            $scope.clicked = true;
+            $scope.student = { id: "101", name: "abc", img : "student1.jpg"};
+        };
+        $scope.loadMany = function(){
+            $scope.studentList = [{ id: "101", name: "ss", img : "student1.jpg"},
+                    { id: "102", name: "sv", img : "student2.jpg"},
+                    { id: "103", name: "st", img : "student3.jpg"}];
+        };
+        $timeout(function(){
+            if($scope.clicked == false){
+                $scope.load();
+            }
+        }, 5000)
+    });
+</script>
+</body>
+</html>
