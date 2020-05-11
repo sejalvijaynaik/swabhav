@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <title>
+        Student API
+    </title>
+    <link rel="stylesheet" type="text/css" href="student api.css">
+    <script src="../Angular JS files/angular.js"></script>
+</head>
+<body>
+    
+    <div ng-app="studentApp">
+        <section ng-controller='studentController'>
+            <table class = "tableDecorate">
+                <tr>
+                   <th>Roll No</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Date</th>
+                    <th>IsMale</th>
+                    <th>Id</th>
+                </tr>
+                <tr ng-repeat = "student in students">
+                    <td>{{student.rollNo}}</td>
+                    <td>{{student.name}}</td>
+                    <td>{{student.age}}</td>
+                    <td>{{student.email}}</td>
+                    <td>{{student.date}}</td>
+                    <td>{{student.isMale|maleFemale:1}}</td>
+                    <td>{{student.id}}</td>
+                </tr>
+            </table>
+        </section>
+    </div>
+
+<script>
+    var app = angular.module("studentApp", []);
+    app.controller("studentController", function ($scope, $http) {
+        $http.get("http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/")
+        .then(function(response){
+            $scope.students = response.data;
+        });
+    });
+
+    app.filter("maleFemale", function(){
+        return function(value, limit){
+            if(value == true){
+                if (limit > 3){
+                    return "male";
+                }
+                return "male".substring(0,limit);
+            }
+            else if (value == false){
+                if(limit > 3){
+                    return "female";
+                }
+                return "female".substring(0,limit);
+            }
+        };
+    });
+</script>
+</body>
+</html>

@@ -20,7 +20,7 @@
                 <tr ng-repeat = "country in countries">
                     <td>{{country.name}}</td>
                     <td>{{country.capital}}</td>
-                    <td ng-model = "country.flag"></td>
+                    <td><img ng-src="{{country.flag}}" style="height: 5vh;width: 5vh;"></td>
                 </tr>
             </table>
         </section>
@@ -33,8 +33,6 @@
         .then(function(response){
             $scope.countries = response.data;
         });
-     
-        
     });
 </script>
 </body>
