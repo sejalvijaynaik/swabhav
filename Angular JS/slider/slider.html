@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <title>
+        Slider
+    </title>
+    <script src="../Angular JS files/angular.js"></script>
+</head>
+<body>
+    
+    <div ng-app="sliderApp">
+        <section ng-controller='sliderController'>
+           <input type="range" name="slider" min = "1" max = "50" ng-model = "sliderValue" ng-change = "buttonCreate()">
+           <p>{{sliderValue}}</p>
+           <p id = "buttons"></p>
+        </section>
+    </div>
+
+<script>
+    var app = angular.module("sliderApp", []);
+    app.controller("sliderController", function ($scope, $compile) {
+        var buttonsPara = angular.element(document.getElementById("buttons"));
+        $scope.buttonCreate = function(){
+            buttonsPara.empty();
+            for(var i = 1; i <= $scope.sliderValue; i++){
+                var button = angular.element("<button>" + i + "</button>");
+                buttonsPara.append(button);
+            }
+        };    
+    });
+</script>
+</body>
+</html>

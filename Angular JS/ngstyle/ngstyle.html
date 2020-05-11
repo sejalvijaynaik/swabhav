@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <title>
+        ngstyle
+    </title>
+    <script src="../Angular JS files/angular.js"></script>
+</head>
+<body>
+    
+    <div ng-app="ngstyleApp">
+        <section ng-controller='ngstyleController'>
+           <p ng-style = "myObj">This is a para</p>
+        </section>
+    </div>
+
+<script>
+    var app = angular.module("ngstyleApp", []);
+    app.controller("ngstyleController", function ($scope) {
+        $scope.myObj = {
+            "color": "white",
+            "background-color": "coral",
+            "font-size": "30px",
+            "padding": "50px"
+        }
+    });
+</script>
+</body>
+</html>

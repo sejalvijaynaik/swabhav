@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title>
+        Country
+    </title>
+    <link rel="stylesheet" type="text/css" href="coutries.css">
+    <script src="../Angular JS files/angular.js"></script>
+</head>
+<body>
+    
+    <div ng-app="countryApp">
+        <section ng-controller='countryController'>
+            <table class = "tableDecorate">
+                <tr>
+                   <th>Name</th>
+                    <th>Capital</th>
+                    <th>Flag</th>
+                </tr>
+                <tr ng-repeat = "country in countries">
+                    <td>{{country.name}}</td>
+                    <td>{{country.capital}}</td>
+                    <td ng-model = "country.flag"></td>
+                </tr>
+            </table>
+        </section>
+    </div>
+
+<script>
+    var app = angular.module("countryApp", []);
+    app.controller("countryController", function ($scope, $http) {
+        $http.get("http://restcountries.eu/rest/v2/all")
+        .then(function(response){
+            $scope.countries = response.data;
+        });
+     
+        
+    });
+</script>
+</body>
+</html>

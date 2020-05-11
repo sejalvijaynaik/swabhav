@@ -5,7 +5,14 @@
         Student Details
     </title>
     <link rel="stylesheet" type="text/css" href="stident.css">
+    
     <script src="../Angular JS files/angular.js"></script>
+    <style>
+        .small{
+            width: 200px;
+            height: 10px;
+        }
+    </style>
 </head>
 <body>
     
@@ -22,14 +29,14 @@
             <tr>
                 <td>{{student.id}}</td>
                 <td>{{student.name}}</td>
-                <td><img ng-src="{{student.img}}"></img></td>
+                <td ><img ng-class = "small" ng-src="{{student.img}}"></img></td>
             </tr>
         </table>
         <table class = "tableDecorate">
             <tr>
                <th>id</th>
                 <th>name</th>
-                <td>Image</td>
+                <td ng-class = "small">Image</td>
             </tr>
             <tr ng-repeat = "student in studentList">
                 <td>{{student.id}}</td>
