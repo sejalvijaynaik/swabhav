@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <title>
+        Student Factory
+    </title>
+    <link rel="stylesheet" type="text/css" href="Student factory.css">
+    <script src="../Angular JS files/angular.js"></script>
+</head>
+<body>
+    
+    <div ng-app="studentApp">
+        <section ng-controller='studentApiController'>
+            <button ng-click = "loadFromApi()">Load From API</button>
+            <table class = "tableDecorate">
+                <tr>
+                   <th>Roll No</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Date</th>
+                    <th>IsMale</th>
+                    <th>Id</th>
+                </tr>
+                <tr ng-repeat = "studentApi in studentsFromApi">
+                    <td>{{studentApi.rollNo}}</td>
+                    <td>{{studentApi.name}}</td>
+                    <td>{{studentApi.age}}</td>
+                    <td>{{studentApi.email}}</td>
+                    <td>{{studentApi.date}}</td>
+                    <td>{{studentApi.isMale}}</td>
+                    <td>{{studentApi.id}}</td>
+                </tr>
+            </table>
+        </section>
+       <section ng-controller='studentLoaclStorageController'>
+            <button ng-click = "loadFromLocalStorage()">Load From Loacal Storage</button>
+            <table class = "tableDecorate">
+                <tr>
+                   <th>Roll No</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Date</th>
+                    <th>IsMale</th>
+                    <th>Id</th>
+                </tr>
+                <tr ng-repeat = "studentLS in studentsFromLocalStorage">
+                    <td>{{studentLS.rollNo}}</td>
+                    <td>{{studentLS.name}}</td>
+                    <td>{{studentLS.age}}</td>
+                    <td>{{studentLS.email}}</td>
+                    <td>{{studentLS.date}}</td>
+                    <td>{{studentLS.isMale}}</td>
+                    <td>{{studentLS.id}}</td>
+                </tr>
+            </table>
+        </section>
+    </div>
+
+<script src = "Student Factory.js">
+    </script>
+</body>
+</html>
