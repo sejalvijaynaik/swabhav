@@ -18,9 +18,10 @@
         <section ng-controller='loginController'>
             <form name = "myForm">
                 Username : <input type="text" ng-model = "username" name = "username" ng-required = 'true' ng-minlength="5">
+                <span ng-show = "myForm.username.$error.required">Username Required</span>
                 <span ng-show = "myForm.username.$error.minlength">Minimum 5 characters allowed</span><br><br>
-                Password : <input type="password" ng-model = "password" ng-required = 'true' ng-minlength="8" required ng-pattern="/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/"><br><br>
-                <span ng-show = "myForm.password.$error.required">Password should be at least 8 characters
+                Password : <input type="password" ng-model = "password" ng-minlength="8" ng-pattern="/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/"><br><br>
+                <span ng-show = "myForm.password.$error.pattern">Password should be at least 8 characters
                     long and should contain one number, one character and one special
                     character</span>
                 <input type = "submit" value = "SUBMIT" ng-disabled = "myForm.username.$error.required || myForm.password.$error.required">
