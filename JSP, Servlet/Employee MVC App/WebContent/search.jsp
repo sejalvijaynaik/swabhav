@@ -42,6 +42,9 @@
 	}
 	%>
 </table>
-
+<br><br>
+<form method = "get" action = "LogoutController">
+<input type = "submit" value = "Logout">
+</form>
 </body>
 </html>

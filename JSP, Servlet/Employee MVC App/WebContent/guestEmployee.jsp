@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Employee table</title>
+<title>Guest Employee table</title>
 </head>
 <body>
 
@@ -17,8 +17,6 @@
 		<th>Name</th>
 		<th>Salary</th>
 		<th>Designation</th>
-		<th>Update</th>
-		<th>Delete</th>
 	</tr>
 	<%
 	List<Employee> employees = (List<Employee>)request.getAttribute("employees");
@@ -28,33 +26,17 @@
 		out.println("<td>" + employees.get(i).getName() + "</td>");
 		out.println("<td>" + employees.get(i).getSalary() + "</td>");
 		out.println("<td>" + employees.get(i).getDesignation() + "</td>");
-		out.println("<td>");
-		out.println("<form method = 'post' action = 'PrepopulateEmployeeController'>");
-		out.println("<input type = 'hidden' name = 'employeeId' value =" + employees.get(i).getId() + ">");
-		out.println("<input type = 'submit' value = 'update'></td>");
-		out.println("</form>");
-		out.println("</td>");
-		out.println("<td>");
-		out.println("<form method = 'post' action = 'DeleteEmployeeController'>");
-		out.println("<input type = 'hidden' name = 'employeeId' value =" + employees.get(i).getId() + ">");
-		out.println("<input type = 'submit' value = 'delete'></td>");
-		out.println("</form>");
-		out.println("</td>");
 		out.println("</tr>");
 	}
 	%>
 </table>
 <br><br>
-<button onclick = "window.location.href = 'add.jsp'">Add Employee</button>
-<br><br>
 Search Employee by Name :
-<form method = "post" action = "searcgEmployeeController">
+<form method = "post" action = "GuestSerachEmployeeComtroller">
  <input type = "text" name = "searchName">
 <input type = "submit" value = "search">
 </form>
 <br><br>
-<form method = "get" action = "LogoutController">
-<input type = "submit" value = "Logout">
-</form>
+<button onclick = "window.location.href = 'login.jsp'">Back to Login</button>
 </body>
 </html>

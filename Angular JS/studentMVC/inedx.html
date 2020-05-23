@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>
+        Home Page
+    </title>
+        <link rel="stylesheet" type="text/css" href="student.css">
+        <script src="../Angular JS files/angular.js"></script>
+        <script src = "../Angular Route File/angular-route.js"></script>
+        
+    </head>
+    
+<body ng-app = "studentApp">
+    <h1>Student Database</h1>
+        <button onclick = "window.location.href = '#!home'">Home</button>
+    
+        <button onclick = "window.location.href = '#!add'">Add</button>
+    
+        <button onclick = "window.location.href = '#!search'">Search</button>
+   
+    <div ng-view></div>
+    
+<script src = "studentMVC.js">
+</script>
+</body>
+    
+</html>
+    
+
+    
+   
+
+

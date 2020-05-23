@@ -1,0 +1,22 @@
+<section>
+    <table class = "tableDecorate">
+        <tr>
+           <th>Roll No</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>IsMale</th>
+            <th>Id</th>
+        </tr>
+        <tr ng-repeat = "student in displayStudents">
+            <td>{{student.rollNo}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.age}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.date}}</td>
+            <td>{{student.isMale}}</td>
+            <td>{{student.id}}</td>
+        </tr>
+    </table>
+</section>
