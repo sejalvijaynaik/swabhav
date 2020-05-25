@@ -1,4 +1,4 @@
-<section>
+<section></section>
     <table class = "tableDecorate">
         <tr>
            <th>Roll No</th>
@@ -8,6 +8,8 @@
             <th>Date</th>
             <th>IsMale</th>
             <th>Id</th>
+            <th>Update</th>
+            <th>Delete</th>
         </tr>
         <tr ng-repeat = "student in displayStudents">
             <td>{{student.rollNo}}</td>
@@ -17,6 +19,8 @@
             <td>{{student.date}}</td>
             <td>{{student.isMale}}</td>
             <td>{{student.id}}</td>
+            <td><a ng-href="#!update/{{student.id}}">Update</a></td>
+            <td><a ng-href="#!delete/{{student.id}}">Update</a></td>
         </tr>
     </table>
 </section>

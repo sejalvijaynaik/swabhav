@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>
+        ng-model example
+    </title>
+        <script src="../Angular JS files/angular.js"></script>
+    </head>
+    
+<body ng-app = "myApp">
+    <section ng-controller = "myController">
+        <input type = "text" ng-model = "name">
+    </section>
+       
+<script>
+    var app = angular.module("myApp", []);
+    app.controller("myController", function($scope){
+        $scope.name = "sejal";
+    });
+</script>
+</body>
+    
+</html>
+    
+
+    
+   
+
+
