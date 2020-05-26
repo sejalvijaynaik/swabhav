@@ -29,6 +29,6 @@
 	%>
 	</table>
 <br><br>
-<button onclick = "window.location.href = 'login.jsp'">Back to Login</button>
+<button onclick = "window.location.href = 'home.jsp'">Back to Login</button>
 </body>
 </html>

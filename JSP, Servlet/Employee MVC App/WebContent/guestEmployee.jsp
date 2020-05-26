@@ -7,10 +7,15 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Guest Employee table</title>
+<title>Employee table</title>
 </head>
 <body>
-
+Search Employee by Name :
+<form method = "post" action = "GuestSerachEmployeeComtroller">
+ <input type = "text" name = "searchName">
+<input type = "submit" value = "search">
+</form>
+<br><br>
 <table border = "1">
 	<tr>
 		<th>ID</th>
@@ -31,12 +36,8 @@
 	%>
 </table>
 <br><br>
-Search Employee by Name :
-<form method = "post" action = "GuestSerachEmployeeComtroller">
- <input type = "text" name = "searchName">
-<input type = "submit" value = "search">
+<form method = "get" action = "home.jsp">
+<input type = "submit" value = "Back to Login">
 </form>
-<br><br>
-<button onclick = "window.location.href = 'login.jsp'">Back to Login</button>
 </body>
 </html>

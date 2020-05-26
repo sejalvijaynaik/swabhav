@@ -1,6 +1,7 @@
 package com.tachlabs.login.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,19 +18,26 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+
 		HttpSession session = request.getSession();
-		
-		if((session.getAttribute("username") != null)&&(session.getAttribute("password") != null)){
+
+		if ((session.getAttribute("username") != null) && (session.getAttribute("password") != null)) {
 			response.sendRedirect("EmployeeController");
 		}
-		
-		else if ((request.getParameter("username").equals("admin")) && (request.getParameter("password").equals("admin"))) {
 
-			session.setAttribute("username", request.getParameter("username"));
-			session.setAttribute("password", request.getParameter("password"));
-			response.sendRedirect("EmployeeController");
-		} else {
-			response.sendRedirect("GuestEmployeeController");
+		if ((request.getParameter("username") != null) && (request.getParameter("password") != null)) {
+			if ((request.getParameter("username").equals("admin"))
+					&& (request.getParameter("password").equals("admin"))) {
+				session.setAttribute("username", request.getParameter("username"));
+				session.setAttribute("password", request.getParameter("password"));
+				response.sendRedirect("EmployeeController");
+			} else {
+				out.println("<h2>Username or password entered is wrong</h2>");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+				requestDispatcher.include(request, response);
+			}
 		}
 	}
 }

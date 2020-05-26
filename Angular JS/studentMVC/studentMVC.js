@@ -20,6 +20,10 @@ app.config(function($routeProvider, $httpProvider) {
     .when("/update", {
         templateUrl : "update.html",
         controller : "updateController"
+    })
+    .when("/delete", {
+        template : "<section>Deleting....</section>",
+        controller : "deleteController"
     });
 });
 
@@ -51,8 +55,8 @@ app.factory("GetFactory", function($http){
 app.factory("GetOneStudentFactory", function($http){
     var studentObj = {};
     studentObj.getStudent = function(){
-        studentObj.student = {};
-        $http.get("http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/")
+        var url = "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/" + student.id;
+        $http.get(url)
         .then(function(response){
             response.data = student;
         });
@@ -116,6 +120,18 @@ app.factory("UpdateFactory", function($http){
     return student;
 });
 
+app.factory("DeleteFactory", function(){
+    var studentObj = {};
+    studentObj.deleteStudent = function(){
+        var url = "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/" + student.id;
+        $http.get(url)
+        .then(function(response){
+            response.data = student;
+        });
+    };
+    return studentObj;
+});
+
 app.controller("homeController", function($scope, GetFactory){
     $scope.getStudents = function(){
         GetFactory.getStudents();
@@ -140,10 +156,11 @@ app.controller("addController", function($scope, AddFactory, GetFactory){
     };
 });
 app.controller("searchController", function($scope){
-    $scope.msg = "I am inside career";
+    
 });
 
 app.controller("updateController", function($scope, GetOneStudentFactory, UpdateFactory, GetFactory){
+    GetOneStudentFactory.student.id = $scope.student.id;
     GetOneStudentFactory.getStudent();
     $scope.id = GetOneStudentFactory.student.id;
     $scope.rollNo = GetOneStudentFactory.student.rollNo;
@@ -165,3 +182,10 @@ app.controller("updateController", function($scope, GetOneStudentFactory, Update
         GetFactory.getStudents();
     };
 });
+
+app.controller("deleteController", function($scope, DeleteFactory, GetFactory){
+    DeleteFactory.student.id = $scope.student.id;
+    DeleteFactory.deleteStudent();
+    GetFactory.getStudents();
+});
+

@@ -10,7 +10,12 @@
 <title>Employee table</title>
 </head>
 <body>
-
+Search Employee by Name :
+<form method = "post" action = "searcgEmployeeController">
+ <input type = "text" name = "searchName">
+<input type = "submit" value = "search">
+</form>
+<br><br>
 <table border = "1">
 	<tr>
 		<th>ID</th>
@@ -46,12 +51,6 @@
 </table>
 <br><br>
 <button onclick = "window.location.href = 'add.jsp'">Add Employee</button>
-<br><br>
-Search Employee by Name :
-<form method = "post" action = "searcgEmployeeController">
- <input type = "text" name = "searchName">
-<input type = "submit" value = "search">
-</form>
 <br><br>
 <form method = "get" action = "LogoutController">
 <input type = "submit" value = "Logout">
