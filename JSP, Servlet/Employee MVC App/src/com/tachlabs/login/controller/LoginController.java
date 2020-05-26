@@ -32,6 +32,7 @@ public class LoginController extends HttpServlet {
 					&& (request.getParameter("password").equals("admin"))) {
 				session.setAttribute("username", request.getParameter("username"));
 				session.setAttribute("password", request.getParameter("password"));
+				session.setMaxInactiveInterval(60*60*24);
 				response.sendRedirect("EmployeeController");
 			} else {
 				out.println("<h2>Username or password entered is wrong</h2>");

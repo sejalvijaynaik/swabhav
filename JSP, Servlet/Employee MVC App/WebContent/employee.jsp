@@ -10,6 +10,12 @@
 <title>Employee table</title>
 </head>
 <body>
+<h2>Welcome Admin</h2>
+<%
+	if((session.getAttribute("username") == null)&&(session.getAttribute("password") == null)){
+		response.sendRedirect("login.jsp");
+	}
+%>
 Search Employee by Name :
 <form method = "post" action = "searcgEmployeeController">
  <input type = "text" name = "searchName">

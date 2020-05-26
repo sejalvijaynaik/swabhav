@@ -5,6 +5,11 @@
 <title>Add employee form</title>
 </head>
 <body>
+<%
+if((session.getAttribute("username") == null)&&(session.getAttribute("password") == null)){
+	response.sendRedirect("login.jsp");
+}
+%>
 <h2>Add Employee</h2>
 <form method = "POST" action = "AddEmployeeController">
 Name : <input type = "text" name = "employeeName"><br><br>

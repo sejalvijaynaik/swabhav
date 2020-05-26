@@ -18,8 +18,7 @@ public class LogoutController extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		session.removeAttribute("username");
-		session.removeAttribute("password");
+		session.invalidate();
 		
 		response.setHeader("Cache-Control","no-cache"); 
 		response.setHeader("Cache-Control","no-store"); 

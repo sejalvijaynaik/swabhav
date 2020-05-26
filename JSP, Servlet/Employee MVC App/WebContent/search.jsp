@@ -9,6 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+if((session.getAttribute("username") == null)&&(session.getAttribute("password") == null)){
+	response.sendRedirect("login.jsp");
+}
+%>
 <table border = "1">
 	<tr>
 		<th>ID</th>

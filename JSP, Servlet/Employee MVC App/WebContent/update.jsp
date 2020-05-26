@@ -8,6 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+if((session.getAttribute("username") == null)&&(session.getAttribute("password") == null)){
+	response.sendRedirect("login.jsp");
+}
+%>
 <h2>Update Employee</h2>
 <form method = "POST" action = "UpdateEmployeeController">
 Name : <input type = "text" name = "employeeName" value = "${employee.getName()}"><br><br>
