@@ -23,10 +23,6 @@ public class LoginController extends HttpServlet {
 
 		HttpSession session = request.getSession();
 
-		if ((session.getAttribute("username") != null) && (session.getAttribute("password") != null)) {
-			response.sendRedirect("EmployeeController");
-		}
-
 		if ((request.getParameter("username") != null) && (request.getParameter("password") != null)) {
 			if ((request.getParameter("username").equals("admin"))
 					&& (request.getParameter("password").equals("admin"))) {

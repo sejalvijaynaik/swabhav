@@ -1,4 +1,4 @@
-package com.techlabs.name.filter;
+package com.techlabs.filter.session;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -10,25 +10,23 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebFilter("/NameFilter")
-public class NameFilter implements Filter {
+@WebFilter("/SessionFilter")
+public class SessionFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
-		HttpServletResponse res = (HttpServletResponse) response;
 		System.out.println("Filter running");
-		if ((request.getParameter("firstName") != null) && (request.getParameter("lastName") != null)) {
-			if ((request.getParameter("firstName").equals("sejal"))
-					&& (request.getParameter("lastName").equals("naik"))) {
-				System.out.println("correct name");
-				chain.doFilter(request, response);
-
-			} else {
-				System.out.println("wrong name");
-				res.sendRedirect("Name.jsp");
-			}
+		HttpServletRequest req = (HttpServletRequest)request;
+		HttpServletResponse res = (HttpServletResponse)response;
+		HttpSession session = req.getSession();
+		if((session.getAttribute("username") != null )&&(session.getAttribute("password") != null)){
+			chain.doFilter(request, response);
+		}
+		else {
+			res.sendRedirect("home.jsp");
 		}
 	}
 }

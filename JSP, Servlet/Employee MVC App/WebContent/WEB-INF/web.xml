@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
-  <display-name>Filter Example</display-name>
+  <display-name>Employee MVC App</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -12,11 +12,18 @@
   
   <filter>
    <filter-name>NameFilter</filter-name>
-   <filter-class>com.techlabs.name.filter.NameFilter</filter-class>
+   <filter-class>com.techlabs.filter.session.SessionFilter</filter-class>
 </filter>
 
 <filter-mapping>
    <filter-name>NameFilter</filter-name>
-   <url-pattern>/NameServlet</url-pattern>
+   <url-pattern>/AddEmployeeController</url-pattern>
+   <url-pattern>/DeleteEmployeeController</url-pattern>
+   <url-pattern>/EmployeeController</url-pattern>
+   <url-pattern>/LogoutController</url-pattern>
+   <url-pattern>/PrepopulateEmployeeController</url-pattern>
+   <url-pattern>/searcgEmployeeController</url-pattern>
+   <url-pattern>/UpdateEmployeeController</url-pattern>
+   <url-pattern>home.jsp</url-pattern>
 </filter-mapping>
 </web-app>

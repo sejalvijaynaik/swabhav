@@ -7,7 +7,7 @@
 <body>
 <%
 if((session.getAttribute("username") == null)&&(session.getAttribute("password") == null)){
-	response.sendRedirect("login.jsp");
+	response.sendRedirect("home.jsp");
 }
 %>
 <h2>Add Employee</h2>

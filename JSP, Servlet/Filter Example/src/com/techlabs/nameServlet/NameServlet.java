@@ -16,6 +16,7 @@ public class NameServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	
+		System.out.println("Servlet running");
 		response.setContentType("text/html");
 
 		String fullName = request.getParameter("firstName") + " " + request.getParameter("lastName");

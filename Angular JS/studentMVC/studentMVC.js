@@ -1,6 +1,6 @@
 var app = angular.module("studentApp", ["ngRoute"]);
 app.config(function($routeProvider, $httpProvider) {
-    $httpProvider.defaults.withCredentials = true;
+    $httpProvider.defaults.withCredentials = false;
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
@@ -42,6 +42,8 @@ app.factory("GetFactory", function($http){
         getFactoryStudents.students = [];
         $http.get("http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/")
         .then(function(response){
+            console.log("Response :");
+            console.log(response);
             for(var i = 0; i < response.data.length; i++){
                 student = response.data[i];
                 getFactoryStudents.students.push(student);

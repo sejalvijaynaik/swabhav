@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<button onclick = "window.location.href = 'StartMVCController'">Login</button>
+<button onclick = "window.location.href = 'StartMVCCoontroller'">Login</button>
 <button onclick = "window.location.href = 'GuestEmployeeController'">Guest User</button>
 
 </body>
