@@ -24,6 +24,14 @@
    <url-pattern>/PrepopulateEmployeeController</url-pattern>
    <url-pattern>/searcgEmployeeController</url-pattern>
    <url-pattern>/UpdateEmployeeController</url-pattern>
-   <url-pattern>home.jsp</url-pattern>
+</filter-mapping>
+
+<filter>
+   <filter-name>HomeFilter</filter-name>
+   <filter-class>com.techlabs.home.filter.HomeFilter</filter-class>
+</filter>
+<filter-mapping>
+   <filter-name>HomeFilter</filter-name>
+   <url-pattern>/home.jsp</url-pattern>
 </filter-mapping>
 </web-app>

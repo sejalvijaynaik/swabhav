@@ -1,4 +1,4 @@
-package com.techlabs.filter.session;
+package com.techlabs.home.filter;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -12,33 +12,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter("/SessionFilter")
-public class SessionFilter implements Filter {
+@WebFilter("/HomeFilter")
+public class HomeFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
-		System.out.println("Filter running");
+		System.out.println("Home Filter running");
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		HttpSession session = req.getSession();
 		if ((session.getAttribute("username") != null) && (session.getAttribute("password") != null)) {
-			chain.doFilter(request, response);
+			res.sendRedirect("EmployeeController");
 		} else {
-			res.sendRedirect("home.jsp");
+			chain.doFilter(request, response);
 		}
 	}
 
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
-	public void init(FilterConfig filterConfig) throws ServletException {
-		// TODO Auto-generated method stub
-		
+	public void init(FilterConfig arg0) throws ServletException {
 	}
 
 }
