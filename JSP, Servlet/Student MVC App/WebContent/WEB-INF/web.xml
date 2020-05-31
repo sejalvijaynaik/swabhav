@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>Student MVC App</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <filter>
+   <filter-name>AdminHome</filter-name>
+   <filter-class>com.techlabs.student.filter.admin.AdminHomeFilter</filter-class>
+</filter>
+<filter-mapping>
+   <filter-name>AdminHome</filter-name>
+   <url-pattern>/home.jsp</url-pattern>
+</filter-mapping>
+
+<filter>
+   <filter-name>AdminSession</filter-name>
+   <filter-class>com.techlabs.student.filter.admin.AdminSessionFilter</filter-class>
+</filter>
+<filter-mapping>
+   <filter-name>AdminSession</filter-name>
+   <url-pattern>/AdminAddController</url-pattern>
+   <url-pattern>/AdminDeleteController</url-pattern>
+   <url-pattern>/AdminUpdateController</url-pattern>
+   <url-pattern>/AdminPrepopulateController</url-pattern>
+   <url-pattern>/adminSearchController</url-pattern>
+   <url-pattern>/AdminStudentController</url-pattern>
+   <url-pattern>/adminAdd.jsp</url-pattern>
+   <url-pattern>/adminSearch.jsp</url-pattern>
+   <url-pattern>/adminStudents.jsp</url-pattern>
+   <url-pattern>/adminUpdate.jsp</url-pattern>
+</filter-mapping>
+
+<filter>
+   <filter-name>ProfessorHome</filter-name>
+   <filter-class>com.techlabs.student.filter.professor.ProfessorHomeFilter</filter-class>
+</filter>
+<filter-mapping>
+   <filter-name>ProfessorHome</filter-name>
+   <url-pattern>/home.jsp</url-pattern>
+</filter-mapping>
+
+<filter>
+   <filter-name>ProfessorSession</filter-name>
+   <filter-class>com.techlabs.student.filter.professor.ProfessorSessionFilter</filter-class>
+</filter>
+<filter-mapping>
+   <filter-name>ProfessorSession</filter-name>
+   <url-pattern>/ProfessorPrepopulateController</url-pattern>
+   <url-pattern>/professorSearchController</url-pattern>
+   <url-pattern>/ProfessorStudentController</url-pattern>
+   <url-pattern>/ProfessorUpdateController</url-pattern>
+   <url-pattern>/professorSearch.jsp</url-pattern>
+   <url-pattern>/professorStudents.jsp</url-pattern>
+   <url-pattern>/professorUpdate.jsp</url-pattern>
+</filter-mapping>
+
+<filter>
+   <filter-name>StudentHome</filter-name>
+   <filter-class>com.techlabs.student.filter.student.StudentHomeFilter</filter-class>
+</filter>
+<filter-mapping>
+   <filter-name>StudentHome</filter-name>
+   <url-pattern>/home.jsp</url-pattern>
+</filter-mapping>
+
+<filter>
+   <filter-name>StudentSession</filter-name>
+   <filter-class>com.techlabs.student.filter.student.StudentSessionFilter</filter-class>
+</filter>
+<filter-mapping>
+   <filter-name>StudentSession</filter-name>
+   <url-pattern>/StudentPrepopulateController</url-pattern>
+   <url-pattern>/StudentSearchController</url-pattern>
+   <url-pattern>/StudentStudentController</url-pattern>
+   <url-pattern>/StudentUpdateController</url-pattern>
+   <url-pattern>/studentSearch.jsp</url-pattern>
+   <url-pattern>/studentStudents.jsp</url-pattern>
+   <url-pattern>/studentUpdate.jsp</url-pattern>
+</filter-mapping>
+</web-app>

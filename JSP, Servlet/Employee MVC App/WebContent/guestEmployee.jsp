@@ -11,7 +11,7 @@
 </head>
 <body>
 Search Employee by Name :
-<form method = "post" action = "GuestSerachEmployeeComtroller">
+<form method = "post" action = "GuestSerachContactComtroller">
  <input type = "text" name = "searchName">
 <input type = "submit" value = "search">
 </form>
