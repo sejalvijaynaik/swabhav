@@ -1,0 +1,6 @@
+deptid,deptname,empid,empname,salary
+10,Development,101,null,20000
+
+11,Development,102,sejalvs,12000
+12,training,103,sejalab,230000
+13,sourcing,104,sonam,20000
