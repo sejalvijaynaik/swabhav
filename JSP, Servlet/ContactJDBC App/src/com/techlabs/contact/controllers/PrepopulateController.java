@@ -11,15 +11,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import com.techlabs.contact.model.Contact;
 import com.techlabs.contact.service.ContactJDBC;
 
-@WebServlet("/ContactController")
-public class ContactController extends HttpServlet {
+@WebServlet("/PrepopulateController")
+public class PrepopulateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	private ContactJDBC contactJDBC;
 	@Resource(name = "jdbc/contact")
 	private DataSource dataSource;
-	
+
 	@Override
 	public void init() throws ServletException {
 		super.init();
@@ -27,14 +29,16 @@ public class ContactController extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
+			throws ServletException, IOException {
 
-		System.out.println("successful");
 		response.setContentType("text/html");
+		int id = Integer.parseInt(request.getParameter("contactId"));
 
-		request.setAttribute("contacts", contactJDBC.getContacts());
+		Contact contact = contactJDBC.getContact(id);
 
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("contact.jsp");
+		request.setAttribute("contact", contact);
+
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("update.jsp");
 		requestDispatcher.forward(request, response);
 	}
 }

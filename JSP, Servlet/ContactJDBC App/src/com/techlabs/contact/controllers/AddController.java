@@ -3,7 +3,6 @@ package com.techlabs.contact.controllers;
 import java.io.IOException;
 
 import javax.annotation.Resource;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,28 +12,32 @@ import javax.sql.DataSource;
 
 import com.techlabs.contact.service.ContactJDBC;
 
-@WebServlet("/ContactController")
-public class ContactController extends HttpServlet {
+@WebServlet("/AddController")
+public class AddController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	private ContactJDBC contactJDBC;
 	@Resource(name = "jdbc/contact")
 	private DataSource dataSource;
-	
+
 	@Override
 	public void init() throws ServletException {
 		super.init();
 		contactJDBC = new ContactJDBC(dataSource);
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		System.out.println("successful");
 		response.setContentType("text/html");
 
-		request.setAttribute("contacts", contactJDBC.getContacts());
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		long number = Long.parseLong(request.getParameter("number"));
+		String email = request.getParameter("email");
 
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("contact.jsp");
-		requestDispatcher.forward(request, response);
+		contactJDBC.addContact(firstName, lastName, number, email);
+
+		response.sendRedirect("ListController");
 	}
 }

@@ -1,6 +1,7 @@
 package com.techlabs.contact.controllers;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -11,11 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import com.techlabs.contact.model.Contact;
 import com.techlabs.contact.service.ContactJDBC;
 
-@WebServlet("/ContactController")
-public class ContactController extends HttpServlet {
+@WebServlet("/ListController")
+public class ListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 	private ContactJDBC contactJDBC;
 	@Resource(name = "jdbc/contact")
 	private DataSource dataSource;
@@ -27,13 +30,13 @@ public class ContactController extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
-
-		System.out.println("successful");
+			throws ServletException, IOException {
+	
 		response.setContentType("text/html");
-
-		request.setAttribute("contacts", contactJDBC.getContacts());
-
+		
+		List<Contact> contacts = contactJDBC.getContacts();
+		request.setAttribute("contacts", contacts);
+		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("contact.jsp");
 		requestDispatcher.forward(request, response);
 	}
