@@ -23,6 +23,7 @@ public class TransactionTest {
 			stmt = conn.createStatement();
 			
 			stmt.executeUpdate("update merchant set balance = balance + 1000.00 where id = 1");
+			
 			stmt.executeUpdate("update customer set balance = balance - 1000.00 where id = 1");
 			
 			conn.commit();
