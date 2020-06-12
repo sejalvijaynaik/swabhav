@@ -1,0 +1,46 @@
+<html>
+<head>
+    <title>
+        Task List Angular
+     </title>
+     <link rel="stylesheet" type="text/css" href="task list local storage.css">
+    <script src="../Angular JS files/angular.js"></script>
+    <style>
+        .line{
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+    
+<body ng-app = "taskListApp">
+    <div ng-controller = "taskListController">
+        <input type = "text" ng-model = "inputTask">
+        <button ng-click = "taskAdd()">Submit</button><br><br>
+        <button ng-click = "clearLocalStorage()">Clear</button>
+        <table class = "tableDecorate">
+            <tr>
+               <th>Done</th>
+                <th>Task</th>
+                <th>Update</th>
+                <th>Remove</th>
+            </tr>
+            <tr ng-repeat = "task in taskArray">
+                <td><input type = "checkbox" ng-click = "taskDone(task)" ng-checked = "task.done"></td>
+                <td ng-class = "{ 'line' : task.done === true }">{{task}}</td>
+                <td><button ng-click = "taskUpdate(task)">Update</button></td>
+                <td><button ng-click = "taskRemove(task)">Remove</button></td>
+            </tr>
+        </table>
+    </div>
+ 
+<script src = "task list local storage.js">
+</script>
+</body>
+    
+</html>
+    
+
+    
+   
+
+
