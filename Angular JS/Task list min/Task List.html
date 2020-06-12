@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title>
+        Task List Angular
+     </title>
+     <link rel="stylesheet" type="text/css" href="Task List.css">
+    <script src="../Angular JS files/angular.min.js"></script>
+    <style>
+        .line{
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+    
+<body ng-app = "taskListApp">
+    <div ng-controller = "taskListController">
+        <input type = "text" ng-model = "inputTask">
+        <button ng-click = "taskAdd()">Submit</button>
+        <table class = "tableDecorate">
+            <tr>
+               <th>Done</th>
+                <th>Task</th>
+                <th>Remove</th>
+            </tr>
+            <tr ng-repeat = "task in taskArray">
+                <td><input type = "checkbox" ng-click = "taskDone(task)"></td>
+                <td ng-class = "{ 'line' : task.done === true }">{{task}}</td>
+                <td><button ng-click = "taskRemove($index)">Remove</button></td>
+            </tr>
+        </table>
+    </div>
+ 
+<script src = "Task List.min.js">
+</script>
+</body>
+    
+</html>
+    
+
+    
+   
+
+

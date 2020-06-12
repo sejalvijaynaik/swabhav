@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>
+        Numbers api
+    </title>
+    <link rel="stylesheet" type="text/css" href="numbers api.css">
+    <script src="../Angular JS files/angular.js"></script>
+    <script src = "../Moment js/moment-with-locales.js"></script>
+</head>
+<body>
+    
+    <div ng-app="numbersApiApp">
+        <section ng-controller='numbersApiController'>
+            Number : <input type = "number" ng-model = "inputNumber">
+            <button ng-click = "getNumber()" >SUBMIT</button><br><br>
+            <button ng-click = "removeAll()" >Remove All</button><br><br>
+            <table class = "tableDecorate">
+                <tr>
+                    <th>Description</th>
+                    <th>Date</th>
+                </tr>
+                <tr ng-repeat = "numberOutput in numbers track by $index">
+                    <td>{{numberOutput.desc}}</td>
+                    <td>{{numberOutput.date}}</td>
+                </tr>
+            </table>
+        </section>
+    </div>
+    <script src = "numbers api.js"></script>
+</body>
+</html>

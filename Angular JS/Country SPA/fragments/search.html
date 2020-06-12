@@ -1,0 +1,16 @@
+<section>
+Search country by name : <input type = "text" ng-model = searchName>
+            <button ng-click = "search()">Submit</button>
+            <table class = "tableDecorate">
+                <tr>
+                   <th>Name</th>
+                    <th>Capital</th>
+                    <th>Flag</th>
+                </tr>
+                <tr ng-repeat = "country in searchCountries">
+                    <td>{{country.name}}</td>
+                    <td>{{country.capital}}</td>
+                    <td><img ng-src="{{country.flag}}" style="height: 5vh;width: 5vh;"></td>
+                </tr>
+            </table>
+        </section>

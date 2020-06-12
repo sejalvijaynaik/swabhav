@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <title>
+        Json Pipe example
+    </title>
+    <script src="../Angular JS files/angular.js"></script>
+</head>
+<body>
+    
+    <div ng-app="JsonPipeApp">
+        <section ng-controller='JsonPipeController'>
+           <pre>{{person | json}}</pre>
+        </section>
+    </div>
+
+<script>
+    var app = angular.module("JsonPipeApp", []);
+    app.controller("JsonPipeController", function ($scope) {
+        $scope.person = {
+            "rollNo" : "1",
+            "name" : "sejal",
+            "cgpa" : "8.0"
+        };
+    });
+</script>
+</body>
+</html>

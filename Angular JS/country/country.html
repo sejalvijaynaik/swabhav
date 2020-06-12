@@ -11,6 +11,8 @@
     
     <div ng-app="countryApp">
         <section ng-controller='countryController'>
+            Search country by name : <input type = "text" ng-model = searchName>
+            <button ng-click = "search()">Submit</button>
             <table class = "tableDecorate">
                 <tr>
                    <th>Name</th>
@@ -28,12 +30,40 @@
 
 <script>
     var app = angular.module("countryApp", []);
-    app.controller("countryController", function ($scope, $http) {
+
+    app.factory("GetCountries", function($http){
+        var country ={};
+        var countries =[];
         $http.get("http://restcountries.eu/rest/v2/all")
         .then(function(response){
-            $scope.countries = response.data;
+            for(var i = 0; i < response.data.length; i++){
+                country = response.data[i];
+                countries.push(country);
+            }
         });
+        return countries;
     });
+
+    app.controller("countryController", function ($scope, $http, GetCountries) {
+
+    $scope.countries = GetCountries;    
+    
+    $scope.search = function(){
+       if($scope.searchName != undefined){
+        $scope.searchCountries = [];
+        for(var i = 0; i < GetCountries.length; i++){
+            searchCountry = {};
+            if(GetCountries[i].name.includes($scope.searchName)){
+                searchCountry = GetCountries[i];
+                $scope.searchCountries.push(searchCountry);
+            }
+        }
+        $scope.countries = $scope.searchCountries;
+        }
+    }
+        
+});
+    
 </script>
 </body>
 </html>
