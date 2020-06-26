@@ -14,9 +14,15 @@
     
 <body ng-app = "taskListApp">
     <div ng-controller = "taskListController">
-        <input type = "text" ng-model = "inputTask">
+        New Task : <input type = "text" ng-model = "inputTask">
         <button ng-click = "taskAdd()">Submit</button><br><br>
-        <button ng-click = "clearLocalStorage()">Clear</button>
+
+        Update : <input type = "text" ng-model = "newTask">
+        <button ng-click = "updateTaskFunction()">Submit</button><br><br>
+
+        <input type = "hidden" ng-model = "indexUpdate">
+
+        <button ng-click = "clearLocalStorage()">Clear</button><br><br>
         <table class = "tableDecorate">
             <tr>
                <th>Done</th>
@@ -27,7 +33,7 @@
             <tr ng-repeat = "task in taskArray">
                 <td><input type = "checkbox" ng-click = "taskDone(task)" ng-checked = "task.done"></td>
                 <td ng-class = "{ 'line' : task.done === true }">{{task}}</td>
-                <td><button ng-click = "taskUpdate(task)">Update</button></td>
+                <td><button ng-click = "prepopulateTask(task)">Update</button></td>
                 <td><button ng-click = "taskRemove(task)">Remove</button></td>
             </tr>
         </table>

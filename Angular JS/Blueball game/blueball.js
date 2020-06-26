@@ -2,22 +2,56 @@ var counterApp = angular.module("blueBallApp", []);
 
 counterApp.controller("blueBallController", function($scope){
    $scope.startGame = function(){
-        $scope.balls = angular.element(document.getElementById("balls"));
-        $scope.ballArray = [];
-        $scope.correctBall = Math.floor(Math.random() * 50);
-        $scope.attempts = 4;
-        for(i = 0; i < 50; i++){
-            $scope.ball = {};
-            $scope.balls.append("<span id = " + i + " class = 'circle'></span>");
-            $scope.ball = angular.element(document.getElementById("i"));
-            $scope.ball.bind("click", ballColorChange);
-            $scope.ballArray.push($scope.ball);
+    
+    var $ballsDiv = $("#balls");
+    $ballsDiv.empty();
+    $scope.ballsArray = [];
+    $scope.correctBall = Math.floor(Math.random() * 50);
+    $scope.attempts = 4;
+    for(i = 0; i < 50; i++){
+        $ballsDiv.append("<span id = " + i + " class = 'circle'></span>");
+        $scope.ballsArray[i] = $("#" + i);
+        $("#" + i).click($scope.ballColorChange);
         }
-        console.log($scope.ballArray[0].id);
-        function ballColorChange(){
-            alert("color change");
-        }
-
    };
-   
+
+   $scope.ballColorChange = function(){
+    $scope.attempts = $scope.attempts - 1;
+    if($(this).attr("id") == $scope.correctBall){
+        $(this).css("background", "radial-gradient(circle at 30px 30px, powderblue, darkblue)");
+        $scope.endGame("Congratulations you won !!!!!");
+    }
+    else if($(this).attr("id") > $scope.correctBall){
+        $(this).css("background", "radial-gradient(circle at 30px 30px, palegreen, chartreuse)");
+    }
+    else if($(this).attr("id") < $scope.correctBall){
+        $(this).css("background", "radial-gradient(circle at 30px 30px, lightsalmon, red)");
+    }
+    if($scope.attempts == 0){
+        $scope.ballsArray[$scope.correctBall].css("background", "radial-gradient(circle at 30px 30px, powderblue, darkblue)");
+        $scope.endGame("You Lost !!!!!")
+    }
+   }
+   $scope.endGame = function(message){
+    
+    var newWindow = window.open("", "_blank", "width=400, height=200");
+    var newDoc = newWindow.document;
+
+        var para = newDoc.createElement("p");
+        para.innerHTML = message;
+        para.style.fontSize = "50px";
+        newDoc.body.appendChild(para);
+        var button = newDoc.createElement("button");
+        button.style.width = "100px";
+        button.style.height = "50px";
+        button.innerHTML = "Restart";
+        newDoc.body.appendChild(button);
+        button.addEventListener("click", redirectParent);
+        
+    
+    function redirectParent(){
+     newWindow.opener.open("blueball.html", "_self");
+     newWindow.close();
+    }
+ } 
 });

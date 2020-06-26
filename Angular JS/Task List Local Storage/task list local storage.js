@@ -72,15 +72,26 @@ app.controller("taskListController", function($scope){
     $scope.taskRemove = function(task){
         for(var a in localStorage){
             if(!isNaN(a)){
-                if(task.desc === localStorage[a]){
+                if((task.desc === localStorage[a])||("done" + task.desc === localStorage[a])){
                     localStorage.removeItem(a);
                 }
             }
         }
         window.open("Task list local storage.html", "_self");
     }
-    $scope.taskUpdate = function(task){
-        
+    $scope.prepopulateTask = function(task){
+        $scope.oldTask = task.desc;
+        $scope.newTask = task.desc;
+    }
+    $scope.updateTaskFunction = function(){
+        for(var a in localStorage){
+            if(!isNaN(a)){
+                if($scope.oldTask === localStorage[a]){
+                    localStorage[a] = $scope.newTask;
+                }
+            }
+        }
+        window.open("Task list local storage.html", "_self");
     }
 });
 
