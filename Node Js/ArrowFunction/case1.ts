@@ -2,7 +2,7 @@ var employee = {
     id:1,
     greet : ()=>
     {
-       console.log(employee.id);
+       console.log(this.id);
     }
 };
 

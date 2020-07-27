@@ -58,6 +58,6 @@ class Person {
         }
     }
 }
-let myPerson = new Person("sejal", "naik", 25, 152, 50);
+let myPerson = new Person("sejal", "naik", 75, 152, 50);
 console.log(myPerson.youngOrOld());
 console.log(myPerson.calculateBMI());
