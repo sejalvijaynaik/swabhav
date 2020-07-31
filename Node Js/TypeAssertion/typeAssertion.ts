@@ -14,7 +14,7 @@ varInNumber = varInNumber + 10;
 console.log(varInNumber);
 console.log(typeof varInNumber);*/
 
-/*interface Student{
+interface Student{
     name:string,
     rollNo:number
 }
@@ -24,13 +24,13 @@ student.name = "sejal";
 student.rollNo = 10;
 
 console.log(student.name);
-console.log(student.rollNo);*/
+console.log(student.rollNo);
 
-let varInString = "10";
+/*let varInString = "10";
 let varInNumber:number = <number><any> varInString;
 varInNumber = varInNumber + 10;
 console.log(varInNumber)
-console.log(typeof varInNumber);
+console.log(typeof varInNumber);*/
 
 
 

@@ -1,8 +1,8 @@
 "use strict";
 let mySet = new Set();
-mySet.add("red");
+mySet.add(10);
 mySet.add("blue");
-mySet.add("yellow")
+mySet.add(true)
     .add("green")
     .add("black");
 //let mySet = new Set(["blue", "green", "yellow"]);

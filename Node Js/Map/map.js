@@ -1,10 +1,10 @@
 "use strict";
 let myMap = new Map();
 myMap.set(0, "red");
-myMap.set(1, "blue");
+myMap.set("sejal", 10);
 myMap.set(2, "yellow")
-    .set(3, "green")
-    .set(4, "black");
+    .set(false, "green")
+    .set(4, true);
 /*let myMap = new Map([
     [1, "red"],
     [2, "yellow"],
