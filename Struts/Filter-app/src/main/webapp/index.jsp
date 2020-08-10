@@ -5,7 +5,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>this is index page</h1>
 <a href="login.jsp">Login page</a>
 </body>
 </html>
