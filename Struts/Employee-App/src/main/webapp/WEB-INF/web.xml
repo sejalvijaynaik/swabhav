@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>welcome-gradle</display-name>
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	<filter>
+   <filter-name>SessionFilter</filter-name>
+   <filter-class>com.techlabs.filters.SessionFilter</filter-class>
+</filter>
+	
+
+<filter-mapping>
+   <filter-name>SessionFilter</filter-name>
+   <url-pattern>/AddController</url-pattern>
+   <url-pattern>/DeleteController</url-pattern>
+   <url-pattern>/ListController</url-pattern>
+   <url-pattern>/LogoutController</url-pattern>
+   <url-pattern>/PrepopulateController</url-pattern>
+   <url-pattern>/SearchController</url-pattern>
+   <url-pattern>/UpdateController</url-pattern>
+   <url-pattern>/add.jsp</url-pattern>
+   <url-pattern>/list.jsp</url-pattern>
+   <url-pattern>/update.jsp</url-pattern>
+   
+</filter-mapping>
+
+<filter>
+   <filter-name>LoginSessionFilter</filter-name>
+   <filter-class>com.techlabs.filters.LoginSessionFilter</filter-class>
+</filter>
+	
+
+<filter-mapping>
+   <filter-name>LoginSessionFilter</filter-name>
+   <url-pattern>/login.jsp</url-pattern>
+</filter-mapping>
+
+</web-app>
+
+
+
