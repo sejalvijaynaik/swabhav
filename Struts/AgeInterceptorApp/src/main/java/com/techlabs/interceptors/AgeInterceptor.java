@@ -8,12 +8,12 @@ public class AgeInterceptor implements Interceptor {
 
 	@Override
 	public void destroy() {
-		System.out.println("destry() executed");
+		System.out.println("ageinterceptor destry() executed");
 	}
 
 	@Override
 	public void init() {
-		System.out.println("init() executed");
+		System.out.println("ageinterceptor init() executed");
 	}
 
 	@Override

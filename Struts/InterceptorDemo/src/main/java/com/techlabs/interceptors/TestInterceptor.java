@@ -7,12 +7,12 @@ public class TestInterceptor implements Interceptor {
 
 	@Override
 	public void destroy() {
-		System.out.println("destroy() execured");
+		System.out.println("testinterceptor destroy() execured");
 	}
 
 	@Override
 	public void init() {
-		System.out.println("init() execured");		
+		System.out.println("testinterceptor init() executed");		
 	}
 
 	@Override

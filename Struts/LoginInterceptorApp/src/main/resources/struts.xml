@@ -10,7 +10,7 @@
 	<package name="loginInterceptorApp" extends="struts-default">
 		<interceptors>
 			<interceptor name = "loginSesionInterceptor" class = "com.techlabs.interceptors.LoginSesionInterceptorr"></interceptor>
-			<interceptor-stack name = "myStack">
+			<interceptor-stack name = "loginInterceptorStack">
 				<interceptor-ref name = "loginSesionInterceptor"></interceptor-ref>
 				<interceptor-ref name = "defaultStack"></interceptor-ref>
 			</interceptor-stack>
@@ -23,7 +23,7 @@
 			<result name="input">/index.jsp</result>
 		</action>
 		<action name="sessionCheckAction" class="com.techlabs.actions.SessionCheckAction" method = "execute">
-			<interceptor-ref name = "myStack"></interceptor-ref>
+			<interceptor-ref name = "loginInterceptorStack"></interceptor-ref>
 			<result name="success">/welcome.jsp</result>
 			<result name="input">/login.jsp</result>
 		</action>

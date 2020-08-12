@@ -10,13 +10,13 @@
 	<package name="test" extends="struts-default">
 		<interceptors>
 			<interceptor name = "ageInterceptor" class = "com.techlabs.interceptors.AgeInterceptor"></interceptor>
-			<interceptor-stack name = "myStack">
+			<interceptor-stack name = "ageInterceptorStack">
 				<interceptor-ref name = "defaultStack"></interceptor-ref>
 				<interceptor-ref name = "ageInterceptor"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
 		<action name="ageAction" class="com.techlabs.actions.AgeAction" method = "execute">
-			<interceptor-ref name = "myStack"></interceptor-ref>
+			<interceptor-ref name = "ageInterceptorStack"></interceptor-ref>
 			<result name="success">/success.jsp</result>
 		</action>
 	</package>
