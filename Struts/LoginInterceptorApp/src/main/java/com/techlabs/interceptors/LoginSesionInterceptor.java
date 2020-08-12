@@ -1,7 +1,6 @@
 package com.techlabs.interceptors;
 
 import org.apache.struts2.ServletActionContext;
-
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 
@@ -9,12 +8,12 @@ public class LoginSesionInterceptor implements Interceptor {
 
 	@Override
 	public void destroy() {
-		System.out.println("destroy() executed");
+		System.out.println("loginsession interceptor destroy() executed");
 	}
 
 	@Override
 	public void init() {
-		System.out.println("init() executed");
+		System.out.println("loginsession interceptor init() executed");
 	}
 
 	@Override
@@ -24,9 +23,10 @@ public class LoginSesionInterceptor implements Interceptor {
 		Object password = ServletActionContext.getRequest().getSession().getAttribute("password");
 		
 		if((username == null)&&(password == null)) {
-			return actionInvocation.invoke();
+			System.out.println("Session doesnt exist...directing to login page");
+			return "input";
 		}
-		return "input";
+		return "success";
 	}
 
 }

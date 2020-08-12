@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<s:form action = "loginAction">
+<s:form action = "sessionCheckAction">
 	<s:submit value = "LOGIN"></s:submit>
 </s:form>
 </body>

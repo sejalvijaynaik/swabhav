@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="s" uri="/struts-tags" %>  
+    <%@ taglib prefix="s" uri="/struts-tags" %> 
+    <%@ page import = "java.io.*,java.util.*" %> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<s:head/>
 <body>
-<h1>WELCOME!!!!</h1>
-<s:form action = "logoutAction">
-	<s:submit value = "LOGOUT"></s:submit>
-</s:form>
+<h1>GOOD MORNING!!!</h1>
+<%
+Date date = new Date();
+out.print(date.toString());
+%>
 </body>
 </html>

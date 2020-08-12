@@ -7,11 +7,9 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<s:head/>
 <body>
-<h1>WELCOME!!!!</h1>
-<s:form action = "logoutAction">
-	<s:submit value = "LOGOUT"></s:submit>
+<s:form action = "browserAction">
+<s:submit value = "WELCOME"></s:submit>
 </s:form>
 </body>
 </html>
