@@ -4,7 +4,7 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 
-public class LoginSesionInterceptor implements Interceptor {
+public class LoginSessionInterceptor implements Interceptor {
 
 	@Override
 	public void destroy() {

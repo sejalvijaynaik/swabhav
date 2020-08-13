@@ -7,7 +7,7 @@
     "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
-	<package name="test" extends="struts-default">
+	<package name="InterceptorDemo" extends="struts-default">
 		<interceptors>
 			<interceptor name = "testInterceptor" class = "com.techlabs.interceptors.TestInterceptor"></interceptor>
 			<interceptor-stack name = "testInterceptorStack">
@@ -16,7 +16,7 @@
 			</interceptor-stack>
 		</interceptors>
 		<action name="testAction" class="com.techlabs.actions.TestAction" method = "execute">
-			<interceptor-ref name = "testInterceptor"></interceptor-ref>
+			<interceptor-ref name = "testInterceptorStack"></interceptor-ref>
 			<result name="success">/success.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>

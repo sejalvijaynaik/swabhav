@@ -7,7 +7,7 @@
     "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
-	<package name="test" extends="struts-default">
+	<package name="ageInterceptorApp" extends="struts-default">
 		<interceptors>
 			<interceptor name = "ageInterceptor" class = "com.techlabs.interceptors.AgeInterceptor"></interceptor>
 			<interceptor-stack name = "ageInterceptorStack">

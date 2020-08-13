@@ -9,12 +9,17 @@
 <struts>
 	<package name="loginInterceptorApp" extends="struts-default">
 		<interceptors>
-			<interceptor name = "loginSesionInterceptor" class = "com.techlabs.interceptors.LoginSesionInterceptorr"></interceptor>
+			<interceptor name = "loginSessionInterceptor" class = "com.techlabs.interceptors.LoginSessionInterceptor"></interceptor>
 			<interceptor-stack name = "loginInterceptorStack">
-				<interceptor-ref name = "loginSesionInterceptor"></interceptor-ref>
+				<interceptor-ref name = "loginSessionInterceptor"></interceptor-ref>
 				<interceptor-ref name = "defaultStack"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
+		<action name="sessionCheckAction" class="com.techlabs.actions.SessionCheckAction" method = "execute">
+			<interceptor-ref name = "loginInterceptorStack"></interceptor-ref>
+			<result name="success">/welcome.jsp</result>
+			<result name="input">/login.jsp</result>
+		</action>
 		<action name="loginAction" class="com.techlabs.actions.LoginAction" method = "execute">
 			<result name="success">/welcome.jsp</result>
 			<result name="input">/login.jsp</result>
@@ -22,10 +27,6 @@
 		<action name="logoutAction" class="com.techlabs.actions.LogoutAction" method = "execute">
 			<result name="input">/index.jsp</result>
 		</action>
-		<action name="sessionCheckAction" class="com.techlabs.actions.SessionCheckAction" method = "execute">
-			<interceptor-ref name = "loginInterceptorStack"></interceptor-ref>
-			<result name="success">/welcome.jsp</result>
-			<result name="input">/login.jsp</result>
-		</action>
+		
 	</package>
 </struts> 
