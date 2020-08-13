@@ -1,4 +1,3 @@
-<%@page import="org.apache.struts2.ServletActionContext"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="s" uri="/struts-tags" %>  
@@ -9,11 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-	for(int i = 1; i < 10; i++){
-		out.println(ServletActionContext.getRequest().getParameter("myName"));
-	}
-%>
-
+<h1>Enter your name here</h1>
+<s:form action = "welcomeAction" method = "get">
+<s:textfield name = "myName"></s:textfield>
+<s:submit value = "submit"></s:submit>
+</s:form>
 </body>
 </html>

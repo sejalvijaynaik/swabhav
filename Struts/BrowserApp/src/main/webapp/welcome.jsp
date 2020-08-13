@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>GOOD MORNING!!!</h1>
+<h1><s:property value = "message"></s:property></h1>
 <%
 Date date = new Date();
 out.print(date.toString());
