@@ -8,8 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<s:form action = "welcomeAction" method = "get">
-<s:submit value = "WELCOME"></s:submit>
-</s:form>
+<s:a href = "welcomeAction">WELCOME</s:a>
 </body>
 </html>
