@@ -10,13 +10,24 @@
 <body>
 <s:label value = "Fisrt Name: "></s:label>
 <s:property value = "firstName"/><br>
+
 <s:label value = "Last Name: "></s:label>
 <s:property value = "lastName"/><br>
+
 <s:label value = "Gender: "></s:label>
 <s:property value = "gender"/><br>
+
 <s:label value = "Age: "></s:label>
 <s:property value = "age"/><br>
+
 <s:label value = "Email: "></s:label>
 <s:property value = "email"/><br>
+
+<s:label value = "Address: "></s:label>
+<s:property value = "address"/><br>
+
+<s:label value = "Favourite Color: "></s:label>
+<s:property value = "selectedColor"/><br>
+
 </body>
 </html>

@@ -9,6 +9,8 @@ public class RegisterAction extends ActionSupport {
 	String gender;
 	Integer age;
 	String email;
+	String address;
+	String selectedColor;
 
 	@Override
 	public String execute() {
@@ -56,25 +58,32 @@ public class RegisterAction extends ActionSupport {
 		this.email = email;
 	}
 
-	/*@Override
-	public void validate() {
+	public String getAddress() {
+		return address;
+	}
 
-		if (firstName.equals("")) {
-			addFieldError("firstName", "First Name is required");
-		}
-		if (lastName.equals("")) {
-			addFieldError("lastName", "Last Name is required");
-		}
-		if (gender == null) {
-			addFieldError("gender", "Gender is required");
-		}
-		if (age == null) {
-			addFieldError("age", "Age is required");
-		} else if (age < 18) {
-			addFieldError("age", "Age should be above 18");
-		}
-		if (email.equals("")) {
-			addFieldError("email", "Email is required");
-		}
-	}*/
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getSelectedColor() {
+		return selectedColor;
+	}
+
+	public void setSelectedColor(String selectedColor) {
+		this.selectedColor = selectedColor;
+	}
+	
+
+	/*
+	 * @Override public void validate() {
+	 * 
+	 * if (firstName.equals("")) { addFieldError("firstName",
+	 * "First Name is required"); } if (lastName.equals("")) {
+	 * addFieldError("lastName", "Last Name is required"); } if (gender == null) {
+	 * addFieldError("gender", "Gender is required"); } if (age == null) {
+	 * addFieldError("age", "Age is required"); } else if (age < 18) {
+	 * addFieldError("age", "Age should be above 18"); } if (email.equals("")) {
+	 * addFieldError("email", "Email is required"); } }
+	 */
 }

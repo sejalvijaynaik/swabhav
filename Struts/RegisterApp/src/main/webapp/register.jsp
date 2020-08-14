@@ -16,6 +16,9 @@
 	<s:radio name = "gender" list = "{'Male', 'Female'}" label = "Gender"></s:radio>
 	<s:textfield name = "age" label = "Age"></s:textfield>
 	<s:textfield name = "email" label = "Email"></s:textfield>
+	<s:textarea name = "address" cols = "30" rows = "7"></s:textarea>
+	<s:select list = "{'Red', 'Green', 'Yellow', 'Blue'}" name = "selectedColor" headerKey = "None" headerValue = "Select a color" label = "Favourite color"></s:select>
+	<s:reset></s:reset>
 	<s:submit value = "Submit"></s:submit>
 </s:form>
 </body>
