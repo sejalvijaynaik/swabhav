@@ -8,9 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<s:form action = "welcomeAction">
-	<s:textfield name = "myName"></s:textfield>
-	<s:submit value = "WELCOME"></s:submit>
-</s:form>
+<s:a href = "welcomeAction?myName=sejal">WELCOME</s:a>
 </body>
 </html>

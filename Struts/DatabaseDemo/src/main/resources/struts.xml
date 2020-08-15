@@ -15,6 +15,12 @@
 			<result name="success" type = "chain">databaseDemoAction</result>
 		</action>
 		<action name="prepopulateEmployeeAction" class="com.techlabs.actions.PrepopulateEmployeeAction" method = "execute">
+			<result name="success">/update.jsp</result>
+		</action>
+		<action name="updateEmployeeAction" class="com.techlabs.actions.UpdateEmployeeAction" method = "execute">
+			<result name="success" type = "chain">databaseDemoAction</result>
+		</action>
+		<action name="deleteEmployeeAction" class="com.techlabs.actions.DeleteEmployeeAction" method = "execute">
 			<result name="success" type = "chain">databaseDemoAction</result>
 		</action>
 	</package>

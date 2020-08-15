@@ -26,7 +26,13 @@
 			<td><s:property value = "#employee.designation"/></td>
 			<td>
 				<s:form action = "prepopulateEmployeeAction">
-					<s:hidden name = "employeeId" value = "#employee.id"></s:hidden>
+					<s:hidden name = "employeeId" value = "%{#employee.id}"></s:hidden>
+					<s:submit value = "UPDATE"></s:submit>
+				</s:form>
+			</td>
+			<td>
+				<s:form action = "deleteEmployeeAction">
+					<s:hidden name = "employeeId" value = "%{#employee.id}"></s:hidden>
 					<s:submit value = "UPDATE"></s:submit>
 				</s:form>
 			</td>
