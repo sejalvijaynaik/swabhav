@@ -11,6 +11,7 @@ public class RegisterAction extends ActionSupport {
 	String email;
 	String address;
 	String selectedColor;
+	Boolean subscription;
 
 	@Override
 	public String execute() {
@@ -73,7 +74,14 @@ public class RegisterAction extends ActionSupport {
 	public void setSelectedColor(String selectedColor) {
 		this.selectedColor = selectedColor;
 	}
-	
+
+	public Boolean getSubscription() {
+		return subscription;
+	}
+
+	public void setSubscription(Boolean subscription) {
+		this.subscription = subscription;
+	}
 
 	/*
 	 * @Override public void validate() {

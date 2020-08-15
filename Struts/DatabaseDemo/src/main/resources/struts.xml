@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<!DOCTYPE struts PUBLIC 
+
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" 
+
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<package name="databaseDemo" extends="struts-default">
+		<action name="databaseDemoAction" class="com.techlabs.actions.DatabaseDemoAction" method = "execute">
+			<result name="success">/welcome.jsp</result>
+		</action>
+		<action name="addEmployeeAction" class="com.techlabs.actions.AddEmployeeAction" method = "execute">
+			<result name="success" type = "chain">databaseDemoAction</result>
+		</action>
+		<action name="prepopulateEmployeeAction" class="com.techlabs.actions.PrepopulateEmployeeAction" method = "execute">
+			<result name="success" type = "chain">databaseDemoAction</result>
+		</action>
+	</package>
+</struts> 

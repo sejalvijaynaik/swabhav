@@ -7,6 +7,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
+<s:head/>
 <body>
 <s:label value = "Fisrt Name: "></s:label>
 <s:property value = "firstName"/><br>
@@ -28,6 +29,13 @@
 
 <s:label value = "Favourite Color: "></s:label>
 <s:property value = "selectedColor"/><br>
+
+<s:if test = "%{subscription == true}">
+	<div>You are a subscriber</div>
+</s:if>
+<s:else>
+	<div>You are not a subscriber</div>
+</s:else>
 
 </body>
 </html>
