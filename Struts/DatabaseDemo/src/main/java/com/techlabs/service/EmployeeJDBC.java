@@ -16,7 +16,7 @@ public class EmployeeJDBC {
 	Connection conn = null;
 
 	public EmployeeJDBC() throws ClassNotFoundException, SQLException {
-		URL = "jdbc:mysql://localhost:3306/employee?useSSL=false";
+		URL = "jdbc:mysql://localhost:3306/struts_employee?useSSL=false";
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(URL, "root", "root");
 	}
@@ -105,6 +105,7 @@ public class EmployeeJDBC {
 		ResultSet res = null;
 
 		try {
+			System.out.println("delete JDBC");
 			pstmt = conn.prepareStatement("delete from employees where id = ?");
 			pstmt.setInt(1, id);
 			pstmt.executeUpdate();

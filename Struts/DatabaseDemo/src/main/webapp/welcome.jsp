@@ -9,6 +9,10 @@
 </head>
 <body>
 <button onclick = "window.location.href = 'add.jsp'">Add Employee</button>
+<s:form action = "searchEmployeeAction">
+	<s:textfield name = "searchName"></s:textfield>
+	<s:submit value = "SEARCH"></s:submit>
+</s:form>
 <h2>Employees Table</h2>
 <table border = "1">
 	<tr>
@@ -17,6 +21,7 @@
 		<th>Employee Salary</th>
 		<th>Employee Designation</th>
 		<th>Update</th>
+		<th>Delete</th>
 	</tr>
 	<s:iterator value = "employees" var = "employee">
 		<tr>
@@ -33,7 +38,7 @@
 			<td>
 				<s:form action = "deleteEmployeeAction">
 					<s:hidden name = "employeeId" value = "%{#employee.id}"></s:hidden>
-					<s:submit value = "UPDATE"></s:submit>
+					<s:submit value = "DELETE"></s:submit>
 				</s:form>
 			</td>
 		</tr>

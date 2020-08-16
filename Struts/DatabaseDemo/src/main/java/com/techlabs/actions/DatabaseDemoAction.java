@@ -15,12 +15,14 @@ public class DatabaseDemoAction extends ActionSupport {
 	private EmployeeJDBC employeeJDBC;
 	
 	public DatabaseDemoAction() throws ClassNotFoundException, SQLException {
+		System.out.println("database action object created");
 		employeeJDBC = new EmployeeJDBC();
 	}
 
 	@Override
 	public String execute() throws Exception {
 		
+		System.out.println("database action executing");
 		employees = employeeJDBC.getEmployees();
 		return "success";
 

@@ -9,5 +9,10 @@
 </head>
 <body>
 <s:property value = "myName"/>
+<%
+	for(int i = 1; i < 10; i++){
+		out.println(request.getAttribute("myName"));
+	}
+%>
 </body>
 </html>
