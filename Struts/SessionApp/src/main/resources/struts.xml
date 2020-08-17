@@ -8,7 +8,10 @@
 
 <struts>
 	<package name="test" extends="struts-default">
-		<action name="sessionAction" class="com.techlabs.actions.SessionAction" method = "execute">
+		<action name="servletActionContextSessionAction" class="com.techlabs.actions.ServletActionContextSessionAction" method = "execute">
+			<result name="success">/session.jsp</result>
+		</action>
+		<action name="sessionAwareSessionAction" class="com.techlabs.actions.SessionAwareSessionAction" method = "execute">
 			<result name="success">/session.jsp</result>
 		</action>
 	</package>
