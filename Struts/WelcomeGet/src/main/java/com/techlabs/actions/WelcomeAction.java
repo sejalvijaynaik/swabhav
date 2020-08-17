@@ -17,4 +17,8 @@ public class WelcomeAction extends ActionSupport {
 		return myName;
 	}
 
+	public void setMyName(String myName) {
+		this.myName = myName;
+	}
+
 }

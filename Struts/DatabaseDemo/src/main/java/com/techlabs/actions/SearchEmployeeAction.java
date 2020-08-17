@@ -22,7 +22,7 @@ public class SearchEmployeeAction extends ActionSupport {
 
 		employees = employeeJDBC.searchEmployees(searchName);
 		for (Employee employee : employees) {
-			System.out.println(employee);
+			System.out.println(employee.getName());
 		}
 		return "success";
 	}
@@ -33,6 +33,14 @@ public class SearchEmployeeAction extends ActionSupport {
 
 	public void setSearchName(String searchName) {
 		this.searchName = searchName;
+	}
+
+	public List<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
 	}
 
 }

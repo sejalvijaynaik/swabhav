@@ -5,15 +5,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Index</title>
 </head>
 <body>
-<s:property value = "myName"/>
-<%
-	for(int i = 1; i < 10; i++){
-		out.println("<s:textfield></s:textfield>");
-	}
-%>
-
+<s:form action = "hello">
+	<s:submit value = "HELLO"></s:submit>
+</s:form>
 </body>
 </html>
