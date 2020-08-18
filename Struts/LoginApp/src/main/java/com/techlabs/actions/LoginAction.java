@@ -33,7 +33,7 @@ public class LoginAction extends ActionSupport {
 			return "input";
 		}
 
-		message = "Hello" + username;
+		message = "hello";
 		return "success";
 	}
 
