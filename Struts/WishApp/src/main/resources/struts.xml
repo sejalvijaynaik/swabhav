@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<!DOCTYPE struts PUBLIC 
+
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" 
+
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<package name="welcomeSet" extends="struts-default">
+		<action name="wish" class="com.techlabs.actions.WishAction" method = "execute">  
+			<result name="success">wish.jsp</result>  
+		</action>
+		<action name="wish.do" class="com.techlabs.actions.WishAction" method="wishDo">  
+			<result name="success">wish.jsp</result>  
+		</action>
+	</package>
+</struts> 
