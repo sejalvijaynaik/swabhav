@@ -1,108 +1,67 @@
 package com.techlabs.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.techlabs.viewModels.Person;
 
 public class RegisterAction extends ActionSupport {
 
-	String firstName;
-	String lastName;
-	String gender;
-	Integer age;
-	String email;
-	String address;
-	String selectedColor;
-	Boolean subscription;
+	private Person person;
+	private String message;
 
-	@Override
-	public String execute() {
-		System.out.println("execute method running");
-		return "success";
+	public RegisterAction() {
+		person = new Person();
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String registerShow() {
+
+		message = "First Name : " + person.getFirstName() + " | Last Name : " + person.getLastName() + " | Address : "
+				+ person.getAddress() + " | Age : " + person.getAge();
+
+		return "input";
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public String registerDo() {
+		System.out.println("registerDo running");
+		System.out.println(person.getFirstName());
+		System.out.println(person.getLastName());
+		System.out.println(person.getAddress());
+		System.out.println(person.getAge());
+
+		registerShow();
+
+		return "input";
 	}
 
-	public String getLastName() {
-		return lastName;
+	public Person getPerson() {
+		return person;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
-	public String getGender() {
-		return gender;
+	public String getMessage() {
+		return message;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public Integer getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getSelectedColor() {
-		return selectedColor;
-	}
-
-	public void setSelectedColor(String selectedColor) {
-		this.selectedColor = selectedColor;
-	}
-
-	public Boolean getSubscription() {
-		return subscription;
-	}
-
-	public void setSubscription(Boolean subscription) {
-		this.subscription = subscription;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 	@Override
 	public void validate() {
 
-		if (firstName.equals("")) {
-			addFieldError("firstName", "First Name is required");
+		if (person.getFirstName().equals("")) {
+			addFieldError("person.firstName", "First Name is required");
 		}
-		if (lastName.equals("")) {
-			addFieldError("lastName", "Last Name is required");
+		if (person.getLastName().equals("")) {
+			addFieldError("person.lastName", "Last Name is required");
 		}
-		if (gender == null) {
-			addFieldError("gender", "Gender is required");
+		if (person.getAddress().equals("")) {
+			addFieldError("person.address", "Address is required");
 		}
-		if (age == null) {
-			addFieldError("age", "Age is required");
-		} else if (age < 18) {
-			addFieldError("age", "Age should be above 18");
-		}
-		if (email.equals("")) {
-			addFieldError("email", "Email is required");
+		if (person.getAge() == null) {
+			addFieldError("person.age", "Age is required");
 		}
 	}
-
 }
