@@ -16,12 +16,8 @@
 		</s:form>
 	</article>
 	<article>
-		<s:if test = "%{message == true}">
-			<h1>Hello <s:property value = "username"/></h1>
-		</s:if>
-		<s:else>
-			<span style = "color:red">Enter correct username and password</span>
-		</s:else>
+		
+		<s:property value = "message"/>
 		
 	</article>
 </body>

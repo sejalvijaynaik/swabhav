@@ -7,12 +7,33 @@ public class LoginAction extends ActionSupport {
 
 	private String username;
 	private String password;
-	private boolean message;
+	private String message;
 
 	@Override
 	public String execute() throws Exception {
 
 		System.out.println("Execute executing");
+
+		UsernamePassword usernamePassword = new UsernamePassword();
+		
+		System.out.println(usernamePassword.getUsername());
+		System.out.println(usernamePassword.getPassword());
+		System.out.println(username);
+		System.out.println(password);
+
+		if (!username.equals(usernamePassword.getUsername())) {
+			System.out.println("Username is incorrect");
+			message = "Username is incorrect";
+			return "input";
+		}
+
+		if (!password.equals(usernamePassword.getPassword())) {
+			System.out.println("Password is incorrect");
+			message = "Password is incorrect";
+			return "input";
+		}
+
+		message = "Hello" + username;
 		return "success";
 	}
 
@@ -20,14 +41,20 @@ public class LoginAction extends ActionSupport {
 
 		System.out.println("Login do executing");
 
-		UsernamePassword usernamePassword = new UsernamePassword();
-
-		if ((password.equals(usernamePassword.getPassword())) && (username.equals(usernamePassword.getUsername()))) {
-			message = true;
-		} else {
-			message = false;
+		if (username.equals("")) {
+			System.out.println("Username is empty");
+			message = "Username is required";
+			return "input";
 		}
-		return "success";
+		if (password.equals("")) {
+			System.out.println("Password is empty");
+			message = "Password is required";
+			return "input";
+		}
+
+		execute();
+
+		return "input";
 	}
 
 	public String getUsername() {
@@ -46,11 +73,11 @@ public class LoginAction extends ActionSupport {
 		this.password = password;
 	}
 
-	public boolean getMessage() {
+	public String getMessage() {
 		return message;
 	}
 
-	public void setMessage(boolean message) {
+	public void setMessage(String message) {
 		this.message = message;
 	}
 
