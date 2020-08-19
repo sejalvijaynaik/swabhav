@@ -13,6 +13,10 @@ public class LoginAction extends ActionSupport {
 	public String execute() throws Exception {
 
 		System.out.println("Execute executing");
+		
+		if((username == null)&&(password == null)){
+			return "input";
+		}
 
 		UserService userService = new UserService();
 		if (userService.isValidUser(username, password)) {
