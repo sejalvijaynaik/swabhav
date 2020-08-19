@@ -10,17 +10,13 @@
 </head>
 <body>
 	<article>
-		<s:form action="registerDo">
-			<s:textfield name = "person.firstName" label="First Name"></s:textfield>
-			<s:textfield name = "person.lastName" label="Last Name"></s:textfield>
-			<s:textfield name = "person.address" label="Address"></s:textfield>
-			<s:textfield name = "person.age" label="Age"></s:textfield>
+		<s:form action="registerDo" method = "post">
+			<s:textfield name = "firstName" label="First Name"></s:textfield>
+			<s:textfield name = "lastName" label="Last Name"></s:textfield>
+			<s:textfield name = "address" label="Address"></s:textfield>
+			<s:textfield name = "age" label="Age"></s:textfield>
 			<s:submit value = "Submit"></s:submit>
 		</s:form>
-	</article>
-	<article>
-		<s:property value = "message"/>
-
 	</article>
 </body>
 </html>

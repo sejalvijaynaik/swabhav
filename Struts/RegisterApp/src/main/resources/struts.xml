@@ -7,12 +7,14 @@
     "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
-	<package name = "registerValidateTest" extends="struts-default">
+	<package name = "registerApp" extends="struts-default">
 		<action name="registerDo" class="com.techlabs.actions.RegisterAction" method = "registerDo">  
 			<result name="input">register.jsp</result> 
+			<result name="success">welcome.jsp</result>
 		</action>
-		<action name="registerShow" class="com.techlabs.actions.RegisterAction" method = "registerShow">  
+		<action name="register" class="com.techlabs.actions.RegisterAction" method = "execute">  
 			<result name="input">register.jsp</result> 
+			<result name="success">welcome.jsp</result>
 		</action>
 	</package>
 </struts> 

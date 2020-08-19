@@ -5,63 +5,70 @@ import com.techlabs.viewModels.Person;
 
 public class RegisterAction extends ActionSupport {
 
-	private Person person;
-	private String message;
+	private String firstName;
+	private String lastName;
+	private String address;
+	private Integer age;
 
-	public RegisterAction() {
-		person = new Person();
-	}
+	public String execute() {
 
-	public String registerShow() {
+		System.out.println("execute running");
 
-		message = "First Name : " + person.getFirstName() + " | Last Name : " + person.getLastName() + " | Address : "
-				+ person.getAddress() + " | Age : " + person.getAge();
-
-		return "input";
+		return "success";
 	}
 
 	public String registerDo() {
 		System.out.println("registerDo running");
-		System.out.println(person.getFirstName());
-		System.out.println(person.getLastName());
-		System.out.println(person.getAddress());
-		System.out.println(person.getAge());
 
-		registerShow();
-
-		return "input";
+		return "success";
 	}
 
-	public Person getPerson() {
-		return person;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setPerson(Person person) {
-		this.person = person;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getMessage() {
-		return message;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
 	}
 
 	@Override
 	public void validate() {
 
-		if (person.getFirstName().equals("")) {
-			addFieldError("person.firstName", "First Name is required");
+		if (firstName.equals("")) {
+			addFieldError("firstName", "First Name is required");
 		}
-		if (person.getLastName().equals("")) {
-			addFieldError("person.lastName", "Last Name is required");
+		if (lastName.equals("")) {
+			addFieldError("lastName", "Last Name is required");
 		}
-		if (person.getAddress().equals("")) {
-			addFieldError("person.address", "Address is required");
+		if (address.equals("")) {
+			addFieldError("address", "Address is required");
 		}
-		if (person.getAge() == null) {
-			addFieldError("person.age", "Age is required");
+		if (age == null) {
+			addFieldError("age", "Age is required");
 		}
 	}
 }
