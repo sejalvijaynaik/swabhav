@@ -1,7 +1,7 @@
 package com.techlabs.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.techlabs.service.UsernamePassword;
+import com.techlabs.service.UserService;
 
 public class LoginAction extends ActionSupport {
 
@@ -14,27 +14,14 @@ public class LoginAction extends ActionSupport {
 
 		System.out.println("Execute executing");
 
-		UsernamePassword usernamePassword = new UsernamePassword();
-		
-		System.out.println(usernamePassword.getUsername());
-		System.out.println(usernamePassword.getPassword());
-		System.out.println(username);
-		System.out.println(password);
-
-		if (!username.equals(usernamePassword.getUsername())) {
-			System.out.println("Username is incorrect");
-			message = "Username is incorrect";
-			return "input";
+		UserService userService = new UserService();
+		if (userService.isValidUser(username, password)) {
+			message = "hello";
+			return "success";
 		}
 
-		if (!password.equals(usernamePassword.getPassword())) {
-			System.out.println("Password is incorrect");
-			message = "Password is incorrect";
-			return "input";
-		}
-
-		message = "hello";
-		return "success";
+		message = "Username or passwrod incorrect";
+		return "input";
 	}
 
 	public String loginDo() throws Exception {
