@@ -1,5 +1,7 @@
 package com.techlabs.actions;
 
+import org.apache.struts2.ServletActionContext;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.techlabs.viewModels.Person;
 
@@ -58,14 +60,15 @@ public class RegisterAction extends ActionSupport {
 	@Override
 	public void validate() {
 
-		if (firstName.equals("")) {
+		if ((firstName.equals(""))) {
+			System.out.println("first name if null");
 			addFieldError("firstName", "First Name is required");
 		}
 		if (lastName.equals("")) {
 			addFieldError("lastName", "Last Name is required");
 		}
 		if (address.equals("")) {
-			addFieldError("address", "Address is required");
+			addFieldError("address", "Adsress is required");
 		}
 		if (age == null) {
 			addFieldError("age", "Age is required");
