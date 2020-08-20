@@ -20,5 +20,6 @@
 		<s:label value = "Age : "></s:label>
 		<s:property value = "age"/>
 	</article>
+	<s:a href = "register">REGISTER</s:a>
 </body>
 </html>

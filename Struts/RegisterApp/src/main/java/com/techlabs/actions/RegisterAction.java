@@ -60,18 +60,22 @@ public class RegisterAction extends ActionSupport {
 	@Override
 	public void validate() {
 
-		if ((firstName.equals(""))) {
-			System.out.println("first name if null");
-			addFieldError("firstName", "First Name is required");
-		}
-		if (lastName.equals("")) {
-			addFieldError("lastName", "Last Name is required");
-		}
-		if (address.equals("")) {
-			addFieldError("address", "Adsress is required");
-		}
-		if (age == null) {
-			addFieldError("age", "Age is required");
+		System.out.println("validate running");
+		if (firstName == null) {
+			addFieldError("", "");
+		} else {
+			if (firstName.equals("")) {
+				addFieldError("firstName", "First name is required");
+			}
+			if (lastName.equals("")) {
+				addFieldError("lastName", "Last name is required");
+			}
+			if (address.equals("")) {
+				addFieldError("address", "Address is required");
+			}
+			if (age == null) {
+				addFieldError("age", "Age is required");
+			}
 		}
 	}
 }

@@ -16,8 +16,5 @@
 			<result name="input">register.jsp</result> 
 			<result name="success">welcome.jsp</result>
 		</action>
-		<action name="firstTimeLoadRegister" class="com.techlabs.actions.FirstTimeLoadRegisterAction" method = "execute">  
-			<result name="input">register.jsp</result> 
-		</action>
 	</package>
 </struts> 

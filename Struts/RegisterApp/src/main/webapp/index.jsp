@@ -6,9 +6,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<s:head/>
+<s:head />
 </head>
 <body>
-	<s:a href = "firstTimeLoadRegister">REGISTER</s:a>
+	<s:a href="register">REGISTER</s:a>
 </body>
 </html>
