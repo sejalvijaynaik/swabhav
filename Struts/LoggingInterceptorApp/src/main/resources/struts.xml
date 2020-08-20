@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<!DOCTYPE struts PUBLIC 
+
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" 
+
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<package name = "loggingInterceptorApp" extends="struts-default">
+		<interceptors>
+			<interceptor name = "loggingInterceptor" class = "com.techlabs.interceptors.LoggingInterceptor"></interceptor>
+			<interceptor-stack name = "loggingInterceptorStack">
+				<interceptor-ref name = "defaultStack"></interceptor-ref>
+				<interceptor-ref name = "loggingInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<action name="loggingAction" class="com.techlabs.actions.LoggingAction" method = "execute">
+			<interceptor-ref name = "loggingInterceptorStack"></interceptor-ref>  
+			<result name="success">welcome.jsp</result>  
+			<result name="error">welcome.jsp</result>
+		</action>
+	</package>
+</struts> 
