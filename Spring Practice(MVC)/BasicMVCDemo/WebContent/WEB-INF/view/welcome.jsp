@@ -7,6 +7,13 @@
 <title>Welcome</title>
 </head>
 <body>
-<h1>WELCOME</h1>
+<h1>welcome method</h1>
+<h1>WELCOME ${param.myName}</h1>
+<hr>
+<h1>welcomeUpperCase method</h1>
+<h1>WELCOME ${myName}</h1>
+<hr>
+<h1>welcomeRequestParam method</h1>
+<h1>WELCOME ${myName}</h1>
 </body>
 </html>

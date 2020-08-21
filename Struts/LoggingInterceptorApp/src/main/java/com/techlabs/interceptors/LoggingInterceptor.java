@@ -3,16 +3,16 @@ package com.techlabs.interceptors;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 
-class LoggingInterceptor implements Interceptor {
+public class LoggingInterceptor implements Interceptor {
 
 	@Override
 	public void destroy() {
-		System.out.println("Logging Interceptor Initialized");
+		System.out.println("Logging Interceptor Destroyed");
 	}
 
 	@Override
 	public void init() {
-		System.out.println("Logging Interceptor Destroyed");
+		System.out.println("Logging Interceptor Initialized");
 	}
 
 	@Override

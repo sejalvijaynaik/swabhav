@@ -7,9 +7,20 @@
 <title>Form</title>
 </head>
 <body>
-	<form action="welcome" method="get">
+	<h2>Normal welcome</h2>
+	<form action="welcomeSimple" method="get">
 		<input type="text" name="myName" placeholder="Whats your name?">
-		<input type="submit">
+		<input type="submit" value="SUBMIT">
+	</form>
+	<h2>Uppercase welcome</h2>
+	<form action="welcomeUpperCase" method="get">
+		<input type="text" name="myName" placeholder="Whats your name?">
+		<input type="submit" value="SUBMIT">
+	</form>
+	<h2>RequestParam welcome</h2>
+	<form action="welcomeRequestParam" method="get">
+		<input type="text" name="myName" placeholder="Whats your name?">
+		<input type="submit" value="SUBMIT">
 	</form>
 </body>
 </html>

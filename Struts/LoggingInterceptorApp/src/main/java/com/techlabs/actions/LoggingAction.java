@@ -4,6 +4,10 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class LoggingAction extends ActionSupport {
 
+	public LoggingAction() {
+		System.out.println("logging action constructor");
+	}
+
 	@Override
 	public String execute() throws Exception {
 
