@@ -5,13 +5,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<s:head />
+<title>Login form</title>
 </head>
 <body>
-	<article>
-		<s:property value="mainMessage" />
-		<s:property value="message"/>
-	</article>
+	<h1>Welcome ${username}</h1>
+	<s:a href="logout">LOGOUT</s:a>
 </body>
 </html>

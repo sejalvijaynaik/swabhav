@@ -6,6 +6,7 @@ public class User {
 	private String lastName;
 	private String Address;
 	private Integer age;
+	private String message;
 
 	public String getFirstName() {
 		return firstName;
@@ -38,4 +39,13 @@ public class User {
 	public void setAge(Integer age) {
 		this.age = age;
 	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 }

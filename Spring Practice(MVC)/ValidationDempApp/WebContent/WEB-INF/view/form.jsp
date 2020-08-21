@@ -17,6 +17,10 @@
 		First name(required) : <form:input path="firstName"/>
 		<form:errors path="firstName" cssClass="error"></form:errors><br><br>
 		Last name : <form:input path="lastName"/><br><br>
+		Free passes : <form:input path="freePasses"/>
+		<form:errors path="freePasses" cssClass="error"></form:errors><br><br>
+		Pincode : <form:input path="pincode"/>
+		<form:errors path="pincode" cssClass="error"></form:errors><br><br>
 		<input type="submit" value="SUBMIT">
 	</form:form>
 </body>

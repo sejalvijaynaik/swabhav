@@ -7,6 +7,7 @@ import com.techlabs.models.User;
 public class RegisterAction extends ActionSupport implements ModelDriven {
 
 	private User user;
+	private String mainMessage;
 
 	public RegisterAction() {
 		user = new User();
@@ -15,6 +16,17 @@ public class RegisterAction extends ActionSupport implements ModelDriven {
 	@Override
 	public String execute() throws Exception {
 
+		return "success";
+	}
+
+	public String registerDo() {
+
+		user.setMessage("Thanks for registration");
+		System.out.println(user.getMessage());
+		mainMessage = user.getMessage() + " | First Name : " + user.getFirstName() + " | Last Name : "
+				+ user.getLastName() + " | Address" + user.getAddress() + " | Age : " + user.getAge();
+		System.out.println(mainMessage);
+		user.setMessage(mainMessage);
 		return "success";
 	}
 

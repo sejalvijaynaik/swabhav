@@ -10,7 +10,7 @@
 </head>
 <body>
 	<article>
-		<s:form action="register">
+		<s:form action="registerDo">
 			<s:textfield name = "firstName" label="First Name"></s:textfield>
 			<s:textfield name = "lastName" label="Last Name"></s:textfield>
 			<s:textfield name = "address" label="Address"></s:textfield>

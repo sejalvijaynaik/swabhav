@@ -12,5 +12,9 @@
 			<result name="input">register.jsp</result> 
 			<result name="success">welcome.jsp</result>
 		</action>
+		<action name="registerDo" class="com.techlabs.actions.RegisterAction" method = "registerDo">  
+			<result name="input">register.jsp</result> 
+			<result name="success">welcome.jsp</result>
+		</action>
 	</package>
 </struts> 

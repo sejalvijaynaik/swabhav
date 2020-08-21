@@ -10,6 +10,8 @@
 </head>
 <body>
 	<h1>Thanks for your registration ${customer.firstName} ${customer.lastName}</h1>
+	Number of Free passes : ${customer.freePasses}
+	Pincode : ${customer.pincode}
 
 	
 </body>
