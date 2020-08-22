@@ -6,6 +6,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.techlabs.custom.validation.CourseCode;
+
 public class Customer {
 
 	@NotNull(message = "First name is required")
@@ -21,6 +23,9 @@ public class Customer {
 
 	@Pattern(regexp = "^[a-zA-Z0-9]{6}", message = "only 6 characters allowed")
 	private String pincode;
+
+	@CourseCode(value = "SEJ", message = "Must start with SEJ")
+	private String courseCode;
 
 	public String getFirstName() {
 		return firstName;
@@ -52,6 +57,14 @@ public class Customer {
 
 	public void setPincode(String pincode) {
 		this.pincode = pincode;
+	}
+
+	public String getCourseCode() {
+		return courseCode;
+	}
+
+	public void setCourseCode(String courseCode) {
+		this.courseCode = courseCode;
 	}
 
 }

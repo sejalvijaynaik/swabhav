@@ -21,6 +21,8 @@
 		<form:errors path="freePasses" cssClass="error"></form:errors><br><br>
 		Pincode : <form:input path="pincode"/>
 		<form:errors path="pincode" cssClass="error"></form:errors><br><br>
+		Course Code : <form:input path="courseCode"/>
+		<form:errors path="courseCode" cssClass="error"></form:errors><br><br>
 		<input type="submit" value="SUBMIT">
 	</form:form>
 </body>
