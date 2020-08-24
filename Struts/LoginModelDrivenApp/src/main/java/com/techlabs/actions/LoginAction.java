@@ -5,7 +5,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.techlabs.service.UserService;
 import com.techlabs.viewModels.User;
 
-public class LoginAction extends ActionSupport implements ModelDriven {
+public class LoginAction extends ActionSupport implements ModelDriven<User> {
 
 	private User user;
 
@@ -26,11 +26,6 @@ public class LoginAction extends ActionSupport implements ModelDriven {
 		return "input";
 	}
 
-	@Override
-	public Object getModel() {
-		return user;
-	}
-
 	public void validate() {
 
 		System.out.println("validate running");
@@ -44,5 +39,11 @@ public class LoginAction extends ActionSupport implements ModelDriven {
 				addFieldError("lastName", "Last name is required");
 			}
 		}
+	}
+
+	@Override
+	public User getModel() {
+
+		return user;
 	}
 }

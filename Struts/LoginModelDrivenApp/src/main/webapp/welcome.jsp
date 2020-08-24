@@ -10,5 +10,6 @@
 <body>
 	<h1>Welcome ${username}</h1>
 	<s:a href="logout">LOGOUT</s:a>
+	<s:property value="user.username"/>
 </body>
 </html>
