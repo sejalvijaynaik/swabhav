@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<!DOCTYPE struts PUBLIC 
+
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" 
+
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<package name="oneInterceptorTwoActionsApp" extends="struts-default">
+		<interceptors>
+			<interceptor name = "myInterceptor" class = "com.techlabs.interceptors.MyInterceptor"></interceptor>
+			<interceptor-stack name = "myInterceptorsStack">
+				<interceptor-ref name = "defaultStack"></interceptor-ref>
+				<interceptor-ref name = "myInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<action name="first" class="com.techlabs.actions.FirstAction" method = "execute">
+			<interceptor-ref name = "myInterceptorsStack"></interceptor-ref>
+			<result name="success">/welcome.jsp</result>
+		</action>
+		<action name="second" class="com.techlabs.actions.SecondAction" method = "execute">
+			<interceptor-ref name = "myInterceptorsStack"></interceptor-ref>
+			<result name="success">/welcome.jsp</result>
+		</action>
+	</package>
+</struts> 
