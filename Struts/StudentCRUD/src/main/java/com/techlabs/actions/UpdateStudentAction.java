@@ -6,43 +6,63 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.techlabs.model.Student;
 import com.techlabs.service.StudentService;
-import com.techlabs.viewModel.StudentViewModel;
+import com.techlabs.viewModel.StudentUpdateModel;
 
-public class UpdateStudentAction extends ActionSupport implements ModelDriven<StudentViewModel> {
+public class UpdateStudentAction extends ActionSupport implements ModelDriven<StudentUpdateModel> {
 
-	private StudentViewModel studentViewModel;
+	private StudentUpdateModel studentUpdateModel;
 	private StudentService studentService;
 
 	public UpdateStudentAction() {
 
-		studentViewModel = new StudentViewModel();
-		studentService = new StudentService();
+		studentUpdateModel = new StudentUpdateModel();
+		studentService = StudentService.getStudentService();
 	}
 
 	@Override
 	public String execute() throws Exception {
 
-		studentService.updateStudent(studentViewModel.getRollNo(), studentViewModel.getName(),
-				studentViewModel.getAddress(), studentViewModel.getAge());
+		studentService.updateStudent(studentUpdateModel.getRollNo(), studentUpdateModel.getName(),
+				studentUpdateModel.getAddress(), studentUpdateModel.getAge());
 
 		return "success";
 	}
 
-	public String showUpdateForm() {
+	public String updateDo() {
 
-		System.out.println(studentViewModel.getRollNo());
-		Student student = studentService.getStudent(studentViewModel.getRollNo());
-		
-		studentViewModel.setName(student.getName());
-		studentViewModel.setAddress(student.getAddress());
-		studentViewModel.setAge(student.getAge());
+		System.out.println(studentUpdateModel.getRollNo());
+		Student student = studentService.getStudent(studentUpdateModel.getRollNo());
+
+		studentUpdateModel.setName(student.getName());
+		studentUpdateModel.setAddress(student.getAddress());
+		studentUpdateModel.setAge(student.getAge());
 
 		return "input";
 	}
 
 	@Override
-	public StudentViewModel getModel() {
-		return studentViewModel;
+	public StudentUpdateModel getModel() {
+		return studentUpdateModel;
+	}
+
+	@Override
+	public void validate() {
+
+		System.out.println("validate running");
+		if (studentUpdateModel.getName() == null) {
+			updateDo();
+			addFieldError("", "");
+		} else {
+			if (studentUpdateModel.getName().equals("")) {
+				addFieldError("name", "First name is required");
+			}
+			if (studentUpdateModel.getAddress().equals("")) {
+				addFieldError("address", "Last name is required");
+			}
+			if (studentUpdateModel.getAge() == null) {
+				addFieldError("age", "Age is required");
+			}
+		}
 	}
 
 }

@@ -12,7 +12,7 @@ public class DisplayStudentAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 
-		StudentService studentService = new StudentService();
+		StudentService studentService = StudentService.getStudentService();
 		students = studentService.getStudents();
 
 		return "success";

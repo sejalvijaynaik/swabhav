@@ -9,7 +9,7 @@
 </head>
 <body>
 	
-	<s:form action="addForm">
+	<s:form action="add.do" method="get">
 		<s:submit value="ADD STUDENT"></s:submit>
 	</s:form>
 
@@ -30,7 +30,7 @@
 				<td><s:property value="address"/></td>
 				<td><s:property value="age"/></td>
 				<td>
-				<s:form action = "updateForm">
+				<s:form action = "update.do" method="get">
 					<input type="hidden" name="rollNo" value="${rollNo}">
 					<s:submit value = "UPDATE"></s:submit>
 				</s:form>

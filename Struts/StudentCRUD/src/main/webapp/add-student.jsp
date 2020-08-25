@@ -8,7 +8,7 @@
 <title>Add Student Form</title>
 </head>
 <body>
-	<s:form action="addStudent">
+	<s:form action="add" method="post">
 		<s:textfield name = "name" label="Name"></s:textfield>
 		<s:textfield name = "address" label="Address"></s:textfield>
 		<s:textfield name = "age" label="Age"></s:textfield>

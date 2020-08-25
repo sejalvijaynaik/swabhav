@@ -1,11 +1,11 @@
 package com.techlabs.viewModel;
 
-public class StudentViewModel {
+public class StudentUpdateModel {
 
 	private String rollNo;
 	private String name;
 	private String address;
-	private int age;
+	private Integer age;
 
 	public String getName() {
 		return name;
@@ -23,11 +23,11 @@ public class StudentViewModel {
 		this.address = address;
 	}
 
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 

@@ -8,7 +8,7 @@
 <title>Student form</title>
 </head>
 <body>
-	<s:form action="updateStudent">
+	<s:form action="update" method="post">
 		<input type="hidden" name = "rollNo" value="${rollNo}">
 		<s:textfield name = "name" label="Name"></s:textfield>
 		<s:textfield name = "address" label="Address"></s:textfield>

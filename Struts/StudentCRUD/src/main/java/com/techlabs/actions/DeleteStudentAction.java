@@ -3,17 +3,17 @@ package com.techlabs.actions;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.techlabs.service.StudentService;
-import com.techlabs.viewModel.StudentViewModel;
+import com.techlabs.viewModel.StudentUpdateModel;
 
-public class DeleteStudentAction extends ActionSupport implements ModelDriven<StudentViewModel> {
+public class DeleteStudentAction extends ActionSupport implements ModelDriven<StudentUpdateModel> {
 
 	private StudentService studentService;
-	private StudentViewModel student;
+	private StudentUpdateModel student;
 
 	public DeleteStudentAction() {
 
-		studentService = new StudentService();
-		student = new StudentViewModel();
+		studentService = StudentService.getStudentService();
+		student = new StudentUpdateModel();
 	}
 
 	@Override
@@ -24,7 +24,7 @@ public class DeleteStudentAction extends ActionSupport implements ModelDriven<St
 	}
 
 	@Override
-	public StudentViewModel getModel() {
+	public StudentUpdateModel getModel() {
 
 		return student;
 	}

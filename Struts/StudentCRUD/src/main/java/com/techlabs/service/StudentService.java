@@ -1,45 +1,81 @@
 package com.techlabs.service;
 
+import java.util.ArrayList;
 import java.util.List;
-import com.techlabs.dao.StudentDao;
+import java.util.UUID;
 import com.techlabs.model.Student;
 
 public class StudentService {
 
-	private StudentDao studentDao;
+	private static StudentService studentService = null;
+	private List<Student> students;
 
-	public StudentService() {
+	private StudentService() {
+		students = new ArrayList<Student>();
 
-		studentDao = StudentDao.getStudentService();
+		addStudent("sejal", "mumbai", 25);
+		addStudent("ross", "new york", 20);
+		addStudent("monica", "new york", 30);
+		addStudent("rachel", "mumbai", 26);
 	}
 
-	public Student getStudent(String rollNo) {
+	public static StudentService getStudentService() {
+		if (studentService == null) {
+			studentService = new StudentService();
 
-		return studentDao.getStudent(rollNo);
+		}
+		return studentService;
 	}
 
 	public List<Student> getStudents() {
+		return students;
+	}
 
-		return studentDao.getStudents();
+	public Student getStudent(String rollNo) {
+		for (Student tempStudent : students) {
+			if (tempStudent.getRollNo().equals(rollNo)) {
+				return tempStudent;
+			}
+		}
+		return null;
 	}
 
 	public void addStudent(String name, String address, int age) {
 
-		studentDao.addStudent(name, address, age);
+		UUID uuid = UUID.randomUUID();
+		Student student = new Student(uuid.toString(), name, address, age);
+		students.add(student);
 	}
 
 	public void updateStudent(String rollNo, String name, String address, int age) {
 
-		studentDao.updateStudent(rollNo, name, address, age);
+		for (Student tempStudent : students) {
+			if (tempStudent.getRollNo().equals(rollNo)) {
+				tempStudent.setName(name);
+				tempStudent.setAddress(address);
+				tempStudent.setAge(age);
+				return;
+			}
+		}
 	}
 
 	public void deleteStudent(String rollNo) {
-
-		studentDao.deleteStudent(rollNo);
+		for (Student tempStudent : students) {
+			if (tempStudent.getRollNo().equals(rollNo)) {
+				students.remove(tempStudent);
+				return;
+			}
+		}
 	}
 
 	public List<Student> searchStudents(String name) {
 
-		return studentDao.searchStudents(name);
+		List<Student> searchStudents = new ArrayList<Student>();
+		for (Student tempStudent : students) {
+			if (tempStudent.getName().contains(name)) {
+				searchStudents.add(tempStudent);
+			}
+		}
+		return searchStudents;
 	}
 }
