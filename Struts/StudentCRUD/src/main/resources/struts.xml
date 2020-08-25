@@ -13,19 +13,20 @@
 		</action>
 		<action name="add.do" class="com.techlabs.actions.AddStudentAction" method = "addDo"> 
 			<result name="input">add-student.jsp</result> 
-		 	<result name="success">add-student.jsp</result>
+			<result name="success" type="chain">studentList</result>
 		</action>
 		<action name="add" class="com.techlabs.actions.AddStudentAction" method = "execute"> 
 			<result name="input">add-student.jsp</result> 
-			<result name="success" type="chain">studentList</result>  
+		 	<result name="success">add-student.jsp</result>
 		</action>
 		<action name="update.do" class="com.techlabs.actions.UpdateStudentAction" method = "updateDo"> 
-		 	<result name="success">update-student.jsp</result>
-			<result name="input">update-student.jsp</result>  
+		 	<result name="input">update-student.jsp</result> 
+			<result name="success" type="chain">studentList</result> 
 		</action>
 		<action name="update" class="com.techlabs.actions.UpdateStudentAction" method = "execute"> 
-			<result name="input">update-student.jsp</result> 
-			<result name="success" type="chain">studentList</result>  
+			<result name="success">update-student.jsp</result>
+			<result name="input">update-student.jsp</result>
+			 
 		</action>
 		<action name="delete" class="com.techlabs.actions.DeleteStudentAction" method = "execute">  
 			<result name="success" type="chain">studentList</result>  

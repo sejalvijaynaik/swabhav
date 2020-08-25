@@ -24,20 +24,21 @@ public class AddStudentAction extends ActionSupport implements ModelDriven<Stude
 		System.out.println("address" + studentAddModel.getAddress());
 		System.out.println("age " + studentAddModel.getAge());
 
-		StudentService studentService = StudentService.getStudentService();
-		studentService.addStudent(studentAddModel.getName(), studentAddModel.getAddress(), studentAddModel.getAge());
+		return "input";
 
-		return "success";
 	}
 
 	public String addDo() {
 
-		System.out.println("show add form running");
+		System.out.println("addStudent(adddo) running");
 		System.out.println("name" + studentAddModel.getName());
 		System.out.println("address" + studentAddModel.getAddress());
 		System.out.println("age " + studentAddModel.getAge());
 
-		return "input";
+		StudentService studentService = StudentService.getStudentService();
+		studentService.addStudent(studentAddModel.getName(), studentAddModel.getAddress(), studentAddModel.getAge());
+
+		return "success";
 	}
 
 	@Override

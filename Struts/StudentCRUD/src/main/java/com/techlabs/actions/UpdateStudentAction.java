@@ -22,14 +22,6 @@ public class UpdateStudentAction extends ActionSupport implements ModelDriven<St
 	@Override
 	public String execute() throws Exception {
 
-		studentService.updateStudent(studentUpdateModel.getRollNo(), studentUpdateModel.getName(),
-				studentUpdateModel.getAddress(), studentUpdateModel.getAge());
-
-		return "success";
-	}
-
-	public String updateDo() {
-
 		System.out.println(studentUpdateModel.getRollNo());
 		Student student = studentService.getStudent(studentUpdateModel.getRollNo());
 
@@ -38,6 +30,14 @@ public class UpdateStudentAction extends ActionSupport implements ModelDriven<St
 		studentUpdateModel.setAge(student.getAge());
 
 		return "input";
+	}
+
+	public String updateDo() {
+
+		studentService.updateStudent(studentUpdateModel.getRollNo(), studentUpdateModel.getName(),
+				studentUpdateModel.getAddress(), studentUpdateModel.getAge());
+
+		return "success";
 	}
 
 	@Override
@@ -50,7 +50,11 @@ public class UpdateStudentAction extends ActionSupport implements ModelDriven<St
 
 		System.out.println("validate running");
 		if (studentUpdateModel.getName() == null) {
-			updateDo();
+			try {
+				execute();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			addFieldError("", "");
 		} else {
 			if (studentUpdateModel.getName().equals("")) {
