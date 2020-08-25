@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="s" uri="/struts-tags" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<s:a href = "json">JSON</s:a>
+<a href="getJson">Hello json</a>
 </body>
 </html>
