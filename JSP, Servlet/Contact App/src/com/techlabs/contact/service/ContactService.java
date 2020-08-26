@@ -30,10 +30,11 @@ public class ContactService {
 	public List<Contact> getContacts() {
 		return contacts;
 	}
+
 	public void addContact(String firstName, String lastName, long number, String email) {
 		Contact contact = new Contact();
 		UUID uuid = UUID.randomUUID();
-		
+
 		contact.setId(uuid.toString());
 		contact.setFirstName(firstName);
 		contact.setLastName(lastName);
@@ -41,6 +42,7 @@ public class ContactService {
 		contact.setEmail(email);
 		contacts.add(contact);
 	}
+
 	public Contact getContact(String id) {
 		for (Contact tempContact : contacts) {
 			if (tempContact.getId().equals(id)) {
@@ -49,6 +51,7 @@ public class ContactService {
 		}
 		return null;
 	}
+
 	public void updateContact(String id, String firstName, String lastName, long number, String email) {
 
 		for (Contact tempContact : contacts) {
@@ -61,7 +64,7 @@ public class ContactService {
 			}
 		}
 	}
-	
+
 	public void deleteContact(String id) {
 		for (Contact tempContact : contacts) {
 			if (tempContact.getId().equals(id)) {
@@ -70,9 +73,9 @@ public class ContactService {
 			}
 		}
 	}
-	
-	public List<Contact> searchContacts(String name){
-		
+
+	public List<Contact> searchContacts(String name) {
+
 		List<Contact> searchContacts = new ArrayList<Contact>();
 		for (Contact tempContact : contacts) {
 			if (tempContact.getFirstName().contains(name)) {

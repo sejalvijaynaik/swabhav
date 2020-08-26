@@ -1,20 +1,29 @@
+<%@page import="com.techlabs.contact.model.Contact"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page import="com.techlabs.contact.model.Contact" %>
-    <%@ page import="java.util.List" %>
+ <%@ page import="java.util.List" %>
+  <%@ page import="com.techlabs.contact.model.Contact" %>
+  <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+ 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>List of Contacts</title>
+<title>Contact table</title>
 </head>
 <body>
-<h1>List of Contacts</h1>
-<form method = "get" action = "searchController">
+<h2>Welcome Admin</h2>
+Search Contact by First Name :
+<form method = "post" action = "searchContact">
  <input type = "text" name = "searchName">
 <input type = "submit" value = "search">
 </form>
-<button onclick = "window.location.href = 'add.jsp'">Add Contact</button>
+<br><br>
+<button onclick = "window.location.href = 'AddContact'">Add Contact</button>
+<br><br>
+<form method = "get" action = "logout">
+<input type = "submit" value = "Logout">
+</form>
 <br><br>
 <table border = "1">
 	<tr>
@@ -26,30 +35,31 @@
 		<th>Update</th>
 		<th>Delete</th>
 	</tr>
-	<%
-	List<Contact> contacts = (List<Contact>)request.getAttribute("contacts");
-	for(int i = 0; i < contacts.size(); i++){
-		out.println("<tr>");
-		out.println("<td>" + contacts.get(i).getId() + "</td>");
-		out.println("<td>" + contacts.get(i).getFirstName() + "</td>");
-		out.println("<td>" + contacts.get(i).getLastName() + "</td>");
-		out.println("<td>" + contacts.get(i).getNumber() + "</td>");
-		out.println("<td>" + contacts.get(i).getEmail() + "</td>");
-		out.println("<td>");
-		out.println("<form method = 'get' action = 'PrepopulateController'>");
-		out.println("<input type = 'hidden' name = 'contactId' value =" + contacts.get(i).getId() + ">");
-		out.println("<input type = 'submit' value = 'update'></td>");
-		out.println("</form>");
-		out.println("</td>");
-		out.println("<td>");
-		out.println("<form method = 'post' action = 'DeleteController'>");
-		out.println("<input type = 'hidden' name = 'contactId' value =" + contacts.get(i).getId() + ">");
-		out.println("<input type = 'submit' value = 'delete'></td>");
-		out.println("</form>");
-		out.println("</td>");
-		out.println("</tr>");
-	}
-	%>
+	
+		<c:forEach var="contact" items="${contacts}">
+			<tr>
+				<td>${contact.id}</td>
+				<td>${contact.firstName}</td>
+				<td>${contact.lastName}</td>
+				<td>${contact.number}</td>
+				<td>${contact.email}</td>
+				<td>
+					<c:url var = "updateLink" value="/updateContact">
+						<c:param name="contactId" value="${contact.id}"></c:param>
+					</c:url>
+					<input type="button" value="UPDATE" onclick="window.location.href='${updateLink}'">
+				</td>
+				<td>
+					<c:url var = "deleteLink" value="/deleteContact">
+						<c:param name="contactId" value="${contact.id}"></c:param>
+					</c:url>
+					<input type="button" value="DELETE" onclick="if (confirm('Are you sure you want to delete?')) window.location.href='${deleteLink}'; else return false;">
+				</td>
+			</tr>
+		</c:forEach>
+	
 </table>
+<br><br>
+
 </body>
 </html>

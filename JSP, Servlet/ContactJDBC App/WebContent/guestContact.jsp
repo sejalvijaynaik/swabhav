@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
  <%@ page import="java.util.List" %>
   <%@ page import="com.techlabs.contact.model.Contact" %>
+  <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
  
 <!DOCTYPE html>
 <html>
@@ -11,7 +12,7 @@
 </head>
 <body>
 Search Contact by Name :
-<form method = "post" action = "GuestSerachContactComtroller">
+<form method = "get" action = "searchGuestContact">
  <input type = "text" name = "searchName">
 <input type = "submit" value = "search">
 </form>
@@ -24,21 +25,20 @@ Search Contact by Name :
 		<th>Number</th>
 		<th>Email</th>
 	</tr>
-	<%
-	List<Contact> contacts = (List<Contact>)request.getAttribute("contacts");
-	for(int i = 0; i < contacts.size(); i++){
-		out.println("<tr>");
-		out.println("<td>" + contacts.get(i).getId() + "</td>");
-		out.println("<td>" + contacts.get(i).getFirstName() + "</td>");
-		out.println("<td>" + contacts.get(i).getLastName() + "</td>");
-		out.println("<td>" + contacts.get(i).getNumber() + "</td>");
-		out.println("<td>" + contacts.get(i).getEmail() + "</td>");
-		out.println("</tr>");
-	}
-	%>
+	
+		<c:forEach var="contact" items="${contacts}">
+			<tr>
+				<td>${contact.id}</td>
+				<td>${contact.firstName}</td>
+				<td>${contact.lastName}</td>
+				<td>${contact.number}</td>
+				<td>${contact.email}</td>
+			</tr>
+		</c:forEach>
+	
 </table>
 <br><br>
-<form method = "get" action = "home.jsp">
+<form method = "get" action = "home">
 <input type = "submit" value = "Back to Login">
 </form>
 </body>

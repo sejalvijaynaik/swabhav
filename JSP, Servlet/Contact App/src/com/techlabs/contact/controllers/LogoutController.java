@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/LogoutController")
+@WebServlet("/logout")
 public class LogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -25,8 +25,7 @@ public class LogoutController extends HttpServlet {
 		response.setDateHeader("Expires", 0);
 		response.setHeader("Pragma","no-cache");
 		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("home.jsp");
-		requestDispatcher.forward(request, response);
+		response.sendRedirect("home");
 	}
 
 }

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.techlabs.contact.model.Contact;
 import com.techlabs.contact.service.ContactService;
 
-@WebServlet("/searchContactController")
+@WebServlet("/searchContact")
 public class searchContactController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -32,9 +32,9 @@ public class searchContactController extends HttpServlet {
 			response.addCookie(searchNameCookie);
 		}
 
-		request.setAttribute("searchContacts", searContacts);
+		request.setAttribute("contacts", searContacts);
 
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("search.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("contact.jsp");
 		requestDispatcher.forward(request, response);
 	}
 

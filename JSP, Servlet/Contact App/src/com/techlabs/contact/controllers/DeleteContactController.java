@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.techlabs.contact.service.ContactService;
 
-@WebServlet("/DeleteContactController")
+@WebServlet("/deleteContact")
 public class DeleteContactController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		response.getContentType();
@@ -23,7 +23,7 @@ public class DeleteContactController extends HttpServlet {
 		ContactService contactService = ContactService.getContactService();
 		contactService.deleteContact(id);
 
-		response.sendRedirect("ContactController");
+		response.sendRedirect("listContacts");
 	}
 
 }

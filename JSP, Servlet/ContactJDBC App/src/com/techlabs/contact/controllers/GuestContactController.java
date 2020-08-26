@@ -1,40 +1,35 @@
 package com.techlabs.contact.controllers;
 
 import java.io.IOException;
-
-import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
+import com.techlabs.contact.service.ContactService;
 
-import com.techlabs.contact.service.ContactJDBC;
+@WebServlet("/guestListContacts")
+public class GuestContactController extends HttpServlet {
 
-@WebServlet("/ContactController")
-public class ContactController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ContactJDBC contactJDBC;
-	@Resource(name = "jdbc/contact")
-	private DataSource dataSource;
-	
+	private ContactService contactService;
+
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		contactJDBC = new ContactJDBC(dataSource);
+		contactService = new ContactService();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
+			throws ServletException, IOException {
 
-		System.out.println("successful");
 		response.setContentType("text/html");
 
-		request.setAttribute("contacts", contactJDBC.getContacts());
+		request.setAttribute("contacts", contactService.getContacts());
 
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("contact.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("guestContact.jsp");
 		requestDispatcher.forward(request, response);
 	}
+
 }

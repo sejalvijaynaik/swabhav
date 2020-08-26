@@ -1,0 +1,15 @@
+Info about all apps in this JSP, Servlet Folder
+
+1)Contact App-
+* hard coded data
+* model and service used
+* login and guest user
+* CRUD and search
+* session filter used
+
+1)ContactJDBC App-
+* database connection
+* model, Dao and service used
+* login and guest user
+* CRUD and search
+* session filter used

@@ -1,22 +1,16 @@
-package com.techlabs.contact.service;
+package com.techlabs.contact.dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javax.sql.DataSource;
 import com.techlabs.contact.model.Contact;
 
-public class ContactJDBC {
-
-	private DataSource dataSource;
-
-	public ContactJDBC(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
+public class ContactDAO {
 
 	public List<Contact> getContacts() {
 
@@ -26,7 +20,8 @@ public class ContactJDBC {
 		List<Contact> contacts = new ArrayList<Contact>();
 
 		try {
-			conn = dataSource.getConnection();
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/contact", "root", "root");
 			stmt = conn.createStatement();
 			res = stmt.executeQuery("select * from contacts");
 
@@ -42,8 +37,9 @@ public class ContactJDBC {
 			}
 
 			return contacts;
-
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
 			closeWithStatement(conn, stmt, res);
@@ -59,7 +55,8 @@ public class ContactJDBC {
 		Contact contact = null;
 
 		try {
-			conn = dataSource.getConnection();
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/contact", "root", "root");
 			pstmt = conn.prepareStatement("select * from contacts where id = ?");
 			pstmt.setInt(1, id);
 			res = pstmt.executeQuery();
@@ -77,6 +74,8 @@ public class ContactJDBC {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		} finally {
 			closeWithPreparedStatement(conn, pstmt, res);
 		}
@@ -90,7 +89,8 @@ public class ContactJDBC {
 		ResultSet res = null;
 
 		try {
-			conn = dataSource.getConnection();
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/contact", "root", "root");
 			pstmt = conn.prepareStatement(
 					"update contacts set first_name = ?, last_name = ?, number = ?, email = ? where id = ?");
 			pstmt.setString(1, firstName);
@@ -101,35 +101,41 @@ public class ContactJDBC {
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
 		closeWithPreparedStatement(conn, pstmt, res);
 	}
-	
+
 	public void deleteContact(int id) {
-		
+
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet res = null;
-		
+
 		try {
-			conn = dataSource.getConnection();
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/contact", "root", "root");
 			pstmt = conn.prepareStatement("delete from contacts where id = ?");
 			pstmt.setInt(1, id);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
 		closeWithPreparedStatement(conn, pstmt, res);
 	}
-	
+
 	public void addContact(String firstName, String lastName, long number, String email) {
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet res = null;
-		
+
 		try {
-			conn = dataSource.getConnection();
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/contact", "root", "root");
 			pstmt = conn
 					.prepareStatement("insert into contacts(first_name, last_name, number, email) values(?, ?, ?, ?)");
 			pstmt.setString(1, firstName);
@@ -139,10 +145,12 @@ public class ContactJDBC {
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
 		closeWithPreparedStatement(conn, pstmt, res);
 	}
-	
+
 	public List<Contact> searchContacts(String name) {
 
 		List<Contact> searchContacts = new ArrayList<Contact>();

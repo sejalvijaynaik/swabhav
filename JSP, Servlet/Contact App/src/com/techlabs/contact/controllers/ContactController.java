@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.techlabs.contact.service.ContactService;
 
-@WebServlet("/ContactController")
+@WebServlet("/listContacts")
 public class ContactController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -22,7 +22,6 @@ public class ContactController extends HttpServlet {
 
 		ContactService contactService = ContactService.getContactService();
 		request.setAttribute("contacts", contactService.getContacts());
-		System.out.println("contacts in contact controler " + contactService.getContacts().get(0).getFirstName());
 
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("contact.jsp");
 		requestDispatcher.forward(request, response);

@@ -14,17 +14,21 @@ import javax.servlet.http.HttpServletResponse;
 import com.techlabs.contact.model.Contact;
 import com.techlabs.contact.service.ContactService;
 
-@WebServlet("/GuestSerachContactComtroller")
+@WebServlet("/searchGuestContact")
 public class GuestSerachContactComtroller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String name = request.getParameter("searchName");
+		if(name == null) {
+			name = "";
+		}
 
 		ContactService contactService = ContactService.getContactService();
 		List<Contact> searchContacts = contactService.searchContacts(name);
+		System.out.println(searchContacts.size());
 
 		if (searchContacts != null) {
 			String cookieName = request.getParameter("searchName") + "Cookie";
@@ -33,9 +37,9 @@ public class GuestSerachContactComtroller extends HttpServlet {
 			response.addCookie(searchNameCookie);
 		}
 
-		request.setAttribute("searchContacts", searchContacts);
+		request.setAttribute("contacts", searchContacts);
 
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("guestSearch.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("guestContact.jsp");
 		requestDispatcher.forward(request, response);
 	}
 }

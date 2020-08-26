@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.techlabs.contact.service.ContactService;
 
-@WebServlet("/GuestContactController")
+@WebServlet("/guestListContacts")
 public class GuestContactController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

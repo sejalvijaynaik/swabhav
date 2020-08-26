@@ -8,17 +8,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/StartMVCController")
-public class StartMVCController extends HttpServlet {
+@WebServlet("/logout")
+public class LogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		HttpSession session = request.getSession();
-		if ((session.getAttribute("username") != null) && (session.getAttribute("password") != null)) {
-			response.sendRedirect("ContactController");
-		} else {
-			response.sendRedirect("login.jsp");
-		}
+		session.invalidate();
+
+		response.setHeader("Cache-Control", "no-cache");
+		response.setHeader("Cache-Control", "no-store");
+		response.setDateHeader("Expires", 0);
+		response.setHeader("Pragma", "no-cache");
+
+		response.sendRedirect("home");
 	}
+
 }

@@ -2,7 +2,6 @@ package com.techlabs.contact.controllers;
 
 import java.io.IOException;
 import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,21 +9,34 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.techlabs.contact.model.Contact;
-import com.techlabs.contact.service.ContactJDBC;
+import com.techlabs.contact.service.ContactService;
 
-@WebServlet("/GuestSerachContactComtroller")
+/**
+ * Servlet implementation class GuestSerachContactComtroller
+ */
+@WebServlet("/searchGuestContact")
 public class GuestSerachContactComtroller extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
+	private ContactService contactService;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	@Override
+	public void init() throws ServletException {
+		super.init();
+		contactService = new ContactService();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String name = request.getParameter("searchName");
+		if(name == null) {
+			name = "";
+		}
 
-		ContactJDBC contactJDBC = new ContactJDBC();
-		List<Contact> searchContacts = contactJDBC.searchContacts(name);
+		List<Contact> searchContacts = contactService.searchContacts(name);
+		System.out.println(searchContacts.size());
 
 		if (searchContacts != null) {
 			String cookieName = request.getParameter("searchName") + "Cookie";
@@ -33,9 +45,9 @@ public class GuestSerachContactComtroller extends HttpServlet {
 			response.addCookie(searchNameCookie);
 		}
 
-		request.setAttribute("searchContacts", searchContacts);
+		request.setAttribute("contacts", searchContacts);
 
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("guestSearch.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("guestContact.jsp");
 		requestDispatcher.forward(request, response);
 	}
 }
