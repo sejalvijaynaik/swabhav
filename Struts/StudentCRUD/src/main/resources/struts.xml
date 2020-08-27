@@ -12,8 +12,8 @@
 		<interceptors>
 			<interceptor name = "sessionInterceptor" class = "com.techlabs.interceptors.SessionInterceptor"></interceptor>
 			<interceptor-stack name = "myInterceptorsStack">
-				<interceptor-ref name = "defaultStack"></interceptor-ref>
 				<interceptor-ref name = "sessionInterceptor"></interceptor-ref>
+				<interceptor-ref name = "defaultStack"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
 		

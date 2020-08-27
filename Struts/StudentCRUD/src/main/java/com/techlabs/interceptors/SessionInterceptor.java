@@ -34,6 +34,7 @@ public class SessionInterceptor implements Interceptor {
 		System.out.println(session.getAttribute("password"));
 		if ((session.getAttribute("username") != null) && (session.getAttribute("password") != null)) {
 			result = actionInvocation.invoke();
+			System.out.println("result" + result);
 			return result;
 		} else {
 			return "login";
