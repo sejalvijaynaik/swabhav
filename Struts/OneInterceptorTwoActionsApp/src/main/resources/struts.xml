@@ -18,6 +18,7 @@
 		<action name="first" class="com.techlabs.actions.FirstAction" method = "execute">
 			<interceptor-ref name = "myInterceptorsStack"></interceptor-ref>
 			<result name="success">/welcome.jsp</result>
+			<result name="error">/error.jsp</result>
 		</action>
 		<action name="second" class="com.techlabs.actions.SecondAction" method = "execute">
 			<interceptor-ref name = "myInterceptorsStack"></interceptor-ref>

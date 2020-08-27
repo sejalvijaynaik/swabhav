@@ -8,6 +8,9 @@
 <title>Student List</title>
 </head>
 <body>
+	<s:form action="logout">
+		<s:submit value="LOGOUT"></s:submit>
+	</s:form>
 	
 	<s:form action="add">
 		<s:submit value="ADD STUDENT"></s:submit>

@@ -18,10 +18,20 @@ public class MyInterceptor implements Interceptor {
 	@Override
 	public String intercept(ActionInvocation actionInvocation) throws Exception {
 		System.out.println("Pre processing");
-		System.out.println(actionInvocation.getAction().getClass().getSimpleName());
-		String result = actionInvocation.invoke();
-		System.out.println("Post processing");
-		return result;
+		boolean lala = true;
+		if(lala == true) {
+			System.out.println("if condition");
+			return actionInvocation.invoke();
+			
+		}
+		else{
+			System.out.println("else condition");
+			return "error";
+		}
+		//System.out.println(actionInvocation.getAction().getClass().getSimpleName());
+		//String result = actionInvocation.invoke();
+		//System.out.println("Post processing");
+		//return "error";
 	}
 }
 

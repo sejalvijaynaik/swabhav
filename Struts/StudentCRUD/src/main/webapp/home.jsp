@@ -8,6 +8,6 @@
 <title>Home</title>
 </head>
 <body>
-<s:a href="studentList">STUDENT LIST</s:a>
+<s:a href="login">LOGIN</s:a>
 </body>
 </html>
