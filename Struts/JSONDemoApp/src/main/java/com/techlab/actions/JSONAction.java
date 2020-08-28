@@ -10,9 +10,11 @@ public class JSONAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 
+		System.out.println("action executing");
+
 		id = "123";
 		name = "sejal";
-		
+
 		return "success";
 	}
 

@@ -12,6 +12,7 @@ public class JSONAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 
+		System.out.println("action execute running");
 		EmployeeService employeeService = EmployeeService.getEmployeeService();
 		employees = employeeService.getEmployees();
 		System.out.println(employees.size());
