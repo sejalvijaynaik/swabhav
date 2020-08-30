@@ -1,43 +1,65 @@
 package com.techlabs.employee.controllers;
 
 import java.io.IOException;
-
-import javax.annotation.Resource;
+import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 
-import com.techlabs.employee.service.EmployeeJDBC;
+import com.techlabs.employee.service.EmployeeService;
 
-@WebServlet("/AddController")
+@WebServlet("/AddEmployee")
 public class AddController extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
-	
-	private EmployeeJDBC employeeJDBC;
-	@Resource(name = "jdbc/employee")
-	private DataSource dataSource;
+	private EmployeeService employeeService;
 
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		employeeJDBC = new EmployeeJDBC(dataSource);
+		employeeService = new EmployeeService();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	
+
 		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		double salary;
+
+		// --------To type check for number-----------------------
+		request.setAttribute("name", request.getParameter("name"));
+		request.setAttribute("salary", request.getParameter("salary"));
+		request.setAttribute("designation", request.getParameter("designation"));
+
+		for (char c : request.getParameter("salary").toCharArray()) {
+			if (!Character.isDigit(c)) {
+				out.println("<h2 style = 'color:red'>Enter number in salary</h2>");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("add.jsp");
+				requestDispatcher.include(request, response);
+				return;
+			}
+		}
+
+		// --------------------------------------------------------------
 
 		String name = request.getParameter("name");
-		double salary = Double.parseDouble(request.getParameter("salary"));
+		salary = Double.parseDouble(request.getParameter("salary"));
 		String designation = request.getParameter("designation");
 
-		employeeJDBC.addEmployee(name, salary, designation);
+		employeeService.addEmployee(name, salary, designation);
 
-		response.sendRedirect("ListController");
+		response.sendRedirect("listEmployees");
 	}
 
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("add.jsp");
+		requestDispatcher.forward(request, response);
+	}
 }

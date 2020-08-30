@@ -2,52 +2,56 @@ package com.techlabs.employee.controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
-import com.techlabs.employee.model.LoginEmployee;
-import com.techlabs.employee.service.LoginEmployeeJDBC;
+import javax.servlet.http.HttpSession;
 
-@WebServlet("/LoginController")
+import com.techlabs.employee.service.LoginEmployeeService;
+
+@WebServlet("/login")
 public class LoginController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
-	private LoginEmployeeJDBC loginEmployeeJDBC;
-	@Resource(name = "jdbc/employee")
-	private DataSource dataSource;
+	private static final long serialVersionUID = 1L;
+	private LoginEmployeeService loginEmployeeService;
 
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		loginEmployeeJDBC = new LoginEmployeeJDBC(dataSource);
+		loginEmployeeService = new LoginEmployeeService();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		
-		List<LoginEmployee> loginEmployees = loginEmployeeJDBC.getLoginEmployees();
-		for (LoginEmployee tempLoginEmployee : loginEmployees) {
-			if ((tempLoginEmployee.getUsername().equals(request.getParameter("username")))
-					&& (tempLoginEmployee.getPassword().equals(request.getParameter("password")))) {
 
-				response.sendRedirect("ListController");
-				return;
-			}
-			else {
-				out.println("Wrong username or password");
+		HttpSession session = request.getSession();
+
+		if ((request.getParameter("username") != null) && (request.getParameter("password") != null)) {
+			if (loginEmployeeService.isValid(request.getParameter("username"), request.getParameter("password"))) {
+				session.setAttribute("username", request.getParameter("username"));
+				session.setAttribute("password", request.getParameter("password"));
+				session.setMaxInactiveInterval(60 * 60 * 24);
+				response.sendRedirect("listEmployees");
+			} else {
+				out.println("<h2 style = 'color:red'>Username or password entered is wrong</h2>");
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
 				requestDispatcher.include(request, response);
-				return;
 			}
 		}
 	}
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+		requestDispatcher.include(request, response);
+	}
+
 }

@@ -3,14 +3,12 @@ package com.techlabs.student.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
-import com.techlabs.student.model.Student;
+import com.techlabs.model.Student;
 
 public class StudentService {
 
 	private static StudentService studentService = null;
 	private List<Student> students;
-	private Student specificId = null;
 
 	private StudentService() {
 		students = new ArrayList<Student>();
@@ -20,13 +18,6 @@ public class StudentService {
 		addStudent("monica", "geller", "virar", "06/11/1590", 6.5);
 		addStudent("chandler", "bing", "kandivali", "22/08/1995", 9.0);
 		addStudent("phoebe", "buffay", "vasai", "11/04/1997", 7.5);
-	}
-	
-	public void setSpecificId(Student student) {
-		specificId = student;
-	}
-	public Student getSpecificId() {
-		return specificId;
 	}
 
 	public static StudentService getStudentService() {
@@ -51,15 +42,9 @@ public class StudentService {
 	}
 
 	public void addStudent(String firstName, String lastName, String address, String dob, double cgpa) {
-		Student student = new Student();
-		UUID uuid = UUID.randomUUID();
 
-		student.setId(uuid.toString());
-		student.setFirstName(firstName);
-		student.setLastName(lastName);
-		student.setAddress(address);
-		student.setDob(dob);
-		student.setCgpa(cgpa);
+		UUID uuid = UUID.randomUUID();
+		Student student = new Student(uuid.toString(), firstName, lastName, address, dob, cgpa);
 		students.add(student);
 	}
 
@@ -70,6 +55,7 @@ public class StudentService {
 				tempStudent.setFirstName(firstName);
 				tempStudent.setLastName(lastName);
 				tempStudent.setAddress(address);
+				tempStudent.setDob(dob);
 				tempStudent.setCgpa(cgpa);
 				return;
 			}
@@ -104,11 +90,56 @@ public class StudentService {
 			}
 		}
 	}
-	public void updateForStudent(String firstName, String lastName, String address, String dob) {
-		specificId.setFirstName(firstName);
-		specificId.setLastName(lastName);
-		specificId.setAddress(address);
-		specificId.setDob(dob);
-	}
-}
 
+	public void updateForStudent(String id, String firstName, String lastName, String address, String dob) {
+		for (Student tempStudent : students) {
+			if (tempStudent.getId().equals(id)) {
+				tempStudent.setFirstName(firstName);
+				tempStudent.setLastName(lastName);
+				tempStudent.setAddress(address);
+				tempStudent.setDob(dob);
+				return;
+			}
+		}
+	}
+
+	public boolean isValidAdmin(String username, String password) {
+		if ((username.equals("admin")) && (password.equals("admin"))) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean isValidProfessor(String username, String password) {
+		if ((username.equals("professor")) && (password.equals("professor"))) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean isValidStudent(String firstName, String lastName) {
+
+		List<Student> students = getStudents();
+
+		for (Student student : students) {
+			if ((firstName.equals(student.getFirstName())) && (lastName.equals(student.getLastName()))) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public String getStudentId(String firstName, String lastName) {
+
+		List<Student> students = getStudents();
+
+		for (Student student : students) {
+			if ((firstName.equals(student.getFirstName())) && (lastName.equals(student.getLastName()))) {
+				return student.getId();
+			}
+		}
+		return "null";
+
+	}
+
+}

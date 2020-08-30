@@ -7,7 +7,9 @@
 <title>Home</title>
 </head>
 <body>
-<button onclick = "window.location.href = 'login.jsp'">Admin</button>
-<button onclick = "window.location.href = 'signup.jsp'">Sign Up</button>
+
+<button onclick = "window.location.href = 'login'">Login</button>
+<button onclick = "window.location.href = 'addUser'">SignUp</button>
+
 </body>
 </html>

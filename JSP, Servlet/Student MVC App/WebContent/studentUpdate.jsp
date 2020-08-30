@@ -1,4 +1,4 @@
-<%@ page import="com.techlabs.student.model.Student" %>
+<%@ page import="com.techlabs.model.Student" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -9,11 +9,11 @@
 </head>
 <body>
 <h2>Update Student</h2>
-<form method = "POST" action = "StudentUpdateController">
-First Name : <input type = "text" name = "firstName" value = "${student.getFirstName()}"><br><br>
-Last Name : <input type = "text" name = "lastName" value = "${student.getLastName()}"><br><br>
-Address : <input type = "text" name = "address" value = "${student.getAddress()}"><br><br>
-Date of Birth : <input type = "text" name = "dob" value = "${student.getDob()}"><br><br>
+<form method = "POST" action = "studentUpdate">
+First Name : <input type = "text" name = "firstName" value = "${student.firstName}" required><br><br>
+Last Name : <input type = "text" name = "lastName" value = "${student.lastName}" required><br><br>
+Address : <input type = "text" name = "address" value = "${student.address}" required><br><br>
+Date of Birth : <input type = "text" name = "dob" value = "${student.dob}" required><br><br>
 <input type = "submit" value = "Submit">
 </form>
 </body>

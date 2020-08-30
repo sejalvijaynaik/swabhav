@@ -2,8 +2,6 @@ package com.techlabs.employee.controllers;
 
 import java.io.IOException;
 import java.util.List;
-
-import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,31 +9,27 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
-
 import com.techlabs.employee.model.Employee;
-import com.techlabs.employee.service.EmployeeJDBC;
+import com.techlabs.employee.service.EmployeeService;
 
-@WebServlet("/SearchController")
+@WebServlet("/searchEmployee")
 public class SearchController extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
-	
-	private EmployeeJDBC employeeJDBC;
-	@Resource(name = "jdbc/employee")
-	private DataSource dataSource;
+	private EmployeeService employeeService;
 
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		employeeJDBC = new EmployeeJDBC(dataSource);
+		employeeService = new EmployeeService();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String name = request.getParameter("searchName");
 
-		List<Employee> searchEmployees = employeeJDBC.searchEmployees(name);
+		List<Employee> searchEmployees = employeeService.searchEmployees(name);
 
 		if (searchEmployees != null) {
 			Cookie searchNameCookie = new Cookie("searchNameCookie", request.getParameter("searchName"));
@@ -45,7 +39,8 @@ public class SearchController extends HttpServlet {
 
 		request.setAttribute("employees", searchEmployees);
 
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("list.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("employee.jsp");
 		requestDispatcher.forward(request, response);
 	}
+
 }

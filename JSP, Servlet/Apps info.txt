@@ -5,11 +5,39 @@ Info about all apps in this JSP, Servlet Folder
 * model and service used
 * login and guest user
 * CRUD and search
-* session filter used
+* session filter, home filter used
+* app starts from home controller
 
-1)ContactJDBC App-
+2)ContactJDBC App-
 * database connection
 * model, Dao and service used
 * login and guest user
 * CRUD and search
-* session filter used
+* session filter, home filter used
+* app starts from home controller
+
+3)Employee - Complete App
+* database connection
+* model, Dao and service used for Employee and LoginEmployee
+* login and guest user
+* CRUD and search
+* session filter, home filter used
+* app starts from home controller
+
+4) UserMVC App
+* database connection
+* model, Dao and service used for User
+* login and signup
+* CRUD
+* session filter, home filter used
+* app starts from home controller
+* signup, update and delete account
+
+4) StudentMVC App
+* hard coded data
+* model and service used for Student
+* admin, professor and student users
+* CRUD
+* session filter, home filter used
+* app starts from home controller
+* signup, update and delete account

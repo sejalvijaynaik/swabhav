@@ -1,41 +1,37 @@
 package com.techlabs.employee.controllers;
 
 import java.io.IOException;
-
-import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 
-import com.techlabs.employee.service.EmployeeJDBC;
+import com.techlabs.employee.service.EmployeeService;
 
-@WebServlet("/DeleteController")
+@WebServlet("/deleteEmployee")
 public class DeleteController extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
-	
-	private EmployeeJDBC employeeJDBC;
-	@Resource(name = "jdbc/employee")
-	private DataSource dataSource;
+	private EmployeeService employeeService;
 
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		employeeJDBC = new EmployeeJDBC(dataSource);
+		employeeService = new EmployeeService();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	
+
 		response.getContentType();
 
-		int id = Integer.parseInt(request.getParameter("employeeId"));
+		String idInstring = request.getParameter("employeeId");
+		int id = Integer.parseInt(idInstring);
 
-		employeeJDBC.deleteEmployee(id);
+		employeeService.deleteEmployee(id);
 
-		response.sendRedirect("ListController");
+		response.sendRedirect("listEmployees");
 	}
 
 }
