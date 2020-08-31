@@ -10,12 +10,9 @@ public class DeleteStudentAction extends ActionSupport implements ModelDriven<St
 
 	@Autowired
 	private StudentService studentService;
+
+	@Autowired
 	private StudentUpdateModel student;
-
-	public DeleteStudentAction() {
-
-		student = new StudentUpdateModel();
-	}
 
 	@Override
 	public String execute() throws Exception {

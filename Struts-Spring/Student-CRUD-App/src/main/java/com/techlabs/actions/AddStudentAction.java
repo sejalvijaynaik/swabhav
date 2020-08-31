@@ -10,13 +10,9 @@ public class AddStudentAction extends ActionSupport implements ModelDriven<Stude
 
 	@Autowired
 	private StudentService studentService;
+	
+	@Autowired
 	private StudentAddModel studentAddModel;
-
-	public AddStudentAction() {
-
-		System.out.println("add studnet action constructotr running");
-		studentAddModel = new StudentAddModel();
-	}
 
 	@Override
 	public String execute() throws Exception {

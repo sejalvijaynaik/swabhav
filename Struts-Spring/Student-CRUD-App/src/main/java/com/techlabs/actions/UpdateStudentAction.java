@@ -11,12 +11,9 @@ public class UpdateStudentAction extends ActionSupport implements ModelDriven<St
 
 	@Autowired
 	private StudentService studentService;
+	
+	@Autowired
 	private StudentUpdateModel studentUpdateModel;
-
-	public UpdateStudentAction() {
-
-		studentUpdateModel = new StudentUpdateModel();
-	}
 
 	@Override
 	public String execute() throws Exception {

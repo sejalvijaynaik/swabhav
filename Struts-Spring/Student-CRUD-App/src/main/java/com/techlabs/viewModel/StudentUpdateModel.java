@@ -1,5 +1,8 @@
 package com.techlabs.viewModel;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class StudentUpdateModel {
 
 	private String rollNo;
