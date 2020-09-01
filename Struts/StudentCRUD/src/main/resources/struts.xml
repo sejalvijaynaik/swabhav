@@ -17,8 +17,8 @@
 			</interceptor-stack>
 		</interceptors>
 		
-		<global-results>
-			<result name="login" type="redirect">/login</result>
+	 	<global-results>
+			<result name="login" type ="redirect">/login</result>
 		</global-results>
 		
 		<action name="home" class="com.techlabs.actions.HomeAction" method = "execute">  
@@ -28,6 +28,7 @@
 		<action name="studentList" class="com.techlabs.actions.DisplayStudentAction" method = "execute">
 			<interceptor-ref name = "myInterceptorsStack"></interceptor-ref>  
 			<result name="success">student-list.jsp</result>  
+			
 		</action>
 		
 		<action name="add.do" class="com.techlabs.actions.AddStudentAction" method = "addDo"> 
@@ -50,16 +51,14 @@
 			<interceptor-ref name = "myInterceptorsStack"></interceptor-ref>
 			<result name="success">update-student.jsp</result>
 			<result name="input">update-student.jsp</result>
-			<result name="login" type="redirect">/login</result>
 		</action>
 		
 		<action name="delete" class="com.techlabs.actions.DeleteStudentAction" method = "execute"> 
 			<interceptor-ref name = "myInterceptorsStack"></interceptor-ref> 
 			<result name="success" type="redirect">/studentList</result>  
-			<result name="login" type="redirect">/login</result>
 		</action>
 		
-		<action name="login" class="com.techlabs.actions.LoginStudentAction" method = "execute">  
+		<action name="login" class="com.techlabs.actions.LoginStudentAction" method = "execute"> 
 			<result name="success">login.jsp</result>  
 			<result name="input">login.jsp</result> 
 		</action>

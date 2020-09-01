@@ -2,6 +2,7 @@ package com.techlabs.interceptors;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
@@ -9,6 +10,7 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
+import com.opensymphony.xwork2.util.ValueStack;
 
 public class SessionInterceptor implements Interceptor {
 
@@ -25,11 +27,21 @@ public class SessionInterceptor implements Interceptor {
 	@Override
 	public String intercept(ActionInvocation actionInvocation) throws Exception {
 
+		ValueStack valueStack = actionInvocation.getStack();
+
 		System.out.println("session intercept running");
 		System.out.println(actionInvocation.getAction().getClass().getSimpleName());
+
 		HttpSession session = ServletActionContext.getRequest().getSession();
+
+		HttpServletRequest request = ServletActionContext.getRequest();
+		request.setAttribute("url", request.getRequestURL().toString());
+		System.out.println(request.getRequestURL().toString());
+
+		valueStack.set("url", request.getRequestURL().toString());
+
 		String result;
-		
+
 		System.out.println(session.getAttribute("username"));
 		System.out.println(session.getAttribute("password"));
 		if ((session.getAttribute("username") != null) && (session.getAttribute("password") != null)) {

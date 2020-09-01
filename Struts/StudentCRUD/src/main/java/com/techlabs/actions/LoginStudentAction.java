@@ -1,6 +1,8 @@
 package com.techlabs.actions;
 
 import java.util.Map;
+
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
@@ -28,6 +30,7 @@ public class LoginStudentAction extends ActionSupport implements ModelDriven<Use
 	public String loginDo() {
 
 		System.out.println("logindo is running");
+		System.out.println("loginDo request :" + ServletActionContext.getRequest().getAttribute("url"));
 		UserService userService = new UserService();
 		if (userService.isValidUser(userLoginModel.getUsername(), userLoginModel.getPassword())) {
 			sessionMap.put("username", "username");
