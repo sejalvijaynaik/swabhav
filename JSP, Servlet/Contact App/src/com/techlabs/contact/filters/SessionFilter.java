@@ -4,6 +4,7 @@ import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -22,13 +23,24 @@ public class SessionFilter implements Filter {
 			throws IOException, ServletException {
 
 		System.out.println("Session Filter running");
+
+		String url = ((HttpServletRequest) request).getRequestURL().toString();
+		String query = ((HttpServletRequest) request).getQueryString();
+		if (query != null) {
+			url = url + "?" + query;
+		}
+		
+		System.out.println(url);
+
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		HttpSession session = req.getSession();
 		if ((session.getAttribute("username") != null) && (session.getAttribute("password") != null)) {
 			chain.doFilter(request, response);
 		} else {
-			res.sendRedirect("home");
+			request.setAttribute("url", url);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("login");
+			requestDispatcher.forward(request, response);
 		}
 	}
 

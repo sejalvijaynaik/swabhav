@@ -60,6 +60,7 @@ public class UpdateContactController extends HttpServlet {
 
 		ContactService contactService = ContactService.getContactService();
 		contact = contactService.getContact(id);
+
 		request.setAttribute("contact", contact);
 
 		// -------------To pre-populate form -------------------------------

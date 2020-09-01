@@ -18,7 +18,6 @@
    		<filter-name>homeSessionFilter</filter-name>
    		<url-pattern>/home</url-pattern>
 	</filter-mapping>
-
 <filter-mapping>
    <filter-name>sessionFilter</filter-name>
    <url-pattern>/AddContact</url-pattern>

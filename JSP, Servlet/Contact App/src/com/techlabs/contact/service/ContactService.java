@@ -44,6 +44,7 @@ public class ContactService {
 	}
 
 	public Contact getContact(String id) {
+
 		for (Contact tempContact : contacts) {
 			if (tempContact.getId().equals(id)) {
 				return tempContact;
