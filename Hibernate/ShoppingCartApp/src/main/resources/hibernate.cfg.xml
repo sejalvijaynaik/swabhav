@@ -15,7 +15,7 @@
 		<property name="format_sql">true</property>
 		<mapping class="com.techlabs.entity.Product" />
 		<mapping class="com.techlabs.entity.LineItem" />
-		<mapping class="com.techlabs.entity.Order" />
+		<mapping class="com.techlabs.entity.OrderItem" />
 		<mapping class="com.techlabs.entity.Customer" />
 		
 	</session-factory>

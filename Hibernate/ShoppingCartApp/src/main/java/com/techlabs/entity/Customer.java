@@ -15,7 +15,7 @@ public class Customer {
 	private int id;
 	private String name;
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<Order> orders = new HashSet<Order>();
+	private Set<OrderItem> orderItems = new HashSet<OrderItem>();
 
 	public int getId() {
 		return id;
@@ -33,12 +33,12 @@ public class Customer {
 		this.name = name;
 	}
 
-	public Set<Order> getOrders() {
-		return orders;
+	public Set<OrderItem> getOrderItems() {
+		return orderItems;
 	}
 
-	public void setOrders(Set<Order> orders) {
-		this.orders = orders;
+	public void setOrderItems(Set<OrderItem> orderItems) {
+		this.orderItems = orderItems;
 	}
 
 }
