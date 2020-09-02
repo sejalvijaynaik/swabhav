@@ -1,31 +1,28 @@
 package com.techlabs.entity;
 
+import java.util.UUID;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 @Entity
-public class Student {
+public class Customer {
 
 	@Id
-	private String id;
+	@GeneratedValue(generator = "UUID")
+	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+	@Type(type = "uuid-char")
+	private UUID id;
 	private String name;
 	private float cgpa;
 
-	public Student(String id, String name, float cgpa) {
-		this.id = id;
-		this.name = name;
-		this.cgpa = cgpa;
-	}
-
-	public Student() {
-	}
-
-	@Id
-	public String getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
@@ -45,9 +42,4 @@ public class Student {
 		this.cgpa = cgpa;
 	}
 
-	@Override
-	public String toString() {
-
-		return this.id + " " + this.name + " " + this.cgpa;
-	}
 }
