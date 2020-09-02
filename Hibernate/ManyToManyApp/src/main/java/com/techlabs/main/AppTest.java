@@ -16,7 +16,7 @@ public class AppTest {
 
 	public static void main(String[] args) {
 
-		// Setting individual objects-------------------------------------------
+	/*	// Setting individual objects-------------------------------------------
 
 		Actor srk = new Actor();
 		srk.setId(1);
@@ -75,7 +75,7 @@ public class AppTest {
 		abcdActors.add(hrithik);
 		abcdActors.add(katrina);
 		abcd.setActors(abcdActors);
-
+*/
 		Configuration configConfiguration = new Configuration();
 		SessionFactory sessionFactory = configConfiguration.configure("hibernate.cfg.xml").buildSessionFactory();
 		Session session = sessionFactory.openSession();
@@ -84,9 +84,7 @@ public class AppTest {
 		try {
 
 			transaction = session.beginTransaction();
-			session.save(k3g);
-			session.save(znmd);
-			session.save(abcd);
+			printMovies(session);
 			transaction.commit();
 
 		} catch (HibernateException e) {
