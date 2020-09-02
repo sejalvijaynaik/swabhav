@@ -6,11 +6,11 @@ import javax.persistence.Id;
 @Entity
 public class Student {
 
-	private int id;
+	private String id;
 	private String name;
 	private float cgpa;
 
-	public Student(int id, String name, float cgpa) {
+	public Student(String id, String name, float cgpa) {
 		this.id = id;
 		this.name = name;
 		this.cgpa = cgpa;
@@ -20,11 +20,11 @@ public class Student {
 	}
 
 	@Id
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

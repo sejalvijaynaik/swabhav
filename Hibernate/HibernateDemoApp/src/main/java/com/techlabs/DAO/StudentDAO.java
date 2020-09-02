@@ -2,6 +2,8 @@ package com.techlabs.DAO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -21,10 +23,11 @@ public class StudentDAO {
 		sessionFactory = configConfiguration.configure("hibernate.cfg.xml").buildSessionFactory();
 	}
 
-	public void createStuddent(int id, String name, float cgpa) {
+	public void createStuddent(String name, float cgpa) {
 
-		Student student = new Student(id, name, cgpa);
-
+		UUID uuid = UUID.randomUUID();
+		Student student = new Student(uuid.toString(), name, cgpa);
+		System.out.println(student);
 		Session session = sessionFactory.openSession();
 		Transaction transaction = null;
 
@@ -64,7 +67,7 @@ public class StudentDAO {
 		}
 	}
 
-	public void printStudent(int id) {
+	public void printStudent(String id) {
 
 		Student student = new Student();
 		Session session = sessionFactory.openSession();
@@ -84,24 +87,23 @@ public class StudentDAO {
 		System.out.println(student);
 	}
 
-	public void updateStudent(int id, String name, float cgpa) {
+	public void updateStudent(String id, String name, float cgpa) {
 
+		Student student = new Student(id, name, cgpa);
 		Session session = sessionFactory.openSession();
 		Transaction transaction = null;
 
 		try {
 
-			/*
-			 * transaction = session.beginTransaction(); Student student = (Student)
-			 * session.get(Student.class, id); session.update(student);
-			 * transaction.commit();
-			 */
-
 			transaction = session.beginTransaction();
+			session.update(student);
+			transaction.commit();
+
+			/*transaction = session.beginTransaction();
 			Student student = (Student) session.get(Student.class, id);
 			student.setName(name);
 			student.setCgpa(cgpa);
-			transaction.commit();
+			transaction.commit();*/
 
 		} catch (HibernateException e) {
 			transaction.rollback();
@@ -110,7 +112,7 @@ public class StudentDAO {
 		}
 	}
 
-	public void deleteStudent(int id) {
+	public void deleteStudent(String id) {
 
 		Session session = sessionFactory.openSession();
 		Transaction transaction = null;
