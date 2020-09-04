@@ -21,32 +21,8 @@ public class TestAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 
-		/*User user = userService.getUser("cbf6eaca-1ae6-46d4-9dee-5550d8f3dfde");
-		
-		String taskId = taskService.addTask("study", new Date(), true, user);
-		Task task = taskService.getTask(taskId);
-		
-		Set<Task> tasks = user.getTasks();
-		tasks.add(task);
-		user.setTasks(tasks);
-		userService.updateUser(user.getId().toString(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getUsername(), user.getPassword(), user.getTasks());
-		*/
-		/*User user = userService.getUser("cbf6eaca-1ae6-46d4-9dee-5550d8f3dfde");
-		Task task = new Task("study", new Date(), true, user);
-		
-		Set<Task> tasks = user.getTasks();
-		tasks.add(task);
-		user.setTasks(tasks);
-		userService.updateUser(user.getId().toString(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getUsername(), user.getPassword(), user.getTasks());
-		
-		//System.out.println(task.getUser());
+		User user = userService.getUser("cbf6eaca-1ae6-46d4-9dee-5550d8f3dfde");
 		System.out.println(user.getTasks().size());
-		*/
-		Task task = taskService.getTask("b1d75cfd-0837-4516-ad43-f8f50bc186a8");
-		System.out.println(task.getUser());
-		
-		
-				
 		
 		return "success";
 	}

@@ -9,8 +9,16 @@
 </head>
 <body>
 	<s:form action="addTask">
+		<s:textfield name = "title" label="Title"></s:textfield>
 		<s:submit value="ADD TASK"></s:submit>
 	</s:form>
+	
+	<s:form action="update.do">
+		<input type="hidden" name = "taskId" value="${taskId}">
+		<s:textfield name = "newTitle" label="Title"></s:textfield>
+		<s:submit value="UPDATE"></s:submit>
+	</s:form>
+	
 	<h2>Task List</h2>
 	<table border="1">
 		<tr>
@@ -29,13 +37,13 @@
 				<td><s:property value="done"/></td>
 				<td>
 				<s:form action = "update">
-					<input type="hidden" name="rollNo" value="${id}">
+					<input type="hidden" name="taskId" value="${id}">
 					<s:submit value = "UPDATE"></s:submit>
 				</s:form>
 				</td>
 				<td>
 				<s:form action = "delete">
-					<input type="hidden" name="rollNo" value="${id}">
+					<input type="hidden" name="taskId" value="${id}">
 					<s:submit value = "DELETE" onclick="if (confirm('Are you sure you want to delete?')) form.action='delete'; else return false;"></s:submit>
 				</s:form>
 				</td>

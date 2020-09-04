@@ -22,10 +22,8 @@ public class DisplayTaskAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 
-		String userId = userLoginModel.getUserId();
-		User user = userService.getUser(userId);
-		System.out.println("In task action" + user.getTasks());
-		tasks = user.getTasks();
+		System.out.println("In task action");
+		tasks = userService.getTasks(userLoginModel.getUserId());
 
 		return "success";
 	}

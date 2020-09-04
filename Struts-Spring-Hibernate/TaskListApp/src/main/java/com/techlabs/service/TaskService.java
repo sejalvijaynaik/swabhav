@@ -22,8 +22,8 @@ public class TaskService {
 		return taskRepository.getTask(id);
 	}
 
-	public void updateTask(String id, String title, Date date, boolean done) {
-		taskRepository.updateTask(id, title, date, done);
+	public void updateTask(String id, String title, Date date, boolean done, User user) {
+		taskRepository.updateTask(id, title, date, done, user);
 	}
 
 	public void deleteTask(String id) {

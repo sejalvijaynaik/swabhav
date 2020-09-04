@@ -133,4 +133,9 @@ public class UserRepository {
 		}
 		return null;
 	}
+
+	public Set<Task> getTasks(String id) {
+		user = getUser(id);
+		return user.getTasks();
+	}
 }

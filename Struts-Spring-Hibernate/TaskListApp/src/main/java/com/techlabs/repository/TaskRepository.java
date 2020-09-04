@@ -49,9 +49,9 @@ public class TaskRepository {
 		return task;
 	}
 
-	public void updateTask(String id, String title, Date date, boolean done) {
+	public void updateTask(String id, String title, Date date, boolean done, User user) {
 
-		task = new Task(UUID.fromString(id), title, date, done);
+		task = new Task(UUID.fromString(id), title, date, done, user);
 		session = sessionFactory.openSession();
 
 		try {

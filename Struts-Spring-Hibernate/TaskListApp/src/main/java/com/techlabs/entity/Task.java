@@ -44,6 +44,14 @@ public class Task {
 		this.done = done;
 	}
 
+	public Task(UUID id, String title, Date date, boolean done, User user) {
+		this.id = id;
+		this.title = title;
+		this.date = date;
+		this.done = done;
+		this.user = user;
+	}
+
 	public UUID getId() {
 		return id;
 	}

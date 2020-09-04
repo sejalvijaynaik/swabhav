@@ -37,14 +37,22 @@
 			<result name="success">taskList.jsp</result>  
 		</action>
 		
-		<action name="addTask.do" class="com.techlabs.actions.AddTaskAction" method = "addTaskDo"> 
-			<result name="input">add-task.jsp</result> 
-			<result name="success" type="redirect">/taskList</result>
+		<action name="addTask" class="com.techlabs.actions.AddTaskAction" method = "execute"> 
+			<result name="input" type="redirect">/taskList</result> 
+		 	<result name="success" type="redirect">/taskList</result>
 		</action>
 		
-		<action name="addTask" class="com.techlabs.actions.AddTaskAction" method = "execute"> 
-			<result name="input">add-task.jsp</result> 
-		 	<result name="success">add-task.jsp</result>
+		<action name="update.do" class="com.techlabs.actions.UpdateTaskAction" method = "updateDo"> 
+			<result name="success" type="redirect">/taskList</result>
+			<result name="input" type="redirect">/taskList</result>
+		</action>
+		
+		<action name="update" class="com.techlabs.actions.UpdateTaskAction" method = "execute"> 
+			<result name="input">taskList.jsp</result>
+		</action>
+		
+		<action name="delete" class="com.techlabs.actions.DeleteTaskAction" method = "execute"> 
+			<result name="success" type="redirect">/taskList</result>
 		</action>
 			
 	</package>

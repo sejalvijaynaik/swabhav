@@ -45,4 +45,8 @@ public class UserService {
 	public String getUserId(String username, String password) {
 		return userRepository.getUserId(username, password);
 	}
+
+	public Set<Task> getTasks(String id) {
+		return userRepository.getTasks(id);
+	}
 }
