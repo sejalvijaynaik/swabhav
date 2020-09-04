@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<!DOCTYPE struts PUBLIC 
+
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" 
+
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<package name = "task-list-app" extends="struts-default">
+		
+		<action name="test" class="com.techlabs.actions.TestAction" method = "execute">
+			<result name="success">test.jsp</result>  
+		</action>
+		
+		<action name="register.do" class="com.techlabs.actions.RegisterAction" method = "registerDo"> 
+			<result name="input">register.jsp</result> 
+			<result name="success">home.jsp</result>
+		</action>
+		
+		<action name="register" class="com.techlabs.actions.RegisterAction" method = "execute"> 
+			<result name="input">register.jsp</result> 
+		 	<result name="success">register.jsp</result>
+		</action>
+		
+		<action name="login" class="com.techlabs.actions.LoginAction" method = "execute">  
+			<result name="success">login.jsp</result>  
+			<result name="input">login.jsp</result> 
+		</action>
+		
+		<action name="login.do" class="com.techlabs.actions.LoginAction" method = "loginDo">  
+			<result name="success" type="redirect">/taskList</result>  
+			<result name="input">login.jsp</result> 
+		</action>
+		
+		<action name="taskList" class="com.techlabs.actions.DisplayTaskAction" method = "execute">
+			<result name="success">taskList.jsp</result>  
+		</action>
+		
+		<action name="addTask.do" class="com.techlabs.actions.AddTaskAction" method = "addTaskDo"> 
+			<result name="input">add-task.jsp</result> 
+			<result name="success" type="redirect">/taskList</result>
+		</action>
+		
+		<action name="addTask" class="com.techlabs.actions.AddTaskAction" method = "execute"> 
+			<result name="input">add-task.jsp</result> 
+		 	<result name="success">add-task.jsp</result>
+		</action>
+			
+	</package>
+</struts> 
