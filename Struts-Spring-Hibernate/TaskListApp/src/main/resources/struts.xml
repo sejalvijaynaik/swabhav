@@ -42,7 +42,7 @@
 		 	<result name="success" type="redirect">/taskList</result>
 		</action>
 		
-		<action name="updateTask.do" class="com.techlabs.actions.UpdateTaskAction" method = "updateDo"> 
+		<action name="updateTask.do" class="com.techlabs.actions.UpdateTaskAction" method = "updateTaskDo"> 
 			<result name="success" type="redirect">/taskList</result>
 			<result name="input" type="redirect">/taskList</result>
 		</action>

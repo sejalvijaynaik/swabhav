@@ -59,7 +59,7 @@
 				<td>
 				<s:form action = "deleteTask">
 					<input type="hidden" name="taskId" value="${id}">
-					<s:submit value = "DELETE" onclick="if (confirm('Are you sure you want to delete?')) form.action='delete'; else return false;"></s:submit>
+					<s:submit value = "DELETE" onclick="if (confirm('Are you sure you want to delete?')) form.action='deleteTask'; else return false;"></s:submit>
 				</s:form>
 				</td>
 			</tr>

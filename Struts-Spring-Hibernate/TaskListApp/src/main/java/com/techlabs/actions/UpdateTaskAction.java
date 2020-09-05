@@ -41,7 +41,7 @@ public class UpdateTaskAction extends ActionSupport {
 		return "input";
 	}
 
-	public String updateDo() {
+	public String updateTaskDo() {
 
 		System.out.println("update task updateDo running");
 		
