@@ -1,22 +1,19 @@
 package com.techlabs.entity;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 @Entity
-public class Task {
+public class SubTask {
 
 	@Id
 	@GeneratedValue(generator = "UUID")
@@ -28,43 +25,25 @@ public class Task {
 	private boolean done;
 	@ManyToOne
 	@JoinColumn
-	private User user;
-	@OneToMany(mappedBy = "task", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Set<SubTask> subTasks = new HashSet<SubTask>();
+	private Task task;
 
-	public Task() {
+	public SubTask() {
 	}
 
-	public Task(UUID id, String title, Date date, boolean done) {
+	public SubTask(UUID id, String title, Date date, boolean done, Task task) {
 		this.id = id;
 		this.title = title;
 		this.date = date;
 		this.done = done;
+		this.task = task;
 	}
 
-	public Task(String title, Date date, boolean done, User user) {
-		this.user = user;
-		this.title = title;
-		this.date = date;
-		this.done = done;
-	}
-
-	public Task(UUID id, String title, Date date, boolean done, User user) {
-		this.id = id;
-		this.title = title;
-		this.date = date;
-		this.done = done;
-		this.user = user;
-	}
-
-	public Task(UUID id, String title, Date date, boolean done, User user, Set<SubTask> subTasks) {
+	public SubTask(String title, Date date, boolean done, Task task) {
 		super();
-		this.id = id;
 		this.title = title;
 		this.date = date;
 		this.done = done;
-		this.user = user;
-		this.subTasks = subTasks;
+		this.task = task;
 	}
 
 	public UUID getId() {
@@ -99,24 +78,18 @@ public class Task {
 		this.done = done;
 	}
 
-	public User getUser() {
-		return user;
+	public Task getTask() {
+		return task;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Set<SubTask> getSubTasks() {
-		return subTasks;
-	}
-
-	public void setSubTasks(Set<SubTask> subTasks) {
-		this.subTasks = subTasks;
+	public void setTask(Task task) {
+		this.task = task;
 	}
 
 	@Override
 	public String toString() {
-		return "Task [id=" + id + ", title=" + title + ", date=" + date + ", done=" + done + "]";
+		return "SubTask [id=" + id + ", title=" + title + ", date=" + date + ", done=" + done  + "]";
 	}
+	
+	
 }

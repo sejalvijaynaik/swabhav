@@ -6,8 +6,10 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
+import com.techlabs.entity.SubTask;
 import com.techlabs.entity.Task;
 import com.techlabs.entity.User;
+import com.techlabs.service.SubTaskService;
 import com.techlabs.service.TaskService;
 import com.techlabs.service.UserService;
 
@@ -17,13 +19,19 @@ public class TestAction extends ActionSupport {
 	private TaskService taskService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private SubTaskService subTaskService;
 
 	@Override
 	public String execute() throws Exception {
 
-		User user = userService.getUser("cbf6eaca-1ae6-46d4-9dee-5550d8f3dfde");
-		System.out.println(user.getTasks().size());
-		
+		String taskId = "37a4081d-0dac-4698-86e3-fc2725629211";
+		Task task = taskService.getTask(taskId);
+
+		if (task.getSubTasks().size() == 0) {
+			subTaskService.deleteSubTask(taskId);
+		}
+
 		return "success";
 	}
 }

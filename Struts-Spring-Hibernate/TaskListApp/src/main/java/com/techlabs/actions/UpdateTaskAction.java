@@ -50,7 +50,7 @@ public class UpdateTaskAction extends ActionSupport {
 		}
 
 		task = taskService.getTask(taskId);
-		taskService.updateTask(task.getId().toString(), newTitle, task.getDate(), task.isDone(), task.getUser());
+		taskService.updateTaskInfo(task.getId().toString(), newTitle, task.getDate(), task.isDone(), task.getUser());
 
 		return "success";
 	}

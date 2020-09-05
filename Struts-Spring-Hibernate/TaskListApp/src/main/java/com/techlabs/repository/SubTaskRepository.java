@@ -3,62 +3,62 @@ package com.techlabs.repository;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
-
+import org.apache.velocity.tools.generic.ClassTool.Sub;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.techlabs.entity.SubTask;
 import com.techlabs.entity.Task;
 import com.techlabs.entity.User;
 
 @Repository
-public class TaskRepository {
+public class SubTaskRepository {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 	private Transaction transaction;
 	private Session session;
-	private List<Task> tasks = new ArrayList<Task>();
-	private Task task;
+	private List<SubTask> subTasks = new ArrayList<SubTask>();
+	private SubTask subTask;
+	private String subTaskId;
 
-	public List<Task> getTasks() {
+	public List<SubTask> getSubTasks() {
 
 		session = sessionFactory.openSession();
-		Criteria criteria = session.createCriteria(Task.class);
+		Criteria criteria = session.createCriteria(SubTask.class);
 
-		tasks = criteria.list();
+		subTasks = criteria.list();
 
 		session.close();
 
-		return tasks;
+		return subTasks;
 	}
 
-	public Task getTask(String id) {
+	public SubTask getSubTask(String id) {
 
-		task = new Task();
+		subTask = new SubTask();
 		session = sessionFactory.openSession();
 
-		task = (Task) session.get(Task.class, UUID.fromString(id));
+		subTask = (SubTask) session.get(SubTask.class, UUID.fromString(id));
 
 		session.close();
-		return task;
+		return subTask;
 	}
 
-	public void updateTaskInfo(String id, String title, Date date, boolean done, User user) {
+	public void updateSubTask(String id, String title, Date date, boolean done, Task task) {
 
-		task = new Task(UUID.fromString(id), title, date, done, user);
+		subTask = new SubTask(UUID.fromString(id), title, date, done, task);
 		session = sessionFactory.openSession();
 
 		try {
 			transaction = session.beginTransaction();
-			session.update(task);
+			session.update(subTask);
 			transaction.commit();
 
 		} catch (HibernateException e) {
@@ -68,19 +68,14 @@ public class TaskRepository {
 		}
 	}
 
-	public void updateTask(Task task, SubTask subTask) {
+	public void deleteSubTask(String id) {
 
-		Set<SubTask> subTasks = task.getSubTasks();
-		subTasks.add(subTask);
-		task.setSubTasks(subTasks);
-
-		this.task = new Task(task.getId(), task.getTitle(), task.getDate(), task.isDone(), task.getUser(),
-				task.getSubTasks());
+		subTask = getSubTask(id);
 		session = sessionFactory.openSession();
 
 		try {
 			transaction = session.beginTransaction();
-			session.update(this.task);
+			session.delete(subTask);
 			transaction.commit();
 
 		} catch (HibernateException e) {
@@ -90,14 +85,15 @@ public class TaskRepository {
 		}
 	}
 
-	public void deleteTask(String id) {
+	public void deleteSubTasks(String taskId) {
 
-		task = getTask(id);
 		session = sessionFactory.openSession();
 
 		try {
 			transaction = session.beginTransaction();
-			session.delete(task);
+			Query myQuery = session.createQuery("delete from SubTask where task.getId()=:taskId");
+			myQuery.setParameter("taskId", taskId);
+			myQuery.executeUpdate();
 			transaction.commit();
 
 		} catch (HibernateException e) {
@@ -105,10 +101,6 @@ public class TaskRepository {
 		} finally {
 			session.close();
 		}
-	}
-	
-	public Set<SubTask> getSubTasks(String id) {
-		task = getTask(id);
-		return task.getSubTasks();
+
 	}
 }

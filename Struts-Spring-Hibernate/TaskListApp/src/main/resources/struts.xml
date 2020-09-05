@@ -42,18 +42,43 @@
 		 	<result name="success" type="redirect">/taskList</result>
 		</action>
 		
-		<action name="update.do" class="com.techlabs.actions.UpdateTaskAction" method = "updateDo"> 
+		<action name="updateTask.do" class="com.techlabs.actions.UpdateTaskAction" method = "updateDo"> 
 			<result name="success" type="redirect">/taskList</result>
 			<result name="input" type="redirect">/taskList</result>
 		</action>
 		
-		<action name="update" class="com.techlabs.actions.UpdateTaskAction" method = "execute"> 
+		<action name="updateTask" class="com.techlabs.actions.UpdateTaskAction" method = "execute"> 
 			<result name="input">taskList.jsp</result>
 		</action>
 		
-		<action name="delete" class="com.techlabs.actions.DeleteTaskAction" method = "execute"> 
+		<action name="deleteTask" class="com.techlabs.actions.DeleteTaskAction" method = "execute"> 
 			<result name="success" type="redirect">/taskList</result>
 		</action>
+		
+		<action name="taskDone" class="com.techlabs.actions.TaskDoneAction" method = "execute"> 
+			<result name="success" type="redirect">/taskList</result>
+		</action>
+		
+		<action name="subTaskList" class="com.techlabs.actions.DisplaySubTaskAction" method = "execute">
+			<result name="success">subTaskList.jsp</result>  
+		</action>
+		
+		<action name="addSubTask" class="com.techlabs.actions.AddSubTaskAction" method = "execute"> 
+			<result name="input" type="redirect">/subTaskList</result> 
+		 	<result name="success" type="redirect">/subTaskList</result>
+		</action>
+		
+		<action name="updateSubTask.do" class="com.techlabs.actions.UpdateSubTaskAction" method = "updateSubTaskDo"> 
+			<result name="success" type="redirect">/subTaskList</result>
+			<result name="input" type="redirect">/subTaskList</result>
+		</action>
+		
+		<action name="updateSubTask" class="com.techlabs.actions.UpdateSubTaskAction" method = "execute"> 
+			<result name="input">subTaskList.jsp</result>
+		</action>
 			
+		<action name="deleteSubTask" class="com.techlabs.actions.DeleteSubTaskAction" method = "execute"> 
+			<result name="success" type="redirect">/subTaskList</result>
+		</action>
 	</package>
 </struts> 

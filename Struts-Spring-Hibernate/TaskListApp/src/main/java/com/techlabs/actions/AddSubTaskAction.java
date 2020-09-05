@@ -1,30 +1,30 @@
 package com.techlabs.actions;
 
-import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
+import com.techlabs.entity.SubTask;
 import com.techlabs.entity.Task;
-import com.techlabs.entity.User;
-import com.techlabs.service.UserService;
-import com.techlabs.viewModel.UserLoginModel;
+import com.techlabs.service.TaskService;
+import com.techlabs.viewModel.TaskSelectedModel;
 
-public class AddTaskAction extends ActionSupport {
+public class AddSubTaskAction extends ActionSupport {
 
 	@Autowired
-	private UserLoginModel userLoginModel;
-	@Autowired
-	private UserService userService;
+	private TaskSelectedModel taskSelectedModel;
 	private String title;
+	@Autowired
+	private TaskService taskService;
 
 	@Override
 	public String execute() throws Exception {
 
-		System.out.println("addStudent(addTaskDo) running");
+		System.out.println("addSubTask execute running");
 		System.out.println("name" + title);
+		System.out.println(taskSelectedModel.getTaskId());
 
-		User user = userService.getUser(userLoginModel.getUserId());
-		Task task = new Task(title, null, false, user);
-		userService.updateUser(user, task);
+		Task task = taskService.getTask(taskSelectedModel.getTaskId());
+		SubTask subTask = new SubTask(title, null, false, task);
+		taskService.updateTask(task, subTask);
 
 		return "success";
 	}

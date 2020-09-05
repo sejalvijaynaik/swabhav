@@ -8,29 +8,28 @@
 <title>Task List</title>
 </head>
 <body>
-	<s:form action="addTask">
+	<s:form action="addSubTask">
 		<s:textfield name = "title" label="Title" theme="simple"></s:textfield>
-		<s:submit value="ADD TASK" theme="simple"></s:submit>
+		<s:submit value="ADD SUBTASK" theme="simple"></s:submit>
 	</s:form>
 	
-	<s:form action="updateTask.do">
-		<input type="hidden" name = "taskId" value="${taskId}">
+	<s:form action="updateSubTask.do">
+		<input type="hidden" name = "subTaskId" value="${subTaskId}">
 		Title : <s:textfield name = "newTitle" theme="simple"></s:textfield>
 		<s:submit value="UPDATE" theme="simple"></s:submit>
 	</s:form>
 	
-	<h2>Task List</h2>
+	<h2>SubTask List</h2>
 
 	<table border="1">
 		<tr>
 			<th>Title</th>
 			<th>Date</th>
 			<th>Done</th>
-			<th>SubTasks</th>
 			<th>Update</th>
 			<th>Delete</th>
 		</tr>
-		<s:iterator value="tasks">
+		<s:iterator value="subTasks">
 			<tr>
 				<td>
 					<s:if test="done == true">
@@ -45,21 +44,15 @@
 					<s:checkbox name = "done" theme="simple"></s:checkbox>
 				</td>
 				<td>
-				<s:form action = "subTaskList">
-					<input type="hidden" name="taskId" value="${id}">
-					<s:submit value = "SUBTASKS"></s:submit>
-				</s:form>
-				</td>
-				<td>
-				<s:form action = "updateTask">
-					<input type="hidden" name="taskId" value="${id}">
+				<s:form action = "updateSubTask">
+					<input type="hidden" name="subTaskId" value="${id}">
 					<s:submit value = "UPDATE"></s:submit>
 				</s:form>
 				</td>
 				<td>
-				<s:form action = "deleteTask">
-					<input type="hidden" name="taskId" value="${id}">
-					<s:submit value = "DELETE" onclick="if (confirm('Are you sure you want to delete?')) form.action='delete'; else return false;"></s:submit>
+				<s:form action = "deleteSubTask">
+					<input type="hidden" name="subTaskId" value="${id}">
+					<s:submit value = "DELETE" onclick="if (confirm('Are you sure you want to delete?')) form.action='deleteSubTask'; else return false;"></s:submit>
 				</s:form>
 				</td>
 			</tr>
