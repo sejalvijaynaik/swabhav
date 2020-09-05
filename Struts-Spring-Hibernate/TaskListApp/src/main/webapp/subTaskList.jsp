@@ -8,6 +8,7 @@
 <title>Task List</title>
 </head>
 <body>
+	<input type="button" onclick="window.location.href = 'taskList'" value="TASKS">
 	<s:form action="addSubTask">
 		<s:textfield name = "title" label="Title" theme="simple"></s:textfield>
 		<s:submit value="ADD SUBTASK" theme="simple"></s:submit>

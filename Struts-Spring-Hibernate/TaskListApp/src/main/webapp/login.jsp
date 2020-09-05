@@ -13,6 +13,7 @@
 	<s:form action="login.do">
 		<s:textfield name="username" label="Username"></s:textfield>
 		<s:textfield name="password" label="Password"></s:textfield>
+		<s:checkbox name="admin" label="ADMIN"></s:checkbox>
 		<s:submit value = "Submit"></s:submit>
 	</s:form>
 </body>

@@ -23,11 +23,27 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserLoginM
 
 	public String loginDo() {
 
+		userLoginModel.setMessage("");
 		System.out.println("logindo is running");
+		System.out.println("value of is Admin :" + userLoginModel.isAdmin());
+		System.out.println("value of is username :" + userLoginModel.getUsername());
+		System.out.println("value of is password :" + userLoginModel.getPassword());
+
+		if (userLoginModel.isAdmin() == true) {
+			if ((userLoginModel.getUsername().equals("admin")) && (userLoginModel.getPassword().equals("admin"))) {
+				userLoginModel.setNextAction("userList");
+				return "success";
+			} else {
+				userLoginModel.setMessage("Username or password is incorrect");
+				return "input";
+			}
+		}
+
 		String userId = userService.getUserId(userLoginModel.getUsername(), userLoginModel.getPassword());
 		System.out.println(userId);
 		if (userId != null) {
 			userLoginModel.setUserId(userId);
+			userLoginModel.setNextAction("taskList");
 			return "success";
 		}
 		userLoginModel.setMessage("Username or password is incorrect");

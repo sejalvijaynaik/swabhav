@@ -9,6 +9,8 @@ public class UserLoginModel {
 	private String password;
 	private String message;
 	private String userId;
+	private boolean admin;
+	private String nextAction;
 
 	public String getUsername() {
 		return username;
@@ -41,4 +43,21 @@ public class UserLoginModel {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
+
+	public String getNextAction() {
+		return nextAction;
+	}
+
+	public void setNextAction(String nextAction) {
+		this.nextAction = nextAction;
+	}
+
 }

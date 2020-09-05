@@ -29,7 +29,7 @@
 		</action>
 		
 		<action name="login.do" class="com.techlabs.actions.LoginAction" method = "loginDo">  
-			<result name="success" type="redirect">/taskList</result>  
+			<result name="success" type="redirectAction">${nextAction}</result>  
 			<result name="input">login.jsp</result> 
 		</action>
 		
@@ -79,6 +79,10 @@
 			
 		<action name="deleteSubTask" class="com.techlabs.actions.DeleteSubTaskAction" method = "execute"> 
 			<result name="success" type="redirect">/subTaskList</result>
+		</action>
+		
+		<action name="userList" class="com.techlabs.actions.DisplayUserAction" method = "execute">
+			<result name="success">userList.jsp</result>  
 		</action>
 	</package>
 </struts> 
