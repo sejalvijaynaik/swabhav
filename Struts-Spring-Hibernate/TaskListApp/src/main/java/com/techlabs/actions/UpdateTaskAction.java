@@ -3,8 +3,9 @@ package com.techlabs.actions;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
+import com.techlabs.entity.SubTask;
 import com.techlabs.entity.Task;
-import com.techlabs.entity.User;
+import com.techlabs.service.SubTaskService;
 import com.techlabs.service.TaskService;
 import com.techlabs.service.UserService;
 import com.techlabs.viewModel.UserLoginModel;
@@ -21,7 +22,8 @@ public class UpdateTaskAction extends ActionSupport {
 	private UserLoginModel userLoginModel;
 	private Set<Task> tasks;
 	private Task task;
-	private User user;
+	@Autowired
+	private SubTaskService subTaskService;
 
 	public UpdateTaskAction() {
 
@@ -44,13 +46,39 @@ public class UpdateTaskAction extends ActionSupport {
 	public String updateTaskDo() {
 
 		System.out.println("update task updateDo running");
-		
-		if(newTitle.equals("")) {
+
+		if (newTitle.equals("")) {
 			return "input";
 		}
 
 		task = taskService.getTask(taskId);
 		taskService.updateTaskInfo(task.getId().toString(), newTitle, task.getDate(), task.isDone(), task.getUser());
+
+		return "success";
+	}
+
+	public String updateTaskDone() {
+
+		System.out.println("updateTaskDone running");
+		System.out.println("taskId :" + taskId);
+
+		taskService.updateTaskDone(taskId);
+		task = taskService.getTask(taskId);
+		Set<SubTask> subTasks = task.getSubTasks();
+		if (task.isDone() == true) {
+			for (SubTask subTask : subTasks) {
+				if (subTask.isDone() == false) {
+					subTaskService.updateSubTask(subTask.getId().toString(), subTask.getTitle(), task.getDate(),
+							task.isDone(), task);
+				}
+			}
+		}
+
+		else {
+			for (SubTask subTask : subTasks) {
+				subTaskService.updateSubTask(subTask.getId().toString(), subTask.getTitle(), null, task.isDone(), task);
+			}
+		}
 
 		return "success";
 	}

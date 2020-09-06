@@ -11,8 +11,7 @@ import com.techlabs.viewModel.UserLoginModel;
 
 public class DisplayTaskAction extends ActionSupport {
 
-	@Autowired
-	private TaskService taskService;
+	private String userId;
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -22,8 +21,21 @@ public class DisplayTaskAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 
-		System.out.println("In task action");
-		tasks = userService.getTasks(userLoginModel.getUserId());
+		System.out.println("task display");
+		User user = null;
+
+		if (userId != null) {
+			System.out.println("userId is there");
+			userLoginModel.setUserId(userId);
+			user = userService.getUser(userLoginModel.getUserId());
+			System.out.println(user);
+		} else {
+			System.out.println("userId is not there");
+			user = userService.getUser(userLoginModel.getUserId());
+			System.out.println(user);
+		}
+
+		tasks = user.getTasks();
 
 		return "success";
 	}
@@ -34,5 +46,13 @@ public class DisplayTaskAction extends ActionSupport {
 
 	public void setTasks(Set<Task> tasks) {
 		this.tasks = tasks;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 }

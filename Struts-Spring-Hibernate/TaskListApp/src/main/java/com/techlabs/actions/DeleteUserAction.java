@@ -1,11 +1,6 @@
 package com.techlabs.actions;
 
-import java.util.Date;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
 import com.techlabs.entity.SubTask;
@@ -15,19 +10,19 @@ import com.techlabs.service.SubTaskService;
 import com.techlabs.service.TaskService;
 import com.techlabs.service.UserService;
 
-public class TestAction extends ActionSupport {
+public class DeleteUserAction extends ActionSupport {
 
-	@Autowired
-	private TaskService taskService;
+	private String userId;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private TaskService taskService;
 	@Autowired
 	private SubTaskService subTaskService;
 
 	@Override
 	public String execute() throws Exception {
 
-		String userId = "0f9dab01-8cd1-4a9c-8271-14d4b82285be";
 		User user = userService.getUser(userId);
 		String taskId;
 
@@ -57,7 +52,14 @@ public class TestAction extends ActionSupport {
 			}
 			userService.deleteUser(userId);
 		}
-
 		return "success";
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 }

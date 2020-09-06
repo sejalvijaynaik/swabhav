@@ -33,4 +33,8 @@ public class SubTaskService {
 	public void deleteSubTasks(String taskId) {
 		subTaskRepository.deleteSubTask(taskId);
 	}
+
+	public void updateSubTaskDone(String id) {
+		subTaskRepository.updateSubTaskDone(id);
+	}
 }

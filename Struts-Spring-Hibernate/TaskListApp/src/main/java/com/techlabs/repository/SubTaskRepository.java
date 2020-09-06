@@ -31,9 +31,13 @@ public class SubTaskRepository {
 	public List<SubTask> getSubTasks() {
 
 		session = sessionFactory.openSession();
-		Criteria criteria = session.createCriteria(SubTask.class);
+		/*
+		 * Criteria criteria = session.createCriteria(SubTask.class);
+		 * 
+		 * subTasks = criteria.list();
+		 */
 
-		subTasks = criteria.list();
+		subTasks = session.createQuery("from SubTask").list();
 
 		session.close();
 
@@ -102,5 +106,21 @@ public class SubTaskRepository {
 			session.close();
 		}
 
+	}
+
+	public void updateSubTaskDone(String id) {
+
+		subTask = getSubTask(id);
+
+		boolean doneValue = subTask.isDone();
+		Date date;
+		if (doneValue == true) {
+			doneValue = false;
+			date = null;
+		} else {
+			doneValue = true;
+			date = new Date();
+		}
+		updateSubTask(id, subTask.getTitle(), date, doneValue, subTask.getTask());
 	}
 }

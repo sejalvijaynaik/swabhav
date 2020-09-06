@@ -28,12 +28,14 @@ public class UserRepository {
 	public List<User> getUsers() {
 
 		session = sessionFactory.openSession();
-		Criteria criteria = session.createCriteria(User.class);
+		/*Criteria criteria = session.createCriteria(User.class);
 
-		users = criteria.list();
+		users = criteria.list();*/
+		
+		users = session.createQuery("from User").list();
 
 		session.close();
-
+		
 		return users;
 	}
 

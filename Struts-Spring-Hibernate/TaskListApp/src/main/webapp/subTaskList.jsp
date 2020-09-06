@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="s" uri="/struts-tags" %>  
+    <%@ taglib prefix="s" uri="/struts-tags" %> 
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +43,10 @@
 				</td>
 				<td><s:property value="date"/></td>
 				<td>
-					<s:checkbox name = "done" theme="simple"></s:checkbox>
+					<s:url var="updateSubTaskDoneLink" value="/updateSubTaskDone">
+						<s:param name="subTaskId" value="%{id}"></s:param>
+					</s:url>
+					<s:checkbox name = "done" theme="simple" onclick="window.location.href='%{updateSubTaskDoneLink}'"></s:checkbox>
 				</td>
 				<td>
 				<s:form action = "updateSubTask">

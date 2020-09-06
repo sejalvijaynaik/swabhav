@@ -23,8 +23,9 @@
 			<th>Email</th>
 			<th>Username</th>
 			<th>Password</th>
+			<th>Tasks</th>
 			<th>Update</th>
-			
+			<th>Delete</th>
 		</tr>
 		<s:iterator value="users">
 			<tr>
@@ -35,9 +36,21 @@
 				<td><s:property value="username"/></td>
 				<td><s:property value="password"/></td>
 				<td>
+				<s:form action = "taskList">
+					<input type="hidden" name="userId" value="${id}">
+					<s:submit value = "TASKS"></s:submit>
+				</s:form>
+				</td>
+				<td>
 				<s:form action = "updateUser">
 					<input type="hidden" name="userId" value="${id}">
 					<s:submit value = "UPDATE"></s:submit>
+				</s:form>
+				</td>
+				<td>
+				<s:form action = "deleteUser">
+					<input type="hidden" name="userId" value="${id}">
+					<s:submit value = "DELETE" onclick="if (confirm('Are you sure you want to delete?')) form.action='deleteUser'; else return false;"></s:submit>
 				</s:form>
 				</td>
 			</tr>

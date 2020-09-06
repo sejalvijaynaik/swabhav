@@ -31,9 +31,13 @@ public class TaskRepository {
 	public List<Task> getTasks() {
 
 		session = sessionFactory.openSession();
-		Criteria criteria = session.createCriteria(Task.class);
+		/*
+		 * Criteria criteria = session.createCriteria(Task.class);
+		 * 
+		 * tasks = criteria.list();
+		 */
 
-		tasks = criteria.list();
+		tasks = session.createQuery("from Task").list();
 
 		session.close();
 
@@ -106,9 +110,24 @@ public class TaskRepository {
 			session.close();
 		}
 	}
-	
+
 	public Set<SubTask> getSubTasks(String id) {
 		task = getTask(id);
 		return task.getSubTasks();
+	}
+
+	public void updateTaskDone(String id) {
+
+		task = getTask(id);
+		boolean doneValue = task.isDone();
+		Date date;
+		if (doneValue == true) {
+			doneValue = false;
+			date = null;
+		} else {
+			doneValue = true;
+			date = new Date();
+		}
+		updateTaskInfo(id, task.getTitle(), date, doneValue, task.getUser());
 	}
 }

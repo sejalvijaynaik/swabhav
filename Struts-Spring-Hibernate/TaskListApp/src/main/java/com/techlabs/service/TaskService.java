@@ -41,4 +41,8 @@ public class TaskService {
 	public Set<SubTask> getSubTasks(String id) {
 		return taskRepository.getSubTasks(id);
 	}
+	
+	public void updateTaskDone(String id) {
+		taskRepository.updateTaskDone(id);
+	}
 }

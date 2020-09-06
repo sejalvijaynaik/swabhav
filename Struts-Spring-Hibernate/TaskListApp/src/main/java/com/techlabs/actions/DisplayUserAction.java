@@ -17,7 +17,7 @@ public class DisplayUserAction extends ActionSupport {
 
 		System.out.println("diplay user action running");
 		users = userService.getUsers();
-
+		System.out.println(users.size());
 		return "success";
 	}
 

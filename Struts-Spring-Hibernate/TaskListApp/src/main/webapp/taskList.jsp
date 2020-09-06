@@ -47,7 +47,10 @@
 				</td>
 				<td><s:property value="date"/></td>
 				<td>
-					<s:checkbox name = "done" theme="simple"></s:checkbox>
+					<s:url var="updateTaskDoneLink" value="/updateTaskDone">
+						<s:param name="taskId" value="%{id}"></s:param>
+					</s:url>
+					<s:checkbox name = "done" theme="simple" onclick="window.location.href='%{updateTaskDoneLink}'"></s:checkbox>
 				</td>
 				<td>
 				<s:form action = "subTaskList">

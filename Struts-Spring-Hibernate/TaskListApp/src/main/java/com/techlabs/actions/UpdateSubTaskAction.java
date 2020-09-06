@@ -49,6 +49,15 @@ public class UpdateSubTaskAction extends ActionSupport {
 		return "success";
 	}
 
+	public String updateSubTaskDone() {
+
+		System.out.println("updateSubTaskDone running");
+		System.out.println("subtask id" + subTaskId);
+		subTaskService.updateSubTaskDone(subTaskId);
+
+		return "success";
+	}
+
 	public String getSubTaskId() {
 		return subTaskId;
 	}

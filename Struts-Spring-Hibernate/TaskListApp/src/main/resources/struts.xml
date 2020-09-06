@@ -99,5 +99,17 @@
 			<result name="input">update-user.jsp</result>
 		</action>
 		
+		<action name="deleteUser" class="com.techlabs.actions.DeleteUserAction" method = "execute"> 
+			<result name="success" type="redirect">/userList</result>
+		</action>
+		
+		<action name="updateSubTaskDone" class="com.techlabs.actions.UpdateSubTaskAction" method = "updateSubTaskDone"> 
+			<result name="success" type="redirect">/subTaskList</result>
+		</action>
+		
+		<action name="updateTaskDone" class="com.techlabs.actions.UpdateTaskAction" method = "updateTaskDone"> 
+			<result name="success" type="redirect">/taskList</result>
+		</action>
+		
 	</package>
 </struts> 
