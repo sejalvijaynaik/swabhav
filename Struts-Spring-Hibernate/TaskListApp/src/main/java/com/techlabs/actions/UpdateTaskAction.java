@@ -25,11 +25,6 @@ public class UpdateTaskAction extends ActionSupport {
 	@Autowired
 	private SubTaskService subTaskService;
 
-	public UpdateTaskAction() {
-
-		System.out.println("update task action constriuror");
-	}
-
 	@Override
 	public String execute() throws Exception {
 
@@ -46,9 +41,14 @@ public class UpdateTaskAction extends ActionSupport {
 	public String updateTaskDo() {
 
 		System.out.println("update task updateDo running");
+		System.out.println("taskid value :" + taskId);
 
 		if (newTitle.equals("")) {
 			return "input";
+		}
+		if (taskId.equals("")) {
+			System.out.println("taskid value :" + taskId);
+			return "success";
 		}
 
 		task = taskService.getTask(taskId);
@@ -106,5 +106,4 @@ public class UpdateTaskAction extends ActionSupport {
 	public void setNewTitle(String newTitle) {
 		this.newTitle = newTitle;
 	}
-
 }

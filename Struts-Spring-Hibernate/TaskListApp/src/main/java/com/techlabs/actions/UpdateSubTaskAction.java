@@ -41,6 +41,9 @@ public class UpdateSubTaskAction extends ActionSupport {
 		if (newTitle.equals("")) {
 			return "input";
 		}
+		if (subTaskId.equals("")) {
+			return "success";
+		}
 
 		subTask = subTaskService.getSubTask(subTaskId);
 		subTaskService.updateSubTask(subTask.getId().toString(), newTitle, subTask.getDate(), subTask.isDone(),

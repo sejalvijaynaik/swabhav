@@ -55,6 +55,10 @@
 			<result name="input">taskList.jsp</result>
 		</action>
 		
+		<action name="updateTaskDone" class="com.techlabs.actions.UpdateTaskAction" method = "updateTaskDone"> 
+			<result name="success" type="redirect">/taskList</result>
+		</action>
+		
 		<action name="deleteTask" class="com.techlabs.actions.DeleteTaskAction" method = "execute"> 
 			<result name="success" type="redirect">/taskList</result>
 		</action>
@@ -107,9 +111,7 @@
 			<result name="success" type="redirect">/subTaskList</result>
 		</action>
 		
-		<action name="updateTaskDone" class="com.techlabs.actions.UpdateTaskAction" method = "updateTaskDone"> 
-			<result name="success" type="redirect">/taskList</result>
-		</action>
+		
 		
 	</package>
 </struts> 
