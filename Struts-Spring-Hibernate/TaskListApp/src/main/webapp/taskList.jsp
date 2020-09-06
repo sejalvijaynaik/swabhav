@@ -8,7 +8,9 @@
 <title>Task List</title>
 </head>
 <body>
-
+	
+	<input hidden="${userIsAdmin}" type="button" onclick="window.location.href = 'userList'" value="USERS">
+	
 	<s:form action="updateUser">
 		<s:submit value="UPDATE USER" theme="simple"></s:submit>
 	</s:form>
