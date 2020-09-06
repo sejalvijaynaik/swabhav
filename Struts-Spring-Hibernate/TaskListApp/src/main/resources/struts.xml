@@ -13,9 +13,13 @@
 			<result name="success">test.jsp</result>  
 		</action>
 		
+		<action name="home" class="com.techlabs.actions.HomeAction" method = "execute">
+			<result name="success">home.jsp</result>
+		</action>
+		
 		<action name="register.do" class="com.techlabs.actions.RegisterAction" method = "registerDo"> 
 			<result name="input">register.jsp</result> 
-			<result name="success">home.jsp</result>
+			<result name="success" type="redirectAction">${nextAction}</result>
 		</action>
 		
 		<action name="register" class="com.techlabs.actions.RegisterAction" method = "execute"> 
@@ -84,5 +88,16 @@
 		<action name="userList" class="com.techlabs.actions.DisplayUserAction" method = "execute">
 			<result name="success">userList.jsp</result>  
 		</action>
+		
+		<action name="updateUser.do" class="com.techlabs.actions.UpdateUserAction" method = "updateUserDo"> 
+		 	<result name="input">update-user.jsp</result> 
+			<result name="success" type="redirectAction">${nextAction}</result>
+		</action>
+		
+		<action name="updateUser" class="com.techlabs.actions.UpdateUserAction" method = "execute"> 
+			<result name="success">update-user.jsp</result>
+			<result name="input">update-user.jsp</result>
+		</action>
+		
 	</package>
 </struts> 

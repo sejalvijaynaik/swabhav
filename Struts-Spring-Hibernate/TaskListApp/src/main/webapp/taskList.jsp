@@ -8,6 +8,11 @@
 <title>Task List</title>
 </head>
 <body>
+
+	<s:form action="updateUser">
+		<s:submit value="UPDATE USER" theme="simple"></s:submit>
+	</s:form>
+	
 	<s:form action="addTask">
 		<s:textfield name = "title" label="Title" theme="simple"></s:textfield>
 		<s:submit value="ADD TASK" theme="simple"></s:submit>

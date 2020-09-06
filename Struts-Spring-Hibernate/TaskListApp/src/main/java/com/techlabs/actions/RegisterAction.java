@@ -5,14 +5,16 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.techlabs.service.UserService;
 import com.techlabs.viewModel.UserAddModel;
+import com.techlabs.viewModel.UserLoginModel;
 
 public class RegisterAction extends ActionSupport implements ModelDriven<UserAddModel> {
 
 	@Autowired
 	private UserService userService;
-
 	@Autowired
 	private UserAddModel userAddModel;
+	@Autowired
+	private UserLoginModel userLoginModel;
 
 	@Override
 	public String execute() throws Exception {
@@ -30,6 +32,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven<UserAdd
 	public String registerDo() {
 
 		System.out.println("register(registerDo) running");
+		System.out.println("is admin??" + userLoginModel.isAdmin());
 		System.out.println("first name" + userAddModel.getFirstName());
 		System.out.println("last name" + userAddModel.getLastName());
 		System.out.println("email" + userAddModel.getEmail());
@@ -39,6 +42,12 @@ public class RegisterAction extends ActionSupport implements ModelDriven<UserAdd
 		userService.addUser(userAddModel.getFirstName(), userAddModel.getLastName(), userAddModel.getEmail(),
 				userAddModel.getUsername(), userAddModel.getPassword());
 
+		if(userLoginModel.isAdmin() == true) {
+			userAddModel.setNextAction("userList");
+		}
+		else {
+			userAddModel.setNextAction("home");
+		}
 		return "success";
 	}
 
