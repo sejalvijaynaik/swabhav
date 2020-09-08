@@ -14,7 +14,7 @@ public class Department {
 	@Id
 	private int id;
 	private String name;
-	@OneToMany(mappedBy = "dept", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "dept", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<Employee> employees = new HashSet<Employee>();
 
 	public Department() {

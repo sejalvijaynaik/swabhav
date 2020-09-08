@@ -35,6 +35,18 @@ public class SubTaskService {
 	}
 
 	public void updateSubTaskDone(String id) {
-		subTaskRepository.updateSubTaskDone(id);
+
+		SubTask subTask = subTaskRepository.getSubTask(id);
+
+		boolean doneValue = subTask.isDone();
+		Date date;
+		if (doneValue == true) {
+			doneValue = false;
+			date = null;
+		} else {
+			doneValue = true;
+			date = new Date();
+		}
+		subTaskRepository.updateSubTask(id, subTask.getTitle(), date, doneValue, subTask.getTask());
 	}
 }

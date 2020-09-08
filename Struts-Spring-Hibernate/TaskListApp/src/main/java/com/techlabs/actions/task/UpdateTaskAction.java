@@ -1,10 +1,11 @@
-package com.techlabs.actions;
+package com.techlabs.actions.task;
 
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
 import com.techlabs.entity.SubTask;
 import com.techlabs.entity.Task;
+import com.techlabs.entity.User;
 import com.techlabs.service.SubTaskService;
 import com.techlabs.service.TaskService;
 import com.techlabs.service.UserService;
@@ -31,9 +32,10 @@ public class UpdateTaskAction extends ActionSupport {
 		System.out.println("update task execute running");
 
 		task = taskService.getTask(taskId);
+		// prepopulate with previous title
 		newTitle = task.getTitle();
-
-		tasks = userService.getTasks(userLoginModel.getUserId());
+		User user = userService.getUser(userLoginModel.getUserId());
+		tasks = user.getTasks();
 
 		return "input";
 	}
@@ -43,16 +45,19 @@ public class UpdateTaskAction extends ActionSupport {
 		System.out.println("update task updateDo running");
 		System.out.println("taskid value :" + taskId);
 
+		// if title is blank
 		if (newTitle.equals("")) {
 			return "input";
 		}
+		// if title is entered without updating
 		if (taskId.equals("")) {
 			System.out.println("taskid value :" + taskId);
 			return "success";
 		}
 
 		task = taskService.getTask(taskId);
-		taskService.updateTaskInfo(task.getId().toString(), newTitle, task.getDate(), task.isDone(), task.getUser());
+		taskService.updateTaskInfo(task.getId().toString(), newTitle, task.getDate(), task.isDone(), task.getUser(),
+				task.getSubTasks());
 
 		return "success";
 	}
@@ -62,12 +67,16 @@ public class UpdateTaskAction extends ActionSupport {
 		System.out.println("updateTaskDone running");
 		System.out.println("taskId :" + taskId);
 
+		// marking task as done
 		taskService.updateTaskDone(taskId);
 		task = taskService.getTask(taskId);
 		Set<SubTask> subTasks = task.getSubTasks();
+
+		// to update subtasks of the task
 		if (task.isDone() == true) {
 			for (SubTask subTask : subTasks) {
 				if (subTask.isDone() == false) {
+					// if subtask is not done then mark as done
 					subTaskService.updateSubTask(subTask.getId().toString(), subTask.getTitle(), task.getDate(),
 							task.isDone(), task);
 				}
@@ -75,6 +84,7 @@ public class UpdateTaskAction extends ActionSupport {
 		}
 
 		else {
+			// if task is undone then mark all its subtasks as undone
 			for (SubTask subTask : subTasks) {
 				subTaskService.updateSubTask(subTask.getId().toString(), subTask.getTitle(), null, task.isDone(), task);
 			}

@@ -26,8 +26,8 @@ public class TaskService {
 		return taskRepository.getTask(id);
 	}
 
-	public void updateTaskInfo(String id, String title, Date date, boolean done, User user) {
-		taskRepository.updateTaskInfo(id, title, date, done, user);
+	public void updateTaskInfo(String id, String title, Date date, boolean done, User user, Set<SubTask> subTasks) {
+		taskRepository.updateTaskInfo(id, title, date, done, user, subTasks);
 	}
 
 	public void deleteTask(String id) {
@@ -38,11 +38,18 @@ public class TaskService {
 		taskRepository.updateTask(task, subTask);
 	}
 
-	public Set<SubTask> getSubTasks(String id) {
-		return taskRepository.getSubTasks(id);
-	}
-	
 	public void updateTaskDone(String id) {
-		taskRepository.updateTaskDone(id);
+
+		Task task = taskRepository.getTask(id);
+		boolean doneValue = task.isDone();
+		Date date;
+		if (doneValue == true) {
+			doneValue = false;
+			date = null;
+		} else {
+			doneValue = true;
+			date = new Date();
+		}
+		taskRepository.updateTaskInfo(id, task.getTitle(), date, doneValue, task.getUser(), task.getSubTasks());
 	}
 }

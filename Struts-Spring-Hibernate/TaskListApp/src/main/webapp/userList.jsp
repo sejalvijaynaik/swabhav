@@ -8,6 +8,11 @@
 <title>User List</title>
 </head>
 <body>
+	
+	<s:form action="logout">
+		<s:submit value="LOGOUT" theme="simple"></s:submit>
+	</s:form>
+
 	<s:form action="register">
 		<s:submit value="ADD USER" theme="simple"></s:submit>
 	</s:form>

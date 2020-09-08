@@ -1,6 +1,7 @@
 package com.techlabs.repository;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -28,20 +29,22 @@ public class UserRepository {
 	public List<User> getUsers() {
 
 		session = sessionFactory.openSession();
-		/*Criteria criteria = session.createCriteria(User.class);
+		/*
+		 * Criteria criteria = session.createCriteria(User.class);
+		 * 
+		 * users = criteria.list();
+		 */
 
-		users = criteria.list();*/
-		
 		users = session.createQuery("from User").list();
 
 		session.close();
-		
+
 		return users;
 	}
 
 	public void addUser(String firstName, String lastName, String email, String username, String password) {
 
-		user = new User(firstName, lastName, email, username, password);
+		user = new User(UUID.randomUUID(), firstName, lastName, email, username, password, new HashSet<Task>());
 		session = sessionFactory.openSession();
 
 		try {
@@ -68,9 +71,9 @@ public class UserRepository {
 	}
 
 	public void updateUserForAdmin(String id, String firstName, String lastName, String email, String username,
-			String password) {
+			String password, Set<Task> tasks) {
 
-		user = new User(UUID.fromString(id), firstName, lastName, email, username, password);
+		user = new User(UUID.fromString(id), firstName, lastName, email, username, password, tasks);
 		session = sessionFactory.openSession();
 
 		try {
@@ -122,22 +125,5 @@ public class UserRepository {
 		} finally {
 			session.close();
 		}
-	}
-
-	public String getUserId(String username, String password) {
-
-		List<User> users = getUsers();
-
-		for (User tempUser : users) {
-			if ((tempUser.getUsername().equals(username)) && (tempUser.getPassword().equals(password))) {
-				return tempUser.getId().toString();
-			}
-		}
-		return null;
-	}
-
-	public Set<Task> getTasks(String id) {
-		user = getUser(id);
-		return user.getTasks();
 	}
 }

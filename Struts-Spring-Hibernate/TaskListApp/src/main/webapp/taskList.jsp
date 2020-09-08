@@ -9,7 +9,11 @@
 </head>
 <body>
 	
-	<input hidden="${userIsAdmin}" type="button" onclick="window.location.href = 'userList'" value="USERS">
+	<button id="userButton" onclick="window.location.href = 'userList'" value="USERS">USERS</button>
+	
+	<s:form action="logout">
+		<s:submit value="LOGOUT" theme="simple"></s:submit>
+	</s:form>
 	
 	<s:form action="updateUser">
 		<s:submit value="UPDATE USER" theme="simple"></s:submit>
@@ -75,5 +79,16 @@
 			</tr>
 		</s:iterator>
 	</table>
+	
+	<script type="text/javascript">
+		var showUserButton = ${usersButtonShow};
+		var userButton = document.getElementById("userButton");
+		if (showUserButton == true) {
+			userButton.style.display = "block";
+		  } else {
+			  userButton.style.display = "none";
+		  }
+	</script>
+	
 </body>
 </html>

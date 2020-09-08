@@ -35,36 +35,20 @@ public class Task {
 	public Task() {
 	}
 
-	public Task(UUID id, String title, Date date, boolean done) {
-		this.id = id;
-		this.title = title;
-		this.date = date;
-		this.done = done;
-	}
-
-	public Task(String title, Date date, boolean done, User user) {
-		this.user = user;
-		this.title = title;
-		this.date = date;
-		this.done = done;
-	}
-
-	public Task(UUID id, String title, Date date, boolean done, User user) {
-		this.id = id;
-		this.title = title;
-		this.date = date;
-		this.done = done;
-		this.user = user;
-	}
-
 	public Task(UUID id, String title, Date date, boolean done, User user, Set<SubTask> subTasks) {
-		super();
 		this.id = id;
 		this.title = title;
 		this.date = date;
 		this.done = done;
 		this.user = user;
 		this.subTasks = subTasks;
+	}
+
+	public Task(String title, Date date, boolean done, User user) {
+		this.title = title;
+		this.date = date;
+		this.done = done;
+		this.user = user;
 	}
 
 	public UUID getId() {

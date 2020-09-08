@@ -1,4 +1,4 @@
-package com.techlabs.actions;
+package com.techlabs.actions.subtask;
 
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,22 +17,20 @@ public class DisplaySubTaskAction extends ActionSupport {
 	private TaskService taskService;
 	private Set<SubTask> subTasks;
 
-	public DisplaySubTaskAction() {
-		System.out.println("DisplaySubTaskAction constructor");
-	}
-
 	@Override
 	public String execute() throws Exception {
 
 		System.out.println("sub task display");
 		Task task = null;
 
+		// subtask selected by admin
 		if (taskId != null) {
 			System.out.println("taskId is there");
 			taskSelectedModel.setTaskId(taskId);
 			task = taskService.getTask(taskSelectedModel.getTaskId());
 			System.out.println(task);
 		} else {
+			// subtask selected by user
 			System.out.println("task id is not there");
 			task = taskService.getTask(taskSelectedModel.getTaskId());
 			System.out.println(task);

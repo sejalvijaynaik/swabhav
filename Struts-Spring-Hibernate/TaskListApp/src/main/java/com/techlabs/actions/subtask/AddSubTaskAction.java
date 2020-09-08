@@ -1,4 +1,4 @@
-package com.techlabs.actions;
+package com.techlabs.actions.subtask;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
@@ -22,6 +22,7 @@ public class AddSubTaskAction extends ActionSupport {
 		System.out.println("name" + title);
 		System.out.println(taskSelectedModel.getTaskId());
 
+		// taskSelectedModel to get stored task Id
 		Task task = taskService.getTask(taskSelectedModel.getTaskId());
 		SubTask subTask = new SubTask(title, null, false, task);
 		taskService.updateTask(task, subTask);

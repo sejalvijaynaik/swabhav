@@ -27,36 +27,9 @@ public class TestAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 
-		String userId = "0f9dab01-8cd1-4a9c-8271-14d4b82285be";
-		User user = userService.getUser(userId);
-		String taskId;
+		String userId = "27219f1b-642a-41e8-b414-f7c6259cfa8b";
 
-		if (user.getTasks().size() == 0) {
-			System.out.println("user - tasks is 0");
-			userService.deleteUser(userId);
-		} else {
-			System.out.println("user - tasks is not 0");
-			for (Iterator<Task> iteratorTask = user.getTasks().iterator(); iteratorTask.hasNext();) {
-				Task task = iteratorTask.next();
-				taskId = task.getId().toString();
-				System.out.println(task);
-
-				if (task.getSubTasks().size() == 0) {
-					System.out.println("task - subtasks is 0");
-					taskService.deleteTask(taskId);
-				} else {
-					System.out.println("task - subtasks is not 0");
-					for (Iterator<SubTask> iteratorSubTask = task.getSubTasks().iterator(); iteratorSubTask
-							.hasNext();) {
-						SubTask subTask = iteratorSubTask.next();
-						System.out.println(subTask);
-						subTaskService.deleteSubTask(subTask.getId().toString());
-					}
-					taskService.deleteTask(taskId);
-				}
-			}
-			userService.deleteUser(userId);
-		}
+		userService.deleteUser(userId);
 
 		return "success";
 	}

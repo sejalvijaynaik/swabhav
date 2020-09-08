@@ -1,4 +1,4 @@
-package com.techlabs.actions;
+package com.techlabs.actions.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
@@ -24,17 +24,20 @@ public class UpdateUserAction extends ActionSupport implements ModelDriven<UserU
 
 		System.out.println("user update execute running");
 
+		// check if admin is logged in
 		if (userLoginModel.isAdmin() == true) {
 			System.out.println("it is admin");
 			System.out.println("user id " + userId);
 			userId = userUpdateModel.getUserId();
 		} else {
+			// admin is not logged in
 			userId = userLoginModel.getUserId();
 		}
 
 		System.out.println(userId);
 		user = userService.getUser(userId);
 
+		// prepopulate the user details
 		userUpdateModel.setUserId(userId);
 		userUpdateModel.setFirstName(user.getFirstName());
 		userUpdateModel.setLastName(user.getLastName());
@@ -49,20 +52,21 @@ public class UpdateUserAction extends ActionSupport implements ModelDriven<UserU
 
 		System.out.println("user update updateUserDo running");
 
+		// to check is admin is logged in
 		if (userLoginModel.isAdmin() == true) {
 			userId = userUpdateModel.getUserId();
-		} else {
-			userId = userLoginModel.getUserId();
-		}
-
-		userService.updateUserForAdmin(userId, userUpdateModel.getFirstName(), userUpdateModel.getLastName(),
-				userUpdateModel.getEmail(), userUpdateModel.getUsername(), userUpdateModel.getPassword());
-
-		if (userLoginModel.isAdmin() == true) {
 			userUpdateModel.setNextAction("userList");
 		} else {
+			// admin is not logged in
+			userId = userLoginModel.getUserId();
 			userUpdateModel.setNextAction("taskList");
 		}
+
+		user = userService.getUser(userId);
+
+		userService.updateUserForAdmin(userId, userUpdateModel.getFirstName(), userUpdateModel.getLastName(),
+				userUpdateModel.getEmail(), userUpdateModel.getUsername(), userUpdateModel.getPassword(),
+				user.getTasks());
 
 		return "success";
 	}

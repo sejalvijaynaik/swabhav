@@ -9,22 +9,14 @@
 <struts>
 	<package name = "task-list-app" extends="struts-default">
 		
+		<!-- Common actions ************************************************************ -->
+		
 		<action name="test" class="com.techlabs.actions.TestAction" method = "execute">
 			<result name="success">test.jsp</result>  
 		</action>
 		
 		<action name="home" class="com.techlabs.actions.HomeAction" method = "execute">
 			<result name="success">home.jsp</result>
-		</action>
-		
-		<action name="register.do" class="com.techlabs.actions.RegisterAction" method = "registerDo"> 
-			<result name="input">register.jsp</result> 
-			<result name="success" type="redirectAction">${nextAction}</result>
-		</action>
-		
-		<action name="register" class="com.techlabs.actions.RegisterAction" method = "execute"> 
-			<result name="input">register.jsp</result> 
-		 	<result name="success">register.jsp</result>
 		</action>
 		
 		<action name="login" class="com.techlabs.actions.LoginAction" method = "execute">  
@@ -37,81 +29,95 @@
 			<result name="input">login.jsp</result> 
 		</action>
 		
-		<action name="taskList" class="com.techlabs.actions.DisplayTaskAction" method = "execute">
-			<result name="success">taskList.jsp</result>  
+		<action name="logout" class="com.techlabs.actions.LogoutAction" method = "execute"> 
+			<result name="success" type="redirect">/home</result>
 		</action>
 		
-		<action name="addTask" class="com.techlabs.actions.AddTaskAction" method = "execute"> 
-			<result name="input" type="redirect">/taskList</result> 
-		 	<result name="success" type="redirect">/taskList</result>
+		<!-- User actions ************************************************************ -->
+		
+		<action name="register.do" class="com.techlabs.actions.user.RegisterAction" method = "registerDo"> 
+			<result name="input">register.jsp</result> 
+			<result name="success" type="redirectAction">${nextAction}</result>
 		</action>
 		
-		<action name="updateTask.do" class="com.techlabs.actions.UpdateTaskAction" method = "updateTaskDo"> 
-			<result name="success" type="redirect">/taskList</result>
-			<result name="input" type="redirect">/taskList</result>
+		<action name="register" class="com.techlabs.actions.user.RegisterAction" method = "execute"> 
+			<result name="input">register.jsp</result> 
+		 	<result name="success">register.jsp</result>
 		</action>
 		
-		<action name="updateTask" class="com.techlabs.actions.UpdateTaskAction" method = "execute"> 
-			<result name="input">taskList.jsp</result>
-		</action>
-		
-		<action name="updateTaskDone" class="com.techlabs.actions.UpdateTaskAction" method = "updateTaskDone"> 
-			<result name="success" type="redirect">/taskList</result>
-		</action>
-		
-		<action name="deleteTask" class="com.techlabs.actions.DeleteTaskAction" method = "execute"> 
-			<result name="success" type="redirect">/taskList</result>
-		</action>
-		
-		<action name="taskDone" class="com.techlabs.actions.TaskDoneAction" method = "execute"> 
-			<result name="success" type="redirect">/taskList</result>
-		</action>
-		
-		<action name="subTaskList" class="com.techlabs.actions.DisplaySubTaskAction" method = "execute">
-			<result name="success">subTaskList.jsp</result>  
-		</action>
-		
-		<action name="addSubTask" class="com.techlabs.actions.AddSubTaskAction" method = "execute"> 
-			<result name="input" type="redirect">/subTaskList</result> 
-		 	<result name="success" type="redirect">/subTaskList</result>
-		</action>
-		
-		<action name="updateSubTask.do" class="com.techlabs.actions.UpdateSubTaskAction" method = "updateSubTaskDo"> 
-			<result name="success" type="redirect">/subTaskList</result>
-			<result name="input" type="redirect">/subTaskList</result>
-		</action>
-		
-		<action name="updateSubTask" class="com.techlabs.actions.UpdateSubTaskAction" method = "execute"> 
-			<result name="input">subTaskList.jsp</result>
-		</action>
-			
-		<action name="deleteSubTask" class="com.techlabs.actions.DeleteSubTaskAction" method = "execute"> 
-			<result name="success" type="redirect">/subTaskList</result>
-		</action>
-		
-		<action name="userList" class="com.techlabs.actions.DisplayUserAction" method = "execute">
+		<action name="userList" class="com.techlabs.actions.user.DisplayUserAction" method = "execute">
 			<result name="success">userList.jsp</result>  
 		</action>
 		
-		<action name="updateUser.do" class="com.techlabs.actions.UpdateUserAction" method = "updateUserDo"> 
+		<action name="updateUser.do" class="com.techlabs.actions.user.UpdateUserAction" method = "updateUserDo"> 
 		 	<result name="input">update-user.jsp</result> 
 			<result name="success" type="redirectAction">${nextAction}</result>
 		</action>
 		
-		<action name="updateUser" class="com.techlabs.actions.UpdateUserAction" method = "execute"> 
+		<action name="updateUser" class="com.techlabs.actions.user.UpdateUserAction" method = "execute"> 
 			<result name="success">update-user.jsp</result>
 			<result name="input">update-user.jsp</result>
 		</action>
 		
-		<action name="deleteUser" class="com.techlabs.actions.DeleteUserAction" method = "execute"> 
+		<action name="deleteUser" class="com.techlabs.actions.user.DeleteUserAction" method = "execute"> 
 			<result name="success" type="redirect">/userList</result>
 		</action>
 		
-		<action name="updateSubTaskDone" class="com.techlabs.actions.UpdateSubTaskAction" method = "updateSubTaskDone"> 
-			<result name="success" type="redirect">/subTaskList</result>
+		<!-- Task actions ************************************************************ -->
+		
+		<action name="taskList" class="com.techlabs.actions.task.DisplayTaskAction" method = "execute">
+			<result name="success">taskList.jsp</result>  
 		</action>
 		
+		<action name="addTask" class="com.techlabs.actions.task.AddTaskAction" method = "execute"> 
+			<result name="input" type="redirect">/taskList</result> 
+		 	<result name="success" type="redirect">/taskList</result>
+		</action>
 		
+		<action name="updateTask.do" class="com.techlabs.actions.task.UpdateTaskAction" method = "updateTaskDo"> 
+			<result name="success" type="redirect">/taskList</result>
+			<result name="input" type="redirect">/taskList</result>
+		</action>
+		
+		<action name="updateTask" class="com.techlabs.actions.task.UpdateTaskAction" method = "execute"> 
+			<result name="input">taskList.jsp</result>
+		</action>
+		
+		<action name="updateTaskDone" class="com.techlabs.actions.task.UpdateTaskAction" method = "updateTaskDone"> 
+			<result name="success" type="redirect">/taskList</result>
+		</action>
+		
+		<action name="deleteTask" class="com.techlabs.actions.task.DeleteTaskAction" method = "execute"> 
+			<result name="success" type="redirect">/taskList</result>
+		</action>
+		
+		<!-- SubTask actions ************************************************************ -->
+		
+		<action name="subTaskList" class="com.techlabs.actions.subtask.DisplaySubTaskAction" method = "execute">
+			<result name="success">subTaskList.jsp</result>  
+		</action>
+		
+		<action name="addSubTask" class="com.techlabs.actions.subtask.AddSubTaskAction" method = "execute"> 
+			<result name="input" type="redirect">/subTaskList</result> 
+		 	<result name="success" type="redirect">/subTaskList</result>
+		</action>
+		
+		<action name="updateSubTask.do" class="com.techlabs.actions.subtask.UpdateSubTaskAction" method = "updateSubTaskDo"> 
+			<result name="success" type="redirect">/subTaskList</result>
+			<result name="input" type="redirect">/subTaskList</result>
+		</action>
+		
+		<action name="updateSubTask" class="com.techlabs.actions.subtask.UpdateSubTaskAction" method = "execute"> 
+			<result name="input">subTaskList.jsp</result>
+		</action>
+		
+		<action name="updateSubTaskDone" class="com.techlabs.actions.subtask.UpdateSubTaskAction" method = "updateSubTaskDone"> 
+			<result name="success" type="redirect">/subTaskList</result>
+		</action>
+			
+		<action name="deleteSubTask" class="com.techlabs.actions.subtask.DeleteSubTaskAction" method = "execute"> 
+			<result name="success" type="redirect">/subTaskList</result>
+		</action>
 		
 	</package>
 </struts> 

@@ -1,4 +1,4 @@
-package com.techlabs.actions;
+package com.techlabs.actions.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
@@ -42,10 +42,12 @@ public class RegisterAction extends ActionSupport implements ModelDriven<UserAdd
 		userService.addUser(userAddModel.getFirstName(), userAddModel.getLastName(), userAddModel.getEmail(),
 				userAddModel.getUsername(), userAddModel.getPassword());
 
-		if(userLoginModel.isAdmin() == true) {
+		// admin is logged in
+		if (userLoginModel.isAdmin() == true) {
+			// go to users list
 			userAddModel.setNextAction("userList");
-		}
-		else {
+		} else {
+			// user is not admin go to tasks list
 			userAddModel.setNextAction("home");
 		}
 		return "success";
@@ -74,6 +76,8 @@ public class RegisterAction extends ActionSupport implements ModelDriven<UserAdd
 			}
 			if (userAddModel.getUsername().equals("")) {
 				addFieldError("username", "Username is required");
+			} else if (userAddModel.getUsername().equals("admin")) {
+				addFieldError("username", "Username cant be admin");
 			}
 			if (userAddModel.getPassword().equals("")) {
 				addFieldError("password", "Password is required");

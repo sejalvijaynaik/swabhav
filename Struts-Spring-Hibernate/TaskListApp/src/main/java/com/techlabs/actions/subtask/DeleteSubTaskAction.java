@@ -1,9 +1,8 @@
-package com.techlabs.actions;
+package com.techlabs.actions.subtask;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
 import com.techlabs.service.SubTaskService;
-import com.techlabs.service.TaskService;
 
 public class DeleteSubTaskAction extends ActionSupport {
 

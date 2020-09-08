@@ -37,9 +37,8 @@ public class SubTask {
 		this.done = done;
 		this.task = task;
 	}
-
+	
 	public SubTask(String title, Date date, boolean done, Task task) {
-		super();
 		this.title = title;
 		this.date = date;
 		this.done = done;
@@ -88,8 +87,7 @@ public class SubTask {
 
 	@Override
 	public String toString() {
-		return "SubTask [id=" + id + ", title=" + title + ", date=" + date + ", done=" + done  + "]";
+		return "SubTask [id=" + id + ", title=" + title + ", date=" + date + ", done=" + done + "]";
 	}
-	
-	
+
 }

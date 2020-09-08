@@ -5,15 +5,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-
-import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.techlabs.entity.SubTask;
 import com.techlabs.entity.Task;
 import com.techlabs.entity.User;
@@ -31,12 +28,6 @@ public class TaskRepository {
 	public List<Task> getTasks() {
 
 		session = sessionFactory.openSession();
-		/*
-		 * Criteria criteria = session.createCriteria(Task.class);
-		 * 
-		 * tasks = criteria.list();
-		 */
-
 		tasks = session.createQuery("from Task").list();
 
 		session.close();
@@ -55,9 +46,9 @@ public class TaskRepository {
 		return task;
 	}
 
-	public void updateTaskInfo(String id, String title, Date date, boolean done, User user) {
+	public void updateTaskInfo(String id, String title, Date date, boolean done, User user, Set<SubTask> subTasks) {
 
-		task = new Task(UUID.fromString(id), title, date, done, user);
+		task = new Task(UUID.fromString(id), title, date, done, user, subTasks);
 		session = sessionFactory.openSession();
 
 		try {
@@ -109,25 +100,5 @@ public class TaskRepository {
 		} finally {
 			session.close();
 		}
-	}
-
-	public Set<SubTask> getSubTasks(String id) {
-		task = getTask(id);
-		return task.getSubTasks();
-	}
-
-	public void updateTaskDone(String id) {
-
-		task = getTask(id);
-		boolean doneValue = task.isDone();
-		Date date;
-		if (doneValue == true) {
-			doneValue = false;
-			date = null;
-		} else {
-			doneValue = true;
-			date = new Date();
-		}
-		updateTaskInfo(id, task.getTitle(), date, doneValue, task.getUser());
 	}
 }

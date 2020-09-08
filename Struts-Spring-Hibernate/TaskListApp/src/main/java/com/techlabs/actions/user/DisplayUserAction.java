@@ -1,4 +1,4 @@
-package com.techlabs.actions;
+package com.techlabs.actions.user;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

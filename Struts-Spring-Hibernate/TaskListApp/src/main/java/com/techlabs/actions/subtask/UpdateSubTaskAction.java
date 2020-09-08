@@ -1,4 +1,4 @@
-package com.techlabs.actions;
+package com.techlabs.actions.subtask;
 
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +28,10 @@ public class UpdateSubTaskAction extends ActionSupport {
 		System.out.println("update subtask execute running");
 
 		subTask = subTaskService.getSubTask(subTaskId);
+		//prepopulate title
 		newTitle = subTask.getTitle();
-		subTasks = taskService.getSubTasks(taskSelectedModel.getTaskId());
+		Task task = taskService.getTask(taskSelectedModel.getTaskId());
+		subTasks = task.getSubTasks();
 
 		return "input";
 	}
@@ -38,9 +40,11 @@ public class UpdateSubTaskAction extends ActionSupport {
 
 		System.out.println("update task updateDo running");
 
+		//if title is left blank
 		if (newTitle.equals("")) {
 			return "input";
 		}
+		//if title is entered without update
 		if (subTaskId.equals("")) {
 			return "success";
 		}
@@ -56,6 +60,7 @@ public class UpdateSubTaskAction extends ActionSupport {
 
 		System.out.println("updateSubTaskDone running");
 		System.out.println("subtask id" + subTaskId);
+		//marking subtask as done
 		subTaskService.updateSubTaskDone(subTaskId);
 
 		return "success";

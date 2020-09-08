@@ -1,6 +1,7 @@
 package com.techlabs.service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -30,8 +31,8 @@ public class UserService {
 	}
 
 	public void updateUserForAdmin(String id, String firstName, String lastName, String email, String username,
-			String password) {
-		userRepository.updateUserForAdmin(id, firstName, lastName, email, username, password);
+			String password, Set<Task> tasks) {
+		userRepository.updateUserForAdmin(id, firstName, lastName, email, username, password, tasks);
 	}
 
 	public void updateUser(User user, Task task) {
@@ -43,10 +44,14 @@ public class UserService {
 	}
 
 	public String getUserId(String username, String password) {
-		return userRepository.getUserId(username, password);
-	}
 
-	public Set<Task> getTasks(String id) {
-		return userRepository.getTasks(id);
+		List<User> users = userRepository.getUsers();
+
+		for (User tempUser : users) {
+			if ((tempUser.getUsername().equals(username)) && (tempUser.getPassword().equals(password))) {
+				return tempUser.getId().toString();
+			}
+		}
+		return null;
 	}
 }
