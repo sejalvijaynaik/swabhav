@@ -7,6 +7,7 @@
     "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
+	<constant name="struts.action.excludePattern" value="/botdetectcaptcha"/>
 	<package name = "task-list-app" extends="struts-default">
 		
 		<!-- Common actions ************************************************************ -->

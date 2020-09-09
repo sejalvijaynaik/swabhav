@@ -21,11 +21,9 @@
 	   	$("#submit").click(function(){
 	       var completeUrl = "http://localhost:8080/JSONEmployeeList/getJson";
 	       $.ajax({ type: "GET", url: completeUrl, dataType: "json", success: function(result){
-	           $result = result;
-	           $('#display').text($result);
-	           var myString = JSON.stringify($result);
-	           var myObj = JSON.parse(myString);
-	           $('#display2').text(myObj);
+	           var employees = result["employees"];
+	           var firstEmployee = employees[0];
+	           alert(firstEmployee["name"]);
 	       }});
 	   	})
 	   	

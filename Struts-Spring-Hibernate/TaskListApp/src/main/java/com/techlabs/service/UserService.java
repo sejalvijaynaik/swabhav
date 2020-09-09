@@ -54,4 +54,16 @@ public class UserService {
 		}
 		return null;
 	}
+
+	public boolean isUsernameUnique(String username) {
+
+		List<User> users = userRepository.getUsers();
+
+		for (User tempUser : users) {
+			if (tempUser.getUsername().equals(username)) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

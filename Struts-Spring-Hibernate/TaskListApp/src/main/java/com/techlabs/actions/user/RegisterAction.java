@@ -1,6 +1,9 @@
 package com.techlabs.actions.user;
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.captcha.botdetect.web.servlet.Captcha;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.techlabs.service.UserService;
@@ -50,6 +53,12 @@ public class RegisterAction extends ActionSupport implements ModelDriven<UserAdd
 			// user is not admin go to tasks list
 			userAddModel.setNextAction("home");
 		}
+		// reset usserAddModel
+		userAddModel.setFirstName(null);
+		userAddModel.setLastName(null);
+		userAddModel.setEmail(null);
+		userAddModel.setUsername(null);
+		userAddModel.setPassword(null);
 		return "success";
 	}
 
@@ -78,10 +87,24 @@ public class RegisterAction extends ActionSupport implements ModelDriven<UserAdd
 				addFieldError("username", "Username is required");
 			} else if (userAddModel.getUsername().equals("admin")) {
 				addFieldError("username", "Username cant be admin");
+			} else if (!userService.isUsernameUnique(userAddModel.getUsername())) {
+				addFieldError("username", "Username is already taken");
 			}
 			if (userAddModel.getPassword().equals("")) {
 				addFieldError("password", "Password is required");
 			}
+		}
+		if (userAddModel.getCaptchaCode() == null) {
+			addFieldError("captchaCode", "Please enter the verification code.");
+		} else {
+			Captcha captcha = Captcha.load(ServletActionContext.getRequest(), "formCaptcha");
+			boolean isHuman = captcha.validate(userAddModel.getCaptchaCode());
+			if (!isHuman) {
+				addFieldError("captchaCode", "Incorrect code.");
+			}
+
+			// reset captcha code textbox
+			userAddModel.setCaptchaCode(null);
 		}
 	}
 }

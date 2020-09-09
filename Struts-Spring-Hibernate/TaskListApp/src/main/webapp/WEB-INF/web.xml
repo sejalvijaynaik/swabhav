@@ -26,4 +26,15 @@
             org.springframework.web.context.request.RequestContextListener 
         </listener-class>
 </listener>
+
+ <servlet>
+    <servlet-name>BotDetect Captcha</servlet-name>
+    <servlet-class>com.captcha.botdetect.web.servlet.CaptchaServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>BotDetect Captcha</servlet-name>
+    <url-pattern>/botdetectcaptcha</url-pattern>
+  </servlet-mapping> 
+  
 </web-app>

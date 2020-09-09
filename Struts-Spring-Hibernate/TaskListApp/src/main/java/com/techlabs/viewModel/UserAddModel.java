@@ -15,6 +15,15 @@ public class UserAddModel {
 	private String username;
 	private String password;
 	private String nextAction;
+	private String captchaCode;
+
+	public String getCaptchaCode() {
+		return captchaCode;
+	}
+
+	public void setCaptchaCode(String captchaCode) {
+		this.captchaCode = captchaCode;
+	}
 
 	public String getFirstName() {
 		return firstName;
