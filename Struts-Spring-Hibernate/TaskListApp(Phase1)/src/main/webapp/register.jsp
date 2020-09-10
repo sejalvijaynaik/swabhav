@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="s" uri="/struts-tags" %> 
     <%@ taglib prefix="botDetect" uri="https://captcha.com/java/jsp"%> 
+     <%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -9,17 +10,24 @@
 <meta charset="ISO-8859-1">
 <title>Register form</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<s:head/>
+<sb:head/>
 </head>
 <body>
-	<s:form action="register.do">
-		<s:textfield name = "firstName" label="First Name" id = "firstNameText"></s:textfield>
-		<s:textfield name = "lastName" label="Last Name" id = "lastNameText"></s:textfield>
-		<s:textfield name = "email" label="Email" id = "emailField"></s:textfield><span id="emailError"></span>
-		<s:textfield name = "username" label="Username" id = "usernameText"></s:textfield>
-		<s:textfield name = "password" label="Password" id = "passwordText"></s:textfield>
-		<s:textfield name = "confirmPassword" label="Confirm Password" id = "confirmPassword"></s:textfield><br><br>
-		<s:submit value = "Submit" id = "submitButton"></s:submit>
+<h1>REGISTER FORM</h1>
+
+	<s:actionerror theme="bootstrap"/>
+    <s:actionmessage theme="bootstrap"/>
+    <s:fielderror theme="bootstrap"/>
+  
+	<s:form action="register.do" theme="bootstrap" cssClass="form-horizontal">
+	 	<span id="emailError"></span> 
+		<s:textfield name = "firstName" label="First Name"></s:textfield>
+		<s:textfield name = "lastName" label="Last Name"></s:textfield>
+		<s:textfield name = "email" label="Email" id = "emailField"></s:textfield>
+		<s:textfield name = "username" label="Username"></s:textfield>
+		<s:textfield name = "password" label="Password"></s:textfield>
+		<s:textfield name = "confirmPassword" label="Confirm Password"></s:textfield><br><br>
+		<s:submit value = "Submit" id = "submitButton" theme="bootstrap" cssClass="btn"></s:submit>
 	</s:form>
 	<script>
 	

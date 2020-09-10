@@ -1,38 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="s" uri="/struts-tags" %>  
+    <%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Task List</title>
+<sb:head/>
 </head>
 <body>
+	<h1 class ="display-1" style = "text-align: center">TASK LIST</h1>
 	
-	<button id="userButton" onclick="window.location.href = 'userList'" value="USERS">USERS</button>
-	
-	<s:form action="logout">
-		<s:submit value="LOGOUT" theme="simple"></s:submit>
-	</s:form>
-	
-	<s:form action="updateUser">
-		<s:submit value="UPDATE USER" theme="simple"></s:submit>
-	</s:form>
+	<button id="userButton" onclick="window.location.href = 'userList'" class="btn btn-primary">USERS</button>
+	<br>
+	<button onclick="window.location.href = 'logout'" class="btn btn-primary">LOGOUT</button>
+	<button onclick="window.location.href = 'updateUser'" class="btn btn-primary">UPDATE USER</button>
+	<br><br>
 	
 	<s:form action="addTask">
-		<s:textfield name = "title" label="Title" theme="simple"></s:textfield>
-		<s:submit value="ADD TASK" theme="simple"></s:submit>
+		<label class="label label-default">TITLE</label><span>  </span><s:textfield name = "title" theme="simple"></s:textfield>
+		<s:submit value="ADD TASK" class="btn btn-primary" theme="simple"></s:submit>
 	</s:form>
-	
+	<br>
 	<s:form action="updateTask.do">
 		<input type="hidden" name = "taskId" value="${taskId}">
-		Title : <s:textfield name = "newTitle" theme="simple"></s:textfield>
-		<s:submit value="UPDATE" theme="simple"></s:submit>
+		<label class="label label-default">TITLE</label><span>  </span><s:textfield name = "newTitle" label="Title" theme="simple"></s:textfield>
+		<s:submit value="UPDATE TASK" class="btn btn-primary" theme="simple"></s:submit>
 	</s:form>
-	
-	<h2>Task List</h2>
-
-	<table border="1">
+	<br><br>
+	<table class="table">
+		 <thead class="thead-dark">
 		<tr>
 			<th>Title</th>
 			<th>Date</th>
@@ -41,6 +39,7 @@
 			<th>Update</th>
 			<th>Delete</th>
 		</tr>
+		</thead>
 		<s:iterator value="tasks">
 			<tr>
 				<td>
@@ -61,19 +60,19 @@
 				<td>
 				<s:form action = "subTaskList">
 					<input type="hidden" name="taskId" value="${id}">
-					<s:submit value = "SUBTASKS"></s:submit>
+					<s:submit value = "SUBTASKS" class="btn btn-primary"></s:submit>
 				</s:form>
 				</td>
 				<td>
 				<s:form action = "updateTask">
 					<input type="hidden" name="taskId" value="${id}">
-					<s:submit value = "UPDATE"></s:submit>
+					<s:submit value = "UPDATE" class="btn btn-primary"></s:submit>
 				</s:form>
 				</td>
 				<td>
 				<s:form action = "deleteTask">
 					<input type="hidden" name="taskId" value="${id}">
-					<s:submit value = "DELETE" onclick="if (confirm('Are you sure you want to delete?')) form.action='deleteTask'; else return false;"></s:submit>
+					<s:submit value = "DELETE" class="btn btn-primary" onclick="if (confirm('Are you sure you want to delete?')) form.action='deleteTask'; else return false;"></s:submit>
 				</s:form>
 				</td>
 			</tr>

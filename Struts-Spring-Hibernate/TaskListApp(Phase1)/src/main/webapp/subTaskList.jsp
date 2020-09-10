@@ -1,29 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="s" uri="/struts-tags" %> 
+    <%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Task List</title>
+<sb:head/>
 </head>
 <body>
-	<input type="button" onclick="window.location.href = 'taskList'" value="TASKS">
-	<s:form action="addSubTask">
-		<s:textfield name = "title" label="Title" theme="simple"></s:textfield>
-		<s:submit value="ADD SUBTASK" theme="simple"></s:submit>
-	</s:form>
 	
+	<h1 class ="display-1" style = "text-align: center">SUBTASK LIST</h1>
+	
+	<button onclick="window.location.href = 'taskList'" class="btn btn-primary">TASKS</button>
+	
+	<s:form action="addSubTask">
+		<label class="label label-default">TITLE</label><span>  </span><s:textfield name = "title" theme="simple"></s:textfield>
+		<s:submit value="ADD SUBTASK" class="btn btn-primary" theme="simple"></s:submit>
+	</s:form>
+	<br>
 	<s:form action="updateSubTask.do">
 		<input type="hidden" name = "subTaskId" value="${subTaskId}">
-		Title : <s:textfield name = "newTitle" theme="simple"></s:textfield>
-		<s:submit value="UPDATE" theme="simple"></s:submit>
+		<label class="label label-default">TITLE</label><span>  </span><s:textfield name = "newTitle" theme="simple"></s:textfield>
+		<s:submit value="UPDATE" class="btn btn-primary" theme="simple"></s:submit>
 	</s:form>
-	
-	<h2>SubTask List</h2>
-
-	<table border="1">
+	<br><br>
+	<table class="table">
 		<tr>
 			<th>Title</th>
 			<th>Date</th>
@@ -51,13 +55,13 @@
 				<td>
 				<s:form action = "updateSubTask">
 					<input type="hidden" name="subTaskId" value="${id}">
-					<s:submit value = "UPDATE"></s:submit>
+					<s:submit value = "UPDATE" class="btn btn-primary"></s:submit>
 				</s:form>
 				</td>
 				<td>
 				<s:form action = "deleteSubTask">
 					<input type="hidden" name="subTaskId" value="${id}">
-					<s:submit value = "DELETE" onclick="if (confirm('Are you sure you want to delete?')) form.action='deleteSubTask'; else return false;"></s:submit>
+					<s:submit value = "DELETE" class="btn btn-primary" onclick="if (confirm('Are you sure you want to delete?')) form.action='deleteSubTask'; else return false;"></s:submit>
 				</s:form>
 				</td>
 			</tr>
