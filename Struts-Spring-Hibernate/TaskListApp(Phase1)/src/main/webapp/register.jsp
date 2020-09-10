@@ -13,7 +13,7 @@
 <sb:head/>
 </head>
 <body>
-<h1>REGISTER FORM</h1>
+	<h1 class ="display-1" style = "text-align: center">REGISTER FORM</h1>
 
 	<s:actionerror theme="bootstrap"/>
     <s:actionmessage theme="bootstrap"/>

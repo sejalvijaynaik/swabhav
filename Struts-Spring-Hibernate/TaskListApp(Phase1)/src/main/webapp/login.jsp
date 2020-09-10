@@ -10,6 +10,7 @@
 <sb:head/>
 </head>
 <body>
+	<h1 class ="display-1" style = "text-align: center">LOGIN FORM</h1>
 	<s:actionerror theme="bootstrap"/>
     <s:actionmessage theme="bootstrap"/>
     <s:fielderror theme="bootstrap"/>
