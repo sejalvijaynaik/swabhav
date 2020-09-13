@@ -17,10 +17,10 @@
     
 	<span style="color:red"><s:property value="message"/></span>
 	<s:form action="login.do"  theme="bootstrap" cssClass="form-horizontal">
-		<s:textfield name="username" label="Username"></s:textfield>
-		<s:textfield name="password" label="Password"></s:textfield>
+		<s:textfield name="username" label="Username"  style = "width: 50%"></s:textfield>
+		<s:textfield name="password" label="Password"  style = "width: 50%"></s:textfield>
 		<s:checkbox name="admin" label="ADMIN"></s:checkbox>
-		<s:submit value = "Submit" cssClass = "btn"></s:submit>
+		<s:submit value = "Submit" cssClass = "btn" style="left: 25%; position: relative"></s:submit>
 	</s:form>
 </body>
 </html>

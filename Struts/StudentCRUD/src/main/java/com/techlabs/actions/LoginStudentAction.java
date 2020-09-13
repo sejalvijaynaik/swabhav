@@ -30,7 +30,6 @@ public class LoginStudentAction extends ActionSupport implements ModelDriven<Use
 	public String loginDo() {
 
 		System.out.println("logindo is running");
-		System.out.println("loginDo request :" + ServletActionContext.getRequest().getAttribute("url"));
 		UserService userService = new UserService();
 		if (userService.isValidUser(userLoginModel.getUsername(), userLoginModel.getPassword())) {
 			sessionMap.put("username", "username");

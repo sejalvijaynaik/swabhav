@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {Student} from './student';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +6,4 @@ import {Student} from './student';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'welcome-app';
-  name = 'sejal';
-  student:Student = new Student('sejal', 'naik', 'mumbai',7.98);
 }

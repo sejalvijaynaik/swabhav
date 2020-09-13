@@ -13,7 +13,6 @@
 	<h1 class ="display-1" style = "text-align: center">TASK LIST</h1>
 	
 	<button id="userButton" onclick="window.location.href = 'userList'" class="btn btn-primary">USERS</button>
-	<br>
 	<button onclick="window.location.href = 'logout'" class="btn btn-primary">LOGOUT</button>
 	<button onclick="window.location.href = 'updateUser'" class="btn btn-primary">UPDATE USER</button>
 	<br><br>
@@ -83,7 +82,7 @@
 		var showUserButton = ${usersButtonShow};
 		var userButton = document.getElementById("userButton");
 		if (showUserButton == true) {
-			userButton.style.display = "block";
+			userButton.style.display = "inline";
 		  } else {
 			  userButton.style.display = "none";
 		  }

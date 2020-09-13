@@ -9,37 +9,46 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Contact Guest table</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-Search Contact by Name :
-<form method = "get" action = "searchGuestContact">
- <input type = "text" name = "searchName">
-<input type = "submit" value = "search">
-</form>
-<br><br>
-<table border = "1">
-	<tr>
-		<th>ID</th>
-		<th>First Name</th>
-		<th>Last Name</th>
-		<th>Number</th>
-		<th>Email</th>
-	</tr>
+	<h3 class="display-4" style = "text-align: center">Welcome Guest</h3>
 	
-		<c:forEach var="contact" items="${contacts}">
+	<button onclick = "window.location.href = 'home'" class="btn btn-primary">Back to Login</button>
+	
+	<form class="form-inline" method = "get" action = "searchGuestContact">
+  		<div class="form-group mb-2">
+    		<label>Search Contact by First Name</label>
+  		</div>
+  		<div class="form-group mx-sm-3 mb-2">
+    		<input type="text" class="form-control" name = "searchName">
+  		</div>
+  		<button type="submit" class="btn btn-primary mb-2">Search</button>
+	</form>
+	
+	<table class="table">
+		<thead class="thead-dark">
 			<tr>
-				<td>${contact.id}</td>
-				<td>${contact.firstName}</td>
-				<td>${contact.lastName}</td>
-				<td>${contact.number}</td>
-				<td>${contact.email}</td>
+				<th>ID</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Number</th>
+				<th>Email</th>
 			</tr>
-		</c:forEach>
+		</thead>
+		
+			<c:forEach var="contact" items="${contacts}">
+				<tr>
+					<td>${contact.id}</td>
+					<td>${contact.firstName}</td>
+					<td>${contact.lastName}</td>
+					<td>${contact.number}</td>
+					<td>${contact.email}</td>
+				</tr>
+			</c:forEach>
+		
+	</table>
+	<br><br>
 	
-</table>
-<br><br>
-<form method = "get" action = "home">
-<input type = "submit" value = "Back to Login">
-</form>
 </body>
 </html>

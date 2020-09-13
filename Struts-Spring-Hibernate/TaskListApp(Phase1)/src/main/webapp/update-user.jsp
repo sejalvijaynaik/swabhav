@@ -18,12 +18,12 @@
     
 	<s:form action="updateUser.do" theme="bootstrap" cssClass="form-horizontal">
 		<input type="hidden" name = "userId" value="${userId}">
-		<s:textfield name = "firstName" label="First Name"></s:textfield>
-		<s:textfield name = "lastName" label="Last name"></s:textfield>
-		<s:textfield name = "email" label="Email"></s:textfield>
-		<s:textfield name = "username" label="Username"></s:textfield>
-		<s:textfield name = "password" label="Password"></s:textfield>
-		<s:submit value = "Submit" theme="bootstrap" cssClass="btn"></s:submit>
+		<s:textfield name = "firstName" label="First Name" style = "width: 50%"></s:textfield>
+		<s:textfield name = "lastName" label="Last name" style = "width: 50%"></s:textfield>
+		<s:textfield name = "email" label="Email" style = "width: 50%"></s:textfield>
+		<s:textfield name = "username" label="Username" style = "width: 50%"></s:textfield>
+		<s:textfield name = "password" label="Password" style = "width: 50%"></s:textfield>
+		<s:submit value = "Submit" theme="bootstrap" cssClass="btn" style="left: 25%; position: relative"></s:submit>
 	</s:form>
 </body>
 </html>

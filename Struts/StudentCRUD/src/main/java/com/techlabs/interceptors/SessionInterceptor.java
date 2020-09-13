@@ -27,18 +27,10 @@ public class SessionInterceptor implements Interceptor {
 	@Override
 	public String intercept(ActionInvocation actionInvocation) throws Exception {
 
-		ValueStack valueStack = actionInvocation.getStack();
-
 		System.out.println("session intercept running");
 		System.out.println(actionInvocation.getAction().getClass().getSimpleName());
 
 		HttpSession session = ServletActionContext.getRequest().getSession();
-
-		HttpServletRequest request = ServletActionContext.getRequest();
-		request.setAttribute("url", request.getRequestURL().toString());
-		System.out.println(request.getRequestURL().toString());
-
-		valueStack.set("url", request.getRequestURL().toString());
 
 		String result;
 

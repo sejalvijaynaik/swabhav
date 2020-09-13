@@ -18,17 +18,18 @@
 	<s:actionerror theme="bootstrap"/>
     <s:actionmessage theme="bootstrap"/>
     <s:fielderror theme="bootstrap"/>
-  
+    
 	<s:form action="register.do" theme="bootstrap" cssClass="form-horizontal">
-	 	<span id="emailError"></span> 
-		<s:textfield name = "firstName" label="First Name"></s:textfield>
-		<s:textfield name = "lastName" label="Last Name"></s:textfield>
-		<s:textfield name = "email" label="Email" id = "emailField"></s:textfield>
-		<s:textfield name = "username" label="Username"></s:textfield>
-		<s:textfield name = "password" label="Password"></s:textfield>
-		<s:textfield name = "confirmPassword" label="Confirm Password"></s:textfield><br><br>
-		<s:submit value = "Submit" id = "submitButton" theme="bootstrap" cssClass="btn"></s:submit>
+	 	<span id="emailError" style="left: 25%; position: relative"></span> 
+		<s:textfield name = "firstName" label="First Name" style = "width: 50%"></s:textfield>
+		<s:textfield name = "lastName" label="Last Name" style = "width: 50%"></s:textfield>
+		<s:textfield name = "email" label="Email" id = "emailField" style = "width: 50%"></s:textfield>
+		<s:textfield name = "username" label="Username" style = "width: 50%"></s:textfield>
+		<s:textfield name = "password" label="Password" style = "width: 50%"></s:textfield>
+		<s:textfield name = "confirmPassword" label="Confirm Password" style = "width: 50%"></s:textfield><br><br>
+		<s:submit value = "Submit" id = "submitButton" theme="bootstrap" cssClass="btn" style="left: 25%; position: relative"></s:submit>
 	</s:form>
+	
 	<script>
 	
 		$("#submitButton").attr("disabled", true);

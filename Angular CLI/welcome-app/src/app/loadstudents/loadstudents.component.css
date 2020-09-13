@@ -1,0 +1,16 @@
+button
+{
+    background-color: #008CBA;
+    font-size: 20px;
+    border-radius: 12px;
+}
+
+ul {
+    background: #3399ff;
+    padding: 20px;
+  }
+
+  ul li {
+    background: #cce5ff;
+    margin: 5px;
+  }

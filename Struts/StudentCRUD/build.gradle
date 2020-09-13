@@ -37,6 +37,9 @@ dependencies {
     compile group: 'org.apache.struts', name: 'struts2-core', version: '2.5.12'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.2'
     compile 'log4j:log4j:1.2.17'
+    // https://mvnrepository.com/artifact/com.jgeppert.struts2.bootstrap/struts2-bootstrap-plugin
+	compile group: 'com.jgeppert.struts2.bootstrap', name: 'struts2-bootstrap-plugin', version: '2.5.2'
+    
     
     
 }
