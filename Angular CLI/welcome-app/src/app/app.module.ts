@@ -7,10 +7,11 @@ import { TwoWayBindingComponent } from "./twowaybinding/twowaybinding.component"
 import { FormsModule } from '@angular/forms';
 import { LoadStudentsComponent } from "./loadstudents/loadstudents.component";
 import { pricecalculatorComponent } from "./pricecalculator/pricecalculator.component";
+import { DiscountCalculatorComponent } from "./discountcalculator/discountcalculator.component";
 
 @NgModule({
   declarations: [
-    AppComponent, WelcomeComponent, TwoWayBindingComponent, LoadStudentsComponent, pricecalculatorComponent
+    AppComponent, WelcomeComponent, TwoWayBindingComponent, LoadStudentsComponent, pricecalculatorComponent, DiscountCalculatorComponent
   ],
   imports: [
     BrowserModule, FormsModule
