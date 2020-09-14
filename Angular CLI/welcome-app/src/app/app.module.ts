@@ -6,10 +6,11 @@ import {WelcomeComponent} from './welcome/welcome.component';
 import { TwoWayBindingComponent } from "./twowaybinding/twowaybinding.component";
 import { FormsModule } from '@angular/forms';
 import { LoadStudentsComponent } from "./loadstudents/loadstudents.component";
+import { pricecalculatorComponent } from "./pricecalculator/pricecalculator.component";
 
 @NgModule({
   declarations: [
-    AppComponent, WelcomeComponent, TwoWayBindingComponent, LoadStudentsComponent
+    AppComponent, WelcomeComponent, TwoWayBindingComponent, LoadStudentsComponent, pricecalculatorComponent
   ],
   imports: [
     BrowserModule, FormsModule

@@ -1,0 +1,4 @@
+PRICE : <input [value]="price" (input)="price = $event.target.value"><br>
+RATE : <input [value]="rate" (input)="rate = $event.target.value"><br>
+<button (click) = "priceCalculate()">CALCULATE COST</button><br>
+COST : {{cost}}
