@@ -1,4 +1,9 @@
-PRICE : <input [value]="price" (input)="price = $event.target.value"><br>
-RATE : <input [value]="rate" (input)="rate = $event.target.value"><br>
-<button (click) = "priceCalculate()">CALCULATE COST</button><br>
-COST : {{cost}}
+<div [style.height] = "'100%'" [style.width] = "'100%'" [style.border-style] = "'solid'" [style.text-align] = "'center'">
+    <h1 [style.fontSize.px]="'40'">PRICE CALCULATOR</h1>
+    PRICE : <input #price><br><br>
+    DISCOUNT RATE : <input #rate><br><br>
+    <button (click) = "priceCalculate(price.value, rate.value)">CALCULATE COST</button><br><br>
+    <!--COST : {{cost}}-->
+</div>
+<div [style.text-align] = "'center'">COST : </div>
+<div [innerText] = "cost" [style.text-align] = "'center'"></div>
