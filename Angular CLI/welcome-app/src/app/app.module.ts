@@ -8,10 +8,11 @@ import { FormsModule } from '@angular/forms';
 import { LoadStudentsComponent } from "./loadstudents/loadstudents.component";
 import { pricecalculatorComponent } from "./pricecalculator/pricecalculator.component";
 import { DiscountCalculatorComponent } from "./discountcalculator/discountcalculator.component";
+import { GradePipe } from "./pipes/grade-pipe.pipe";
 
 @NgModule({
   declarations: [
-    AppComponent, WelcomeComponent, TwoWayBindingComponent, LoadStudentsComponent, pricecalculatorComponent, DiscountCalculatorComponent
+    AppComponent, WelcomeComponent, TwoWayBindingComponent, LoadStudentsComponent, pricecalculatorComponent, DiscountCalculatorComponent, GradePipe
   ],
   imports: [
     BrowserModule, FormsModule

@@ -1,5 +1,5 @@
 <button (click)='loadStudents()' >LOAD</button>
 
 <ul *ngFor = "let tempStudent of students">
-    <li >{{tempStudent.rollNo}}  {{tempStudent.name}}  {{tempStudent.cgpa}}</li>
+    <li >{{tempStudent.rollNo}}  {{tempStudent.name}}  {{tempStudent.cgpa | grade}}</li>
 </ul>
