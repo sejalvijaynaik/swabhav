@@ -10,16 +10,16 @@ export class GradePipe implements PipeTransform {
             return value + 'A';
         }
         else if(value > 6){
-            return value + 'B';
+            return value + ' B';
         }
         else if(value > 4){
-            return value + 'C';
+            return value + ' C';
         }
         else if(value > 2){
-            return value + 'BD';
+            return value + ' D';
         }
         else {
-            return value + 'E';
+            return value + ' E';
         }
     }
 }

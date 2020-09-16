@@ -3,3 +3,10 @@
 <h1>Name : {{student.name|uppercase}}</h1>
 <h1>CGPA : {{student.cgpa}}</h1>
 <h1>{{22/7|number:'1.0-2'}}</h1>
+<!-- Chain in-built pipes -->
+<h1>{{student | json | uppercase}}</h1>
+<!-- Chain in-built and custom pipes -->
+<h1 [innerText] = "'Hello i am sejal' | uppercase | snakeCase"></h1>
+<!-- Chain custom pipes -->
+<h1>{{student.cgpa | grade| snakeCase}}</h1>
+

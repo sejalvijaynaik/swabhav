@@ -1,0 +1,22 @@
+Product name : <input [(ngModel)] = "name"><br>
+Rating : <span *ngFor="let tempRating of ratings">
+    <label for="tempRating">
+      <input id="tempRating" [value]='tempRating' type="radio" name="ratings" [(ngModel)]="rating">
+      {{tempRating}}
+    </label>
+</span>
+        
+<br><br>
+<button (click) = "addproduct()">ADD</button>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Rating</th>
+    </tr>
+    <tr *ngFor = "let tempProduct of products; let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{tempProduct.name}}</td>
+        <td>{{tempProduct.rating}}</td>
+    </tr>
+</table>
