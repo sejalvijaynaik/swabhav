@@ -9,10 +9,13 @@ import { LoadStudentsComponent } from "./loadstudents/loadstudents.component";
 import { pricecalculatorComponent } from "./pricecalculator/pricecalculator.component";
 import { DiscountCalculatorComponent } from "./discountcalculator/discountcalculator.component";
 import { GradePipe } from "./pipes/grade-pipe.pipe";
+import { SnakeCasePipe } from "./pipes/snake-case.pipe";
+import { SnakeCaseComponent } from "./snakecase/snakecase.component";
 
 @NgModule({
   declarations: [
-    AppComponent, WelcomeComponent, TwoWayBindingComponent, LoadStudentsComponent, pricecalculatorComponent, DiscountCalculatorComponent, GradePipe
+    AppComponent, WelcomeComponent, TwoWayBindingComponent, LoadStudentsComponent, pricecalculatorComponent, DiscountCalculatorComponent, GradePipe, SnakeCasePipe,
+    SnakeCaseComponent
   ],
   imports: [
     BrowserModule, FormsModule
