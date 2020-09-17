@@ -19,8 +19,8 @@ public class UserService {
 	private UserRepository userRepository;
 
 	public void addUser(String firstName, String lastName, String email, String username, String password,
-			String userType) {
-		userRepository.addUser(firstName, lastName, email, username, password, userType);
+			String userType, boolean locked) {
+		userRepository.addUser(firstName, lastName, email, username, password, userType, locked);
 	}
 
 	public List<User> getUsers() {
@@ -32,8 +32,8 @@ public class UserService {
 	}
 
 	public void updateUserForAdmin(String id, String firstName, String lastName, String email, String username,
-			String password, String userType, Set<Task> tasks) {
-		userRepository.updateUserForAdmin(id, firstName, lastName, email, username, password, userType, tasks);
+			String password, String userType, Set<Task> tasks, boolean locked) {
+		userRepository.updateUserForAdmin(id, firstName, lastName, email, username, password, userType, tasks, locked);
 	}
 
 	public void updateUser(User user, Task task) {

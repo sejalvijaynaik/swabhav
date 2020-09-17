@@ -18,9 +18,6 @@ public class AddTaskAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 
-		System.out.println("addStudent(addTaskDo) running");
-		System.out.println("name" + title);
-
 		User user = userService.getUser(userLoginModel.getUserId());
 		Task task = new Task(title, null, false, user);
 		userService.updateUser(user, task);
@@ -38,8 +35,6 @@ public class AddTaskAction extends ActionSupport {
 
 	@Override
 	public void validate() {
-
-		System.out.println("validate running");
 
 		if (title.equals("")) {
 			addFieldError("", "");

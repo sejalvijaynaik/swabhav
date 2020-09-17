@@ -22,8 +22,6 @@ public class DisplayTaskAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 
-		System.out.println("task display running");
-
 		// to show users button
 		if (userLoginModel.getUserType().equals("admin")) {
 			usersButtonShow = true;
@@ -36,15 +34,11 @@ public class DisplayTaskAction extends ActionSupport {
 
 		// task is selected by admin
 		if (userId != null) {
-			System.out.println("userId is there");
 			userLoginModel.setUserId(userId);
 			user = userService.getUser(userLoginModel.getUserId());
-			System.out.println(user);
 		} else {
 			// task is selected by user
-			System.out.println("userId is not there");
 			user = userService.getUser(userLoginModel.getUserId());
-			System.out.println(user);
 		}
 
 		tasks = user.getTasks();

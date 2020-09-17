@@ -29,8 +29,6 @@ public class UpdateTaskAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 
-		System.out.println("update task execute running");
-
 		task = taskService.getTask(taskId);
 		// prepopulate with previous title
 		newTitle = task.getTitle();
@@ -42,16 +40,12 @@ public class UpdateTaskAction extends ActionSupport {
 
 	public String updateTaskDo() {
 
-		System.out.println("update task updateDo running");
-		System.out.println("taskid value :" + taskId);
-
 		// if title is blank
 		if (newTitle.equals("")) {
 			return "input";
 		}
 		// if title is entered without updating
 		if (taskId.equals("")) {
-			System.out.println("taskid value :" + taskId);
 			return "success";
 		}
 
@@ -63,9 +57,6 @@ public class UpdateTaskAction extends ActionSupport {
 	}
 
 	public String updateTaskDone() {
-
-		System.out.println("updateTaskDone running");
-		System.out.println("taskId :" + taskId);
 
 		// marking task as done
 		taskService.updateTaskDone(taskId);

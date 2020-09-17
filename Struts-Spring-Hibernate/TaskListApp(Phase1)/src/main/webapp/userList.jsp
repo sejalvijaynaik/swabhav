@@ -27,6 +27,7 @@
 			<th>Tasks</th>
 			<th>Update</th>
 			<th>Delete</th>
+			<th>Locked</th>
 		</tr>
 		<s:iterator value="users">
 			<tr>
@@ -53,6 +54,18 @@
 					<input type="hidden" name="userId" value="${id}">
 					<s:submit value = "DELETE" class="btn btn-primary" onclick="if (confirm('Are you sure you want to delete?')) form.action='deleteUser'; else return false;"></s:submit>
 				</s:form>
+				</td>
+				<td>
+					<s:url var="updateUserLockLink" value="/updateUserLock">
+						<s:param name="userId" value="%{id}"></s:param>
+					</s:url>					
+					<s:if test="locked == true">
+						<button class="btn btn-primary" style = "background-color:red" onclick="window.location.href='${updateUserLockLink}'">YES</button>
+					</s:if>
+					<s:else>
+						<button class="btn btn-primary" style = "background-color:green" onclick="window.location.href='${updateUserLockLink}'">NO</button>
+					</s:else>
+				
 				</td>
 			</tr>
 		</s:iterator>

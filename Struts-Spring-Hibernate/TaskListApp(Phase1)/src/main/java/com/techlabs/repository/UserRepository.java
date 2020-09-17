@@ -43,10 +43,10 @@ public class UserRepository {
 	}
 
 	public void addUser(String firstName, String lastName, String email, String username, String password,
-			String userType) {
+			String userType, boolean locked) {
 
 		user = new User(UUID.randomUUID(), firstName, lastName, email, username, password, userType,
-				new HashSet<Task>());
+				new HashSet<Task>(), false);
 		session = sessionFactory.openSession();
 
 		try {
@@ -73,9 +73,9 @@ public class UserRepository {
 	}
 
 	public void updateUserForAdmin(String id, String firstName, String lastName, String email, String username,
-			String password, String userType, Set<Task> tasks) {
+			String password, String userType, Set<Task> tasks, boolean locked) {
 
-		user = new User(UUID.fromString(id), firstName, lastName, email, username, password, userType, tasks);
+		user = new User(UUID.fromString(id), firstName, lastName, email, username, password, userType, tasks, locked);
 		session = sessionFactory.openSession();
 
 		try {
@@ -97,7 +97,7 @@ public class UserRepository {
 		user.setTasks(tasks);
 
 		this.user = new User(user.getId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getUsername(),
-				user.getPassword(), user.getUserType(), user.getTasks());
+				user.getPassword(), user.getUserType(), user.getTasks(), user.isLocked());
 		session = sessionFactory.openSession();
 
 		try {

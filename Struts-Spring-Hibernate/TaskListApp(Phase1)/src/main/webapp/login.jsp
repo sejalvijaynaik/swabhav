@@ -10,6 +10,18 @@
 <sb:head/>
 </head>
 <body>
+	<nav class="navbar navbar-default">
+	  		<div class="container-fluid">
+				<div class="navbar-header">
+				    <a class="navbar-brand" href="home">TASKLISTAPP</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li><a href="home">HOME</a></li>
+				    <li class="active"><a href="login">LOGIN</a></li>
+				    <li><a href="register">REGISTER</a></li>
+				</ul>
+	 		</div>
+		</nav>
 	<h1 class ="display-1" style = "text-align: center">LOGIN FORM</h1>
 	<s:actionerror theme="bootstrap"/>
     <s:actionmessage theme="bootstrap"/>

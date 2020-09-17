@@ -18,10 +18,6 @@ public class AddSubTaskAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 
-		System.out.println("addSubTask execute running");
-		System.out.println("name" + title);
-		System.out.println(taskSelectedModel.getTaskId());
-
 		// taskSelectedModel to get stored task Id
 		Task task = taskService.getTask(taskSelectedModel.getTaskId());
 		SubTask subTask = new SubTask(title, null, false, task);
@@ -40,8 +36,6 @@ public class AddSubTaskAction extends ActionSupport {
 
 	@Override
 	public void validate() {
-
-		System.out.println("validate running");
 
 		if (title.equals("")) {
 			addFieldError("", "");

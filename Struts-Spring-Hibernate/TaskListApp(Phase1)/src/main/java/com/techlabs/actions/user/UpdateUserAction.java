@@ -22,19 +22,14 @@ public class UpdateUserAction extends ActionSupport implements ModelDriven<UserU
 	@Override
 	public String execute() throws Exception {
 
-		System.out.println("user update execute running");
-
 		// check if admin is logged in
 		if (userLoginModel.getUserType().equals("admin")) {
-			System.out.println("it is admin");
-			System.out.println("user id " + userId);
 			userId = userUpdateModel.getUserId();
 		} else {
 			// admin is not logged in
 			userId = userLoginModel.getUserId();
 		}
 
-		System.out.println(userId);
 		user = userService.getUser(userId);
 
 		// prepopulate the user details
@@ -50,8 +45,6 @@ public class UpdateUserAction extends ActionSupport implements ModelDriven<UserU
 
 	public String updateUserDo() {
 
-		System.out.println("user update updateUserDo running");
-
 		// to check if admin is logged in
 		if (userLoginModel.getUserType().equals("admin")) {
 			userId = userUpdateModel.getUserId();
@@ -66,7 +59,7 @@ public class UpdateUserAction extends ActionSupport implements ModelDriven<UserU
 
 		userService.updateUserForAdmin(userId, userUpdateModel.getFirstName(), userUpdateModel.getLastName(),
 				userUpdateModel.getEmail(), userUpdateModel.getUsername(), userUpdateModel.getPassword(),
-				user.getUserType(), user.getTasks());
+				user.getUserType(), user.getTasks(), user.isLocked());
 
 		return "success";
 	}
@@ -79,7 +72,6 @@ public class UpdateUserAction extends ActionSupport implements ModelDriven<UserU
 	@Override
 	public void validate() {
 
-		System.out.println("validate running");
 		if (userUpdateModel.getFirstName() == null) {
 			try {
 				execute();

@@ -9,14 +9,17 @@ import { IProduct } from "../product(tempVariable)/product";
 export class ProductNgModelComponent {
 
   products:IProduct[] = [];
-  name:string = "";
+  productName:string = "";
   rating:string;
   ratings:number[] = [1, 2, 3, 4, 5];
 
   addproduct():void{
-    console.log(this.name);
+    console.log(this.productName);
     console.log(this.rating);
 
-    this.products.push({name: this.name, rating : parseInt(this.rating)});
+    this.products.push({name: this.productName, rating : parseInt(this.rating)});
+
+    this.productName = "";
+    this.rating = "";
   }
 }

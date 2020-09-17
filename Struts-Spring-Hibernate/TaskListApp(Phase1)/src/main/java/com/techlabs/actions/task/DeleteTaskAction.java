@@ -13,9 +13,6 @@ public class DeleteTaskAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 
-		System.out.println("In delete task action");
-		System.out.println(taskId);
-
 		taskService.deleteTask(taskId);
 
 		return "success";

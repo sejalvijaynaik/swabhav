@@ -7,7 +7,7 @@
     "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
-<!--  	<constant name="struts.action.excludePattern" value="/botdetectcaptcha"/> -->
+ 	<constant name="struts.action.excludePattern" value="/botdetectcaptcha"/>
 	
 	<package name = "task-list-app" extends="struts-default,json-default">
 		
@@ -63,6 +63,10 @@
 		<action name="updateUser" class="com.techlabs.actions.user.UpdateUserAction" method = "execute"> 
 			<result name="success">update-user.jsp</result>
 			<result name="input">update-user.jsp</result>
+		</action>
+		
+		<action name="updateUserLock" class="com.techlabs.actions.user.UpdateUserLockAction" method = "execute"> 
+			<result name="success" type="redirect">userList</result>
 		</action>
 		
 		<action name="deleteUser" class="com.techlabs.actions.user.DeleteUserAction" method = "execute"> 

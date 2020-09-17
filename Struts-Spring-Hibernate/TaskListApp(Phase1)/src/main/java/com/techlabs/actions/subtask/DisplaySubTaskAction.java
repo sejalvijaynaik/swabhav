@@ -20,20 +20,15 @@ public class DisplaySubTaskAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 
-		System.out.println("sub task display");
 		Task task = null;
 
 		// subtask selected by admin
 		if (taskId != null) {
-			System.out.println("taskId is there");
 			taskSelectedModel.setTaskId(taskId);
 			task = taskService.getTask(taskSelectedModel.getTaskId());
-			System.out.println(task);
 		} else {
 			// subtask selected by user
-			System.out.println("task id is not there");
 			task = taskService.getTask(taskSelectedModel.getTaskId());
-			System.out.println(task);
 		}
 
 		subTasks = task.getSubTasks();

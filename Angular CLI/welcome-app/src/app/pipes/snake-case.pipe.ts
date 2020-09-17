@@ -6,8 +6,18 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SnakeCasePipe implements PipeTransform {
     transform(value: string, limit:number): string {
      
-        var replaced = value.split(' ').join('_').substr(0, limit);
+        var words:string[] = value.split(' ');
+        var newValue:string;
         
-        return replaced;
+        console.log(words.length);
+
+        if(words.length <= limit){
+            newValue = words.join("_");
+        }   
+        else{
+            words = words.slice(0, 5);
+            newValue = words.join("_");
+        }
+        return newValue;
     }
 }

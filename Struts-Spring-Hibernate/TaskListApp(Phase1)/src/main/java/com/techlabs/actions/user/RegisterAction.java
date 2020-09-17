@@ -18,27 +18,18 @@ public class RegisterAction extends ActionSupport implements ModelDriven<UserAdd
 	private UserAddModel userAddModel;
 	@Autowired
 	private UserLoginModel userLoginModel;
+	private String captchaCode;
 
 	@Override
 	public String execute() throws Exception {
-
-		System.out.println("register(execute) running");
 
 		return "input";
 	}
 
 	public String registerDo() {
 
-		System.out.println("register(registerDo) running");
-		System.out.println("is admin??" + userLoginModel.isAdmin());
-		System.out.println("first name" + userAddModel.getFirstName());
-		System.out.println("last name" + userAddModel.getLastName());
-		System.out.println("email" + userAddModel.getEmail());
-		System.out.println("username" + userAddModel.getUsername());
-		System.out.println("password" + userAddModel.getPassword());
-
 		userService.addUser(userAddModel.getFirstName(), userAddModel.getLastName(), userAddModel.getEmail(),
-				userAddModel.getUsername(), userAddModel.getPassword(), "normal");
+				userAddModel.getUsername(), userAddModel.getPassword(), "normal", false);
 
 		// admin is logged in
 		if (userLoginModel.getUserType() == null) {
@@ -68,6 +59,14 @@ public class RegisterAction extends ActionSupport implements ModelDriven<UserAdd
 		return "success";
 	}
 
+	public String getCaptchaCode() {
+		return captchaCode;
+	}
+
+	public void setCaptchaCode(String captchaCode) {
+		this.captchaCode = captchaCode;
+	}
+
 	@Override
 	public UserAddModel getModel() {
 		return userAddModel;
@@ -76,7 +75,19 @@ public class RegisterAction extends ActionSupport implements ModelDriven<UserAdd
 	@Override
 	public void validate() {
 
-		System.out.println("validate running");
+		if (captchaCode == null) {
+			addFieldError("captchaCode", "Please enter the verification code.");
+		} else {
+			Captcha captcha = Captcha.load(ServletActionContext.getRequest(), "formCaptcha");
+			boolean isHuman = captcha.validate(captchaCode);
+			if (!isHuman) {
+				addFieldError("captchaCode", "Incorrect code.");
+			}
+
+			// reset captcha code textbox
+			captchaCode = null;
+		}
+
 		if (userAddModel.getFirstName() == null) {
 			addFieldError("", "");
 		} else {
@@ -102,7 +113,6 @@ public class RegisterAction extends ActionSupport implements ModelDriven<UserAdd
 			if (userAddModel.getConfirmPassword().equals("")) {
 				addFieldError("confirmPassword", "Confirm Password is required");
 			} else if (!userAddModel.getPassword().equals(userAddModel.getConfirmPassword())) {
-				System.out.println("password dont match");
 				addFieldError("confirmPassword", "Passwords do not match");
 			}
 		}

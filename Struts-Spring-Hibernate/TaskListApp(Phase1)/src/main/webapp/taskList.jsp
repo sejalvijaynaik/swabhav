@@ -14,7 +14,7 @@
 	
 	<button id="userButton" onclick="window.location.href = 'userList'" class="btn btn-primary">USERS</button>
 	<button onclick="window.location.href = 'logout'" class="btn btn-primary">LOGOUT</button>
-	<button onclick="window.location.href = 'updateUser'" class="btn btn-primary">UPDATE USER</button>
+	<button id = "updateUserButton" onclick="window.location.href = 'updateUser'" class="btn btn-primary">UPDATE USER</button>
 	<br><br>
 	
 	<s:form action="addTask">
@@ -57,10 +57,10 @@
 					<s:checkbox name = "done" theme="simple" onclick="window.location.href='%{updateTaskDoneLink}'"></s:checkbox>
 				</td>
 				<td>
-				<s:form action = "subTaskList">
-					<input type="hidden" name="taskId" value="${id}">
-					<s:submit value = "SUBTASKS" class="btn btn-primary"></s:submit>
-				</s:form>
+					<s:url var="subTaskListLink" value="/subTaskList">
+						<s:param name="taskId" value="%{id}"></s:param>
+					</s:url>
+					<button class="btn btn-primary" onclick="window.location.href='${subTaskListLink}'"><s:property value="%{getSubTasks().size()}"></s:property></button>
 				</td>
 				<td>
 				<s:form action = "updateTask">
@@ -81,9 +81,12 @@
 	<script type="text/javascript">
 		var showUserButton = ${usersButtonShow};
 		var userButton = document.getElementById("userButton");
+		var updateUserButton = document.getElementById("updateUserButton");
 		if (showUserButton == true) {
+			updateUserButton.style.display = "none";
 			userButton.style.display = "inline";
 		  } else {
+			  updateUserButton.style.display = "inline"
 			  userButton.style.display = "none";
 		  }
 	</script>

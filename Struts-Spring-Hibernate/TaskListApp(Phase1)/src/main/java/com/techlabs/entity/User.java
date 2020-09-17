@@ -32,12 +32,13 @@ public class User {
 	private String userType;
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<Task> tasks = new HashSet<Task>();
+	private boolean locked;
 
 	public User() {
 	}
 
 	public User(UUID id, String firstName, String lastName, String email, String username, String password,
-			String userType, Set<Task> tasks) {
+			String userType, Set<Task> tasks, boolean locked) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -46,6 +47,7 @@ public class User {
 		this.password = password;
 		this.userType = userType;
 		this.tasks = tasks;
+		this.locked = locked;
 	}
 
 	public UUID getId() {
@@ -110,6 +112,14 @@ public class User {
 
 	public void setUserType(String userType) {
 		this.userType = userType;
+	}
+
+	public boolean isLocked() {
+		return locked;
+	}
+
+	public void setLocked(boolean locked) {
+		this.locked = locked;
 	}
 
 	@Override

@@ -15,9 +15,7 @@ public class DisplayUserAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 
-		System.out.println("diplay user action running");
 		users = userService.getUsers();
-		System.out.println(users.size());
 		return "success";
 	}
 

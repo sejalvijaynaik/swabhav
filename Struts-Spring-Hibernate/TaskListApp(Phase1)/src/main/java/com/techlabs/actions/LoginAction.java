@@ -1,7 +1,6 @@
 package com.techlabs.actions;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.techlabs.entity.User;
@@ -18,17 +17,12 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserLoginM
 	@Override
 	public String execute() throws Exception {
 
-		System.out.println("login execute running");
 		return "input";
 	}
 
 	public String loginDo() {
 
 		userLoginModel.setMessage("");
-		System.out.println("logindo is running");
-		System.out.println("value of is Admin :" + userLoginModel.isAdmin());
-		System.out.println("value of is username :" + userLoginModel.getUsername());
-		System.out.println("value of is password :" + userLoginModel.getPassword());
 
 		// admin logged in chcekbox is true
 		if (userLoginModel.isAdmin() == true) {
@@ -45,9 +39,14 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserLoginM
 
 		// user is not admin
 		String userId = userService.getUserId(userLoginModel.getUsername(), userLoginModel.getPassword());
-		System.out.println(userId);
 		if (userId != null) {
 			User user = userService.getUser(userId);
+			// if user is locked
+			if (user.isLocked() == true) {
+				userLoginModel.setMessage("Your account has been locked by admin");
+				return "input";
+			}
+			// if user is not locked
 			userLoginModel.setUserId(userId);
 			userLoginModel.setUserType(user.getUserType());
 			// go to tasks list
@@ -61,7 +60,6 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserLoginM
 	@Override
 	public void validate() {
 
-		System.out.println("validate running");
 		if (userLoginModel.getUsername() == null) {
 			addFieldError("", "");
 		} else {
@@ -74,6 +72,7 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserLoginM
 				addFieldError("password", "Password is required");
 			}
 		}
+
 	}
 
 	@Override

@@ -25,8 +25,6 @@ public class UpdateSubTaskAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 
-		System.out.println("update subtask execute running");
-
 		subTask = subTaskService.getSubTask(subTaskId);
 		//prepopulate title
 		newTitle = subTask.getTitle();
@@ -37,8 +35,6 @@ public class UpdateSubTaskAction extends ActionSupport {
 	}
 
 	public String updateSubTaskDo() {
-
-		System.out.println("update task updateDo running");
 
 		//if title is left blank
 		if (newTitle.equals("")) {
@@ -58,8 +54,6 @@ public class UpdateSubTaskAction extends ActionSupport {
 
 	public String updateSubTaskDone() {
 
-		System.out.println("updateSubTaskDone running");
-		System.out.println("subtask id" + subTaskId);
 		//marking subtask as done
 		subTaskService.updateSubTaskDone(subTaskId);
 

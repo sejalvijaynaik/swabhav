@@ -53,7 +53,7 @@
 
             <div class="form-group row">
             <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary" (click) = "addproduct(name.value, rating1.checked ? rating1.value : rating2.checked ? rating2.value : rating3.checked ? rating3.value : rating4.checked ? rating4.value : rating5.checked ? rating5.value : null)">ADD</button>
+                <button type="submit" class="btn btn-primary" (click) = "addproduct(name, rating1.checked ? rating1 : rating2.checked ? rating2 : rating3.checked ? rating3 : rating4.checked ? rating4 : rating5.checked ? rating5 : null)">ADD</button>
             </div>
             </div>
         </form>

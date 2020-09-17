@@ -10,11 +10,14 @@ export class ProductTempVarComponent {
 
   products:IProduct[] = [];
 
-  addproduct(name:string, rating:string):void{
-    console.log(name);
-    console.log(rating);
+  addproduct(productName:HTMLInputElement, rating:HTMLInputElement):void{
+    console.log(productName.value);
+    console.log(rating.value);
 
-    this.products.push({name: name, rating : parseInt(rating)});
+    this.products.push({name: productName.value, rating : parseInt(rating.value)});
+
+    productName.value = "";
+    rating.checked = false;
 
   }
 }
