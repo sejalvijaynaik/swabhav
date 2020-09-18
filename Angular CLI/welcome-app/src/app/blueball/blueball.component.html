@@ -1,0 +1,13 @@
+<h2>Welcome to Blueball game</h2>
+<p>Rules of the game</p>
+    <ol>
+        <li>pick a ball from the list</li>
+        <li> if selected ball turns red that means blue ball is after selected ball</li>
+        <li>if selected ball turns green that menas blue ball is before it </li>
+    </ol>
+<button (click) = "startGame()">START</button>
+<div>
+    <span *ngFor = "let blueball of blueballs" [class] = "blueball.color" [value] = "blueball.id" (click) = "ballClick($event.target.value)">  
+    </span>
+
+</div>

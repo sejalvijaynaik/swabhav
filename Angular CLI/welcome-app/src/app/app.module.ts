@@ -13,12 +13,13 @@ import { SnakeCasePipe } from "./pipes/snake-case.pipe";
 import { SnakeCaseComponent } from "./snakecase/snakecase.component";
 import { ProductTempVarComponent } from './product(tempVariable)/productTempVar.component';
 import { ProductNgModelComponent } from './product(ngModel)/productNgModel.component';
+import { BlueballComponent } from './blueball/blueball.component';
 
 @NgModule({
   declarations: [
     AppComponent, WelcomeComponent, TwoWayBindingComponent, LoadStudentsComponent, pricecalculatorComponent, DiscountCalculatorComponent, GradePipe, SnakeCasePipe,
     SnakeCaseComponent, 
-    ProductTempVarComponent, ProductNgModelComponent
+    ProductTempVarComponent, ProductNgModelComponent, BlueballComponent
   ],
   imports: [
     BrowserModule, FormsModule

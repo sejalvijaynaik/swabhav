@@ -1,0 +1,21 @@
+.grey {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 35px;
+    background: radial-gradient(circle at 30px 30px,gainsboro,	dimgray);
+  }
+
+  .grey.blue {
+
+    background: radial-gradient(circle at 30px 30px, powderblue, darkblue);
+  }
+
+  .grey.green{
+    background: radial-gradient(circle at 30px 30px, palegreen, chartreuse);
+  }
+
+  .grey.red{
+    background: radial-gradient(circle at 30px 30px, lightsalmon, red);
+  }
