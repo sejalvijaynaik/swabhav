@@ -16,7 +16,6 @@ export class TwoWayBindingComponent{
 
   firstName:string = "";
   lastName:string = "";
-  @Input() fullName:string;
 
   nameChange(event:string):void{
     console.log("event" + event);

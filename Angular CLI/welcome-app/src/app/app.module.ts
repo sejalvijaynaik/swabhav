@@ -16,12 +16,15 @@ import { ProductNgModelComponent } from './product(ngModel)/productNgModel.compo
 import { BlueballComponent } from './blueball/blueball.component';
 import { ChildComponent } from './child/child.component';
 import { ParentComponent } from './parent/parent.component';
+import { MasterComponent } from './master/master.component';
+import { ToggleComponent } from './toggle/toggle.component';
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
   declarations: [
     AppComponent, WelcomeComponent, TwoWayBindingComponent, LoadStudentsComponent, pricecalculatorComponent, DiscountCalculatorComponent, GradePipe, SnakeCasePipe,
     SnakeCaseComponent, 
-    ProductTempVarComponent, ProductNgModelComponent, BlueballComponent, ChildComponent, ParentComponent
+    ProductTempVarComponent, ProductNgModelComponent, BlueballComponent, ChildComponent, ParentComponent, MasterComponent, ToggleComponent, RatingComponent
   ],
   imports: [
     BrowserModule, FormsModule

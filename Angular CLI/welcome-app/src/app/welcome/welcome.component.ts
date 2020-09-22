@@ -8,6 +8,7 @@ import {IStudent} from '../student/student';
 })
 export class WelcomeComponent {
   
+    myName = "sejal naik";
     student:IStudent = {
     rollNo : 1,
     name : "sejal",

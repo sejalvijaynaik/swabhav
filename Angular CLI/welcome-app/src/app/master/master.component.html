@@ -1,0 +1,8 @@
+<h1>Toggle App</h1>
+Toggle : <app-toggle [onStateColor] = '"green"' [offStateColor] = '"red"'  (stateChange) = "displayState($event)"></app-toggle>
+<br>
+Status : {{status}}
+<br>
+Rating : <app-rating (ratingGivenEvent) = "displayRating($event)"></app-rating>
+<br>
+<span *ngFor="let dummy of ' '.repeat(rating).split('')" class="glyphicon glyphicon-star"></span>

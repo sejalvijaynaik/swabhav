@@ -11,8 +11,15 @@ export class BlueballComponent{
   blueballs : IBlueball[] = [];
   correctBall:number = 0;
   chances:number = 3;
+  showText:string = "none";
+  infoText:string = "";
+  startButtonText:string = "START";
 
   startGame():void{
+    this.startButtonText = "RESTART";
+    this.chances = 3;
+    this.showText = "block";
+    this.infoText = this.chances + " chances left";
     this.blueballs = [];
     for(let i = 0; i < 25; i++){
       this.blueballs.push({id: i, color : "grey"});
@@ -24,10 +31,19 @@ export class BlueballComponent{
   ballClick(value:number):void{
 
     if(this.chances > 0){
+      
       this.chances = this.chances - 1;
+      
+      if(this.chances == 1){
+        this.infoText = "1 chance left"; 
+      }else{
+          this.infoText = this.chances + " chances left";
+      }
+
       if(value== this.correctBall){
         this.blueballs[this.correctBall].color = "grey blue";
-        this.endGame("YOU WON");
+        this.infoText = "YOU WON!!!!";
+        return;
       }  
       else if(value > this.correctBall){
         this.blueballs[value].color = "grey green";
@@ -38,11 +54,13 @@ export class BlueballComponent{
     }
     if(this.chances == 0){
       this.blueballs[this.correctBall].color = "grey blue";
-      this.endGame("YOU LOST");
+      if(this.infoText != "YOU WON!!!!"){
+        this.infoText = "YOU LOST!!!";
+      } 
     }
   }
 
-  endGame(message:string):void{
+  /*endGame(message:string):void{
     var newWindow = window.open("", "_blank", "width=400, height=200");
     var newDoc = newWindow.document;
 
@@ -62,5 +80,7 @@ export class BlueballComponent{
      newWindow.close();
   
     }
-  }
+  }*/
 }
+//display turns
+//reset option
