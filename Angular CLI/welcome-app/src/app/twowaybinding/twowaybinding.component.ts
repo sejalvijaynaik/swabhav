@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IStudent } from "../student/student";
 
 @Component({
@@ -16,6 +16,7 @@ export class TwoWayBindingComponent{
 
   firstName:string = "";
   lastName:string = "";
+  @Input() fullName:string;
 
   nameChange(event:string):void{
     console.log("event" + event);
