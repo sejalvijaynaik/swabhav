@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<!DOCTYPE struts PUBLIC 
+
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" 
+
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<package name = "blob-app" extends="struts-default">
+		
+		<action name="upload" class="com.techlabs.actions.UploadAction" method = "execute">  
+			<result name="success" type="redirect">display</result>
+		</action>
+		
+		<action name="display" class="com.techlabs.actions.DisplayAction" method = "execute">  
+			<result name="success">success.jsp</result>
+		</action>
+		
+		<action name="displayImage" class="com.techlabs.actions.DisplayAction" method = "displayImage">  
+			<result name="success" type="stream">
+				<param name="inputName">inputStream</param>
+   				<param name="contentType">image/jpeg</param>
+			</result>
+		</action>
+		
+	</package>
+</struts> 

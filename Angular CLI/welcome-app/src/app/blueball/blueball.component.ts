@@ -14,6 +14,8 @@ export class BlueballComponent{
   showText:string = "none";
   infoText:string = "";
   startButtonText:string = "START";
+  rulesShow:string = "block";
+  rulesButtonText:string = "HIDE RULES";
 
   startGame():void{
     this.startButtonText = "RESTART";
@@ -57,6 +59,17 @@ export class BlueballComponent{
       if(this.infoText != "YOU WON!!!!"){
         this.infoText = "YOU LOST!!!";
       } 
+    }
+  }
+
+  showRulesText():void{
+    if(this.rulesShow == "block"){
+      this.rulesShow = "none";
+      this.rulesButtonText = "SHOW RULES";
+    }
+    else{
+      this.rulesShow = "block";
+      this.rulesButtonText = "HIDE RULES";
     }
   }
 
