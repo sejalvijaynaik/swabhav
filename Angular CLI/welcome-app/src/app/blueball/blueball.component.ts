@@ -32,7 +32,7 @@ export class BlueballComponent{
 
   ballClick(value:number):void{
 
-    if(this.chances > 0){
+    if((this.chances > 0) && (this.infoText != "YOU WON!!!!")){
       
       this.chances = this.chances - 1;
       
