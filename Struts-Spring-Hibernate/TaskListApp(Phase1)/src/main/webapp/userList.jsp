@@ -8,6 +8,12 @@
 <meta charset="ISO-8859-1">
 <title>User List</title>
 <sb:head/>
+<style type="text/css">
+	img {
+	  max-width: 100%;
+	  height: auto;
+	}
+</style>
 </head>
 <body>
 
@@ -28,6 +34,7 @@
 			<th>Update</th>
 			<th>Delete</th>
 			<th>Locked</th>
+			<th>Image</th>
 		</tr>
 		<s:iterator value="users">
 			<tr>
@@ -66,6 +73,12 @@
 						<button class="btn btn-primary" style = "background-color:green" onclick="window.location.href='${updateUserLockLink}'">NO</button>
 					</s:else>
 				
+				</td>
+				<td>
+					<s:url var="displayImageLink" value="/displayImage">
+						<s:param name="userId" value="%{id}"></s:param>
+					</s:url>
+					<img width="100" height="100" src="${displayImageLink}">
 				</td>
 			</tr>
 		</s:iterator>

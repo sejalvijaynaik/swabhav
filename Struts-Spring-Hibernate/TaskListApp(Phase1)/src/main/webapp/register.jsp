@@ -32,7 +32,7 @@
     <s:actionmessage theme="bootstrap"/>
     <s:fielderror theme="bootstrap"/>
     
-	<s:form action="register.do" theme="bootstrap" cssClass="form-horizontal">
+	<s:form action="register.do" theme="bootstrap" cssClass="form-horizontal" method = "post" enctype = "multipart/form-data">
 	 	<span id="emailError" style="left: 25%; position: relative"></span> 
 		<s:textfield name = "firstName" label="First Name" style = "width: 50%"></s:textfield>
 		<s:textfield name = "lastName" label="Last Name" style = "width: 50%"></s:textfield>
@@ -40,6 +40,7 @@
 		<s:textfield name = "username" label="Username" style = "width: 50%"></s:textfield>
 		<s:textfield name = "password" label="Password" style = "width: 50%"></s:textfield>
 		<s:textfield name = "confirmPassword" label="Confirm Password" style = "width: 50%"></s:textfield>
+		<s:file name = "imageFile" label = "Profile Picture" style = "width: 50%"></s:file>
 	<!--<s:submit value = "Submit" id = "submitButton" theme="bootstrap" cssClass="btn" style="left: 25%; position: relative"></s:submit>-->
 		
 		<div style="left: 25%; position: relative">

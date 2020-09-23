@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
 import com.techlabs.entity.Person;
@@ -17,15 +19,16 @@ public class DisplayAction extends ActionSupport {
 	private Person person;
 	private String id;
 	private InputStream inputStream;
+	private List<Person> persons;
 
-	public InputStream getInputStream(){
-	  return inputStream;
+	public InputStream getInputStream() {
+		return inputStream;
 	}
 
 	@Override
 	public String execute() throws Exception {
 
-		person = personService.getPerson("ac9fff10-38ab-4f54-96bd-239ac04b6a08");
+		persons = personService.getPersons();
 
 		return "success";
 
@@ -40,7 +43,7 @@ public class DisplayAction extends ActionSupport {
 		Blob image = person.getImage();
 		byte[] imageBytes = image.getBytes(1l, (int) image.length());
 
-		inputStream = new ByteArrayInputStream(imageBytes); 
+		inputStream = new ByteArrayInputStream(imageBytes);
 
 		return "success";
 
@@ -62,4 +65,11 @@ public class DisplayAction extends ActionSupport {
 		this.id = id;
 	}
 
+	public List<Person> getPersons() {
+		return persons;
+	}
+
+	public void setPersons(List<Person> persons) {
+		this.persons = persons;
+	}
 }

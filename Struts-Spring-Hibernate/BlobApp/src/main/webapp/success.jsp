@@ -6,6 +6,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<style type="text/css">
+	img {
+	  max-width: 100%;
+	  height: auto;
+	}
+</style>
 </head>
 <body>
 	<table style="width: 90%; text-align: center;">
@@ -16,17 +22,20 @@
 					<th>Image</th>
 				</tr>
 			</thead>
-				<tr>
-					<td>
-						<s:property value="person.id" />
-					</td>
-					<td>
-						<s:property value="person.name" />
-					</td>
-					<td>
-						<img width="100" height="100" src="<s:url value='displayImage.action?id='/><s:property value='person.id' />">
-					</td>
-				</tr>
+				<s:iterator value="persons">
+					<tr>
+						<td>
+							<s:property value="id" />
+						</td>
+						<td>
+							<s:property value="name" />
+						</td>
+						<td>
+							
+							<img width="100" height="100" src="<s:url value='displayImage.action?id='/><s:property value='id' />">
+						</td>
+					</tr>
+				</s:iterator>
 		</table>
 </body>
 </html>

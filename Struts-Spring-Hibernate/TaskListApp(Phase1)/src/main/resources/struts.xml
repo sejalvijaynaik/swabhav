@@ -52,10 +52,17 @@
 		</action>
 		
 		<action name="userList" class="com.techlabs.actions.user.DisplayUserAction" method = "execute">
-			<result name="success">userList.jsp</result>  
+			<result name="success">userList.jsp</result> 
 		</action>
 		
-		<action name="updateUser.do" class="com.techlabs.actions.user.UpdateUserAction" method = "updateUserDo"> 
+		<action name="displayImage" class="com.techlabs.actions.user.DisplayUserAction" method = "displayImage">  
+			<result name="success" type="stream">
+				<param name="inputName">inputStream</param>
+   				<param name="contentType">image/jpeg</param>
+			</result>
+		</action>
+		
+		<action name="updateUser.do" class="com.techlabs.actions.user.DisplayUserAction" method = "updateUserDo"> 
 		 	<result name="input">update-user.jsp</result> 
 			<result name="success" type="redirectAction">${nextAction}</result>
 		</action>

@@ -1,11 +1,9 @@
 package com.techlabs.viewModel;
 
-import java.util.List;
-
+import java.io.File;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.SessionScope;
 
 @Component
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -18,6 +16,7 @@ public class UserAddModel {
 	private String password;
 	private String confirmPassword;
 	private String nextAction;
+	private File imageFile;
 
 	public String getFirstName() {
 		return firstName;
@@ -73,5 +72,13 @@ public class UserAddModel {
 
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+
+	public File getImageFile() {
+		return imageFile;
+	}
+
+	public void setImageFile(File imageFile) {
+		this.imageFile = imageFile;
 	}
 }

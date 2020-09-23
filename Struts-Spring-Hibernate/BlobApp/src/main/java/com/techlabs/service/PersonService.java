@@ -3,6 +3,8 @@ package com.techlabs.service;
 import java.io.File;
 import java.io.FileInputStream;
 import java.sql.SQLException;
+import java.util.List;
+
 import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +42,9 @@ public class PersonService {
 
 	public Person getPerson(String id) {
 		return personRepository.getPerson(id);
+	}
+	
+	public List<Person> getPersons(){
+		return personRepository.getPersons();
 	}
 }

@@ -1,5 +1,6 @@
 package com.techlabs.entity;
 
+import java.sql.Blob;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -33,12 +34,13 @@ public class User {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<Task> tasks = new HashSet<Task>();
 	private boolean locked;
+	private Blob image;
 
 	public User() {
 	}
 
 	public User(UUID id, String firstName, String lastName, String email, String username, String password,
-			String userType, Set<Task> tasks, boolean locked) {
+			String userType, Set<Task> tasks, boolean locked, Blob image) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -48,6 +50,7 @@ public class User {
 		this.userType = userType;
 		this.tasks = tasks;
 		this.locked = locked;
+		this.image = image;
 	}
 
 	public UUID getId() {
@@ -120,6 +123,14 @@ public class User {
 
 	public void setLocked(boolean locked) {
 		this.locked = locked;
+	}
+
+	public Blob getImage() {
+		return image;
+	}
+
+	public void setImage(Blob image) {
+		this.image = image;
 	}
 
 	@Override

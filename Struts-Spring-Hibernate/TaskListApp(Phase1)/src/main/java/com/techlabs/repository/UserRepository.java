@@ -1,18 +1,17 @@
 package com.techlabs.repository;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.techlabs.entity.Task;
 import com.techlabs.entity.User;
 
@@ -29,11 +28,6 @@ public class UserRepository {
 	public List<User> getUsers() {
 
 		session = sessionFactory.openSession();
-		/*
-		 * Criteria criteria = session.createCriteria(User.class);
-		 * 
-		 * users = criteria.list();
-		 */
 
 		users = session.createQuery("from User").list();
 
@@ -43,10 +37,10 @@ public class UserRepository {
 	}
 
 	public void addUser(String firstName, String lastName, String email, String username, String password,
-			String userType, boolean locked) {
+			String userType, boolean locked, Blob image) {
 
 		user = new User(UUID.randomUUID(), firstName, lastName, email, username, password, userType,
-				new HashSet<Task>(), false);
+				new HashSet<Task>(), false, image);
 		session = sessionFactory.openSession();
 
 		try {
@@ -64,6 +58,7 @@ public class UserRepository {
 	public User getUser(String id) {
 
 		user = new User();
+		System.out.println("Inside user repo get User");
 		session = sessionFactory.openSession();
 
 		user = (User) session.get(User.class, UUID.fromString(id));
@@ -73,9 +68,10 @@ public class UserRepository {
 	}
 
 	public void updateUserForAdmin(String id, String firstName, String lastName, String email, String username,
-			String password, String userType, Set<Task> tasks, boolean locked) {
+			String password, String userType, Set<Task> tasks, boolean locked, Blob image) {
 
-		user = new User(UUID.fromString(id), firstName, lastName, email, username, password, userType, tasks, locked);
+		user = new User(UUID.fromString(id), firstName, lastName, email, username, password, userType, tasks, locked,
+				image);
 		session = sessionFactory.openSession();
 
 		try {
@@ -97,7 +93,7 @@ public class UserRepository {
 		user.setTasks(tasks);
 
 		this.user = new User(user.getId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getUsername(),
-				user.getPassword(), user.getUserType(), user.getTasks(), user.isLocked());
+				user.getPassword(), user.getUserType(), user.getTasks(), user.isLocked(), user.getImage());
 		session = sessionFactory.openSession();
 
 		try {

@@ -16,7 +16,6 @@ public class GetEmailsJsonAction extends ActionSupport {
 
 		System.out.println("GetEmailsJSONAction running");
 		emails = userService.getEmails();
-		System.out.println("size of emails" + emails.size());
 
 		return "success";
 	}

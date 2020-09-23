@@ -1,6 +1,7 @@
 package com.techlabs.repository;
 
 import java.sql.Blob;
+import java.util.List;
 import java.util.UUID;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -46,4 +47,14 @@ public class PersonRepository {
 		return person;
 	}
 
+	public List<Person> getPersons() {
+
+		session = sessionFactory.openSession();
+
+		List<Person> persons = session.createQuery("from Person").list();
+
+		session.close();
+
+		return persons;
+	}
 }

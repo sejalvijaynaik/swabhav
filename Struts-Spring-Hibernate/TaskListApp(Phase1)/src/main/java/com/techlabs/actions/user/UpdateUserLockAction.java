@@ -1,6 +1,5 @@
 package com.techlabs.actions.user;
 
-import javax.jws.soap.SOAPBinding.Use;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
 import com.techlabs.entity.User;
@@ -22,7 +21,7 @@ public class UpdateUserLockAction extends ActionSupport {
 		}
 
 		userService.updateUserForAdmin(userId, user.getFirstName(), user.getLastName(), user.getEmail(),
-				user.getUsername(), user.getPassword(), user.getUserType(), user.getTasks(), locked);
+				user.getUsername(), user.getPassword(), user.getUserType(), user.getTasks(), locked, user.getImage());
 
 		System.out.println("user locked or not" + userService.getUser(userId).isLocked());
 		return "success";

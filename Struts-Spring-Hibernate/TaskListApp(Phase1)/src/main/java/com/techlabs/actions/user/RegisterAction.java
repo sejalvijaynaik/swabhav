@@ -29,7 +29,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven<UserAdd
 	public String registerDo() {
 
 		userService.addUser(userAddModel.getFirstName(), userAddModel.getLastName(), userAddModel.getEmail(),
-				userAddModel.getUsername(), userAddModel.getPassword(), "normal", false);
+				userAddModel.getUsername(), userAddModel.getPassword(), "normal", false, userAddModel.getImageFile());
 
 		// admin is logged in
 		if (userLoginModel.getUserType() == null) {
@@ -51,6 +51,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven<UserAdd
 		userAddModel.setUsername(null);
 		userAddModel.setPassword(null);
 		userAddModel.setConfirmPassword(null);
+		userAddModel.setImageFile(null);
 		return "success";
 	}
 

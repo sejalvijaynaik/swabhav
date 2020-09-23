@@ -59,7 +59,7 @@ public class UpdateUserAction extends ActionSupport implements ModelDriven<UserU
 
 		userService.updateUserForAdmin(userId, userUpdateModel.getFirstName(), userUpdateModel.getLastName(),
 				userUpdateModel.getEmail(), userUpdateModel.getUsername(), userUpdateModel.getPassword(),
-				user.getUserType(), user.getTasks(), user.isLocked());
+				user.getUserType(), user.getTasks(), user.isLocked(), userUpdateModel.getImageFile());
 
 		return "success";
 	}
