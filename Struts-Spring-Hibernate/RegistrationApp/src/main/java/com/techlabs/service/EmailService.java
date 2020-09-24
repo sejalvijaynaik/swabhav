@@ -21,8 +21,8 @@ public class EmailService {
 
 	public void sendMail(String toEmail) {
 
-		String fromEmail = "experimentaddress@yahoo.com";
-		String password = "uiwjdqnf87*&";
+		String fromEmail = "iamstudentlearningjava@gmail.com";
+		String password = "uhwfwofw987UH";
 		
 		try {
 			Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
