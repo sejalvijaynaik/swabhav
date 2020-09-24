@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.captcha.botdetect.web.servlet.Captcha;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import com.techlabs.service.EmailService;
 import com.techlabs.service.UserService;
 import com.techlabs.viewModel.UserAddModel;
 import com.techlabs.viewModel.UserLoginModel;
@@ -31,6 +32,9 @@ public class RegisterAction extends ActionSupport implements ModelDriven<UserAdd
 		userService.addUser(userAddModel.getFirstName(), userAddModel.getLastName(), userAddModel.getEmail(),
 				userAddModel.getUsername(), userAddModel.getPassword(), "normal", false, userAddModel.getImageFile());
 
+		//send email to registered user
+		EmailService emailService = new EmailService();
+		emailService.sendMail(userAddModel.getEmail());
 		// admin is logged in
 		if (userLoginModel.getUserType() == null) {
 			userAddModel.setNextAction("home");

@@ -62,7 +62,7 @@
 			</result>
 		</action>
 		
-		<action name="updateUser.do" class="com.techlabs.actions.user.DisplayUserAction" method = "updateUserDo"> 
+		<action name="updateUser.do" class="com.techlabs.actions.user.UpdateUserAction" method = "updateUserDo"> 
 		 	<result name="input">update-user.jsp</result> 
 			<result name="success" type="redirectAction">${nextAction}</result>
 		</action>

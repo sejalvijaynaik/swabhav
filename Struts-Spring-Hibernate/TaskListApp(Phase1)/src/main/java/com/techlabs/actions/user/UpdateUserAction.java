@@ -45,6 +45,7 @@ public class UpdateUserAction extends ActionSupport implements ModelDriven<UserU
 
 	public String updateUserDo() {
 
+		System.out.println("update user do running");
 		// to check if admin is logged in
 		if (userLoginModel.getUserType().equals("admin")) {
 			userId = userUpdateModel.getUserId();
@@ -57,9 +58,15 @@ public class UpdateUserAction extends ActionSupport implements ModelDriven<UserU
 
 		user = userService.getUser(userId);
 
-		userService.updateUserForAdmin(userId, userUpdateModel.getFirstName(), userUpdateModel.getLastName(),
-				userUpdateModel.getEmail(), userUpdateModel.getUsername(), userUpdateModel.getPassword(),
-				user.getUserType(), user.getTasks(), user.isLocked(), userUpdateModel.getImageFile());
+		if (userUpdateModel.getImageFile() == null) {
+			userService.updateUserForAdmin(userId, userUpdateModel.getFirstName(), userUpdateModel.getLastName(),
+					userUpdateModel.getEmail(), userUpdateModel.getUsername(), userUpdateModel.getPassword(),
+					user.getUserType(), user.getTasks(), user.isLocked(), user.getImage());
+		} else {
+			userService.updateUserForAdmin(userId, userUpdateModel.getFirstName(), userUpdateModel.getLastName(),
+					userUpdateModel.getEmail(), userUpdateModel.getUsername(), userUpdateModel.getPassword(),
+					user.getUserType(), user.getTasks(), user.isLocked(), userUpdateModel.getImageFile());
+		}
 
 		return "success";
 	}
