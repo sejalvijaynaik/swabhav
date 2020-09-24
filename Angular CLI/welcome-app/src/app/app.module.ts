@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from "@angular/forms";
 
 import { AppComponent } from './app.component';
 import {WelcomeComponent} from './welcome/welcome.component';
@@ -19,15 +20,17 @@ import { ParentComponent } from './parent/parent.component';
 import { MasterComponent } from './master/master.component';
 import { ToggleComponent } from './toggle/toggle.component';
 import { RatingComponent } from './rating/rating.component';
+import { LoginTemplateComponent } from './login(template)/loginTemplate.component';
+import { LoginModelComponent } from './login(model)/login(model).component';
 
 @NgModule({
   declarations: [
     AppComponent, WelcomeComponent, TwoWayBindingComponent, LoadStudentsComponent, pricecalculatorComponent, DiscountCalculatorComponent, GradePipe, SnakeCasePipe,
     SnakeCaseComponent, 
-    ProductTempVarComponent, ProductNgModelComponent, BlueballComponent, ChildComponent, ParentComponent, MasterComponent, ToggleComponent, RatingComponent
+    ProductTempVarComponent, ProductNgModelComponent, BlueballComponent, ChildComponent, ParentComponent, MasterComponent, ToggleComponent, RatingComponent, LoginTemplateComponent, LoginModelComponent
   ],
   imports: [
-    BrowserModule, FormsModule
+    BrowserModule, FormsModule, ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

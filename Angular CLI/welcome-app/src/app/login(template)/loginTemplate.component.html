@@ -1,0 +1,16 @@
+<form #loginForm="ngForm" ngNativeValidate>
+    Username : <input name="username" [(ngModel)] = "username" #usernameTempvar ="ngModel" required><br><br>
+    Password : <input name="password" [(ngModel)] = "password" #passwordTempVar = "ngModel" required><br><br>
+    <!--<button type="submit" (click)="loginForm.checkValidity()? login() : null">Submit</button>-->
+    <button type="submit" (click)="login()">Submit</button>
+</form>
+
+<div *ngIf="usernameTempvar.errors && (usernameTempvar.dirty || usernameTempvar.touched)">
+  <p *ngIf="usernameTempvar.errors.required">Username is required</p>
+</div>
+  
+
+
+
+
+
