@@ -1,0 +1,16 @@
+{
+	"name": "sejal",
+	"rollNo": 1,
+	"age": 25,
+	"address": {
+		"city": "mumbai",
+		"state": "maharashtra",
+		"pincode": 400063
+	},
+	"languages": [
+		"java",
+		"javascript",
+		"c++"
+	],
+	"compnay" : "swabhav"
+}
