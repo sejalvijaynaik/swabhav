@@ -7,12 +7,16 @@ import { Component } from '@angular/core';
 })
 export class LoginTemplateComponent {
 
-  username:string = null;
-  password:string = null;
+  username:string = "";
+  password:string = "";
 
   login():void{
-    
+    if((this.username != "") && (this.password != "")){
+      this.afterLogin();
+    }
   }
-  
 
+  afterLogin():void{
+    alert("You are logged in")
+  }
 }

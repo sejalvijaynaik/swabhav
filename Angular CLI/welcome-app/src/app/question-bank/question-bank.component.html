@@ -1,0 +1,18 @@
+<h1 class="display-1">Maths Quiz</h1>
+<button (click) = "startQuiz()" [innerText] = "startButtonText"></button>
+<div [style.display] = "questionDivShow">
+    <h2 [innerText] = "questionText" class="display-3"></h2>
+    <div *ngFor="let option of options; let i = index">
+        <input type="radio" name="optionsRadio" id="option" [value]="i" [(ngModel)]="chosenOption">
+        <label for="option">
+            <span [innerText] = "option"></span>
+        </label>
+    </div>
+    <button (click) = "previousQuestion()" [style.display] = "previousButtonShow">PREVIOUS</button>
+    <button (click) = "nextQuestion()" [innerText] = "nextButtonText"></button>
+</div>
+<div [style.display] = "resultDiv">
+    <h1>Your Score is : {{finalScore}}</h1>
+    <h1>Unanswered : {{unanswered}}</h1>
+</div>
+

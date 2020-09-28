@@ -1,0 +1,37 @@
+<form ngNativeValidate [formGroup]="registerForm">
+    <fieldset formGroupName="name">
+          
+        Fisrt Name : <input type="text" formControlName="firstName" required>
+        <span *ngIf = "firstName.invalid && (firstName.dirty || firstName.touched)" [class] = "'required'">First name is required</span>
+        <br><br>
+        
+        Last Name : <input type="text" formControlName="lastName" required>
+        <span *ngIf = "lastName.invalid && (lastName.dirty || lastName.touched)" [class] = "'required'">Last name is required</span>
+        <br><br>
+    
+    </fieldset>
+
+    Email : <input type="email" formControlName="email" required>
+    <span *ngIf = "email.invalid && (email.dirty || email.touched)" [class] = "'required'">
+        <span *ngIf="email.errors.required">Email is required</span>
+        <span *ngIf="email.errors.pattern">The email address must contain at least the @ character</span>
+    </span>
+    <br><br>
+    
+    Password : <input type="password" formControlName="password" required>
+    <span *ngIf = "password.invalid && (password.dirty || password.touched)" [class] = "'required'">
+        <span *ngIf="password.errors.required">Password is required</span>
+        <span *ngIf="password.errors.minlength">Password must be 8 characters long atleast</span>
+    </span>
+    <br><br>
+
+    Languages : <select formControlName="language" required><br><br>
+        <option value="">Please select a language</option>
+        <option *ngFor="let lang of languages" [value]="lang">{{lang}}</option>
+    </select>
+    <span *ngIf = "language.invalid && (language.dirty || language.touched)" [class] = "'required'">Language is required</span>
+    <br><br>
+
+    <button (click) = "register()">Submit</button>
+</form>
+    

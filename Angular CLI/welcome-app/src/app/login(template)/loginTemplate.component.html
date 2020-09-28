@@ -1,3 +1,4 @@
+<h1>login template form</h1>
 <form #loginForm="ngForm" ngNativeValidate>
     Username : <input name="username" [(ngModel)] = "username" #usernameTempvar ="ngModel" required><br><br>
     Password : <input name="password" [(ngModel)] = "password" #passwordTempVar = "ngModel" required><br><br>
@@ -5,9 +6,15 @@
     <button type="submit" (click)="login()">Submit</button>
 </form>
 
-<div *ngIf="usernameTempvar.errors && (usernameTempvar.dirty || usernameTempvar.touched)">
-  <p *ngIf="usernameTempvar.errors.required">Username is required</p>
+<div *ngIf="(usernameTempvar.untouched || usernameTempvar.errors) && passwordTempVar.touched;else condition2">
+  <p>condition 1 Username is required</p>
 </div>
+
+<ng-template #condition2>
+  <div *ngIf="usernameTempvar.errors && (usernameTempvar.dirty || usernameTempvar.touched)">
+    <p *ngIf="usernameTempvar.errors.required">condition 2 Username is required</p>
+  </div>
+</ng-template>
   
 
 

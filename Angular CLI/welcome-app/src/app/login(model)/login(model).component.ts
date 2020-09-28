@@ -30,6 +30,13 @@ export class LoginModelComponent implements OnInit {
   }
 
   login():void{
-    alert("loggin in !!!");
+
+    if((this.username.value != "") && (this.password.value != "")){
+      this.afterLogin();
+    }
+  }
+
+  afterLogin():void{
+    alert("You are logged in")
   }
 }

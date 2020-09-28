@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StudentService } from '../services/student-service.service';
 import {IStudent} from '../student/student';
 
 @Component({
@@ -8,10 +9,11 @@ import {IStudent} from '../student/student';
 })
 export class WelcomeComponent {
   
-    myName = "sejal naik";
-    student:IStudent = {
-    rollNo : 1,
-    name : "sejal",
-    cgpa : 7.8
+  students:IStudent[] = [];
+  student:IStudent = null;
+
+  constructor(private studentService:StudentService ){
+    this.students = studentService.addStudents();
+    this.student = this.students[0];
   }
 }

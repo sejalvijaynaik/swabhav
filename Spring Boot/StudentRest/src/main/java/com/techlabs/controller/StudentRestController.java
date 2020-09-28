@@ -28,24 +28,24 @@ public class StudentRestController {
 
 	}
 
-	@GetMapping("/get-student/{rollNo}")
+	@GetMapping("/students/{rollNo}")
 	public Student getStudent(@PathVariable String rollNo) {
 		return studentRepository.getStudent(rollNo);
 	}
 
-	@PostMapping("/add-student")
+	@PostMapping("/students")
 	public Student addStudent(@RequestBody Student student) {
 		studentRepository.addStuddent(student);
 		return student;
 	}
 
-	@PutMapping("/update-student")
+	@PutMapping("/students")
 	public Student updateStudent(@RequestBody Student student) {
 		studentRepository.updateStudent(student);
 		return student;
 	}
 
-	@DeleteMapping("/delete-student/{rollNo}")
+	@DeleteMapping("/students/{rollNo}")
 	public String deleteStudent(@PathVariable String rollNo) {
 		studentRepository.deleteStudent(rollNo);
 		return "deleted student of roll no " + rollNo; 

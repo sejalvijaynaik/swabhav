@@ -22,17 +22,20 @@ import { ToggleComponent } from './toggle/toggle.component';
 import { RatingComponent } from './rating/rating.component';
 import { LoginTemplateComponent } from './login(template)/loginTemplate.component';
 import { LoginModelComponent } from './login(model)/login(model).component';
+import { RegisterModelComponent } from './register-model/register-model.component';
+import { QuestionService } from "./services/question-service.service";
+import { QuestionBankComponent } from './question-bank/question-bank.component';
 
 @NgModule({
   declarations: [
     AppComponent, WelcomeComponent, TwoWayBindingComponent, LoadStudentsComponent, pricecalculatorComponent, DiscountCalculatorComponent, GradePipe, SnakeCasePipe,
     SnakeCaseComponent, 
-    ProductTempVarComponent, ProductNgModelComponent, BlueballComponent, ChildComponent, ParentComponent, MasterComponent, ToggleComponent, RatingComponent, LoginTemplateComponent, LoginModelComponent
+    ProductTempVarComponent, ProductNgModelComponent, BlueballComponent, ChildComponent, ParentComponent, MasterComponent, ToggleComponent, RatingComponent, LoginTemplateComponent, LoginModelComponent, RegisterModelComponent, QuestionBankComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule
   ],
-  providers: [],
+  providers: [QuestionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
