@@ -1,18 +1,21 @@
-<h2>Welcome to Blueball game</h2>
-<div [style.display] = "rulesShow">
-    <span>Rules of the game</span>
-    <ol>
-        <li>pick a ball from the list</li>
-        <li> if selected ball turns red that means blue ball is after selected ball</li>
-        <li>if selected ball turns green that menas blue ball is before it </li>
-    </ol>
+<div [class] = "'background-cover'">
+    <h2>Welcome to Blueball game</h2>
+    <div [style.display] = "rulesShow">
+        <p>Rules of the game<p>
+        <ol>
+            <li>pick a ball from the list</li>
+            <li> if selected ball turns red that means blue ball is after selected ball</li>
+            <li>if selected ball turns green that menas blue ball is before it </li>
+        </ol>
+    </div>
+    <button (click) = "showRulesText()" [innerText] = "rulesButtonText" [style.display] = "rulesButtonShow" class="btn btn-danger">RULES</button>
+    <button (click) = "startGame()" [style.display] = "startButtonShow" class="btn btn-danger">START</button>
+    <button (click) = "exitGame()" [style.display] = "exitButtonShow" class="btn btn-danger">EXIT</button>
+    <h4 [innerText] = "infoText" [style.display] = "showText"></h4>
+
+    <div>
+        <span *ngFor = "let blueball of blueballs" [class] = "blueball.color" [value] = "blueball.id" (click) = "ballClick($event.target.value)">  
+        </span>
+
 </div>
-<button (click) = "showRulesText()" [innerText] = "rulesButtonText">RULES</button>
-<button (click) = "startGame()" [innerText] = "startButtonText"></button>
-<h2 [innerText] = "infoText" [style.display] = "showText"></h2>
-
-<div>
-    <span *ngFor = "let blueball of blueballs" [class] = "blueball.color" [value] = "blueball.id" (click) = "ballClick($event.target.value)">  
-    </span>
-
 </div>

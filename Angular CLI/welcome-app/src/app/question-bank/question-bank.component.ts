@@ -18,30 +18,52 @@ export class QuestionBankComponent {
   questionDivShow:string = "none";
   finalScore:number = 0;
   resultDiv:string = "none";
-  startButtonText:string = "START";
   previousButtonShow:string = "none";
   nextButtonText:string = "NEXT";
   unanswered:number = 0;
+  startButtonShow:string = "inline-block";
+  exitButtonShow:string = "none";
 
-  constructor(private questionService:QuestionService) {}
+  constructor(private questionService:QuestionService) {
+    window.document.body.style.backgroundColor = 'plum';
+  }
 
   startQuiz():void{ 
     for(let i = 0; i < 10; i++){
       this.chosenOptions[i] = -1;
     }
+    
+    this.startButtonShow = "none";
+    this.exitButtonShow = "inline-block";
     this.resultDiv = "none";
     this.nextButtonText = "NEXT";
     this.previousButtonShow = "none";
     this.currentQuestionNumber = 0;
-    this.startButtonText = "RESTART";
     this.questionDivShow = "block";
     this.chosenOption = -1;
     this.questions = this.questionService.addQuestions();
     this.questionText = this.questions[this.currentQuestionNumber].id + ")  " + this.questions[this.currentQuestionNumber].questionText; 
     this.options = this.questions[this.currentQuestionNumber].options;
+    this.setUnanswered();
+    
   }
+
+  setUnanswered():void{
+    this.unanswered = 0;
+    for(let i = 0; i < 10 ; i++){
+     if(this.questions[i].answered == false){
+       ++this.unanswered;
+     }
+    }
+  }
+  
   nextQuestion():void{
     this.previousButtonShow = "inline-block";
+
+    if(this.chosenOption != -1){
+      this.questions[this.currentQuestionNumber].answered = true;
+    }
+    
     this.chosenOptions[this.currentQuestionNumber] = this.chosenOption;
     ++this.currentQuestionNumber;
     if(this.currentQuestionNumber == 9){
@@ -60,6 +82,7 @@ export class QuestionBankComponent {
       this.questionText = this.questions[this.currentQuestionNumber].id + ")  " + this.questions[this.currentQuestionNumber].questionText;
       this.options = this.questions[this.currentQuestionNumber].options;
     }
+    this.setUnanswered();
   }
 
   previousQuestion():void{
@@ -70,8 +93,10 @@ export class QuestionBankComponent {
   }
 
   endQuiz():void{
+    this.unanswered = 0;
     for(let i = 0; i < 10 ; i++){
       console.log(this.chosenOptions[i]);
+      console.log(this.questions[i].answered);
       if(this.chosenOptions[i] == this.questions[i].correctOption){
         ++this.finalScore;
       }
@@ -81,5 +106,8 @@ export class QuestionBankComponent {
     }
     this.questionDivShow = "none";
     this.resultDiv = "block";
+  }
+  exitQuiz():void{
+    window.open("index.html", "_self");
   }
 }

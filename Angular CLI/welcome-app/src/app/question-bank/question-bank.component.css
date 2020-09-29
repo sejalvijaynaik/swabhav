@@ -1,0 +1,36 @@
+.background-cover{
+    text-align: center;
+}
+
+h1{
+    font-size: 5em;
+    font-family: "Times New Roman", Times, serif;
+}
+
+h2{
+    font-size: 3em;
+    font-family: "Times New Roman", Times, serif;   
+}
+
+span{
+    font-size: 1em;
+    font-family: "Times New Roman", Times, serif;
+}
+
+button{
+    background-color: purple;
+    margin:5px;
+}
+
+.radioAndLabel{
+    padding-left: 50px;
+}
+
+.radioStyle{
+    height:20px; 
+    width:20px;
+}
+
+label{
+    margin:20px;
+}

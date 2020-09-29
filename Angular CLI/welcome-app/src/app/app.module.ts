@@ -25,6 +25,8 @@ import { LoginModelComponent } from './login(model)/login(model).component';
 import { RegisterModelComponent } from './register-model/register-model.component';
 import { QuestionService } from "./services/question-service.service";
 import { QuestionBankComponent } from './question-bank/question-bank.component';
+import { StudentService } from './services/student-service.service';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +37,7 @@ import { QuestionBankComponent } from './question-bank/question-bank.component';
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule
   ],
-  providers: [QuestionService],
+  providers: [QuestionService, StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

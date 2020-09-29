@@ -19,3 +19,34 @@
   .grey.red{
     background: radial-gradient(circle at 30px 30px, lightsalmon, red);
   }
+
+  .background-cover{
+    background-color:pink;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+  }
+
+  ol{
+    list-style-position: inside;
+    display: inline-block; 
+    text-align: left;
+    font-size: 1.5em;
+  }
+
+  h2{
+    font-size: 5em;
+    font-family: "Times New Roman", Times, serif;
+  }
+
+  h4{
+    font-size: 3em;
+    font-family: "Times New Roman", Times, serif;
+  }
+
+  p{
+    font-size: 2em;
+    font-family: "Times New Roman", Times, serif;
+  }
+  button{
+    margin:5px;
+  }

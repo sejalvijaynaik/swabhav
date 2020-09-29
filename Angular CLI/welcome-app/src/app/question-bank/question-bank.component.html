@@ -1,18 +1,26 @@
-<h1 class="display-1">Maths Quiz</h1>
-<button (click) = "startQuiz()" [innerText] = "startButtonText"></button>
-<div [style.display] = "questionDivShow">
-    <h2 [innerText] = "questionText" class="display-3"></h2>
-    <div *ngFor="let option of options; let i = index">
-        <input type="radio" name="optionsRadio" id="option" [value]="i" [(ngModel)]="chosenOption">
-        <label for="option">
-            <span [innerText] = "option"></span>
-        </label>
+<div [class] = "'background-cover'">
+    <h1 class="display-1">Maths Quiz</h1>
+    <button (click) = "startQuiz()" [style.display] = "startButtonShow" class="btn btn-primary">START</button>
+    <button (click) = "exitQuiz()" [style.display] = "exitButtonShow" class="btn btn-primary">EXIT</button>
+
+    <div [style.display] = "questionDivShow">
+        <h2 [innerText] = "questionText"></h2>
+        <br>
+        <span *ngFor="let option of options; let i = index" [class] = "'radioAndLabel'">
+            <input type="radio" name="optionsRadio" id="option" [value]="i" [(ngModel)]="chosenOption" [class] = "'radioStyle'">
+            <label for="option">
+                <span [innerText] = "option" [style.font-size] = "'2em'"></span>
+            </label>
+        </span>
+        <br>
+        <button (click) = "previousQuestion()" [style.display] = "previousButtonShow" class="btn btn-primary">PREVIOUS</button>
+        <button (click) = "nextQuestion()" [innerText] = "nextButtonText" class="btn btn-primary"></button>
+        <h2>Unanswered : {{unanswered}}/10</h2>
     </div>
-    <button (click) = "previousQuestion()" [style.display] = "previousButtonShow">PREVIOUS</button>
-    <button (click) = "nextQuestion()" [innerText] = "nextButtonText"></button>
+    
+    <div [style.display] = "resultDiv">
+        <h1>Your Score is : {{finalScore}}/10</h1>
+        <h1>Unanswered : {{unanswered}}/10</h1>
 </div>
-<div [style.display] = "resultDiv">
-    <h1>Your Score is : {{finalScore}}</h1>
-    <h1>Unanswered : {{unanswered}}</h1>
 </div>
 

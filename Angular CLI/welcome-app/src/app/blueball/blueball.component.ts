@@ -13,12 +13,17 @@ export class BlueballComponent{
   chances:number = 3;
   showText:string = "none";
   infoText:string = "";
-  startButtonText:string = "START";
   rulesShow:string = "block";
-  rulesButtonText:string = "HIDE RULES";
+  rulesButtonText:string = "SHOW RULES";
+  rulesButtonShow:string = "none";
+  startButtonShow:string = "inline-block";
+  exitButtonShow:string = "none";
 
   startGame():void{
-    this.startButtonText = "RESTART";
+    this.exitButtonShow = "inline-block";
+    this.startButtonShow = "none";
+    this.rulesButtonShow = "inline-block";
+    this.rulesShow = "none";
     this.chances = 3;
     this.showText = "block";
     this.infoText = this.chances + " chances left";
@@ -71,6 +76,10 @@ export class BlueballComponent{
       this.rulesShow = "block";
       this.rulesButtonText = "HIDE RULES";
     }
+  }
+
+  exitGame():void{
+    window.open("index.html", "_self");
   }
 
   /*endGame(message:string):void{

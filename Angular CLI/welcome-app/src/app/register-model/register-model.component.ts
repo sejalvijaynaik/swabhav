@@ -15,6 +15,7 @@ export class RegisterModelComponent implements OnInit {
   email: FormControl;
   password: FormControl;
   language: FormControl;
+  firstNameError:string = "";
 
   createFormControls() {
     this.firstName = new FormControl("", Validators.required);
@@ -47,9 +48,21 @@ export class RegisterModelComponent implements OnInit {
     this.createForm();
   }
 
-  register():void{
-    if (this.registerForm.valid) {
-      alert("Form Submitted!");
+  validate():void{
+    if(this.firstName.invalid){
+      this.firstName.markAsDirty();
+    }
+    if(this.lastName.invalid){
+      this.lastName.markAsDirty();
+    }
+    if(this.email.errors.required){
+      this.email.markAsDirty();
+    }
+    if(this.password.errors.required){
+      this.password.markAsDirty();
+    }
+    if(this.language.errors.required){
+      this.language.markAsDirty();
     }
   }
 }
