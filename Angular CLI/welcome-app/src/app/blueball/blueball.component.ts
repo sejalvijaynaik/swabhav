@@ -19,6 +19,10 @@ export class BlueballComponent{
   startButtonShow:string = "inline-block";
   exitButtonShow:string = "none";
 
+  constructor(){
+    window.document.body.style.backgroundColor = 'pink';
+  }
+
   startGame():void{
     this.exitButtonShow = "inline-block";
     this.startButtonShow = "none";

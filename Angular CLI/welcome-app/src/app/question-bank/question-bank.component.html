@@ -16,6 +16,21 @@
         <button (click) = "previousQuestion()" [style.display] = "previousButtonShow" class="btn btn-primary">PREVIOUS</button>
         <button (click) = "nextQuestion()" [innerText] = "nextButtonText" class="btn btn-primary"></button>
         <h2>Unanswered : {{unanswered}}/10</h2>
+
+        <table class="table">
+            <tr>
+                <th *ngFor = "let question of questions">{{question.id}}</th>
+            </tr>
+            <tr>
+                <td *ngFor = "let question of questions">
+                    <span [class] = "'answered'" *ngIf = "question.answered;else no">Answered</span>
+                    <ng-template #no>
+                        <span [class] = "'notanswered'">Not answered</span>
+                    </ng-template>
+                </td>
+            </tr>
+
+        </table>
     </div>
     
     <div [style.display] = "resultDiv">

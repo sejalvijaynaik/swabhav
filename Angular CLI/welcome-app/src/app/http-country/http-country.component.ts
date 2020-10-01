@@ -10,7 +10,10 @@ import { CountryService } from '../services/country-service.service';
 export class HttpCountryComponent{
 
   countries:ICountry[] = [];
-  constructor(private countryService:CountryService) { }
+  constructor(private countryService:CountryService) {
+    window.document.body.style.backgroundColor = 'plum';
+    this.getCountry();
+   }
 
   getCountry():void{
     this.countries = this.countryService.getCountry()

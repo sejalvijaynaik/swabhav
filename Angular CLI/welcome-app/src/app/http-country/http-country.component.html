@@ -1,14 +1,18 @@
-<button (click) = "getCountry()">CLICK</button>
-<table class="table">
-    <tr>
-        <th>Name</th>
-        <th>Capital</th>
-        <th>Flag</th>
-    </tr>
-    <tr *ngFor = "let country of countries">
-        <td>{{country.name}}</td>
-        <td>{{country.capital}}</td>
-        <td><img src="{{country.flag}}" style="height: 5vh;width: 5vh;"></td>
-        
-    </tr>
-</table>
+<div>
+    <h1>COUNTRIES INFO</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Capital</th>
+                <th>Flag</th>
+            </tr>
+        </thead>
+        <tr *ngFor = "let country of countries">
+            <td>{{country.name}}</td>
+            <td>{{country.capital}}</td>
+            <td><img src="{{country.flag}}" style="height: 5vh;width: 5vh;"></td>
+            
+        </tr>
+    </table>
+</div>

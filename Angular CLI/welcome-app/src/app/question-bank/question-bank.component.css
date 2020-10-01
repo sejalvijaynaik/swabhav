@@ -34,3 +34,15 @@ button{
 label{
     margin:20px;
 }
+tr,th,td{
+    text-align: center;
+}
+.answered{
+    background-color: green;
+    color: honeydew;
+}
+
+.notanswered{
+    background-color: red;
+    color: honeydew;
+}

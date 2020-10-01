@@ -86,10 +86,27 @@ export class QuestionBankComponent {
   }
 
   previousQuestion():void{
+    if(this.chosenOption != -1){
+      this.questions[this.currentQuestionNumber].answered = true;
+    }
+    this.chosenOptions[this.currentQuestionNumber] = this.chosenOption;
+
+    if(this.chosenOptions[this.currentQuestionNumber] == -1){
+      this.chosenOption = -1;
+    }
+    else{
+      this.chosenOption = this.chosenOptions[this.currentQuestionNumber];
+    }
+    
+    this.nextButtonText = "NEXT";
     --this.currentQuestionNumber;
+    if(this.currentQuestionNumber == 0){
+      this.previousButtonShow = "none";
+    }
     this.chosenOption = this.chosenOptions[this.currentQuestionNumber];
     this.questionText = this.questions[this.currentQuestionNumber].id + ")  " + this.questions[this.currentQuestionNumber].questionText;
     this.options = this.questions[this.currentQuestionNumber].options;
+    this.setUnanswered();
   }
 
   endQuiz():void{
