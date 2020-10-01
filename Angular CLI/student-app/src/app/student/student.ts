@@ -1,7 +1,7 @@
 export class Student {
 
-    constructor(public rollNo:number,
+    constructor(public id:string,
         public name:string,
-        public address:string
+        public cgpa:number
         ){}
 }

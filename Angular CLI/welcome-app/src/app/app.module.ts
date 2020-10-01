@@ -26,18 +26,22 @@ import { RegisterModelComponent } from './register-model/register-model.componen
 import { QuestionService } from "./services/question-service.service";
 import { QuestionBankComponent } from './question-bank/question-bank.component';
 import { StudentService } from './services/student-service.service';
-
+import { HttpNumberComponent } from './http-number/http-number.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NumberService } from "./services/number-service.service";
+import { CountryService } from "./services/country-service.service";
+import { HttpCountryComponent } from './http-country/http-country.component';
 
 @NgModule({
   declarations: [
     AppComponent, WelcomeComponent, TwoWayBindingComponent, LoadStudentsComponent, pricecalculatorComponent, DiscountCalculatorComponent, GradePipe, SnakeCasePipe,
     SnakeCaseComponent, 
-    ProductTempVarComponent, ProductNgModelComponent, BlueballComponent, ChildComponent, ParentComponent, MasterComponent, ToggleComponent, RatingComponent, LoginTemplateComponent, LoginModelComponent, RegisterModelComponent, QuestionBankComponent
+    ProductTempVarComponent, ProductNgModelComponent, BlueballComponent, ChildComponent, ParentComponent, MasterComponent, ToggleComponent, RatingComponent, LoginTemplateComponent, LoginModelComponent, RegisterModelComponent, QuestionBankComponent, HttpNumberComponent, HttpCountryComponent
   ],
   imports: [
-    BrowserModule, FormsModule, ReactiveFormsModule
+    BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule
   ],
-  providers: [QuestionService, StudentService],
+  providers: [QuestionService, StudentService, NumberService, CountryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

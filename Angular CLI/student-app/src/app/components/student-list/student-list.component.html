@@ -1,1 +1,15 @@
-<p>student-list works!</p>
+<button (click) = "getStudents()">CLICK</button>
+
+<table class="table" border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Cgpa</th>
+    </tr>
+    <tr *ngFor = "let student of students">
+        <td>{{student.id}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.cgpa}}</td>
+        
+    </tr>
+</table>

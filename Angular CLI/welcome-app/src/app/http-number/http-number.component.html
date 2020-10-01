@@ -1,0 +1,18 @@
+<div>
+    <button (click) = "removeAll()" class="btn btn-primary">RESET</button><br>
+    <input type="number" [(ngModel)] = "numberInput">
+    <button (click) = "getNumber()" class="btn btn-primary">SUBMIT</button><br>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Number</th>
+                <th>Info</th>
+            </tr>
+        </thead>
+        <tr *ngFor = "let number of numbers">
+            <td>{{number.numberInput}}</td>
+            <td>{{number.numberInfo}}</td>
+        </tr>
+    </table>
+</div>

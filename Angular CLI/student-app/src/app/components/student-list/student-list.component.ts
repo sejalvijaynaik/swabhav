@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { formatCurrency } from '@angular/common';
+import { Component } from '@angular/core';
+import { StudentService } from 'src/app/services/student.service';
+import { Student } from 'src/app/student/student';
 
 @Component({
   selector: 'student-list',
   templateUrl: './student-list.component.html',
   styleUrls: ['./student-list.component.css']
 })
-export class StudentListComponent implements OnInit {
+export class StudentListComponent {
 
-  constructor() { }
+  students:Student[] = [];
+  constructor(private studentService:StudentService) { }
 
-  ngOnInit(): void {
+  getStudents():void{
+    this.studentService.getStudents().subscribe((data)=>{this.students = data});
   }
 
 }
