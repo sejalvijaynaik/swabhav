@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
 import { Student } from 'src/app/student/student';
 
@@ -9,13 +10,14 @@ import { Student } from 'src/app/student/student';
 })
 export class StudentAddComponent  {
 
-  constructor(private studentService:StudentService) { }
+  name:string = "";
+  age:number;
+  constructor(private studentService:StudentService, private router:Router) { }
 
   addStudent():void{
     
-    let student:Student = new Student(null, "ross", 8.9);
-    this.studentService.addStudent(student).subscribe((data)=>{console.log(data)});
+    let student = new Student(null, this.name, this.age);
+    this.studentService.addStudent(student).subscribe((data)=>{this.router.navigate(["/students-list"])});
   }
-
 }
 

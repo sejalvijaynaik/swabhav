@@ -1,5 +1,5 @@
-import { formatCurrency } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
 import { Student } from 'src/app/student/student';
 
@@ -8,13 +8,27 @@ import { Student } from 'src/app/student/student';
   templateUrl: './student-list.component.html',
   styleUrls: ['./student-list.component.css']
 })
-export class StudentListComponent {
+export class StudentListComponent implements OnInit {
 
   students:Student[] = [];
-  constructor(private studentService:StudentService) { }
+  
+  constructor(private studentService:StudentService, private router:Router) { 
+    window.document.body.style.backgroundColor = 'plum';
+  }
+  
+  ngOnInit(): void {
+    this.getStudents();
+  }
 
   getStudents():void{
     this.studentService.getStudents().subscribe((data)=>{this.students = data});
   }
 
+  updateStudent(id:string):void{
+    this.router.navigate(['/update-student', id]);
+  }
+
+  deleteStudent(id:string):void{
+    this.router.navigate(['/delete-student', id]);
+  }
 }

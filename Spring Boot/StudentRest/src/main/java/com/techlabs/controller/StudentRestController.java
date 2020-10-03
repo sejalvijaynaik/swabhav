@@ -48,8 +48,7 @@ public class StudentRestController {
 	}
 
 	@DeleteMapping("/students/{rollNo}")
-	public String deleteStudent(@PathVariable String rollNo) {
+	public void deleteStudent(@PathVariable String rollNo) {
 		studentRepository.deleteStudent(rollNo);
-		return "deleted student of roll no " + rollNo; 
 	}
 }

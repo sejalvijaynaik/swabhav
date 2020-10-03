@@ -1,15 +1,21 @@
-<button (click) = "getStudents()">CLICK</button>
-
-<table class="table" border="1">
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Cgpa</th>
-    </tr>
-    <tr *ngFor = "let student of students">
-        <td>{{student.id}}</td>
-        <td>{{student.name}}</td>
-        <td>{{student.cgpa}}</td>
-        
-    </tr>
-</table>
+<div>
+    <h1>Students</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Cgpa</th>
+                <th>UPDATE</th>
+                <th>DELETE</th>
+            </tr>
+        </thead>
+        <tr *ngFor = "let student of students">
+            <td>{{student.id}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.cgpa}}</td>
+            <td><button (click) = "updateStudent(student.id)">UPDATE</button></td>
+            <td><button (click) = "deleteStudent(student.id)">DELETE</button></td>
+        </tr>
+    </table>
+</div>

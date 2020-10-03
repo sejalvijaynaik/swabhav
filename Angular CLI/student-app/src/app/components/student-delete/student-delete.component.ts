@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
 
 @Component({
@@ -6,13 +7,18 @@ import { StudentService } from 'src/app/services/student.service';
   templateUrl: './student-delete.component.html',
   styleUrls: ['./student-delete.component.css']
 })
-export class StudentDeleteComponent{
+export class StudentDeleteComponent implements OnInit {
 
-  constructor(private studentService:StudentService) { }
+  id:string = "";
+  constructor(private studentService:StudentService, private router:Router, 
+  private activatedRoute:ActivatedRoute) {}
+  
+  ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe(()=>{this.id = this.activatedRoute.snapshot.paramMap.get("id");this.deleteStudent();})
+  }
 
   deleteStudent():void{
-    let id:string = "7ed038a9-763c-45bc-bcee-7a156de01229";
-    this.studentService.deleteStudent(id).subscribe();
+    this.studentService.deleteStudent(this.id).subscribe((data)=>{this.router.navigate(["/students-list"])});
   }
 
 }

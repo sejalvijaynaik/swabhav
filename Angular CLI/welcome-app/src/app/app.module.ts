@@ -31,17 +31,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { NumberService } from "./services/number-service.service";
 import { CountryService } from "./services/country-service.service";
 import { HttpCountryComponent } from './http-country/http-country.component';
+import { HttpStudentComponent } from './http-student/http-student.component';
+import { StudentApiService } from "./services/student-api-service.service";
 
 @NgModule({
   declarations: [
     AppComponent, WelcomeComponent, TwoWayBindingComponent, LoadStudentsComponent, pricecalculatorComponent, DiscountCalculatorComponent, GradePipe, SnakeCasePipe,
     SnakeCaseComponent, 
-    ProductTempVarComponent, ProductNgModelComponent, BlueballComponent, ChildComponent, ParentComponent, MasterComponent, ToggleComponent, RatingComponent, LoginTemplateComponent, LoginModelComponent, RegisterModelComponent, QuestionBankComponent, HttpNumberComponent, HttpCountryComponent
+    ProductTempVarComponent, ProductNgModelComponent, BlueballComponent, ChildComponent, ParentComponent, MasterComponent, ToggleComponent, RatingComponent, LoginTemplateComponent, LoginModelComponent, RegisterModelComponent, QuestionBankComponent, HttpNumberComponent, HttpCountryComponent, HttpStudentComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule
   ],
-  providers: [QuestionService, StudentService, NumberService, CountryService],
+  providers: [QuestionService, StudentService, NumberService, CountryService, StudentApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

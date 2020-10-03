@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
 import { Student } from 'src/app/student/student';
 
@@ -7,14 +8,30 @@ import { Student } from 'src/app/student/student';
   templateUrl: './student-update.component.html',
   styleUrls: ['./student-update.component.css']
 })
-export class StudentUpdateComponent {
+export class StudentUpdateComponent implements OnInit {
 
-  constructor(private studentService:StudentService) { }
+  id:string;
+  name:string = "";
+  cgpa:number;
+  
+  constructor(private studentService:StudentService, 
+    private activatedRoute:ActivatedRoute,
+    private router:Router) { }
+  
+  ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe(()=>{this.id = this.activatedRoute.snapshot.paramMap.get("id");this.prepopulate();})
+    
+  }
+
+  prepopulate():void{
+    this.studentService.getStudent(this.id).subscribe((data)=>{this.name = data.name; this.cgpa = data.cgpa});
+  }
 
   updateStudent():void{
     
-    let student:Student = new Student("6b138ff5-5f23-4f76-bc54-37d5921382ed", "rachel", 8.9);
-    this.studentService.updateStudent(student).subscribe((data)=>{console.log(data)});
+    let student:Student = new Student(this.id, this.name, this.cgpa);
+    this.studentService.updateStudent(student).subscribe((data)=>{this.router.navigate(["/students-list"])});
+
   }
 
 
