@@ -4,6 +4,6 @@ export class IStudentAPI {
     email:string;
     id:string;
     name:string;
-    rollNo:string;
+    rollNo:number;
     isMale:boolean;
 }

@@ -29,6 +29,8 @@ export class StudentListComponent implements OnInit {
   }
 
   deleteStudent(id:string):void{
-    this.router.navigate(['/delete-student', id]);
+    if(confirm("Are you sure to delete?")) {
+      this.router.navigate(['/delete-student', id]);
+    }
   }
 }

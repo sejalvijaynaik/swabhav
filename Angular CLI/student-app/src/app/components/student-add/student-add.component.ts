@@ -11,12 +11,12 @@ import { Student } from 'src/app/student/student';
 export class StudentAddComponent  {
 
   name:string = "";
-  age:number;
+  cgpa:number;
   constructor(private studentService:StudentService, private router:Router) { }
 
   addStudent():void{
     
-    let student = new Student(null, this.name, this.age);
+    let student = new Student(null, this.name, this.cgpa);
     this.studentService.addStudent(student).subscribe((data)=>{this.router.navigate(["/students-list"])});
   }
 }

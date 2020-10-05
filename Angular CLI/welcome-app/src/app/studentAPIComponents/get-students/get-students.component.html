@@ -8,7 +8,7 @@
                 <th>NAME</th>
                 <th>AGE</th>
                 <th>EMAIL</th>
-                <th>ISMALE</th>
+                <th>GENDER</th>
                 <th>DATE</th>
             </tr>
         </thead>
@@ -18,7 +18,12 @@
             <td>{{student.name}}</td>
             <td>{{student.age}}</td>
             <td>{{student.email}}</td>
-            <td>{{student.isMale}}</td>
+            <td>
+                <span *ngIf = "student.isMale;else no">Male</span>
+                <ng-template #no>
+                    <span [class] = "'notanswered'">Female</span>
+                </ng-template>
+            </td>
             <td>{{student.date}}</td>            
         </tr>
     </table>

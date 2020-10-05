@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentApiService } from '../services/student-api-service.service';
-import { IStudentAPI } from "../studentAPI/student-api";
+import { StudentApiService } from '../../services/student-api-service.service';
+import { IStudentAPI } from "../../studentAPI/student-api";
 
 @Component({
-  selector: 'http-student',
-  templateUrl: './http-student.component.html',
-  styleUrls: ['./http-student.component.css']
+  selector: 'get-students',
+  templateUrl: './get-students.component.html',
+  styleUrls: ['./get-students.component.css']
 })
-export class HttpStudentComponent implements OnInit {
+export class GetStudentsComponent implements OnInit {
 
   students:IStudentAPI[] = [];
   constructor(private studentApiService:StudentApiService) {
