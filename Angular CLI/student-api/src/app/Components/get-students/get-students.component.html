@@ -1,0 +1,31 @@
+<div>
+    <h1>STUDENTS</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ROLLNO</th>
+                <th>NAME</th>
+                <th>AGE</th>
+                <th>EMAIL</th>
+                <th>GENDER</th>
+                <th>DATE</th>
+            </tr>
+        </thead>
+        <tr *ngFor = "let student of students">
+            <td>{{student.id}}</td>
+            <td>{{student.rollNo}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.age}}</td>
+            <td>{{student.email}}</td>
+            <td>
+                <span *ngIf = "student.isMale;else no">Male</span>
+                <ng-template #no>
+                    <span [class] = "'notanswered'">Female</span>
+                </ng-template>
+            </td>
+            <td>{{student.date}}</td>            
+        </tr>
+    </table>
+</div>
+

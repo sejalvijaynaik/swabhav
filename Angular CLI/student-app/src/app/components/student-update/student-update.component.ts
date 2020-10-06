@@ -33,8 +33,4 @@ export class StudentUpdateComponent implements OnInit {
     this.studentService.updateStudent(student).subscribe((data)=>{this.router.navigate(["/students-list"])});
 
   }
-
-
-  
-
 }

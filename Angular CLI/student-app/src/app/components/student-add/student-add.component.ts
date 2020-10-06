@@ -20,4 +20,3 @@ export class StudentAddComponent  {
     this.studentService.addStudent(student).subscribe((data)=>{this.router.navigate(["/students-list"])});
   }
 }
-

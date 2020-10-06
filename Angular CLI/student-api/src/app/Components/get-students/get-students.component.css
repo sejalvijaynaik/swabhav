@@ -1,0 +1,16 @@
+th, tr{
+    text-align: center;
+}
+
+th, td{
+    color: purple;
+}
+button{
+    background-color: purple;    
+}
+h1{
+    color: purple;
+}
+div{
+    text-align: center;
+}
