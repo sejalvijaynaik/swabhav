@@ -9,7 +9,7 @@ import { Student } from 'src/app/student/student';
 })
 export class StudentGetComponent {
 
-  student:Student = new Student(null, null, null);
+  student:Student = new Student(null, null, null, null);
   constructor(private studentService:StudentService) { }
 
   getStudent():void{

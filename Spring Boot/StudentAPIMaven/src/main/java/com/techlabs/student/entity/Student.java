@@ -1,4 +1,4 @@
-package com.techlabs.entity;
+package com.techlabs.student.entity;
 
 import java.util.UUID;
 

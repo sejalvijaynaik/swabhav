@@ -1,7 +1,6 @@
-package com.techlabs.controller;
+package com.techlabs.student.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.techlabs.entity.Student;
-import com.techlabs.repository.StudentRepository;
+import com.techlabs.student.entity.Student;
+import com.techlabs.student.repository.StudentRepository;
 
 @CrossOrigin
 @RestController

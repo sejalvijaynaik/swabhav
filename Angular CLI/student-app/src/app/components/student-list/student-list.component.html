@@ -5,7 +5,8 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Cgpa</th>
+                <th>ADDRESS</th>
+                <th>AGE</th>
                 <th>UPDATE</th>
                 <th>DELETE</th>
             </tr>
@@ -13,7 +14,8 @@
         <tr *ngFor = "let student of students">
             <td>{{student.id}}</td>
             <td>{{student.name}}</td>
-            <td>{{student.cgpa}}</td>
+            <td>{{student.address}}</td>
+            <td>{{student.age}}</td>
             <td><button (click) = "updateStudent(student.id)">UPDATE</button></td>
             <td><button (click) = "deleteStudent(student.id)">DELETE</button></td>
         </tr>

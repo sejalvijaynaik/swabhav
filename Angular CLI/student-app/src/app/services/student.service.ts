@@ -10,7 +10,7 @@ export class StudentService {
 
   students:Student[] = [];
   constructor(private httpClient:HttpClient){}
-  baseUrl:string = "http://localhost:8080/api/students/";
+  baseUrl:string = "http://localhost:8080/api/v2/students/";
 
   getStudents():Observable<Student[]>{
     return this.httpClient.get<Student[]>(this.baseUrl);

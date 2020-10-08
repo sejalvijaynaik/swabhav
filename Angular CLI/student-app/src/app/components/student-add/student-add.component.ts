@@ -10,13 +10,16 @@ import { Student } from 'src/app/student/student';
 })
 export class StudentAddComponent  {
 
-  name:string = "";
-  cgpa:number;
-  constructor(private studentService:StudentService, private router:Router) { }
+  name:string;
+  address:string;
+  age:number;
+  constructor(private studentService:StudentService, private router:Router) {
+    window.document.body.style.backgroundColor = 'plum';
+   }
 
   addStudent():void{
     
-    let student = new Student(null, this.name, this.cgpa);
+    let student = new Student(null, this.name, this.address, this.age);
     this.studentService.addStudent(student).subscribe((data)=>{this.router.navigate(["/students-list"])});
   }
 }
