@@ -33,9 +33,32 @@
         </table>
     </div>
     
-    <div [style.display] = "resultDiv">
-        <h1>Your Score is : {{finalScore}}/10</h1>
-        <h1>Unanswered : {{unanswered}}/10</h1>
-</div>
+    <div [style.display] = "resultDiv" > 
+        
+        <div>
+            <h3>Your score : {{finalScore/10*100}}%</h3>
+            <div>
+                <h3 *ngIf="finalScore>5; else elseBlock">You passed..Congratulations!!!</h3>
+                <ng-template #elseBlock><h3>You failed...take the quiz again</h3></ng-template>
+            </div>
+            <h3><span [style.margin-left] = "'40px'">Right : {{finalScore}}/10</span>
+            <span [style.margin-left] = "'40px'">Wrong : {{10-finalScore-unanswered}}/10</span>
+            <span [style.margin-left] = "'40px'">Unanswered : {{unanswered}}/10</span>
+            </h3>
+        </div>
+
+        <div [class] = "'piechart'">
+            <canvas 
+                baseChart
+                [chartType]="'pie'"
+                [datasets]="pieChartData"
+                [labels]="pieChartLabels"
+                [options]="pieChartOptions"
+                [legend]="true"
+                [colors]="pieChartColor">
+            </canvas>
+          </div>
+    
+    </div>
 </div>
 

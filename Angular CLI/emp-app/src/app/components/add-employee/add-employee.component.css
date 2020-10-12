@@ -1,0 +1,23 @@
+label{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1em;
+}
+
+input[type=text], input[type=number]{
+    width: 50%;
+}
+
+input[type="radio"]{
+    margin: 0 0 0 10px;
+  }
+
+button{
+    left: 15%; 
+    position: relative;
+    background-color: purple;
+}
+
+h1{
+    text-align: center;
+    color: purple;
+}

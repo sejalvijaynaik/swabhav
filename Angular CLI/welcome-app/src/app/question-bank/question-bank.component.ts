@@ -24,9 +24,32 @@ export class QuestionBankComponent {
   startButtonShow:string = "inline-block";
   exitButtonShow:string = "none";
 
+  pieChartOptions = {
+    responsive: true,
+    maintainAspectRatio: false
+
+  }
+
+  pieChartLabels =  ["Right", 'Wrong', 'Unanswered'];
+
   constructor(private questionService:QuestionService) {
     window.document.body.style.backgroundColor = 'plum';
   }
+
+  pieChartColor:any = [
+    {
+        backgroundColor: ['green',
+        'red',
+        'white'
+        ]
+    }
+  ]
+
+  pieChartData:any = [
+    { 
+        data: [0, 0, 0]
+    }
+  ];
 
   startQuiz():void{ 
     for(let i = 0; i < 10; i++){
@@ -123,6 +146,9 @@ export class QuestionBankComponent {
     }
     this.questionDivShow = "none";
     this.resultDiv = "block";
+
+    this.pieChartData[0].data = [this.finalScore, (10 - this.finalScore - this.unanswered), this.unanswered];
+  
   }
   exitQuiz():void{
     window.open("index.html", "_self");

@@ -1,0 +1,27 @@
+<div>
+    <h1>EMPLOYEE LIST</h1>
+    <search-employee (searchEmployeeEmitter) = "getSearchEmployees($event)"></search-employee>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>AGE</th>
+                <th>DESIGNATION</th>
+                <th>EMAIL</th>
+                <th>GENDER</th>
+                <th>SALARY</th>
+            </tr>
+        </thead>
+        <tr *ngFor = "let employee of employees">
+            <td>{{employee.id}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.age}}</td>
+            <td>{{employee.designation}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.gender}}</td>  
+            <td>{{employee.salary}}</td>           
+        </tr>
+    </table>
+</div>
+

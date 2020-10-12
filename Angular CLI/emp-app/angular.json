@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "welcome-app": {
+    "emp-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/welcome-app",
+            "outputPath": "dist/emp-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "welcome-app:build"
+            "browserTarget": "emp-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "welcome-app:build:production"
+              "browserTarget": "emp-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "welcome-app:build"
+            "browserTarget": "emp-app:build"
           }
         },
         "test": {
@@ -91,7 +91,7 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": ["../node_modules/chart.js/dist/Chart.min.js"]
+            "scripts": []
           }
         },
         "lint": {
@@ -111,15 +111,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "welcome-app:serve"
+            "devServerTarget": "emp-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "welcome-app:serve:production"
+              "devServerTarget": "emp-app:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "welcome-app"
+  "defaultProject": "emp-app"
 }
