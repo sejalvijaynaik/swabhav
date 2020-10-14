@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EmployeeService } from 'src/app/services/employee-service.service';
-import * as $ from 'jquery';
 
 @Component({
   selector: 'app-add-employee',
@@ -22,34 +21,33 @@ export class AddEmployeeComponent implements OnInit {
   email:FormControl;
   gender:FormControl;
   salary:FormControl;
+  salaryNgModel:number;
+  ageNgModel:number;
 
   constructor(private employeeService:EmployeeService, private router:Router) { }
 
   ngOnInit(): void {
     this.createFormControls();
     this.createForm();
-    $("#designationId").change(function(){
-      if($("#designationId").val() == "Developer"){
-        $("#salaryId").val(10000);
-      }
-      else if($("#designationId").val() == "Manager"){
-        $("#salaryId").val(500000);
-      }
-      else if($("#designationId").val() == "President"){
-        $("#salaryId").val(1000000);
-      }
-    });
+  }
 
-    $("#dobId").on("input", function(){
-        let dobDate:Date = new Date($("#dobId").val(this.dob.value));
-        let diff = (new Date().getTime() - dobDate.getTime());
-        let ageTotal = Math.trunc(diff/ (1000 * 3600 * 24 *365));
-        
-        $("#ageId").val(ageTotal);
-        alert($("#ageId").val())
-      
-    });
+  designationChange():void{
+    if(this.designation.value == "President"){
+      this.salaryNgModel = 100000;
+    }
+    else if(this.designation.value == "Manager"){
+      this.salaryNgModel = 50000;
+    }
+    else if(this.designation.value == "Developer"){
+      this.salaryNgModel = 10000;
+    }
+  }
 
+  dobChange():void{
+    let dobDate:Date = new Date(this.dob.value);
+    let diff = (new Date().getTime() - dobDate.getTime());
+    let ageTotal = Math.trunc(diff/ (1000 * 3600 * 24 *365));
+    this.ageNgModel = ageTotal;
   }
 
   createFormControls():void{
