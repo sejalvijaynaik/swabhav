@@ -1,0 +1,11 @@
+{
+    "http://localhost:4200/api": {
+      "target": "http://localhost:8080/api/v2/students/",
+      "secure": false,
+      "changeOrigin": false,
+      "pathRewrite": {
+        "^/api": ""
+      }
+    }
+  }
+  

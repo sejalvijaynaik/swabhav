@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { AddStudentComponent } from './Components/add-student/add-student.component';
 import { GetStudentsComponent } from "./Components/get-students/get-students.component";
 import { RoutesClass } from "./classes/route-class";
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './Components/home/home.component';
 
 @NgModule({
   declarations: [

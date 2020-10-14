@@ -1,6 +1,8 @@
 export class IEmployee {
-    id:number;
-    name:string;
+    id:string;
+    firstName:string;
+    lastName:string;
+    dob:string;
     age:number;
     designation:string;
     email:string;

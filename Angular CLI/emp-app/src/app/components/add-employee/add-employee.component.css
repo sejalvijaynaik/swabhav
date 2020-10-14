@@ -1,15 +1,8 @@
 label{
     font-family: 'Times New Roman', Times, serif;
     font-size: 1em;
+    color: purple;
 }
-
-input[type=text], input[type=number]{
-    width: 50%;
-}
-
-input[type="radio"]{
-    margin: 0 0 0 10px;
-  }
 
 button{
     left: 15%; 
@@ -21,3 +14,48 @@ h1{
     text-align: center;
     color: purple;
 }
+.required{
+    color: white;
+    background-color: red;
+    position: relative;
+    top: 6px;
+}
+
+.input-group-addon {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.prefix input {
+    border-radius: 0px 4px 4px 0px;
+}
+.prefix .input-group-addon {
+    border-right: 0;
+    border-radius: 4px 0px 0px 4px;
+}
+.presuffix input {
+    border-radius: 0px;
+}
+.input-group-addon.prefix {
+    border-radius: 4px 0px 0px 4px;
+    border-right: 0;
+}
+
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+input[type="radio"]{
+    margin: 0 0 0 10px;
+  }

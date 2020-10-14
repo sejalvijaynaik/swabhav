@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.techlabs.student.entity.Student;
 import com.techlabs.student.repository.StudentRepository;
 
-@CrossOrigin
+//@CrossOrigin
 @RestController
 @RequestMapping("api/v2")
 public class StudentRestController {

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from "@angular/forms";
 
 import { AppComponent } from './app.component';
 import { EmployeeService } from "./services/employee-service.service";
@@ -20,7 +21,7 @@ import { SearchEmployeeComponent } from './components/search-employee/search-emp
     SearchEmployeeComponent
   ],
   imports: [
-    BrowserModule, RouterModule.forRoot(RoutesClass.routes), FormsModule
+    BrowserModule, RouterModule.forRoot(RoutesClass.routes), FormsModule, ReactiveFormsModule
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]

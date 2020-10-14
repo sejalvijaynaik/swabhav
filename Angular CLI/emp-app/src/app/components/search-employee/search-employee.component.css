@@ -3,6 +3,8 @@ label{
 }
 input{
     margin-left: 15px;
+    background-color: rgb(230, 197, 230);
+
 }
 button{
     background-color: purple;

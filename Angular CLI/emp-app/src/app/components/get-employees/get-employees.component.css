@@ -2,7 +2,13 @@ th, tr{
     text-align: center;
 }
 
-th, td{
+
+th{
+    background-color: purple;
+    color: white;
+}
+
+td{
     color: purple;
 }
 button{

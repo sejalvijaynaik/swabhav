@@ -15,7 +15,6 @@ export class RegisterModelComponent implements OnInit {
   email: FormControl;
   password: FormControl;
   language: FormControl;
-  firstNameError:string = "";
 
   createFormControls() {
     this.firstName = new FormControl("", Validators.required);
