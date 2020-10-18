@@ -1,0 +1,24 @@
+.box{
+    border: 2px solid rgb(100, 100, 216);
+    border-radius: 5px;
+    margin: 20px;
+}
+
+.welcomeDiv{
+    background-color: rgb(100, 100, 216);
+}
+.welcomeSpan{
+    font-size: 2em;
+    color: white;
+    margin-left: 2%;
+}
+td{
+    margin-right: 100px;
+    padding-right: 50px;
+    padding-left: 40px;
+}
+.footerDiv{
+    background-color: rgb(201, 192, 192);
+}
+
+
