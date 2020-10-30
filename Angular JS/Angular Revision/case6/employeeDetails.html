@@ -1,0 +1,78 @@
+<html>
+
+<head>
+    <title>
+        Employee Details
+    </title>
+    <link rel="stylesheet" type="text/css" href="student.css">
+    
+    <script src="../../Angular JS files/angular.js"></script>
+</head>
+<body>
+    
+    <div ng-app="employeeDetailsApp">
+        <section ng-controller='employeeDetailsController'>
+           <button ng-click = "load()">Load</button>
+           <button ng-click = "loadMany()">Load Many</button>
+           <table class = "tableDecorate">
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>Salary</th>
+                    <th>Image</th>
+                </tr>
+                <tr>
+                    <td>{{employee.id}}</td>
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.salary}}</td>
+                    <td ><img ng-src="{{employee.img}}"></img></td>
+                </tr>
+             </table>
+            <table class = "tableDecorate">
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>Image</th>
+                </tr>
+                <tr ng-repeat = "employee in employeeList">
+                    <td>{{employee.id}}</td>
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.salary}}</td>
+                    <td ><img ng-src="{{employee.img}}"></img></td>
+                </tr>
+            </table>
+        </section>
+    </div>
+
+<script>
+    var app = angular.module("employeeDetailsApp", []);
+    app.controller("employeeDetailsController", function($scope){
+        $scope.load = function(){
+            $scope.employee = { id: "101", name: "abc", salary : 20000, img : "student1.jpg"};
+        };
+        $scope.loadMany = function(){
+            $scope.employeeList = [{ id: "101", name: "ss", salary : 20000, img : "student1.jpg"},
+                    { id: "102", name: "sv", salary : 20000, img : "student2.jpg"},
+                    { id: "103", name: "st", salary : 20000, img : "student3.jpg"}];
+        };
+    });
+
+    app.filter("cgpa", function(){
+        return function(value){
+            if(value > 9){
+                return "A";
+            }
+            else if((value < 9) && (value > 7)){
+                return "B";
+            }
+            else if((value < 7) && (value > 6)){
+                return "C";
+            }
+            else{
+                return "D";
+            }
+        };
+    });
+</script>
+</body>
+</html>

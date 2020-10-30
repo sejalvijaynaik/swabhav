@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title>
+        Custom Filter
+    </title>
+    <script src="../../Angular JS files/angular.js"></script>
+</head>
+<body>
+    
+    <div ng-app="employeeDetailsApp">
+        <section ng-controller='employeeDetailsController'>
+           <h1>{{6|cgpa}}</h1>
+        </section>
+    </div>
+
+<script>
+    var app = angular.module("employeeDetailsApp", []);
+    app.controller("employeeDetailsController", function(){
+       
+    });
+
+    app.filter("cgpa", function(){
+        return function(value){
+            if(value >= 9){
+                return "A";
+            }
+            else if((value < 9) && (value >= 7)){
+                return "B";
+            }
+            else if((value < 7) && (value >= 6)){
+                return "C";
+            }
+            else{
+                return "D";
+            }
+        };
+    });
+</script>
+</body>
+</html>

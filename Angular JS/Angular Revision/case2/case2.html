@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <title>
+        Case 2
+    </title>
+    <script src="../../Angular JS files//angular.js"></script>
+</head>
+<body>
+    <div ng-app="modA">
+        <section ng-controller='controllerA'>
+            <h1>{{10 + 20}}</h1>
+        </section>
+    </div>
+
+    <div ng-app="modB">
+        <section ng-controller='controllerB'>
+            <h1>{{1 + 2}}</h1>
+        </section>
+    </div>
+
+<script>
+    angular.module('modA', ['modB'])
+            .controller('controllerA',function () {
+            });
+
+    angular.module('modB', [])
+            .controller('controllerB',function ($scope) {
+            });
+    
+</script>
+</body>
+</html>

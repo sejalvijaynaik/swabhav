@@ -1,0 +1,31 @@
+<html>
+<head>
+        <script src="../../Angular JS files/angular.js"></script>
+    </head>
+    <title>
+        Counter Service
+    </title>
+
+<body ng-app = "counterApp">
+    <div ng-controller = "incrementController">
+        <button ng-click = "increment()">Increment</button>
+        <p>{{getCount}}</p>
+    </div>
+    <div ng-controller = "decrementController">
+        <button ng-click = "decrement()">Decrement</button>
+        <p>{{getCount}}</p>
+    </div>
+      
+
+
+<script src = "counterService.js">
+</script>
+</body>
+    
+</html>
+    
+
+    
+   
+
+
