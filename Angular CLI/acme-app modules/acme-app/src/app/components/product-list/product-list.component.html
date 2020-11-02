@@ -1,0 +1,26 @@
+<div [class] = "'box'">
+    <div [class] = "'welcomeDiv'">
+        <span [class] = "'welcomeSpan'">Product List</span>
+    </div>
+    <br>
+    <search (searchProductEmitter) = "getSearchEmployees($event)"></search><br>
+    <table class="table">
+        <tr>
+            <th><button class="btn btn-primary" (click) = "showImageToggle()" [innerText] = "showImgBtnText"></button></th>
+            <th>Product</th>
+            <th>Code</th>
+            <th>Available</th>
+            <th>Price</th>
+            <th>5 Star Rating</th>
+        </tr>
+        <tr *ngFor = "let product of products">
+            <td><img src = {{product.imageUrl}} [style.display] = "showImage"></td>
+            <td><a (click) = "productSelect(product.productId)">{{product.productName}}</a></td>
+            <td>{{product.productCode}}</td>
+            <td>{{product.releaseDate}}</td>
+            <td>${{product.price}}</td>
+            <td><star [stars] = product.starRating></star></td>
+        </tr>
+    </table>
+
+</div>

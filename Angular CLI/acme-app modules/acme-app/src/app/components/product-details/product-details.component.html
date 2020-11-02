@@ -1,0 +1,45 @@
+<div [class] = "'box'">
+    <div [class] = "'welcomeDiv'">
+        <span [class] = "'welcomeSpan'">Product Detail : {{product.productName}}</span>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-6">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td>{{product.productName}}</td>
+                </tr>
+                <tr>
+                    <td>Code:</td>
+                    <td>{{product.productCode}}</td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td>{{product.description}}</td>
+                </tr>
+                <tr>
+                    <td>Availability:</td>
+                    <td>{{product.releaseDate}}</td>
+                </tr>
+                <tr>
+                    <td>Price:</td>
+                    <td>${{product.price}}</td>
+                </tr>
+                <tr>
+                    <td>5 Star Rating</td>
+                    <td><star [stars] = product.starRating></star></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-6">
+            <img src = {{product.imageUrl}}>
+        </div>
+    </div>
+    <br>
+    <div [class] = "'footerDiv'">
+        <button (click) = "back()" class="btn btn-default" [style.margin] = "'5px'">
+            <span class="glyphicon glyphicon-chevron-left"></span>Back
+        </button>
+    </div>
+</div>

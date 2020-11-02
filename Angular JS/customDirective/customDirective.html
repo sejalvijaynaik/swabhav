@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <title>
+        Custom Directive
+    </title>
+    <script src="../Angular JS files/angular.js"></script>
+</head>
+<body>
+    <div ng-app="customDirApp">
+        <section ng-controller='customDirController'>
+            <h1 student></h1>
+        </section>
+    </div>
+</body>
+</html>
+<script>
+    angular.module('customDirApp', [])
+        .controller('customDirController',function ($scope) {
+            $scope.name = "sejal";
+        })
+        .directive('student', function() {
+            return {
+                templateUrl: 'student.html'
+            };
+        });
+            
+
+</script>

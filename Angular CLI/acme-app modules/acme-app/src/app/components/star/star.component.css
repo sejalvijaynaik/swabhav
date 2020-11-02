@@ -1,0 +1,11 @@
+.glyphicon-star.half {
+    position: relative;
+  }
+  .glyphicon-star.half:before {
+    position: relative;
+    z-index: 9;
+    width: 47%;
+    display: block;
+    overflow: hidden;
+  }
+  

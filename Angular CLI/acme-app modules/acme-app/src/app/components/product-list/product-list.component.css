@@ -1,0 +1,36 @@
+.box{
+    border: 2px solid rgb(100, 100, 216);
+    border-radius: 5px;
+    margin: 20px;
+}
+
+.welcomeDiv{
+    background-color: rgb(100, 100, 216);
+}
+.welcomeSpan{
+    font-size: 2em;
+    color: white;
+    margin-left: 2%;
+}
+
+img{
+    display: block;
+    max-width: 30%;
+    max-height: 30%;
+    margin-left: 30%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th{
+      color:  rgb(100, 100, 216);
+  }
