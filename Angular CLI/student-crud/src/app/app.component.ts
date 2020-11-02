@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'student-crud';
+  constructor(){
+    window.document.body.style.backgroundColor = 'plum';
+  }
 }
