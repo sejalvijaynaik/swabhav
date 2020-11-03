@@ -1,12 +1,14 @@
-var app = angular.module("myApp", ["ngRoute"]);
-app.config(function($routeProvider) {
-    $routeProvider
-    .when("/home", {
-        templateUrl : "home.html",
-        controller : "homeController"
-    });
-});
+angular.module("myApp", ['ngRoute'])
+    .config(['$routeProvider', function ($routeProvider) {
+        $routeProvider
+            .when("/home", {
+                templateUrl: "home.html",
+                controller: "homeController"
+            });
+    }])
 
-app.controller("homeController", function($scope){
-    $scope.msg = "I am inside home";
-});
+    .controller('homeController', ['$scope', function ($scope) {
+        $scope.data = "Inside Home";
+    }]);
+
+    

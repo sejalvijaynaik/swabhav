@@ -4,12 +4,14 @@
     <title>
         Custom Directive
     </title>
-    <script src="../Angular JS files/angular.js"></script>
+    <script src="../Angular JS files/angular.min.js"></script>
 </head>
 <body>
     <div ng-app="customDirApp">
         <section ng-controller='customDirController'>
-            <h1 student></h1>
+            <aurion-pro-header></aurion-pro-header>
+            <aurion-pro-footer></aurion-pro-footer>
+            <aurion-pro-footer year="2020"></aurion-pro-footer>
         </section>
     </div>
 </body>
@@ -19,9 +21,21 @@
         .controller('customDirController',function ($scope) {
             $scope.name = "sejal";
         })
-        .directive('student', function() {
+        .directive('aurionProHeader', function() {
             return {
-                templateUrl: 'student.html'
+                restrict : 'E',
+                template: '<header><h1>AurionPro header</h1></header>'
+            };
+        })
+        .directive('aurionProFooter', function() {
+            function footerFunc($scope, $attr){
+                $scope.year = $attr.year;
+                console.log($attr.year);
+            }
+            return {
+                link : footerFunc,
+                scope : true,
+                template: '<footer><h1>AurionPro footer {{year}}</h1></footer>'
             };
         });
             
