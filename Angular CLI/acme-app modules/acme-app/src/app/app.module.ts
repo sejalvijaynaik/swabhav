@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { RoutesClass } from "./classes/route-class";
 import { ProductService } from "./services/product-service.service";
+import { RouteGuard } from "./services/router-guard";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { ProductService } from "./services/product-service.service";
     RouterModule.forRoot(RoutesClass.routes),
     ProductModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, RouteGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
